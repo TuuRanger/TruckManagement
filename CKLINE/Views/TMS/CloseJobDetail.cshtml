@@ -1,0 +1,764 @@
+﻿@{
+    ViewBag.Title = "CloseJobDetail";
+}
+
+<section class="content-header">
+    <h1>
+        บันทึกการขนส่ง
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Praxair</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>Job No.</label>
+                                <input type="text" class="form-control" placeholder="27055900001" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Order ID</label>
+                                <input type="text" class="form-control" placeholder="PA59050001" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Booking No.</label>
+                                <input type="text" class="form-control" placeholder="TH4565967" disabled>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>Customer</label>
+                                <input type="text" class="form-control" placeholder="xxxxxxxxxxx" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Route</label>
+                                <input type="text" class="form-control" placeholder="xxxxxxxxxxx" disabled>
+                            </div>
+
+                        </div>
+                        &nbsp;
+
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>ชื่อตู้</label>
+                                <input type="text" class="form-control" placeholder="BEAU22380837" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ขนาดตู้</label>
+                                <input type="text" class="form-control" placeholder="20'DC" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>จำนวนตู้</label>
+                                <input type="text" class="form-control" placeholder="1" disabled>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>ทะเบียนรถ</label>
+                                <input type="text" class="form-control" placeholder="กอ2345" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ประเภทรถ</label>
+                                <input type="text" class="form-control" placeholder="6 ล้อ" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ชื่อคนขับ</label>
+                                <input type="text" class="form-control" placeholder="Mr.ccc cccc" disabled>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>วันที่ส่ง</label>
+                                <input type="text" class="form-control" placeholder="27/05/2559" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>เวลาที่ส่ง</label>
+                                <input type="text" class="form-control" placeholder="12:00" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>เวลารถออก</label>
+                                <input type="text" class="form-control" placeholder="09:00" disabled>
+                            </div>
+
+                        </div>
+
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>เลขไมล์</label>
+                                <input type="text" class="form-control" placeholder="2000" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>เลขน้ำมัน (ลิตร)</label>
+                                <input type="text" class="form-control" placeholder="20" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ระยะทาง (กม.)</label>
+                                <input type="text" class="form-control" placeholder="80" disabled>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>เงินสำรองค่าน้ำมัน (บาท)</label>
+                                <input type="text" class="form-control" placeholder="2000" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>เงินสำรองค่าทางด่วน (บาท)</label>
+                                <input type="text" class="form-control" placeholder="500" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>เงินสำรองค่าอื่นๆ (บาท)</label>
+                                <input type="text" class="form-control" placeholder="1000" disabled>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>หมายเหตุ</label>
+                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="ssddefefeffffdrgdfbzdfdfgadgg" disabled></textarea>
+                            </div>
+
+                        </div>
+                      
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">บันทึกการเติมน้ำมัน</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>รายละเอียด</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                           
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            
+                            <div class="col-md-4">
+                                <label>จำนวน (ลิตร)</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>จำนวนเงิน (บาท)</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-success btn-block">ADD</button>
+                            </div>
+                           
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>รายละเอียด</th>
+                                                <th>จำนวน(ลิตร)</th>
+                                                <th>จำนวนเงิน(บาท)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>ปั๊มน้ำมันบางจากสาขาบางนา</td>
+                                                <td>5</td>
+                                                <td>500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ปั๋มน่ำมัน ปตท. สาขาชลบุรี</td>
+                                                <td>15</td>
+                                                <td>1500</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                         
+
+                        </div>
+                    
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">บันทึกค่าทางด่วน</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>รายละเอียด</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                          
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+
+                            <div class="col-md-8">
+                                <label>จำนวนเงิน (บาท)</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-success btn-block">ADD</button>
+                            </div>
+
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>รายละเอียด</th>
+                                                <th>จำนวนเงิน(บาท)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>ค่าทางด่วนบางนาขาไป</td>
+                                                <td>100</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ค่าทางด่วนบางนาขากลับ</td>
+                                                <td>100</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">บันทึกค่าใช้จ่ายอื่นๆ</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>รายละเอียด</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+
+                            <div class="col-md-8">
+                                <label>จำนวนเงิน (บาท)</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-success btn-block">ADD</button>
+                            </div>
+
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>รายละเอียด</th>
+                                                <th>จำนวนเงิน(บาท)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>ค่าปรับฝ่าไฟแดง</td>
+                                                <td>500</td>
+                                            </tr>
+                                            <tr>
+                                                <td>ค่าเติมน้ำกลั่น</td>
+                                                <td>200</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">บันทึกอุบิตเหตุ</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>รายละเอียด</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+
+                            <div class="col-md-8">
+                                <label>วันที่/เวลา</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>&nbsp;</label>
+                                <button type="submit" class="btn btn-danger btn-block">ADD</button>
+                            </div>
+
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>รายละเอียด</th>
+                                                <th>วันที่/เวลา</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>รถเฉี่ยวขอบทาง</td>
+                                                <td>27/05/2559 10:00</td>
+                                            </tr>
+                                          
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-12">
+
+            <div>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                    
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                    
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label>วันที่ถึง</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+
+                                    <input class="form-control" data-val="true" data-val-required="Date is required"
+                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>เวลาที่ถึง</label>
+                                <select class="form-control" id="Time" name="Time">
+
+                                    <option value="">-- Select Pick up Time --</option>
+                                    <option data-ng-value="00:00">00:00</option>
+                                    <option data-ng-value="00:15">00:15</option>
+                                    <option data-ng-value="00:30">00:30</option>
+                                    <option data-ng-value="00:45">00:45</option>
+                                    <option data-ng-value="01:00">01:00</option>
+                                    <option data-ng-value="01:15">01:15</option>
+                                    <option data-ng-value="01:30">01:30</option>
+                                    <option data-ng-value="01:45">01:45</option>
+                                    <option data-ng-value="02:00">02:00</option>
+                                    <option data-ng-value="02:15">02:15</option>
+                                    <option data-ng-value="02:30">02:30</option>
+                                    <option data-ng-value="02:45">02:45</option>
+                                    <option data-ng-value="03:00">03:00</option>
+                                    <option data-ng-value="03:15">03:15</option>
+                                    <option data-ng-value="03:30">03:30</option>
+                                    <option data-ng-value="03:45">03:45</option>
+                                    <option data-ng-value="04:00">04:00</option>
+                                    <option data-ng-value="04:15">04:15</option>
+                                    <option data-ng-value="04:30">04:30</option>
+                                    <option data-ng-value="04:45">04:45</option>
+                                    <option data-ng-value="05:00">05:00</option>
+                                    <option data-ng-value="05:15">05:15</option>
+                                    <option data-ng-value="05:30">05:30</option>
+                                    <option data-ng-value="05:45">05:45</option>
+                                    <option data-ng-value="06:00">06:00</option>
+                                    <option data-ng-value="06:15">06:15</option>
+                                    <option data-ng-value="06:30">06:30</option>
+                                    <option data-ng-value="06:45">06:45</option>
+                                    <option data-ng-value="07:00">07:00</option>
+                                    <option data-ng-value="07:15">07:15</option>
+                                    <option data-ng-value="07:30">07:30</option>
+                                    <option data-ng-value="07:45">07:45</option>
+                                    <option data-ng-value="08:00">08:00</option>
+                                    <option data-ng-value="08:15">08:15</option>
+                                    <option data-ng-value="08:30">08:30</option>
+                                    <option data-ng-value="08:45">08:45</option>
+                                    <option data-ng-value="09:00">09:00</option>
+                                    <option data-ng-value="09:15">09:15</option>
+                                    <option data-ng-value="09:30">09:30</option>
+                                    <option data-ng-value="09:45">09:45</option>
+                                    <option data-ng-value="10:00">10:00</option>
+                                    <option data-ng-value="10:15">10:15</option>
+                                    <option data-ng-value="10:30">10:30</option>
+                                    <option data-ng-value="10:45">10:45</option>
+                                    <option data-ng-value="11:00">11:00</option>
+                                    <option data-ng-value="11:15">11:15</option>
+                                    <option data-ng-value="11:30">11:30</option>
+                                    <option data-ng-value="11:45">11:45</option>
+                                    <option data-ng-value="12:00">12:00</option>
+                                    <option data-ng-value="12:15">12:15</option>
+                                    <option data-ng-value="12:30">12:30</option>
+                                    <option data-ng-value="12:45">12:45</option>
+                                    <option data-ng-value="13:00">13:00</option>
+                                    <option data-ng-value="13:15">13:15</option>
+                                    <option data-ng-value="13:30">13:30</option>
+                                    <option data-ng-value="13:45">13:45</option>
+                                    <option data-ng-value="14:00">14:00</option>
+                                    <option data-ng-value="14:15">14:15</option>
+                                    <option data-ng-value="14:30">14:30</option>
+                                    <option data-ng-value="14:45">14:45</option>
+                                    <option data-ng-value="15:00">15:00</option>
+                                    <option data-ng-value="15:15">15:15</option>
+                                    <option data-ng-value="15:30">15:30</option>
+                                    <option data-ng-value="15:45">15:45</option>
+                                    <option data-ng-value="16:00">16:00</option>
+                                    <option data-ng-value="16:15">16:15</option>
+                                    <option data-ng-value="16:30">16:30</option>
+                                    <option data-ng-value="16:45">16:45</option>
+                                    <option data-ng-value="17:00">17:00</option>
+                                    <option data-ng-value="17:15">17:15</option>
+                                    <option data-ng-value="17:30">17:30</option>
+                                    <option data-ng-value="17:45">17:45</option>
+                                    <option data-ng-value="18:00">18:00</option>
+                                    <option data-ng-value="18:15">18:15</option>
+                                    <option data-ng-value="18:30">18:30</option>
+                                    <option data-ng-value="18:45">18:45</option>
+                                    <option data-ng-value="19:00">19:00</option>
+                                    <option data-ng-value="19:15">19:15</option>
+                                    <option data-ng-value="19:30">19:30</option>
+                                    <option data-ng-value="19:45">19:45</option>
+                                    <option data-ng-value="20:00">20:00</option>
+                                    <option data-ng-value="20:15">20:15</option>
+                                    <option data-ng-value="20:30">20:30</option>
+                                    <option data-ng-value="20:45">20:45</option>
+                                    <option data-ng-value="21:00">21:00</option>
+                                    <option data-ng-value="21:15">21:15</option>
+                                    <option data-ng-value="21:30">21:30</option>
+                                    <option data-ng-value="21:45">21:45</option>
+                                    <option data-ng-value="22:00">22:00</option>
+                                    <option data-ng-value="22:15">22:15</option>
+                                    <option data-ng-value="22:30">22:30</option>
+                                    <option data-ng-value="22:45">22:45</option>
+                                    <option data-ng-value="23:00">23:00</option>
+                                    <option data-ng-value="23:15">23:15</option>
+                                    <option data-ng-value="23:30">23:30</option>
+                                    <option data-ng-value="23:45">23:45</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label>วันที่กลับ</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+
+                                    <input class="form-control" data-val="true" data-val-required="Date is required"
+                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>เวลาที่กลับ</label>
+                                <select class="form-control" id="Time" name="Time">
+
+                                    <option value="">-- Select Pick up Time --</option>
+                                    <option data-ng-value="00:00">00:00</option>
+                                    <option data-ng-value="00:15">00:15</option>
+                                    <option data-ng-value="00:30">00:30</option>
+                                    <option data-ng-value="00:45">00:45</option>
+                                    <option data-ng-value="01:00">01:00</option>
+                                    <option data-ng-value="01:15">01:15</option>
+                                    <option data-ng-value="01:30">01:30</option>
+                                    <option data-ng-value="01:45">01:45</option>
+                                    <option data-ng-value="02:00">02:00</option>
+                                    <option data-ng-value="02:15">02:15</option>
+                                    <option data-ng-value="02:30">02:30</option>
+                                    <option data-ng-value="02:45">02:45</option>
+                                    <option data-ng-value="03:00">03:00</option>
+                                    <option data-ng-value="03:15">03:15</option>
+                                    <option data-ng-value="03:30">03:30</option>
+                                    <option data-ng-value="03:45">03:45</option>
+                                    <option data-ng-value="04:00">04:00</option>
+                                    <option data-ng-value="04:15">04:15</option>
+                                    <option data-ng-value="04:30">04:30</option>
+                                    <option data-ng-value="04:45">04:45</option>
+                                    <option data-ng-value="05:00">05:00</option>
+                                    <option data-ng-value="05:15">05:15</option>
+                                    <option data-ng-value="05:30">05:30</option>
+                                    <option data-ng-value="05:45">05:45</option>
+                                    <option data-ng-value="06:00">06:00</option>
+                                    <option data-ng-value="06:15">06:15</option>
+                                    <option data-ng-value="06:30">06:30</option>
+                                    <option data-ng-value="06:45">06:45</option>
+                                    <option data-ng-value="07:00">07:00</option>
+                                    <option data-ng-value="07:15">07:15</option>
+                                    <option data-ng-value="07:30">07:30</option>
+                                    <option data-ng-value="07:45">07:45</option>
+                                    <option data-ng-value="08:00">08:00</option>
+                                    <option data-ng-value="08:15">08:15</option>
+                                    <option data-ng-value="08:30">08:30</option>
+                                    <option data-ng-value="08:45">08:45</option>
+                                    <option data-ng-value="09:00">09:00</option>
+                                    <option data-ng-value="09:15">09:15</option>
+                                    <option data-ng-value="09:30">09:30</option>
+                                    <option data-ng-value="09:45">09:45</option>
+                                    <option data-ng-value="10:00">10:00</option>
+                                    <option data-ng-value="10:15">10:15</option>
+                                    <option data-ng-value="10:30">10:30</option>
+                                    <option data-ng-value="10:45">10:45</option>
+                                    <option data-ng-value="11:00">11:00</option>
+                                    <option data-ng-value="11:15">11:15</option>
+                                    <option data-ng-value="11:30">11:30</option>
+                                    <option data-ng-value="11:45">11:45</option>
+                                    <option data-ng-value="12:00">12:00</option>
+                                    <option data-ng-value="12:15">12:15</option>
+                                    <option data-ng-value="12:30">12:30</option>
+                                    <option data-ng-value="12:45">12:45</option>
+                                    <option data-ng-value="13:00">13:00</option>
+                                    <option data-ng-value="13:15">13:15</option>
+                                    <option data-ng-value="13:30">13:30</option>
+                                    <option data-ng-value="13:45">13:45</option>
+                                    <option data-ng-value="14:00">14:00</option>
+                                    <option data-ng-value="14:15">14:15</option>
+                                    <option data-ng-value="14:30">14:30</option>
+                                    <option data-ng-value="14:45">14:45</option>
+                                    <option data-ng-value="15:00">15:00</option>
+                                    <option data-ng-value="15:15">15:15</option>
+                                    <option data-ng-value="15:30">15:30</option>
+                                    <option data-ng-value="15:45">15:45</option>
+                                    <option data-ng-value="16:00">16:00</option>
+                                    <option data-ng-value="16:15">16:15</option>
+                                    <option data-ng-value="16:30">16:30</option>
+                                    <option data-ng-value="16:45">16:45</option>
+                                    <option data-ng-value="17:00">17:00</option>
+                                    <option data-ng-value="17:15">17:15</option>
+                                    <option data-ng-value="17:30">17:30</option>
+                                    <option data-ng-value="17:45">17:45</option>
+                                    <option data-ng-value="18:00">18:00</option>
+                                    <option data-ng-value="18:15">18:15</option>
+                                    <option data-ng-value="18:30">18:30</option>
+                                    <option data-ng-value="18:45">18:45</option>
+                                    <option data-ng-value="19:00">19:00</option>
+                                    <option data-ng-value="19:15">19:15</option>
+                                    <option data-ng-value="19:30">19:30</option>
+                                    <option data-ng-value="19:45">19:45</option>
+                                    <option data-ng-value="20:00">20:00</option>
+                                    <option data-ng-value="20:15">20:15</option>
+                                    <option data-ng-value="20:30">20:30</option>
+                                    <option data-ng-value="20:45">20:45</option>
+                                    <option data-ng-value="21:00">21:00</option>
+                                    <option data-ng-value="21:15">21:15</option>
+                                    <option data-ng-value="21:30">21:30</option>
+                                    <option data-ng-value="21:45">21:45</option>
+                                    <option data-ng-value="22:00">22:00</option>
+                                    <option data-ng-value="22:15">22:15</option>
+                                    <option data-ng-value="22:30">22:30</option>
+                                    <option data-ng-value="22:45">22:45</option>
+                                    <option data-ng-value="23:00">23:00</option>
+                                    <option data-ng-value="23:15">23:15</option>
+                                    <option data-ng-value="23:30">23:30</option>
+                                    <option data-ng-value="23:45">23:45</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>เลขไมล์ขากลับ</label>
+                                <input type="text" class="form-control" placeholder="" >
+                            </div>
+                            <div class="col-md-4">
+                                <label>น้ำมันขากลับ (ลิตร)</label>
+                                <input type="text" class="form-control" placeholder="" >
+                            </div>
+                            <div class="col-md-4">
+                                <label>ระยะทางจริง (กม.)</label>
+                                <input type="text" class="form-control" placeholder="" >
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>เงินค่าน้ำมันคงเหลือ (บาท)</label>
+                                <input type="text" class="form-control" placeholder="" >
+                            </div>
+                            <div class="col-md-4">
+                                <label>เงินค่าทางด่วนคงเหลือ (บาท)</label>
+                                <input type="text" class="form-control" placeholder="" >
+                            </div>
+                            <div class="col-md-4">
+                                <label>เงินค่าอื่นๆคงเหลือ (บาท)</label>
+                                <input type="text" class="form-control" placeholder="" >
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>หมายเหตุ</label>
+                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="" ></textarea>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="box-footer clearfix">
+
+                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<script language="JavaScript" type="text/javascript">
+
+
+</script>

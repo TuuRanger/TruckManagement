@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "NewOrder";
+}
+
+<section class="content-header">
+    <h1>
+        New Order
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Select Type</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label>Type</label>
+
+                            <select class="form-control">
+                                <option>Praxair</option>
+                                <option>Trucking</option>
+                                <option>Import/Export</option>
+
+                            </select>
+
+
+                        </div>
+
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Select</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- general form elements disabled -->
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Detail</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <form role="form">
+                      
+                        <div class="form-group">
+                            <label>Order ID</label>
+                            <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
+                        </div>
+
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Detail</label>
+                            <textarea class="form-control" rows="3" placeholder="Detail..."></textarea>
+                        </div>
+                    
+                        <!-- Select multiple-->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-warning pull-right">Save</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        
+    </div>
+
+</section>

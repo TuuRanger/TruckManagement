@@ -13,5 +13,28 @@ namespace CKLINE.Controllers
         {
             return View();
         }
+
+        public ActionResult Drivers()
+        {
+            return View();
+        }
+
+        public ActionResult DriverDetails()
+        {
+            return View();
+        }
+
+        public ActionResult rTest()
+        {
+            return View();
+        }
+        public ActionResult NewOrder()
+        {
+            return View();
+        }
+        public ActionResult OrderList()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "TrieDetail";
+}
+
+<section class="content-header">
+    <h1>
+        ข้อมูลยางอะไหล่
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <!-- general form elements disabled -->
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">&nbsp;</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>S/N</label>
+                                <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ยี่ห้อยาง</label>
+                                <input type="text" class="form-control" placeholder="xxxxx" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ขนาด/หน้ายาง</label>
+                                <input type="text" class="form-control" placeholder="xxx" disabled>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>Used(Km.)</label>
+                                <input type="text" class="form-control" placeholder="xx" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Purchase Date</label>
+                                <input type="text" class="form-control" placeholder="27/04/2559" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Exprie Date</label>
+                                <input type="text" class="form-control" placeholder="27/05/2559" disabled>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>Status</label>
+                                <br />
+                                <span class="label label-danger">Used</span>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ทะเบียนรถ</label>
+                                <input type="text" class="form-control" placeholder="กท1000" disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label>ตำแหน่งล้อ</label>
+                                <input type="text" class="form-control" placeholder="1" disabled>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="box-footer clearfix">
+
+                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<script language="JavaScript" type="text/javascript">
+    document.getElementById('Type2').style.display = 'none';
+    document.getElementById('Type3').style.display = 'none';
+
+
+    function showhidediv(rad) {
+        var rads = document.getElementsByName(rad.name);
+        document.getElementById('Type1').style.display = (rads[0].checked) ? 'block' : 'none';
+        document.getElementById('Type2').style.display = (rads[1].checked) ? 'block' : 'none';
+        document.getElementById('Type3').style.display = (rads[2].checked) ? 'block' : 'none';
+
+    }
+
+</script>

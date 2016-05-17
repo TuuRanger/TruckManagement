@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Customer";
+}
+
+<section class="content-header">
+    <h1>
+        ประวัติลูกค้า
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายชื่อลูกค้า</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>รหัส</th>
+                                    <th>ชื่อลูกค้า</th>
+                                    <th>ที่อยู่</th>
+                                    <th>จังหวัด</th>
+                                    <th>โทรศัพท์</th>
+                                    <th>ผู้ติดต่อ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="/TMS/CustomerDetail">001</a></td>
+                                    <td>PTT PL</td>
+                                    <td>555/1 อาคารเอ ศูนย์เอนเนอร์ยี่คอมเพล็กซ์ ชั้น8 ถนนวิภาวดีรังสิต แขวงจตุจักร</td>
+                                    <td>ระยอง</td>
+                                    <td>02-140-3701-2</td>
+                                    <td>คุณนพรุจ ธรรมจิโรจน์</td>
+
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-right">New Customer</a>
+                    @*    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+</section>

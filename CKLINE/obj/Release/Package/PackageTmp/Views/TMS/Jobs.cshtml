@@ -1,0 +1,604 @@
+﻿@{
+    ViewBag.Title = "Jobs";
+}
+
+<section class="content-header">
+    <h1>
+        New Order
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">1.Select Order</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>วันที่รับ</th>
+                                                <th>วันที่ส่ง</th>
+                                                <th>จำนวน</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>PA59050001</td>
+                                                <td>27/05/2559</td>
+                                                <td>27/05/2559</td>
+                                                <td>3</td>
+                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>PA59050002</td>
+                                                <td>27/05/2559</td>
+                                                <td>27/05/2559</td>
+                                                <td>3</td>
+                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CK59050001</td>
+                                                <td>27/05/2559</td>
+                                                <td>27/05/2559</td>
+                                                <td>3</td>
+                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CK59050002</td>
+                                                <td>27/05/2559</td>
+                                                <td>27/05/2559</td>
+                                                <td>3</td>
+                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CK59050003</td>
+                                                <td>27/05/2559</td>
+                                                <td>27/05/2559</td>
+                                                <td>3</td>
+                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>GL59050001</td>
+                                                <td>27/05/2559</td>
+                                                <td>27/05/2559</td>
+                                                <td>3</td>
+                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>GL59050002</td>
+                                                <td>27/05/2559</td>
+                                                <td>27/05/2559</td>
+                                                <td>3</td>
+                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">2.Select Job (PA59050001)</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>ชื่อตู้</th>
+                                                <th>ขนาดตู้</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>BEAU22380837</td>
+                                                <td>20'DC</td>
+                                                <td><button type="submit" class="btn btn-info btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>BEAU22780837</td>
+                                                <td>20'DC</td>
+                                                <td><button type="submit" class="btn btn-info btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>BEAU22780838</td>
+                                                <td>20'DC</td>
+                                                <td><button type="submit" class="btn btn-info btn-block">Select</button></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">3.TRUCK</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                
+                                <div class="radio">
+
+                                    <div class="col-md-3">
+
+                                        <label>
+                                            <input type="radio" name="optiosType" id="optiosType1" value="CKLINE" checked="checked" onclick="showhidediv(this);">
+                                            CKLINE
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>
+                                            <input type="radio" name="optiosType" id="optiosType2" value="SUB" onclick="showhidediv(this);">
+                                            SUB
+                                        </label>
+                                    </div>
+                                   
+                                </div>
+
+
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning" id="Type1">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">3.1 CKL</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>ทะเบียนรถ</th>
+                                                <th>คนขับรถ</th>
+                                                <th>Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>กอ2345</td>
+                                                <td>Mr.ccc cccc</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>ss45677</td>
+                                                <td>Mr.aaaa vvvvv</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>jj8907</td>
+                                                <td>Mr.dddd ffff</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>hh87689</td>
+                                                <td>Mr.gggg fffffff</td>
+                                                <td><span class="label label-danger">Delivered</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>jj89765</td>
+                                                <td>Mr.ffgg gggg</td>
+                                                <td><span class="label label-danger">Delivered</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning" id="Type2">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">3.2 Sub</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>ชื่อ Sub</th>
+                                                <th>Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                                <td><span class="label label-danger">Delivered</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
+                                                <td><span class="label label-danger">Delivered</span></td>
+                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">4.Queue (ss45677)</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>ชื่อตู้</th>
+                                                <th>วันที่</th>
+                                                <th>เวลา</th>
+                                                <th>Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>CK59050003</td>
+                                                <td>BEAU22380837</td>
+                                                <td>27/05/2559</td>
+                                                <td>11:00</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><button type="submit" class="btn btn-danger btn-block">Cancel</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>CK59050003</td>
+                                                <td>BEAU22380837</td>
+                                                <td>27/05/2559</td>
+                                                <td>11:00</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><button type="submit" class="btn btn-danger btn-block">Cancel</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+        
+            <div class="col-md-12">
+
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">5.Add Job</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label>Order ID</label>
+                                        <input type="text" class="form-control" placeholder="PA59050001" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Booking No.</label>
+                                        <input type="text" class="form-control" placeholder="TH59050001" disabled>
+                                    </div>
+
+                                </div>
+                                &nbsp;
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label>ชื่อตู้</label>
+                                        <input type="text" class="form-control" placeholder="BEAU22380837" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>ขนาดตู้</label>
+                                        <input type="text" class="form-control" placeholder="20'DC" disabled>
+                                    </div>
+
+                                </div>
+                                &nbsp;
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label>Customer</label>
+                                        <input type="text" class="form-control" placeholder="aaaaaaasddfdf" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Route</label>
+                                        <input type="text" class="form-control" placeholder="vvvvvvvvvvvv" disabled>
+                                    </div>
+
+                                </div>
+                                &nbsp;
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label>ทะเบียนรถ</label>
+                                        <input type="text" class="form-control" placeholder="กอ2345" disabled>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>คนขับ</label>
+                                        <input type="text" class="form-control" placeholder="Mr.ccc cccc" disabled>
+                                    </div>
+
+                                </div>
+                                &nbsp;
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <label>วันที่</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+
+                                            <input class="form-control" data-val="true" data-val-required="Date is required"
+                                                   id="Date3" name="Date3" type="date" value="1/11/1989" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>เวลา</label>
+                                        <select class="form-control" id="Time" name="Time">
+
+                                            <option value="">-- Select Pick up Time --</option>
+                                            <option data-ng-value="00:00">00:00</option>
+                                            <option data-ng-value="00:15">00:15</option>
+                                            <option data-ng-value="00:30">00:30</option>
+                                            <option data-ng-value="00:45">00:45</option>
+                                            <option data-ng-value="01:00">01:00</option>
+                                            <option data-ng-value="01:15">01:15</option>
+                                            <option data-ng-value="01:30">01:30</option>
+                                            <option data-ng-value="01:45">01:45</option>
+                                            <option data-ng-value="02:00">02:00</option>
+                                            <option data-ng-value="02:15">02:15</option>
+                                            <option data-ng-value="02:30">02:30</option>
+                                            <option data-ng-value="02:45">02:45</option>
+                                            <option data-ng-value="03:00">03:00</option>
+                                            <option data-ng-value="03:15">03:15</option>
+                                            <option data-ng-value="03:30">03:30</option>
+                                            <option data-ng-value="03:45">03:45</option>
+                                            <option data-ng-value="04:00">04:00</option>
+                                            <option data-ng-value="04:15">04:15</option>
+                                            <option data-ng-value="04:30">04:30</option>
+                                            <option data-ng-value="04:45">04:45</option>
+                                            <option data-ng-value="05:00">05:00</option>
+                                            <option data-ng-value="05:15">05:15</option>
+                                            <option data-ng-value="05:30">05:30</option>
+                                            <option data-ng-value="05:45">05:45</option>
+                                            <option data-ng-value="06:00">06:00</option>
+                                            <option data-ng-value="06:15">06:15</option>
+                                            <option data-ng-value="06:30">06:30</option>
+                                            <option data-ng-value="06:45">06:45</option>
+                                            <option data-ng-value="07:00">07:00</option>
+                                            <option data-ng-value="07:15">07:15</option>
+                                            <option data-ng-value="07:30">07:30</option>
+                                            <option data-ng-value="07:45">07:45</option>
+                                            <option data-ng-value="08:00">08:00</option>
+                                            <option data-ng-value="08:15">08:15</option>
+                                            <option data-ng-value="08:30">08:30</option>
+                                            <option data-ng-value="08:45">08:45</option>
+                                            <option data-ng-value="09:00">09:00</option>
+                                            <option data-ng-value="09:15">09:15</option>
+                                            <option data-ng-value="09:30">09:30</option>
+                                            <option data-ng-value="09:45">09:45</option>
+                                            <option data-ng-value="10:00">10:00</option>
+                                            <option data-ng-value="10:15">10:15</option>
+                                            <option data-ng-value="10:30">10:30</option>
+                                            <option data-ng-value="10:45">10:45</option>
+                                            <option data-ng-value="11:00">11:00</option>
+                                            <option data-ng-value="11:15">11:15</option>
+                                            <option data-ng-value="11:30">11:30</option>
+                                            <option data-ng-value="11:45">11:45</option>
+                                            <option data-ng-value="12:00">12:00</option>
+                                            <option data-ng-value="12:15">12:15</option>
+                                            <option data-ng-value="12:30">12:30</option>
+                                            <option data-ng-value="12:45">12:45</option>
+                                            <option data-ng-value="13:00">13:00</option>
+                                            <option data-ng-value="13:15">13:15</option>
+                                            <option data-ng-value="13:30">13:30</option>
+                                            <option data-ng-value="13:45">13:45</option>
+                                            <option data-ng-value="14:00">14:00</option>
+                                            <option data-ng-value="14:15">14:15</option>
+                                            <option data-ng-value="14:30">14:30</option>
+                                            <option data-ng-value="14:45">14:45</option>
+                                            <option data-ng-value="15:00">15:00</option>
+                                            <option data-ng-value="15:15">15:15</option>
+                                            <option data-ng-value="15:30">15:30</option>
+                                            <option data-ng-value="15:45">15:45</option>
+                                            <option data-ng-value="16:00">16:00</option>
+                                            <option data-ng-value="16:15">16:15</option>
+                                            <option data-ng-value="16:30">16:30</option>
+                                            <option data-ng-value="16:45">16:45</option>
+                                            <option data-ng-value="17:00">17:00</option>
+                                            <option data-ng-value="17:15">17:15</option>
+                                            <option data-ng-value="17:30">17:30</option>
+                                            <option data-ng-value="17:45">17:45</option>
+                                            <option data-ng-value="18:00">18:00</option>
+                                            <option data-ng-value="18:15">18:15</option>
+                                            <option data-ng-value="18:30">18:30</option>
+                                            <option data-ng-value="18:45">18:45</option>
+                                            <option data-ng-value="19:00">19:00</option>
+                                            <option data-ng-value="19:15">19:15</option>
+                                            <option data-ng-value="19:30">19:30</option>
+                                            <option data-ng-value="19:45">19:45</option>
+                                            <option data-ng-value="20:00">20:00</option>
+                                            <option data-ng-value="20:15">20:15</option>
+                                            <option data-ng-value="20:30">20:30</option>
+                                            <option data-ng-value="20:45">20:45</option>
+                                            <option data-ng-value="21:00">21:00</option>
+                                            <option data-ng-value="21:15">21:15</option>
+                                            <option data-ng-value="21:30">21:30</option>
+                                            <option data-ng-value="21:45">21:45</option>
+                                            <option data-ng-value="22:00">22:00</option>
+                                            <option data-ng-value="22:15">22:15</option>
+                                            <option data-ng-value="22:30">22:30</option>
+                                            <option data-ng-value="22:45">22:45</option>
+                                            <option data-ng-value="23:00">23:00</option>
+                                            <option data-ng-value="23:15">23:15</option>
+                                            <option data-ng-value="23:30">23:30</option>
+                                            <option data-ng-value="23:45">23:45</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label>หมายเหตุ</label>
+                                        <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="box-footer clearfix">
+
+                                        <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ADD JOB</button>
+                                    </div>
+                                </div>
+                                </div>
+                        </form>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+            </div>
+        </div>
+       
+   </div>
+
+</section>
+<script language="JavaScript" type="text/javascript">
+    document.getElementById('Type2').style.display = 'none';
+ 
+    function showhidediv(rad) {
+        var rads = document.getElementsByName(rad.name);
+        document.getElementById('Type1').style.display = (rads[0].checked) ? 'block' : 'none';
+        document.getElementById('Type2').style.display = (rads[1].checked) ? 'block' : 'none';
+      
+    }
+
+</script>

@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Gas Station";
+}
+
+<section class="content-header">
+    <h1>
+        Gas Station
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <!-- general form elements disabled -->
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">&nbsp;</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รหัส</label>
+                                <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
+                                <br />
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>ชื่อสถานี</label>
+                                <input type="text" class="form-control" placeholder="ปตท." disabled>
+                                <br />
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>สาขา</label>
+                                <input type="text" class="form-control" placeholder="บางนา" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label>จังหวัด</label>
+                                <input type="text" class="form-control" placeholder="กทม." disabled>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>ผู้ติดต่อ</label>
+                                <input type="text" class="form-control" placeholder="คุณเอ" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label>โทรศัพท์</label>
+                                <input type="text" class="form-control" placeholder="022222222" disabled>
+                            </div>
+                        </div>
+                        &nbsp;
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="box-footer clearfix">
+
+                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<script language="JavaScript" type="text/javascript">
+    document.getElementById('Type2').style.display = 'none';
+    document.getElementById('Type3').style.display = 'none';
+
+
+    function showhidediv(rad) {
+        var rads = document.getElementsByName(rad.name);
+        document.getElementById('Type1').style.display = (rads[0].checked) ? 'block' : 'none';
+        document.getElementById('Type2').style.display = (rads[1].checked) ? 'block' : 'none';
+        document.getElementById('Type3').style.display = (rads[2].checked) ? 'block' : 'none';
+
+    }
+
+</script>

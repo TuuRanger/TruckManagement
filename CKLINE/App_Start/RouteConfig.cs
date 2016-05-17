@@ -16,7 +16,7 @@ namespace CKLINE
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "TTMS", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "TMS", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

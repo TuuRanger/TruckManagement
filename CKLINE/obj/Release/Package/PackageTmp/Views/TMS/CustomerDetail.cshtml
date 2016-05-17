@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "CustomerDetail";
+}
+
+<section class="content-header">
+    <h1>
+        ประวัติลูกค้า
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <!-- general form elements disabled -->
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">&nbsp;</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>รหัสลูกค้า</label>
+                                <input type="text" class="form-control" placeholder="m" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label>ชื่อลูกค้า</label>
+                                <input type="text" class="form-control" placeholder="PTT PL" >
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label>ที่อยุ่</label>
+                                <input type="text" class="form-control" placeholder="555/1 อาคารเอ ศูนย์เอนเนอร์ยี่คอมเพล็กซ์ ชั้น8 ถนนวิภาวดีรังสิต แขวงจตุจักร" >
+                            </div>
+                            <div class="col-md-4">
+                                <label>จังหวัด</label>
+                                <input type="text" class="form-control" placeholder="ระยอง">
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>โทรศัพท์</label>
+                                <input type="text" class="form-control" placeholder="02-140-3701-2">
+                            </div>
+                            <div class="col-md-6">
+                                <label>ผู้ติดต่อ</label>
+                                <input type="text" class="form-control" placeholder="คุณนพรุจ ธรรมจิโรจน์">
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>ราคาขนส่ง</label>
+                                <input type="text" class="form-control" placeholder="4,650.00">
+                            </div>
+                            <div class="col-md-4">
+                                <label>ระยะทางไปกลับ (กม.)</label>
+                                <input type="text" class="form-control" placeholder="140">
+                            </div>
+                            <div class="col-md-4">
+                                <label>NGV มาตราฐาน</label>
+                                <input type="text" class="form-control" placeholder="70">
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>ค่าผ่านทางมาตราฐาน</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-md-4">
+                                <label>เวลาเดินทางมาตราฐาน</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                         
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="box-footer clearfix">
+
+                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<script language="JavaScript" type="text/javascript">
+    document.getElementById('Type2').style.display = 'none';
+    document.getElementById('Type3').style.display = 'none';
+
+
+    function showhidediv(rad) {
+        var rads = document.getElementsByName(rad.name);
+        document.getElementById('Type1').style.display = (rads[0].checked) ? 'block' : 'none';
+        document.getElementById('Type2').style.display = (rads[1].checked) ? 'block' : 'none';
+        document.getElementById('Type3').style.display = (rads[2].checked) ? 'block' : 'none';
+
+    }
+
+</script>

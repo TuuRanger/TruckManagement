@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "RouteDetail";
+}
+
+<section class="content-header">
+    <h1>
+        ข้อมูลเส้นทาง
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <!-- general form elements disabled -->
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">&nbsp;</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รหัส</label>
+                                <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
+                                <br />
+                            </div>
+                          
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>ต้นทาง</label>
+                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                            </div>
+                         
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>ปลายทาง</label>
+                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                          
+                            <div class="col-md-6">
+                                <label>ระยะทาง (กม.)</label>
+                                <input type="text" class="form-control" placeholder="50" >
+                                <br />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>ราคา (บาท)</label>
+                                <input type="text" class="form-control" placeholder="1,500">
+                                <br />
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="box-footer clearfix">
+
+                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<script language="JavaScript" type="text/javascript">
+    document.getElementById('Type2').style.display = 'none';
+    document.getElementById('Type3').style.display = 'none';
+
+
+    function showhidediv(rad) {
+        var rads = document.getElementsByName(rad.name);
+        document.getElementById('Type1').style.display = (rads[0].checked) ? 'block' : 'none';
+        document.getElementById('Type2').style.display = (rads[1].checked) ? 'block' : 'none';
+        document.getElementById('Type3').style.display = (rads[2].checked) ? 'block' : 'none';
+
+    }
+
+</script>

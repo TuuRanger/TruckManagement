@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccidentHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="500" />
+    <Property Name="ResultTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="AdmonishHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Agents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProviceID" Type="int" />
+    <Property Name="ZipCode" Type="char" MaxLength="5" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="40" />
+    <Property Name="Email" Type="nvarchar" MaxLength="40" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProviceID" Type="int" />
+    <Property Name="ZipCode" Type="char" MaxLength="5" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="40" />
+    <Property Name="Email" Type="nvarchar" MaxLength="40" />
+    <Property Name="Contact" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="DeliveryPrice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="RoutID" Type="int" />
+    <Property Name="AgentID" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmpID" Type="char" MaxLength="5" />
+    <Property Name="DriverLicence" Type="char" MaxLength="8" />
+    <Property Name="Type" Type="nvarchar" MaxLength="40" />
+    <Property Name="DIssueDate" Type="date" />
+    <Property Name="DExpireDate" Type="date" />
+    <Property Name="BOD" Type="date" />
+    <Property Name="Lineage" Type="nvarchar" MaxLength="40" />
+    <Property Name="Nationality" Type="nvarchar" MaxLength="40" />
+    <Property Name="Religion" Type="nvarchar" MaxLength="40" />
+    <Property Name="NationalID" Type="nvarchar" MaxLength="13" />
+    <Property Name="IssuseDate" Type="date" />
+    <Property Name="ExpireDate" Type="date" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Height" Type="float" />
+    <Property Name="MarriageStatusID" Type="int" />
+    <Property Name="MilitaryStatusID" Type="int" />
+    <Property Name="EducationID" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProviceID" Type="int" />
+    <Property Name="ZipCode" Type="char" MaxLength="5" />
+    <Property Name="FatherFullName" Type="nvarchar" MaxLength="40" />
+    <Property Name="BODFather" Type="date" />
+    <Property Name="MotherFullName" Type="varchar" MaxLength="40" />
+    <Property Name="BODMother" Type="date" />
+    <Property Name="WifeFullName" Type="nvarchar" MaxLength="40" />
+    <Property Name="Workplace" Type="nvarchar" MaxLength="40" />
+    <Property Name="Child" Type="int" />
+  </EntityType>
+  <EntityType Name="FuelType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="GasRefill">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="StartMile" Type="float" />
+    <Property Name="EndMile" Type="float" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Lite" Type="float" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="GPSViolationHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Datail" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookingID" Type="nvarchar" MaxLength="40" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="TruckID" Type="varchar" MaxLength="40" />
+    <Property Name="BeginDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Maintenance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BeginDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Symptom" Type="nvarchar" MaxLength="500" />
+    <Property Name="MaintenanceTypeID" Type="varchar" MaxLength="40" />
+    <Property Name="TruckID" Type="int" />
+    <Property Name="Solution" Type="nvarchar" MaxLength="500" />
+    <Property Name="Detail" Type="nchar" MaxLength="500" />
+    <Property Name="Technician" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="MaintenanceType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="MarriageStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="MilitaryStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="OrderTypeID" Type="int" />
+    <Property Name="BookingID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="OrderDate" Type="varchar" MaxLength="40" />
+    <Property Name="DliveryDate" Type="varchar" MaxLength="40" />
+    <Property Name="RoutID" Type="int" />
+    <Property Name="20DC" Type="int" />
+    <Property Name="40DC" Type="int" />
+    <Property Name="40HC" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContainerNO" Type="nvarchar" MaxLength="40" />
+    <Property Name="Size" Type="nvarchar" MaxLength="40" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="OrderType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Provice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From" Type="nvarchar" MaxLength="40" />
+    <Property Name="TO" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="TireChange">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="TruckID" Type="int" />
+    <Property Name="Mile" Type="float" />
+    <Property Name="Position" Type="int" />
+    <Property Name="TakeOffSerial" Type="nvarchar" MaxLength="40" />
+    <Property Name="TakeOffBrand" Type="nvarchar" MaxLength="40" />
+    <Property Name="TakeOffSize" Type="nvarchar" MaxLength="40" />
+    <Property Name="PutOnSerial" Type="nvarchar" MaxLength="40" />
+    <Property Name="PutOnBrand" Type="nvarchar" MaxLength="40" />
+    <Property Name="PutOnSize" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="TrainingHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Detail" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Truck">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LicensePlate" Type="nvarchar" MaxLength="40" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="40" />
+    <Property Name="FuelTypeID" Type="int" />
+    <Property Name="TruckType" Type="nvarchar" MaxLength="40" />
+    <Property Name="Model" Type="nvarchar" MaxLength="40" />
+    <Property Name="EngineBrand" Type="nvarchar" MaxLength="40" />
+    <Property Name="Insurer" Type="nvarchar" MaxLength="40" />
+    <Property Name="InsuranceNum" Type="nvarchar" MaxLength="40" />
+    <Property Name="IssueDate" Type="date" />
+    <Property Name="ExpireDate" Type="date" />
+    <Property Name="Premium" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="HeadID" Type="int" />
+  </EntityType>
+  <EntityType Name="WorkingHistory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="OrderID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="TMSModelStoreContainer">
+    <EntitySet Name="AccidentHistory" EntityType="Self.AccidentHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdmonishHistory" EntityType="Self.AdmonishHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Agents" EntityType="Self.Agents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryPrice" EntityType="Self.DeliveryPrice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FuelType" EntityType="Self.FuelType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GasRefill" EntityType="Self.GasRefill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GPSViolationHistory" EntityType="Self.GPSViolationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MaintenanceType" EntityType="Self.MaintenanceType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MarriageStatus" EntityType="Self.MarriageStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MilitaryStatus" EntityType="Self.MilitaryStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provice" EntityType="Self.Provice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TireChange" EntityType="Self.TireChange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TrainingHistory" EntityType="Self.TrainingHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkingHistory" EntityType="Self.WorkingHistory" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
