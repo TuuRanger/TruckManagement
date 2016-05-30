@@ -37,53 +37,54 @@ namespace CKLINE.Controllers
         }
         public ActionResult NewOrder()
         {
-            var dCustomer = (from c in db.Customers
-                         select new
-                         {
-                             cID = c.ID,
-                             cName = c.Name
-                         }
-                  ).ToList();
+            //var dCustomer = (from c in db.Customers
+            //             select new
+            //             {
+            //                 cID = c.ID,
+            //                 cName = c.Name
+            //             }
+            //      ).ToList();
 
-            var dRoute = (from r in db.Routes
-                             select new
-                             {
-                                 rID = r.ID,
-                                 rFrom = r.From,
-                                 rTO = r.TO
-                             }
-                  ).ToList();
+            //var dRoute = (from r in db.Routes
+            //                 select new
+            //                 {
+            //                     rID = r.ID,
+            //                     rFrom = r.From,
+            //                     rTO = r.TO
+            //                 }
+            //      ).ToList();
 
-            List<ModelList> model = new List<ModelList>();
-            List<Customers> lCustomer = new List<Customers>();
-            List<Routes> lRoute = new List<Routes>();
+            //List<ModelList> model = new List<ModelList>();
+            //List<Customers> lCustomer = new List<Customers>();
+            //List<Routes> lRoute = new List<Routes>();
             
       
-            foreach (var bc in dCustomer)
-            {
-                Customers a = new Customers();
-                a.Id = Convert.ToInt32(bc.cID);
-                a.Name = bc.cName.ToString();
-                lCustomer.Add(a);
-            }
+            //foreach (var bc in dCustomer)
+            //{
+            //    Customers a = new Customers();
+            //    a.Id = Convert.ToInt32(bc.cID);
+            //    a.Name = bc.cName.ToString();
+            //    lCustomer.Add(a);
+            //}
 
-            foreach (var br in dRoute)
-            {
-                Routes r = new Routes();
-                r.Id = Convert.ToInt32(br.rID);
-                r.From = br.rFrom.ToString();
-                r.TO = br.rTO.ToString();
-                lRoute.Add(r);
-            }
+            //foreach (var br in dRoute)
+            //{
+            //    Routes r = new Routes();
+            //    r.Id = Convert.ToInt32(br.rID);
+            //    r.From = br.rFrom.ToString();
+            //    r.TO = br.rTO.ToString();
+            //    lRoute.Add(r);
+            //}
 
-            ModelList ML = new ModelList();
-            ML.sCustomer = lCustomer.ToList();
-            ML.sRoute = lRoute.ToList();
+            //ModelList ML = new ModelList();
+            //ML.sCustomer = lCustomer.ToList();
+            //ML.sRoute = lRoute.ToList();
 
-            model.Add(ML);
+            //model.Add(ML);
           
 
-            return View(model);
+            //return View(model);
+            return View();
         }
         public ActionResult OrderList()
         {
@@ -165,11 +166,31 @@ namespace CKLINE.Controllers
         {
             return View();
         }
+        public ActionResult NewRoute()
+        {
+            return View();
+        }
         public ActionResult Gas()
         {
             return View();
         }
         public ActionResult GasDetail()
+        {
+            return View();
+        }
+        public ActionResult Garage()
+        {
+            return View();
+        }
+        public ActionResult GarageDetail()
+        {
+            return View();
+        }
+        public ActionResult WithDraw()
+        {
+            return View();
+        }
+        public ActionResult WithDrawDetail()
         {
             return View();
         }

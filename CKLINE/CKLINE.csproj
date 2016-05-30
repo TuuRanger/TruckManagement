@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\TMSController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -225,9 +226,20 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CarDriversPayPeriod.cs" />
+    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\Expenses.cs" />
+    <Compile Include="Models\GasRefill.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Maintenance.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MonthlyAccident.cs" />
+    <Compile Include="Models\MonthlyTransporting.cs" />
+    <Compile Include="Models\ProfitAndLoss.cs" />
+    <Compile Include="Models\TiresChanging.cs" />
     <Compile Include="Models\TMSModels.cs" />
+    <Compile Include="Models\TransportationCosts.cs" />
+    <Compile Include="Models\Transporting.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -253,6 +265,56 @@
     </Compile>
     <Compile Include="Truck.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\CarDriversPayPeriod.cs" />
+    <Compile Include="Views\Report\CarDriversPayPeriod1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\GasRefill.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\GasRefill1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\Maintenance.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\Maintenance1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\MonthlyAccident.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\MonthlyAccident1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\MonthlyTransporting.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\MonthlyTransporting1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\ProfitAndLoss.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\ProfitAndLoss1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\TiresChanging.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\TiresChanging1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\TransportationCosts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\TransportationCosts1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\Transporting.cs" />
+    <Compile Include="Views\Report\Transporting1.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="WorkingHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -1404,6 +1466,29 @@
     <Content Include="Views\TMS\RouteDetail.cshtml" />
     <Content Include="Views\TMS\Gas.cshtml" />
     <Content Include="Views\TMS\GasDetail.cshtml" />
+    <Content Include="Views\TMS\NewRoute.cshtml" />
+    <Content Include="Views\TMS\Garage.cshtml" />
+    <Content Include="Views\TMS\GarageDetail.cshtml" />
+    <Content Include="Views\TMS\WithDraw.cshtml" />
+    <Content Include="Views\TMS\WithDrawDetail.cshtml" />
+    <Content Include="Views\Report\CarDriversPayPeriod.rpt" />
+    <Content Include="Views\Report\CarDriversPayPeriodList.cshtml" />
+    <Content Include="Views\Report\GasRefill.rpt" />
+    <Content Include="Views\Report\GasRefillList.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\Maintenance.rpt" />
+    <Content Include="Views\Report\MaintenanceList.cshtml" />
+    <Content Include="Views\Report\MonthlyAccident.rpt" />
+    <Content Include="Views\Report\MonthlyAccidentList.cshtml" />
+    <Content Include="Views\Report\MonthlyTransporting.rpt" />
+    <Content Include="Views\Report\MonthlyTransportingList.cshtml" />
+    <Content Include="Views\Report\ProfitAndLoss.rpt" />
+    <Content Include="Views\Report\TiresChanging.rpt" />
+    <Content Include="Views\Report\TiresChangingList.cshtml" />
+    <Content Include="Views\Report\TransportationCosts.rpt" />
+    <Content Include="Views\Report\TransportationCostsList.cshtml" />
+    <Content Include="Views\Report\Transporting.rpt" />
+    <Content Include="Views\Report\TransportingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

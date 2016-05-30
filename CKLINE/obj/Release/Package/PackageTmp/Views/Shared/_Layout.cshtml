@@ -44,7 +44,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <!-- Messages: style can be found in dropdown.less-->
-                        <li class="dropdown messages-menu">
+                        @*<li class="dropdown messages-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="label label-success">4</span>
@@ -240,7 +240,7 @@
                                     <a href="#">View all tasks</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>*@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -295,7 +295,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
                 <!-- Sidebar user panel -->
-                <div class="user-panel">
+                @*<div class="user-panel">
                     <div class="pull-left image">
                         <img src="~/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
@@ -304,7 +304,7 @@
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
                 </div>
-                <!-- search form -->
+                 search form 
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
@@ -314,7 +314,7 @@
                             </button>
                         </span>
                     </div>
-                </form>
+                </form>*@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
@@ -380,7 +380,7 @@
                             <li><a href="~/TMS/Jobs"><i class="fa fa-circle-o"></i>ใบสั่งงาน</a></li>
                             <li><a href="~/TMS/OpenJob"><i class="fa fa-circle-o"></i>บันทึกการปล่อยรถ</a></li>
                             <li><a href="~/TMS/CloseJob"><i class="fa fa-circle-o"></i>บันทึกการขนส่ง</a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>เบิกค่าเที่ยว</a></li>
+                            <li><a href="~/TMS/WithDraw"><i class="fa fa-circle-o"></i>เบิกค่าเที่ยว</a></li>
                             <li><a href="~/TMS/TrieSwitch"><i class="fa fa-circle-o"></i>การเปลี่ยนยาง</a></li>
                             <li><a href="~/TMS/Repair"><i class="fa fa-circle-o"></i>การแจ้งซ่อม</a></li>
                         </ul>
@@ -445,14 +445,24 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="~/TMS/rTest"><i class="fa fa-circle-o"></i>การขนส่ง</a></li>
+                            @*<li><a href="~/TMS/rTest"><i class="fa fa-circle-o"></i>การขนส่ง</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>ต้นทุนขนส่ง</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>ค่าใช้จ่ายขนส่ง</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>กำไร/ขาดทุน</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>การเติมน้ำมัน</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>การเปลี่ยนยาง</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>การซ่อมบำรุง</a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>พนักงานขับรถ</a></li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>พนักงานขับรถ</a></li>*@
+                            <li><a href="@Url.Action("TransportingList", "Report")"><i class="fa fa-circle-o"></i>การขนส่งประจำวัน</a></li>
+                            <li><a href="@Url.Action("MonthlyTransportingList", "Report")"><i class="fa fa-circle-o"></i>การขนส่งประจำเดือน</a></li>
+                            <li><a href="@Url.Action("TransportationCostsList", "Report")"><i class="fa fa-circle-o"></i>ต้นทุนขนส่ง</a></li>
+                            @*<li><a href="@Url.Action("TransportingList", "Report")"><i class="fa fa-circle-o"></i>ค่าใช้จ่ายขนส่ง</a></li>*@
+                            <li><a href="@Url.Action("CarDriversPayPeriodList", "Report")"><i class="fa fa-circle-o"></i>ค่าเที่ยวพนักงานขับรถ</a></li>
+                            <li><a href="@Url.Action("GasRefillList", "Report")"><i class="fa fa-circle-o"></i>การเติมน้ำมัน</a></li>
+                            <li><a href="@Url.Action("TiresChangingList", "Report")"><i class="fa fa-circle-o"></i>การเปลี่ยนยาง</a></li>
+                            <li><a href="@Url.Action("MaintenanceList", "Report")"><i class="fa fa-circle-o"></i>การซ่อมบำรุง</a></li>
+                            <li><a href="@Url.Action("TransportingList", "Report")"><i class="fa fa-circle-o"></i>พนักงานขับรถ</a></li>
+                            <li><a href="@Url.Action("MonthlyAccidentList", "Report")"><i class="fa fa-circle-o"></i>อุบัติเหตุรถขนส่งประจำเดือน</a></li>
                         </ul>
                     </li>
 
@@ -462,15 +472,17 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href=""><i class="fa fa-circle-o"></i>ค่าใช้จ่าย</a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>ราคาขาย</a></li>
+                            @*<li><a href=""><i class="fa fa-circle-o"></i>ค่าใช้จ่าย</a></li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>ราคาขาย</a></li>*@
                             <li><a href="~/TMS/Car"><i class="fa fa-circle-o"></i>รถขนส่ง</a></li>
                             <li><a href="~/TMS/Drivers"><i class="fa fa-circle-o"></i>พนักงานขับรถ</a></li>
-                            <li><a href="~/TMS/Trie"><i class="fa fa-circle-o"></i>ยางอะไหล่</a></li>
+                            <li><a href="~/TMS/Trie"><i class="fa fa-circle-o"></i>ยาง</a></li>
+                            <li><a href="~/TMS/Route"><i class="fa fa-circle-o"></i>เส้นทางเดินรถ</a></li>
                             <li><a href="~/TMS/Customer"><i class="fa fa-circle-o"></i>ลูกค้า</a></li>
                             <li><a href="~/TMS/Sub"><i class="fa fa-circle-o"></i>Sub Contract</a></li>
                             <li><a href="~/TMS/Gas"><i class="fa fa-circle-o"></i>Gas Staition</a></li>
-                            <li><a href="~/TMS/Route"><i class="fa fa-circle-o"></i>Route</a></li>
+                            <li><a href="~/TMS/Garage"><i class="fa fa-circle-o"></i>อู่ซ่อมรถ</a></li>
+                          
                         </ul>
                     </li>
                     @* <li><a href="/TMS/documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>*@

@@ -4,7 +4,7 @@
 
 <section class="content-header">
     <h1>
-        ข้อมูลยางอะไหล่
+        ข้อมูลยาง
     </h1>
     @*<ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -65,11 +65,30 @@
                         </div>
                         &nbsp;
                         <div class="form-group">
+
                             <div class="col-md-4">
-                                <label>Status</label>
-                                <br />
-                                <span class="label label-danger">Used</span>
+                                <label>ซื้อจาก</label>
+                                <select class="form-control" id="ToReturn2" name="ToReturn2" placeholder="-- Type drop-off location --" onchange="chk_ToOneWay();">
+                                    <option value="">-- Select Suppiler --</option>
+                                    @*@foreach (var TItem in item.sToModel)
+                    {
+                        <option value="@TItem.TId">@TItem.TDetail</option>
+                    }*@
+                                </select>
                             </div>
+                            <div class="col-md-4">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="1,000" disabled>
+                            </div>
+                            <div class="col-md-4">
+                             <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                           
                             <div class="col-md-4">
                                 <label>ทะเบียนรถ</label>
                                 <input type="text" class="form-control" placeholder="กท1000" disabled>
@@ -78,8 +97,16 @@
                                 <label>ตำแหน่งล้อ</label>
                                 <input type="text" class="form-control" placeholder="1" disabled>
                             </div>
+                            <div class="col-md-4">
+                                <label>Status</label>
+                                <br />
+                                <span class="label label-danger">Used</span>
+                                <br />
+                            </div>
                         </div>
+                        
                         &nbsp;
+                       
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="box-footer clearfix">
@@ -90,6 +117,7 @@
                         </div>
 
                     </div>
+                        &nbsp;
                     <!-- /.box-body -->
                 </div>
             </div>

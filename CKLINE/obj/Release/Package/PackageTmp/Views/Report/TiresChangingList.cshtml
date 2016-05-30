@@ -1,0 +1,125 @@
+﻿@model IEnumerable<CKLINE.Models.TiresChanging>
+
+@{
+    ViewBag.Title = "TiresChangingList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        รายงานการเปลี่ยนยาง
+
+    </h1>
+
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายละเอียด</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        วันที่
+                                    </th>
+                                    <th>
+                                        ทะเบียนรถ
+                                    </th>
+                                    <th>
+                                        เลขไมล์
+                                    </th>
+                                    <th>
+                                        ตำแห่ง
+                                    </th>
+                                    <th>
+                                        ซีเรียลที่ถอด
+                                    </th>
+                                    <th>
+                                        ยี่ห้อมี่ถอด
+                                    </th>
+                                    <th>
+                                        ขนาดที่ถอด
+                                    </th>
+                                    <th>
+                                        ซีเรียลที่ใส่
+                                    </th>
+                                    <th>
+                                        ยี่ห้อที่ใส่
+                                    </th>
+                                    <th>
+                                        ขนาดที่ใส่
+                                    </th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CarRegis)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Mile)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Position)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TakeOffSerial)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TakeOffBrand)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TakeOffSize)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PutOnSerial)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PutOnBrand)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PutOnSize)
+                                            </td>
+                                           
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="#" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
+                    <a href="@Url.Action("TiresChanging", "Report")" class="btn btn-sm btn-default btn-flat pull-left">View</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>

@@ -1,0 +1,135 @@
+﻿@model IEnumerable<CKLINE.Models.MonthlyAccident>
+
+@{
+    ViewBag.Title = "MonthlyAccidentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        รายงานสรุปการเกิดอุบัติเหตุรถขนส่งประจำเดือน
+
+    </h1>
+
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายละเอียด</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        วัน/เวลา
+                                    </th>
+                                    <th>
+                                        สถานที่
+                                    </th>
+                                    <th>
+                                        ทะเบียนหัว
+                                    </th>
+                                    <th>
+                                        ทะเบียนหาง
+                                    </th>
+                                   
+                                    <th>
+                                        พนักงานขับรถ
+                                    </th>
+                                    <th>
+                                        สถานะรถ
+                                    </th>
+                                    <th>
+                                       คู่กรณี
+                                    </th>
+                                    <th>
+                                        ความเสียหาย
+                                    </th>
+                                    <th>
+                                        สถานะถูก/ผิด
+                                    </th>
+                                    <th>
+                                        จำนวนวันเข้าซ่อม
+                                    </th>
+                                    <th>
+                                        อู่ซ่อม
+                                    </th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Place)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Head)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Tail)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DriverID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DriverFullName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PartiesName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Damage)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Result)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DaysToRepair)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Garage)
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="#" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
+                    <a href="@Url.Action("MonthlyAccident", "Report")" class="btn btn-sm btn-default btn-flat pull-left">View</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>

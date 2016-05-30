@@ -1,0 +1,116 @@
+﻿@model IEnumerable<CKLINE.Models.GasRefill>
+
+@{
+    ViewBag.Title = "GasRefillList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        รายงานสรุปการเติมน้ำมัน
+
+    </h1>
+
+</section>
+
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายละเอียด</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        ทะเบียนรถ
+                                    </th>
+                                    <th>
+                                        วันที่
+                                    </th>
+                                    <th>
+                                        งาน
+                                    </th>
+                                    <th>
+                                        ไมล์เริ่มต้น
+                                    </th>
+                                    <th>
+                                        ไมล์สิ้นสุด
+                                    </th>
+                                    <th>
+                                        รวม
+                                    </th>
+                                    <th>
+                                        จำนวน(บาท)
+                                    </th>
+                                    <th>
+                                        ลิตร์
+                                    </th>
+                                    <th>
+                                        หมายเหตุ
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>      @Html.DisplayFor(modelItem => item.CarRegis)   </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Job)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StartMile)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EndMile)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Total)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Bill)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Lite)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Remark)
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="#" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
+                    <a href="@Url.Action("GasRefill", "Report")" class="btn btn-sm btn-default btn-flat pull-left">View</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>

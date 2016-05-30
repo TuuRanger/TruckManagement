@@ -1,0 +1,782 @@
+﻿@{
+    ViewBag.Title = "RouteDetail";
+}
+
+<section class="content-header">
+    <h1>
+        Route Detail
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <!-- general form elements disabled -->
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">รายละเอียดเส้นทาง</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รหัสเส้นทาง</label>
+                                <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
+                                <br />
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>ต้นทาง</label>
+                                <input type="text" id="Address" name="Address" class="form-control" placeholder="Enter ...">
+                                <br />
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label>ปลายทาง</label>
+                                <input type="text" id="Address" name="Address" class="form-control" placeholder="Enter ...">
+                                <br />
+                            </div>
+
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+
+                            <div class="col-md-4">
+                                <label>ระยะทาง (กม.)</label>
+                                <input type="text" class="form-control" placeholder="50">
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <label>ค่าผ่านทางมาตราฐาน (บาท)</label>
+                                <input type="text" class="form-control" placeholder="50">
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <label>ค่าขนส่ง (บาท)</label>
+                                <input type="text" class="form-control" placeholder="1,500">
+                                <br />
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">ต้นทุนคงที่</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>หัวลากเก่า (hino/scania)</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ราคาหัวลากสุทธิหลังหักมูลค่าซาก</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>อัตราดอกเบี้ย</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา (%)</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>หางลาก พื้นเรียบ 40'</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>มูลค่าซาก Salvage Value</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ราคาหางลากสุทธิหลังหักมูลค่าซาก</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>อัตราดอกเบี้ย</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา (%)</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ประกันภัยหัวลาก</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ประกันภัยหางลาก</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าประกันสินค้า</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าทะเบียนป้าย + พรบ หัวลาก</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าทะเบียนป้าย + พรบ หางลาก</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่า GPS</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>เงินเดือน พขร</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าใช้จ่ายเบ็ดเตล็ด</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าเช่าที่</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าบริหารจัดการ</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>รวมต้นทุนคงที่</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ต้นทุนคงที่ / เที่ยว</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">ต้นทุนแปรผัน</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าน้ำมัน</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่ายาง</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าเที่ยว พขร</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา (%)</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ค่าซ่อมบำรุง</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label>รายการ</label>
+                                <br />
+                                <label>ต้นทุนแปรผันรวม</label>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>ราคา</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label>บาท/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>หมายเหตุ</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div id="Type1">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">รายละเอียดงานวิ่ง</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <!-- text input -->
+
+
+                        <div class="form-group">
+
+                            <div class="col-md-4">
+                                <label>จำนวนวัน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>จำนวนเที่ยว/วัน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label>จำนวนเที่ยว/เดือน</label>
+                                <input type="text" class="form-control" placeholder="">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div id="Type1">
+                <div class="box box-success">
+
+                    <div class="box-body">
+
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="box-footer clearfix">
+
+                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<script language="JavaScript" type="text/javascript">
+    document.getElementById('Type2').style.display = 'none';
+    document.getElementById('Type3').style.display = 'none';
+
+
+    function showhidediv(rad) {
+        var rads = document.getElementsByName(rad.name);
+        document.getElementById('Type1').style.display = (rads[0].checked) ? 'block' : 'none';
+        document.getElementById('Type2').style.display = (rads[1].checked) ? 'block' : 'none';
+        document.getElementById('Type3').style.display = (rads[2].checked) ? 'block' : 'none';
+
+    }
+
+</script>

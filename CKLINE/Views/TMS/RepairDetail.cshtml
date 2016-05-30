@@ -52,10 +52,45 @@
 
                                 </select>
                             </div>
-
                         </div>
                         &nbsp;
                         <div class="form-group">
+                            <div class="col-md-6">
+                                <label>ยี่ห้อรถ</label>
+                                <input type="text" class="form-control" placeholder="xxxxx" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label>วันที่จดทะเบียน</label>
+                                <input type="text" class="form-control" placeholder="xxxxx" disabled>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>วันที่ซ่อมครั้งล่าสุด</label>
+                                <input type="text" class="form-control" placeholder="xxxxx" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label>จำนวนเงิน</label>
+                                <input type="text" class="form-control" placeholder="xxxxx" disabled>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            
+                            <div class="col-md-6">
+                                <label>พขร ผู้แจ้งซ่อม</label>
+                                <select class="form-control" id="Luggage3" name="Luggage3">
+
+                                    @* <option value="">-- Select No of luggage --</option>*@
+                                    <option value="1">นาย 1111</option>
+                                    <option value="2">นาย 2222</option>
+                                    <option value="3">นาย 3333</option>
+                                    <option value="4">นาย 4444</option>
+                                    <option value="5">นาย 5555</option>
+
+                                </select>
+                            </div>
                             <div class="col-md-3">
                                 <label>วันที่แจ้งซ่อม</label>
                                 <div class="input-group date">
@@ -68,7 +103,124 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <label>เวลาแจ้งซ่อม</label>
+                                <label>เวลาที่แจ้งซ่อม</label>
+                                <select class="form-control" id="Time" name="Time">
+
+                                    <option value="">-- Select Pick up Time --</option>
+                                    <option data-ng-value="00:00">00:00</option>
+                                    <option data-ng-value="00:15">00:15</option>
+                                    <option data-ng-value="00:30">00:30</option>
+                                    <option data-ng-value="00:45">00:45</option>
+                                    <option data-ng-value="01:00">01:00</option>
+                                    <option data-ng-value="01:15">01:15</option>
+                                    <option data-ng-value="01:30">01:30</option>
+                                    <option data-ng-value="01:45">01:45</option>
+                                    <option data-ng-value="02:00">02:00</option>
+                                    <option data-ng-value="02:15">02:15</option>
+                                    <option data-ng-value="02:30">02:30</option>
+                                    <option data-ng-value="02:45">02:45</option>
+                                    <option data-ng-value="03:00">03:00</option>
+                                    <option data-ng-value="03:15">03:15</option>
+                                    <option data-ng-value="03:30">03:30</option>
+                                    <option data-ng-value="03:45">03:45</option>
+                                    <option data-ng-value="04:00">04:00</option>
+                                    <option data-ng-value="04:15">04:15</option>
+                                    <option data-ng-value="04:30">04:30</option>
+                                    <option data-ng-value="04:45">04:45</option>
+                                    <option data-ng-value="05:00">05:00</option>
+                                    <option data-ng-value="05:15">05:15</option>
+                                    <option data-ng-value="05:30">05:30</option>
+                                    <option data-ng-value="05:45">05:45</option>
+                                    <option data-ng-value="06:00">06:00</option>
+                                    <option data-ng-value="06:15">06:15</option>
+                                    <option data-ng-value="06:30">06:30</option>
+                                    <option data-ng-value="06:45">06:45</option>
+                                    <option data-ng-value="07:00">07:00</option>
+                                    <option data-ng-value="07:15">07:15</option>
+                                    <option data-ng-value="07:30">07:30</option>
+                                    <option data-ng-value="07:45">07:45</option>
+                                    <option data-ng-value="08:00">08:00</option>
+                                    <option data-ng-value="08:15">08:15</option>
+                                    <option data-ng-value="08:30">08:30</option>
+                                    <option data-ng-value="08:45">08:45</option>
+                                    <option data-ng-value="09:00">09:00</option>
+                                    <option data-ng-value="09:15">09:15</option>
+                                    <option data-ng-value="09:30">09:30</option>
+                                    <option data-ng-value="09:45">09:45</option>
+                                    <option data-ng-value="10:00">10:00</option>
+                                    <option data-ng-value="10:15">10:15</option>
+                                    <option data-ng-value="10:30">10:30</option>
+                                    <option data-ng-value="10:45">10:45</option>
+                                    <option data-ng-value="11:00">11:00</option>
+                                    <option data-ng-value="11:15">11:15</option>
+                                    <option data-ng-value="11:30">11:30</option>
+                                    <option data-ng-value="11:45">11:45</option>
+                                    <option data-ng-value="12:00">12:00</option>
+                                    <option data-ng-value="12:15">12:15</option>
+                                    <option data-ng-value="12:30">12:30</option>
+                                    <option data-ng-value="12:45">12:45</option>
+                                    <option data-ng-value="13:00">13:00</option>
+                                    <option data-ng-value="13:15">13:15</option>
+                                    <option data-ng-value="13:30">13:30</option>
+                                    <option data-ng-value="13:45">13:45</option>
+                                    <option data-ng-value="14:00">14:00</option>
+                                    <option data-ng-value="14:15">14:15</option>
+                                    <option data-ng-value="14:30">14:30</option>
+                                    <option data-ng-value="14:45">14:45</option>
+                                    <option data-ng-value="15:00">15:00</option>
+                                    <option data-ng-value="15:15">15:15</option>
+                                    <option data-ng-value="15:30">15:30</option>
+                                    <option data-ng-value="15:45">15:45</option>
+                                    <option data-ng-value="16:00">16:00</option>
+                                    <option data-ng-value="16:15">16:15</option>
+                                    <option data-ng-value="16:30">16:30</option>
+                                    <option data-ng-value="16:45">16:45</option>
+                                    <option data-ng-value="17:00">17:00</option>
+                                    <option data-ng-value="17:15">17:15</option>
+                                    <option data-ng-value="17:30">17:30</option>
+                                    <option data-ng-value="17:45">17:45</option>
+                                    <option data-ng-value="18:00">18:00</option>
+                                    <option data-ng-value="18:15">18:15</option>
+                                    <option data-ng-value="18:30">18:30</option>
+                                    <option data-ng-value="18:45">18:45</option>
+                                    <option data-ng-value="19:00">19:00</option>
+                                    <option data-ng-value="19:15">19:15</option>
+                                    <option data-ng-value="19:30">19:30</option>
+                                    <option data-ng-value="19:45">19:45</option>
+                                    <option data-ng-value="20:00">20:00</option>
+                                    <option data-ng-value="20:15">20:15</option>
+                                    <option data-ng-value="20:30">20:30</option>
+                                    <option data-ng-value="20:45">20:45</option>
+                                    <option data-ng-value="21:00">21:00</option>
+                                    <option data-ng-value="21:15">21:15</option>
+                                    <option data-ng-value="21:30">21:30</option>
+                                    <option data-ng-value="21:45">21:45</option>
+                                    <option data-ng-value="22:00">22:00</option>
+                                    <option data-ng-value="22:15">22:15</option>
+                                    <option data-ng-value="22:30">22:30</option>
+                                    <option data-ng-value="22:45">22:45</option>
+                                    <option data-ng-value="23:00">23:00</option>
+                                    <option data-ng-value="23:15">23:15</option>
+                                    <option data-ng-value="23:30">23:30</option>
+                                    <option data-ng-value="23:45">23:45</option>
+                                </select>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label>วันที่ส่งซ่อม</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+
+                                    <input class="form-control" data-val="true" data-val-required="Date is required"
+                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>เวลาที่ส่งซ่อม</label>
                                 <select class="form-control" id="Time" name="Time">
 
                                     <option value="">-- Select Pick up Time --</option>
@@ -182,7 +334,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <label>เวลาซ่อมเสร็จ</label>
+                                <label>เวลาที่ซ่อมเสร็จ</label>
                                 <select class="form-control" id="Time" name="Time">
 
                                     <option value="">-- Select Pick up Time --</option>
@@ -294,39 +446,43 @@
                             </div>
                         </div>
                         &nbsp;
+                      
                         <div class="form-group">
 
-                            <div class="col-md-12">
-                                <label>ผลการประเมิน</label>
-                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label>แนวทางแก้ไข</label>
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox">
-                                         ซ่อมแซม/ปรับปรุง &nbsp;&nbsp;
+                                         ซื้ออะไหล่เปลี่ยนเอง &nbsp;&nbsp;
                                     </label>
                                     <label>
                                         <input type="checkbox">
-                                        เปลี่ยนอะไหล่&nbsp;&nbsp;
+                                        ส่งซ่อมอู่ภายนอก &nbsp;&nbsp;
                                     </label>
-                                    <label>
-                                        <input type="checkbox">
-                                        ส่งซ่อมภายนอก&nbsp;&nbsp;
-                                    </label>
+                                  
                                 </div>
                               
-                                <div class="input-group">
-                                    <span class="input-group-addon">
+                               
+                            </div>
+                            <div class="col-md-6">
+                                <label>ประเภทงานซ่อม</label>
+                                <div class="checkbox">
+                                    <label>
                                         <input type="checkbox">
-                                    </span>
-                                    <input type="text" class="form-control">
+                                        BD ในสถานที่ &nbsp;&nbsp;
+                                    </label>
+                                    <label>
+                                        <input type="checkbox">
+                                        BD นอกสถานที่ &nbsp;&nbsp;
+                                    </label>
+                                    <label>
+                                        <input type="checkbox">
+                                        PM ระยะ &nbsp;&nbsp;
+                                    </label>
                                 </div>
+
+
                             </div>
                         </div>
                         &nbsp;
@@ -342,7 +498,7 @@
                         <div class="form-group">
 
                             <div class="col-md-12">
-                                <label>รายการที่จำเป็นต้องใช้หรือเปลี่ยน</label>
+                                <label>รายการซ่อม</label>
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="table-responsive">
@@ -403,11 +559,20 @@
                         <div class="form-group">
 
                             <div class="col-md-6">
-                                <label>ช่างผู้ดำเนินการ</label>
-                                <input id="FlightTime3" name="FlightTime3" type="text" class="form-control" placeholder="Enter ...">
+                                <label>อู่ซ่อมรถ</label>
+                                <select class="form-control" id="Luggage3" name="Luggage3">
+
+                                    @* <option value="">-- Select No of luggage --</option>*@
+                                    <option value="1">ฟฟฟฟฟฟ</option>
+                                    <option value="2">อออออออ</option>
+                                    <option value="3">ดดดดดด</option>
+                                    <option value="4">พพพพพพ</option>
+                                    <option value="5">สสสสสส</option>
+
+                                </select>
                             </div>
                             <div class="col-md-6">
-                                <label>&nbsp;</label>
+                                <label>ผู้ดำเนินการ</label>
                                 <input id="FlightTime3" name="FlightTime3" type="text" class="form-control" placeholder="Enter ...">
                             </div>
                         </div>
