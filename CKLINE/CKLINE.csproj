@@ -1489,6 +1489,8 @@
     <Content Include="Views\Report\TransportationCostsList.cshtml" />
     <Content Include="Views\Report\Transporting.rpt" />
     <Content Include="Views\Report\TransportingList.cshtml" />
+    <Content Include="Views\TMS\Stock.cshtml" />
+    <Content Include="Views\TMS\StockDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -194,5 +194,13 @@ namespace CKLINE.Controllers
         {
             return View();
         }
+        public ActionResult Stock()
+        {
+            return View();
+        }
+        public ActionResult StockDetail()
+        {
+            return View();
+        }
     }
 }

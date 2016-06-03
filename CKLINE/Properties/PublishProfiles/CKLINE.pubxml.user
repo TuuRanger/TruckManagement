@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:04</publishTime>
     </File>
     <File Include="bin/CKLINE.dll">
-      <publishTime>05/31/2016 02:43:29</publishTime>
+      <publishTime>06/03/2016 12:00:51</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/10/2016 19:23:09</publishTime>
@@ -3424,7 +3424,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:08</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>05/31/2016 02:21:00</publishTime>
+      <publishTime>06/03/2016 11:49:41</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>04/10/2016 19:23:08</publishTime>
@@ -3433,7 +3433,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/23/2016 03:35:02</publishTime>
     </File>
     <File Include="Views/TMS/CarDetail.cshtml">
-      <publishTime>05/16/2016 22:30:42</publishTime>
+      <publishTime>06/03/2016 11:45:35</publishTime>
     </File>
     <File Include="Views/TMS/CloseJob.cshtml">
       <publishTime>05/11/2016 23:04:41</publishTime>
@@ -3445,10 +3445,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/23/2016 03:34:23</publishTime>
     </File>
     <File Include="Views/TMS/CustomerDetail.cshtml">
-      <publishTime>05/31/2016 01:37:40</publishTime>
+      <publishTime>06/03/2016 11:35:09</publishTime>
     </File>
     <File Include="Views/TMS/DriverDetails.cshtml">
-      <publishTime>05/23/2016 02:01:28</publishTime>
+      <publishTime>06/03/2016 11:22:13</publishTime>
     </File>
     <File Include="Views/TMS/Drivers.cshtml">
       <publishTime>05/23/2016 03:34:44</publishTime>
@@ -3472,7 +3472,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/17/2016 01:06:39</publishTime>
     </File>
     <File Include="Views/TMS/NewOrder.cshtml">
-      <publishTime>05/31/2016 01:33:38</publishTime>
+      <publishTime>06/03/2016 11:14:25</publishTime>
     </File>
     <File Include="Views/TMS/NewRoute.cshtml">
       <publishTime>05/31/2016 01:30:43</publishTime>
@@ -3490,22 +3490,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2016 01:09:59</publishTime>
     </File>
     <File Include="Views/TMS/RepairDetail.cshtml">
-      <publishTime>05/31/2016 01:23:05</publishTime>
+      <publishTime>06/03/2016 11:42:42</publishTime>
     </File>
     <File Include="Views/TMS/Route.cshtml">
       <publishTime>05/31/2016 01:28:44</publishTime>
     </File>
     <File Include="Views/TMS/RouteDetail.cshtml">
-      <publishTime>05/31/2016 01:30:29</publishTime>
+      <publishTime>06/03/2016 11:36:15</publishTime>
     </File>
     <File Include="Views/TMS/rTest.cshtml">
       <publishTime>04/19/2016 00:27:06</publishTime>
+    </File>
+    <File Include="Views/TMS/Stock.cshtml">
+      <publishTime>06/03/2016 11:52:24</publishTime>
+    </File>
+    <File Include="Views/TMS/StockDetail.cshtml">
+      <publishTime>06/03/2016 12:00:13</publishTime>
     </File>
     <File Include="Views/TMS/Sub.cshtml">
       <publishTime>05/23/2016 03:34:10</publishTime>
     </File>
     <File Include="Views/TMS/SubDetail.cshtml">
-      <publishTime>05/31/2016 01:26:13</publishTime>
+      <publishTime>06/03/2016 11:40:30</publishTime>
     </File>
     <File Include="Views/TMS/Trie.cshtml">
       <publishTime>05/31/2016 00:56:37</publishTime>
