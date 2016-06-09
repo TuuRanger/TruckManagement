@@ -318,7 +318,8 @@ namespace CKLINE.Controllers
         }
         public ActionResult OrderCommit(FormCollection form)
         {
-            string ReceiveDate = Request.Form["ReceiveDate"];
+            string ReceiveDate = form["ReceiveDate"];
+              //  Request.Form["ReceiveDate"];
             string DliveryDate = Request.Form["DliveryDate"];
 
             string PPackDate = Request.Form["PPackDate"];
@@ -352,7 +353,15 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.ReceiveDate = Convert.ToDateTime(Request.Form["ReceiveDate"]).Date;
+                string d1 = ReceiveDate.Substring(0, 2);
+                string d2 = ReceiveDate.Substring(3, 2);
+                string d3 = ReceiveDate.Substring(6, 4);
+            //    string d4 = d1 + "/" + d2 + "/" + d3;
+               string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.ReceiveDate = DateTime.Parse(d4);
+
+               // dOrder.ReceiveDate = DateTime.Parse(ReceiveDate);
+             
             }
 
             if (DliveryDate == null || DliveryDate == "")
@@ -361,7 +370,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.DliveryDate = Convert.ToDateTime(Request.Form["DliveryDate"]).Date;
+                string d1 = DliveryDate.Substring(0, 2);
+                string d2 = DliveryDate.Substring(3, 2);
+                string d3 = DliveryDate.Substring(6, 4);
+               // string d4 = d1 + "/" + d2 + "/" + d3;
+                   string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.DliveryDate = DateTime.Parse(d4);
+             //   dOrder.DliveryDate = DateTime.Parse(DliveryDate);
+               // dOrder.DliveryDate = Convert.ToDateTime(Request.Form["DliveryDate"]).Date;
             }
 
             if (PPackDate == null || PPackDate == "")
@@ -370,7 +386,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.PPackDate = Convert.ToDateTime(Request.Form["PPackDate"]).Date;
+                string d1 = PPackDate.Substring(0, 2);
+                string d2 = PPackDate.Substring(3, 2);
+                string d3 = PPackDate.Substring(6, 4);
+               // string d4 = d1 + "/" + d2 + "/" + d3;
+                   string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.PPackDate = DateTime.Parse(d4);
+             //   dOrder.PPackDate = DateTime.Parse(PPackDate);
+             //   dOrder.PPackDate = Convert.ToDateTime(Request.Form["PPackDate"]).Date;
             }
 
             if (TPackDate == null || TPackDate == "")
@@ -379,7 +402,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.TPackDate = Convert.ToDateTime(Request.Form["TPackDate"]).Date;
+                string d1 = TPackDate.Substring(0, 2);
+                string d2 = TPackDate.Substring(3, 2);
+                string d3 = TPackDate.Substring(6, 4);
+                //string d4 = d1 + "/" + d2 + "/" + d3;
+                    string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.TPackDate = DateTime.Parse(d4);
+               // dOrder.TPackDate = DateTime.Parse(TPackDate);
+              //  dOrder.TPackDate = Convert.ToDateTime(Request.Form["TPackDate"]).Date;
             }
 
             if (IEReceiveDate == null || IEReceiveDate == "")
@@ -388,7 +418,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.IEReceiveDate = Convert.ToDateTime(Request.Form["IEReceiveDate"]).Date;
+                string d1 = IEReceiveDate.Substring(0, 2);
+                string d2 = IEReceiveDate.Substring(3, 2);
+                string d3 = IEReceiveDate.Substring(6, 4);
+                //string d4 = d1 + "/" + d2 + "/" + d3;
+                    string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.IEReceiveDate = DateTime.Parse(d4);
+              //  dOrder.IEReceiveDate = DateTime.Parse(IEReceiveDate);
+               // dOrder.IEReceiveDate = Convert.ToDateTime(Request.Form["IEReceiveDate"]).Date;
             }
 
             if (IEPackDate == null || IEPackDate == "")
@@ -397,7 +434,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.IEPackDate = Convert.ToDateTime(Request.Form["IEPackDate"]).Date;
+                string d1 = IEPackDate.Substring(0, 2);
+                string d2 = IEPackDate.Substring(3, 2);
+                string d3 = IEPackDate.Substring(6, 4);
+                //string d4 = d1 + "/" + d2 + "/" + d3;
+                    string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.IEPackDate = DateTime.Parse(d4);
+              //  dOrder.IEPackDate = DateTime.Parse(IEPackDate);
+             //   dOrder.IEPackDate = Convert.ToDateTime(Request.Form["IEPackDate"]).Date;
             }
 
             if (IECYDate == null || IECYDate == "")
@@ -406,7 +450,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.IECYDate = Convert.ToDateTime(Request.Form["IECYDate"]).Date;
+                string d1 = IECYDate.Substring(0, 2);
+                string d2 = IECYDate.Substring(3, 2);
+                string d3 = IECYDate.Substring(6, 4);
+                //string d4 = d1 + "/" + d2 + "/" + d3;
+                    string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.IECYDate = DateTime.Parse(d4);
+             //   dOrder.IECYDate = DateTime.Parse(IECYDate);
+              //  dOrder.IECYDate = Convert.ToDateTime(Request.Form["IECYDate"]).Date;
             }
 
             if (IEETDDate == null || IEETDDate == "")
@@ -415,7 +466,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.IEETDDate = Convert.ToDateTime(Request.Form["IEETDDate"]).Date;
+                string d1 = IEETDDate.Substring(0, 2);
+                string d2 = IEETDDate.Substring(3, 2);
+                string d3 = IEETDDate.Substring(6, 4);
+                //string d4 = d1 + "/" + d2 + "/" + d3;
+                    string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.IEETDDate = DateTime.Parse(d4);
+             //   dOrder.IEETDDate = DateTime.Parse(IEETDDate);
+              //  dOrder.IEETDDate = Convert.ToDateTime(Request.Form["IEETDDate"]).Date;
             }
 
             if (IEETADate == null || IEETADate == "")
@@ -424,7 +482,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.IEETADate = Convert.ToDateTime(Request.Form["IEETADate"]).Date;
+                string d1 = IEETADate.Substring(0, 2);
+                string d2 = IEETADate.Substring(3, 2);
+                string d3 = IEETADate.Substring(6, 4);
+                //string d4 = d1 + "/" + d2 + "/" + d3;
+                    string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.IEETADate = DateTime.Parse(d4);
+              //  dOrder.IEETADate = DateTime.Parse(IEETADate);
+               // dOrder.IEETADate = Convert.ToDateTime(Request.Form["IEETADate"]).Date;
             }
 
             if (IECLosingDate == null || IECLosingDate == "")
@@ -433,7 +498,14 @@ namespace CKLINE.Controllers
             }
             else
             {
-                dOrder.IECLosingDate = Convert.ToDateTime(Request.Form["IECLosingDate"]).Date;
+                string d1 = IECLosingDate.Substring(0, 2);
+                string d2 = IECLosingDate.Substring(3, 2);
+                string d3 = IECLosingDate.Substring(6, 4);
+                //string d4 = d1 + "/" + d2 + "/" + d3;
+                    string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.IECLosingDate = DateTime.Parse(d4);
+              //  dOrder.IECLosingDate = DateTime.Parse(IECLosingDate);
+             //   dOrder.IECLosingDate = Convert.ToDateTime(Request.Form["IECLosingDate"]).Date;
             }
 
 
@@ -1276,6 +1348,14 @@ namespace CKLINE.Controllers
             return View();
         }
         public ActionResult StockDetail()
+        {
+            return View();
+        }
+        public ActionResult test()
+        {
+            return View();
+        }
+        public ActionResult test2()
         {
             return View();
         }

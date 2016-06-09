@@ -122,30 +122,45 @@
                             </div>
                             &nbsp;
                             @{
-                                DateTime dDate = DateTime.Now.Date;
+    DateTime dDate = DateTime.Now;
                             }
                             <div class="form-group">
                                 <div class="col-md-6">
 
                                     <label>วันที่ออกเดินทาง</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />
+                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />*@
+
+                                        <input type="text" class="form-control" name="ReceiveDate" id="ReceiveDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label>วันที่บรรจุ</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="PPackDate" name="PPackDate" type="date" value="@dDate" />
+                                               id="PPackDate" name="PPackDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="PPackDate" id="PPackDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -154,12 +169,19 @@
                                 <div class="col-md-6">
                                     <label>วันที่ส่ง</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />
+                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="DliveryDate" id="DliveryDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -537,23 +559,37 @@
                                 <div class="col-md-6">
                                     <label>วันที่ออกเดินทาง</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />
+                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="ReceiveDate" id="ReceiveDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label>วันที่ส่ง</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />
+                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="DliveryDate" id="DliveryDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -847,23 +883,37 @@
                                 <div class="col-md-6">
                                     <label>วันที่รับ</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />
+                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="ReceiveDate" id="ReceiveDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label>วันที่ส่ง</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />
+                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="DliveryDate" id="DliveryDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -938,12 +988,19 @@
                                 <div class="col-md-6">
                                     <label>วันที่รับตู้หนัก/เปล่า</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="IEReceiveDate" name="IEReceiveDate" type="date" value="@dDate" />
+                                               id="IEReceiveDate" name="IEReceiveDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="IEReceiveDate" id="IEReceiveDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -952,12 +1009,19 @@
                                 <div class="col-md-6">
                                     <label>วันที่บรรจุ/เปิดตู้</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="IEPackDate" name="IEPackDate" type="date" value="@dDate" />
+                                               id="IEPackDate" name="IEPackDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="IEPackDate" id="IEPackDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -1081,23 +1145,37 @@
                                 <div class="col-md-6">
                                     <label>CY Date</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="IECYDate" name="IECYDate" type="date" value="1/11/1989" />
+                                               id="IECYDate" name="IECYDate" type="date" value="1/11/1989" />*@
+                                        <input type="text" class="form-control" name="IECYDate" id="IECYDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label>ETD</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="IEETDDate" name="IEETDDate" type="date" value="1/11/1989" />
+                                               id="IEETDDate" name="IEETDDate" type="date" value="1/11/1989" />*@
+                                        <input type="text" class="form-control" name="IEETDDate" id="IEETDDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -1110,12 +1188,19 @@
                                 <div class="col-md-6">
                                     <label>ETA</label>
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="IEETADate" name="IEETADate" type="date" value="@dDate" />
+                                               id="IEETADate" name="IEETADate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="IEETADate" id="IEETADate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -1158,12 +1243,19 @@
                                     <label>Closing Date</label>
 
                                     <div class="input-group date">
-                                        <div class="input-group-addon">
+                                        @*<div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
 
                                         <input class="form-control" data-val="true" data-val-required="Date is required"
-                                               id="IECLosingDate" name="IECLosingDate" type="date" value="@dDate" />
+                                               id="IECLosingDate" name="IECLosingDate" type="date" value="@dDate" />*@
+                                        <input type="text" class="form-control" name="IECLosingDate" id="IECLosingDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

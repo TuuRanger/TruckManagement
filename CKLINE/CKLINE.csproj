@@ -1256,6 +1256,10 @@
     <Content Include="plugins\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="plugins\sparkline\jquery.sparkline.js" />
     <Content Include="plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="plugins\SuperTinyDatePicker\css\jquery.datepicker.css" />
+    <Content Include="plugins\SuperTinyDatePicker\index.html" />
+    <Content Include="plugins\SuperTinyDatePicker\js\jquery.datepicker.js" />
+    <Content Include="plugins\SuperTinyDatePicker\js\jquery.datepicker.min.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.css" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.js" />
     <Content Include="plugins\timepicker\bootstrap-timepicker.min.css" />
@@ -1409,6 +1413,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="plugins\datepicker2\less\datepicker.less" />
+    <Content Include="plugins\SuperTinyDatePicker\README.md" />
     <None Include="Properties\PublishProfiles\CKLINE.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1511,6 +1516,8 @@
     <Content Include="Views\TMS\StockDetail.cshtml" />
     <Content Include="Views\TMS\OrderCommit.cshtml" />
     <Content Include="Views\TMS\OrderInfo.cshtml" />
+    <Content Include="Views\TMS\test.cshtml" />
+    <Content Include="Views\TMS\test2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

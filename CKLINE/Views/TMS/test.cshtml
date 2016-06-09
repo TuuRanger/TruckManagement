@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "test";
+}
+
+<h2>test</h2>
+
+<form action="~/TMS/test2" method="get" onsubmit="return chk_form()">
+    <input type="text" class="form-control" name="ReceiveDate" id="ReceiveDate" data-select="datepicker"
+           data-val="true" data-val-required="Date is required" >
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-primary" data-toggle="datepicker">
+            <i class="fa fa-calendar"></i>
+        </button>
+    </span>
+    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ORDER NOW</button>
+</form>
