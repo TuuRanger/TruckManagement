@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TMS.Models.OrderInfo>
+@{
     ViewBag.Title = "Dashboard";
 }
 
@@ -42,101 +43,68 @@
                                             <th>จำนวนตู้</th>
                                             <th>วันที่ส่ง</th>
                                             <th>Status</th>
-                                            <th>Driver</th>
+                                          @*  <th>Driver</th>*@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><a href="~/pages/examples/invoice.html">PA59050001</a></td>
-                                            <td>Axxxxxxxx xxxx</td>
-                                            <td>A1</td>
-                                            <td>A2</td>
-                                            <td>Praxair</td>
-                                            <td>2</td>
-                                            <td>27/05/2559</td>
-                                            <td><span class="label label-success">Shipped</span></td>
-                                            <td>
+@foreach (var item in Model)
+{
+    String Status = "";
+    String SClass = "";
+    if (item.Status == 1)
+    {
+        Status = "New";
+        SClass = "label label-success";
+    }
+    else if (item.Status == 2)
+    {
+        Status = "Queue";
+        SClass = "label label-warning";
+    }
+    else if (item.Status == 3)
+    {
+        Status = "Delivered";
+        SClass = "label label-primary";
+    }
+    else if (item.Status == 4)
+    {
+        Status = "Finish";
+        SClass = "label label-info";
+    }
+    else if (item.Status == 5)
+    {
+        Status = "Cancel";
+        SClass = "label label-danger";
+    }
+    string OrderName = "";
+   if (item.OrderType == 1)
+    {
+        OrderName = "Praxair";
+    }
+    else if (item.OrderType == 2)
+    {
+        OrderName = "Trucking";
+    }
+    else if (item.OrderType == 3)
+    {
+        OrderName = "Import/Export";
+    }
+
+                                <tr>
+                                            <td><a href="~/TMS/OrderInfo?OID=@item.OrderID">@item.OrderID</a></td> 
+                                            <td>@item.CName</td>
+                                            <td>@item.RFromDetail</td>
+                                            <td>@item.RToDetail</td>
+                                            <td>@OrderName</td>
+                                            <td>@item.NumberOrder</td>
+                                            <td>@item.DliveryDate.ToString("dd/MM/yyyy")</td>
+                                    <td><span class="@SClass">@Status</span></td>
+                                            @*<td>
                                                 <div class="sparkbar" data-color="#00a65a" data-height="20">Mr.zzzzz xxxxxx</div>
-                                            </td>
+                                            </td>*@
                                         </tr>
-                                        <tr>
-                                            <td><a href="~/pages/examples/invoice.html">CK59050001</a></td>
-                                            <td>Bxxxxx xxxx</td>
-                                            <td>B1</td>
-                                            <td>B2</td>
-                                            <td>Trucking</td>
-                                            <td>2</td>
-                                            <td>28/05/2559</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">Mr.qqqqq eeeeeee8</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="~/pages/examples/invoice.html">GL59050001</a></td>
-                                            <td>Cxxxxx xxxxx</td>
-                                            <td>C1</td>
-                                            <td>C2</td>
-                                            <td>Import/Export</td>
-                                            <td>4</td>
-                                            <td>29/05/2559</td>
-                                            <td><span class="label label-danger">Delivered</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f56954" data-height="20">Mr.ddddd rgrgrrr</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="~/pages/examples/invoice.html">GL59050002</a></td>
-                                            <td>Dxxxx qqqqqq</td>
-                                            <td>D1</td>
-                                            <td>D2</td>
-                                            <td>Import/Export</td>
-                                            <td>2</td>
-                                            <td>27/05/2559</td>
-                                            <td><span class="label label-info">Processing</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00c0ef" data-height="20">Mr.qqqq ttttt</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="~/pages/examples/invoice.html">PA59050002</a></td>
-                                            <td>Exxxxx sssss</td>
-                                            <td>E1</td>
-                                            <td>E2</td>
-                                            <td>Praxair</td>
-                                            <td>2</td>
-                                            <td>30/05/2559</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">Mr.aaaaaa gggggg</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="~/pages/examples/invoice.html">PA59050003</a></td>
-                                            <td>Fxxxx xxxxxx</td>
-                                            <td>F1</td>
-                                            <td>F2</td>
-                                            <td>Praxair</td>
-                                            <td>8</td>
-                                            <td>27/05/2559</td>
-                                            <td><span class="label label-danger">Delivered</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f56954" data-height="20">Mr.aaaaa gggggg</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="~/pages/examples/invoice.html">CK59050002</a></td>
-                                            <td>Gxxxxx dddddd</td>
-                                            <td>G1</td>
-                                            <td>G2</td>
-                                            <td>Trucking</td>
-                                            <td>2</td>
-                                            <td>27/05/2559</td>
-                                            <td><span class="label label-success">Shipped</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">Mr.hhhhh kkkkk</div>
-                                            </td>
-                                        </tr>
+}
+        
                                     </tbody>
                                 </table>
                             </div>
@@ -153,7 +121,7 @@
                 </div>
                 <!-- /.col -->
             </div>
-        <div class="row">
+        @*<div class="row">
             <div class="col-md-12">
                 <div class="box box-info">
                     <div class="box-header with-border">
@@ -163,7 +131,7 @@
                                 <i class="fa fa-minus"></i>
                             </button>
                             @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-                        </div>
+                        @*</div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -257,9 +225,9 @@
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
-                            </button>
+                            </button>*@
                             @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-                        </div>
+                        @*</div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -326,7 +294,7 @@
                                 <i class="fa fa-minus"></i>
                             </button>
                             @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-                        </div>
+                        @*</div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -383,7 +351,7 @@
 
                 </div>
                 <!-- /.box -->
-            </div>
+            </div>*@
             <!-- /.col -->
-        </div>
+        @*</div>*@
         </section>

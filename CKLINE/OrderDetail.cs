@@ -15,8 +15,11 @@ namespace CKLINE
     public partial class OrderDetail
     {
         public int ID { get; set; }
-        public string ContainerNO { get; set; }
-        public string Size { get; set; }
-        public string Remark { get; set; }
+        public Nullable<int> OID { get; set; }
+        public string OrderID { get; set; }
+        public string ContainerNo { get; set; }
+        public string Position { get; set; }
+        public string PackNo { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }

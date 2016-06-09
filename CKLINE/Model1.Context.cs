@@ -32,7 +32,9 @@ namespace CKLINE
         public virtual DbSet<DeliveryPrice> DeliveryPrices { get; set; }
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<FuelType> FuelTypes { get; set; }
+        public virtual DbSet<Garage> Garages { get; set; }
         public virtual DbSet<GasRefill> GasRefills { get; set; }
+        public virtual DbSet<GasStation> GasStations { get; set; }
         public virtual DbSet<GPSViolationHistory> GPSViolationHistories { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<Maintenance> Maintenances { get; set; }
@@ -44,6 +46,9 @@ namespace CKLINE
         public virtual DbSet<OrderType> OrderTypes { get; set; }
         public virtual DbSet<Provice> Provices { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<SubContact> SubContacts { get; set; }
+        public virtual DbSet<Tire> Tires { get; set; }
         public virtual DbSet<TireChange> TireChanges { get; set; }
         public virtual DbSet<TrainingHistory> TrainingHistories { get; set; }
         public virtual DbSet<Truck> Trucks { get; set; }

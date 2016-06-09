@@ -1,4 +1,4 @@
-﻿@*@model List<TMS.Models.ModelList>*@ 
+﻿@model List<TMS.Models.ModelList> 
 @{
     ViewBag.Title = "NewOrder";
 }
@@ -13,8 +13,8 @@
         </ol>*@
 </section>
 <section class="content">
-@*@foreach (var item in Model)
-{*@
+@foreach (var item in Model)
+{
     <div class="row">
         <div class="col-md-12">
 
@@ -70,99 +70,105 @@
             
             <!-- general form elements disabled -->
             <div id="Type1">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Praxair</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-                        </div>
-                    </div>
-                    <div class="box-body">
-
-                        <!-- text input -->
-
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Order ID</label>
-                                <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Booking No.</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Customer</label>
-                                <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" onchange="chk_ToOneWay();">
-                                    <option value="">-- Select Customer --</option>
-                                    @*@foreach (var iCustomer in item.sCustomer)
-                                    {
-                                        <option value="@iCustomer.Id">@iCustomer.Name</option>
-                                    }*@
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Route</label>
-                                <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
-                                    <option value="">-- Select Route --</option>
-                                    @*@foreach (var iRoute in item.sRoute)
-                                {
-                                    <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
-                                }*@
-                                </select>
+                <form action="~/TMS/OrderCommit" method="post" onsubmit="return chk_form()">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Praxair</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
                             </div>
                         </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>วันที่ออกเดินทาง</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
+                        <div class="box-body">
 
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
+                            <!-- text input -->
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Order ID</label>
+                                    <input type="text" id="OrderID" name="OrderID" class="form-control" placeholder="xx-xxxxx" disabled>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Booking No.</label>
+                                    <input type="text" id="BookingNo" name="BookingNo" class="form-control" placeholder="" required>
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Customer</label>
+                                    <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" onchange="chk_ToOneWay();">
+                                        @*<option value="">-- Select Customer --</option>*@
+                                        @foreach (var iCustomer in item.sCustomer)
+                                        {
+                                            <option value="@iCustomer.Id">@iCustomer.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Route</label>
+                                    <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
+                                        @*<option value="">-- Select Route --</option>*@
+                                        @foreach (var iRoute in item.sRoute)
+                                        {
+                                            <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
+                                        }
+                                    </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <label>วันที่บรรจุ</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
+                            &nbsp;
+                            @{
+                                DateTime dDate = DateTime.Now.Date;
+                            }
+                            <div class="form-group">
+                                <div class="col-md-6">
 
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
+                                    <label>วันที่ออกเดินทาง</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>วันที่บรรจุ</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="PPackDate" name="PPackDate" type="date" value="@dDate" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>วันที่ส่ง</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>วันที่ส่ง</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
 
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>จำนวนตู้</label>
-                             
-                                    <select class="form-control" id="Num1" name="Num1" onchange="chk_Num1();">
+                                <div class="col-md-6">
+                                    <label>จำนวนตู้</label>
+
+                                    <select class="form-control" id="Num" name="Num" onchange="chk_Num();">
 
                                         @* <option value=" ">
-                                        -- Select No of luggage --</option>*@
+                                -- Select No of luggage --</option>*@
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -175,269 +181,26 @@
                                         <option value="10">10</option>
 
                                     </select>
-</div>
-                           
-                        </div>
-                        &nbsp;
-                        <div id="sNum11">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
                                 </div>
 
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum11" name="nNum11" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum11" name="pNum11">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum12">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum12" name="nNum12" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum12" name="pNum12">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum13">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum13" name="nNum13" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum13" name="pNum13">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum14">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum14" name="nNum14" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum14" name="pNum14">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum15">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum15" name="nNum15" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum15" name="pNum15">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum16">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum16" name="nNum16" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum16" name="pNum16">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum17">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum17" name="nNum17" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum17" name="pNum17">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum18">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum18" name="nNum18" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum18" name="pNum18">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum19">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum19" name="nNum19" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum19" name="pNum19">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum110">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum16" name="nNum110" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>ตำแหน่งวาวล์</label>
-                                    <select class="form-control" id="pNum110" name="pNum110">
-
-
-                                        <option value="L">ด้านซ้าย</option>
-                                        <option value="R">ด้านขวา</option>
-
-                                    </select>
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        @*<div id="sNum1">
-                            @{int n = 10;
-                            for (var i = 1; i < n; i++)
-                            {
-                                <div class="form-group" >
+                            &nbsp;
+                            <div id="sNum1">
+                                <div class="form-group">
                                     <div class="col-md-6">
                                         &nbsp;
                                     </div>
 
                                     <div class="col-md-3">
                                         <label>เบอร์ตู้</label>
-                                        <input id="FlightTime3" name="FlightTime3" type="text" class="form-control" placeholder="Enter ...">
+                                        <input id="nNum1" name="nNum1" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
                                     <div class="col-md-3">
                                         <label>ตำแหน่งวาวล์</label>
-                                        <select class="form-control" id="Num" name="Num">
+                                        <select class="form-control" id="pNum1" name="pNum1">
 
-                                          
+
                                             <option value="L">ด้านซ้าย</option>
                                             <option value="R">ด้านขวา</option>
 
@@ -445,16 +208,259 @@
                                     </div>
                                     &nbsp;
                                 </div>
+                            </div>
+                            <div id="sNum2">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
 
-                            }
-                            }
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum2" name="nNum2" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
 
-                        </div>*@
-                         
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum2" name="pNum2">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum3">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum3" name="nNum3" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum3" name="pNum3">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum4">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum4" name="nNum4" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum4" name="pNum4">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum5">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum5" name="nNum5" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum5" name="pNum5">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum6">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum6" name="nNum6" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum6" name="pNum6">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum7">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum7" name="nNum7" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum7" name="pNum7">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum8">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum8" name="nNum8" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum8" name="pNum8">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum9">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum9" name="nNum9" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum9" name="pNum9">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum10">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum10" name="nNum10" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>ตำแหน่งวาวล์</label>
+                                        <select class="form-control" id="pNum10" name="pNum10">
+
+
+                                            <option value="L">ด้านซ้าย</option>
+                                            <option value="R">ด้านขวา</option>
+
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            @*<div id="sNum1">
+                        @{int n = 10;
+                        for (var i = 1; i < n; i++)
+                        {
+                            <div class="form-group" >
+                                <div class="col-md-6">
+                                    &nbsp;
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>เบอร์ตู้</label>
+                                    <input id="FlightTime3" name="FlightTime3" type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label>ตำแหน่งวาวล์</label>
+                                    <select class="form-control" id="Num" name="Num">
+
+
+                                        <option value="L">ด้านซ้าย</option>
+                                        <option value="R">ด้านขวา</option>
+
+                                    </select>
+                                </div>
+                                &nbsp;
+                            </div>
+
+                        }
+                        }
+
+                    </div>*@
+
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <label>หมายเหตุ</label>
-                                    <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <textarea id="Remark" name="Remark" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                                 </div>
 
                             </div>
@@ -462,1049 +468,1057 @@
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="box-footer clearfix">
-
+                                        <input type="hidden" id="OrderType" name="OrderType" class="form-control" value="1">
                                         <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ORDER NOW</button>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    <!-- /.box-body -->
-                </div>
-            </div>
+                        <!-- /.box-body -->
+                    </div>
+                </form>
+</div>
             
             <div id="Type2">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Trucking</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-                        </div>
-                    </div>
-                    <div class="box-body">
-
-                        <!-- text input -->
-
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Order ID</label>
-                                <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Booking No.</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Customer</label>
-                                <select class="form-control" id="ToReturn2" name="ToReturn2" placeholder="-- Type drop-off location --" onchange="chk_ToOneWay();">
-                                    <option value="">-- Select Customer --</option>
-                                    @*@foreach (var TItem in item.sToModel)
-                            {
-                                <option value="@TItem.TId">@TItem.TDetail</option>
-                            }*@
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Route</label>
-                                <select class="form-control" id="ToReturn2" name="ToReturn2" placeholder="-- Type drop-off location --" onchange="chk_ToOneWay();">
-                                    <option value="">-- Select Route --</option>
-                                    @*@foreach (var TItem in item.sToModel)
-                            {
-                                <option value="@TItem.TId">@TItem.TDetail</option>
-                            }*@
-                                </select>
+                <form action="~/TMS/OrderCommit" method="post" onsubmit="return chk_form()">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Trucking</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
                             </div>
                         </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>วันที่รับ</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
+                        <div class="box-body">
+
+                            <!-- text input -->
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Order ID</label>
+                                    <input type="text" id="OrderID" name="OrderID" class="form-control" placeholder="xx-xxxxx" disabled>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Booking No.</label>
+                                    <input type="text" id="BookingNo" name="BookingNo" class="form-control" placeholder="" required>
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Customer</label>
+                                    <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" onchange="chk_ToOneWay();">
+                                     @*   <option value="">-- Select Customer --</option>*@
+                                        @foreach (var iCustomer in item.sCustomer)
+                                        {
+                                            <option value="@iCustomer.Id">@iCustomer.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Route</label>
+                                    <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
+                                       @* <option value="">-- Select Route --</option>*@
+                                        @foreach (var iRoute in item.sRoute)
+                                        {
+                                            <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            &nbsp;
+                     
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>วันที่ออกเดินทาง</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>วันที่ส่ง</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    &nbsp;
+                                </div>
+                                <div class="col-md-6">
+                                    <label>จำนวนตู้</label>
+                                    <select class="form-control" id="Num2" name="Num2" onchange="chk_Num2();">
+
+                                        @* <option value=" ">
+                                -- Select No of luggage --</option>*@
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div id="sNum21">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
                                     </div>
 
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>วันที่ส่ง</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum1" name="nNum1" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                &nbsp;
-                            </div>
-                            <div class="col-md-6">
-                                <label>จำนวนตู้</label>
-                                <select class="form-control" id="Num2" name="Num2" onchange="chk_Num2();">
-
-                                    @* <option value=" ">
-            -- Select No of luggage --</option>*@
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-
-                                </select>
-                            </div>
-                          
-                        </div>
-                        &nbsp;
-                        <div id="sNum21">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum1" name="pnNum1" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum11" name="nNum11" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum22">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum22">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum2" name="nNum2" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum2" name="pnNum2" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum12" name="nNum12" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum23">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum23">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum3" name="nNum3" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum3" name="pnNum3" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum13" name="nNum13" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum24">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum24">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum4" name="nNum4" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum4" name="pnNum4" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum14" name="nNum14" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum25">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum25">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum5" name="nNum5" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum5" name="pnNum5" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum15" name="nNum15" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum26">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum26">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum6" name="nNum6" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum6" name="pnNum6" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum16" name="nNum16" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum27">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum27">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum7" name="nNum7" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum7" name="pnNum7" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum17" name="nNum17" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum28">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum28">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum8" name="nNum8" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum8" name="pnNum8" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum18" name="nNum18" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum29">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum29">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum9" name="nNum9" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum9" name="pnNum9" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum19" name="nNum19" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
                             </div>
-                        </div>
-                        <div id="sNum210">
-                            <div class="form-group">
-                                <div class="col-md-6">
+                            <div id="sNum210">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum10" name="nNum10" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum10" name="pnNum10" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
                                     &nbsp;
                                 </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum16" name="nNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                      
-                        &nbsp;
-                        
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <label>หมายเหตุ</label>
-                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                             </div>
 
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <div class="box-footer clearfix">
+                            &nbsp;
 
-                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ORDER NOW</button>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label>หมายเหตุ</label>
+                                    <textarea id="Remark" name="Remark" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="box-footer clearfix">
+                                        <input type="hidden" id="OrderType" name="OrderType" class="form-control" value="2">
+                                        <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ORDER NOW</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
+                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box-body -->
-                </div>
-            </div>
+                    </form>
+</div>
             <div  id="Type3">
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Import/Export</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                <form action="~/TMS/OrderCommit" method="post" onsubmit="return chk_form()">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Import/Export</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                            </div>
                         </div>
+                        <div class="box-body">
+
+                            <!-- text input -->
+
+                            <div class="form-group">
+                              <div class="col-md-6">
+                                    <label>Order ID</label>
+                                    <input type="text" id="OrderID" name="OrderID" class="form-control" placeholder="xx-xxxxx" disabled>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Booking No.</label>
+                                    <input type="text" id="BookingNo" name="BookingNo" class="form-control" placeholder="" required>
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Customer</label>
+                                    <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" onchange="chk_ToOneWay();">
+                                     @*   <option value="">-- Select Customer --</option>*@
+                                        @foreach (var iCustomer in item.sCustomer)
+                                        {
+                                            <option value="@iCustomer.Id">@iCustomer.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Route</label>
+                                    <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
+                                      @*  <option value="">-- Select Route --</option>*@
+                                        @foreach (var iRoute in item.sRoute)
+                                        {
+                                            <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>วันที่รับ</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="ReceiveDate" name="ReceiveDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>วันที่ส่ง</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="DliveryDate" name="DliveryDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Type</label>
+
+                                    <select class="form-control" id="IEType" name="IEType" placeholder="-- Type drop-off location --" onchange="chk_ToOneWay();">
+                                       @* <option value="">-- Select Type --</option>*@
+                                        <option value="1">Import</option>
+                                        <option value="2">Export</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Shipper/Consignee</label>
+                                    <input type="text" id="IEShipper" name="IEShipper" class="form-control" placeholder="">
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Agent</label>
+                                    <input type="text" id="IEAgent" name="IEAgent" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Port of Discharge/Loading</label>
+                                    <input type="text" id="IELoading" name="IELoading" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Shipping</label>
+                                    <input type="text" id="IEShipping" name="IEShipping" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>เบอร์ติดต่อ</label>
+                                    <input type="text" id="IETelephone" name="IETelephone" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            &nbsp;
+
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>สถานที่เปิดตู้/บรรจุตู้</label>
+                                    <input type="text" id="IELocationPack" name="IELocationPack" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>สถานที่รับตู้/คืนตู้</label>
+                                    <input type="text" id="IELocationReceive" name="IELocationReceive" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label>ไฟล์แผนที่</label>
+                                    <input type="file" id="IEMap" name="IEMap">
+                                </div>
+
+                            </div>
+                            &nbsp;
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Liner</label>
+                                    <input type="text" id="IELiner" name="IELiner" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>วันที่รับตู้หนัก/เปล่า</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="IEReceiveDate" name="IEReceiveDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>วันที่บรรจุ/เปิดตู้</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="IEPackDate" name="IEPackDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>เวลาบรรจุ/เปิดตู้</label>
+                                    <select class="form-control" id="IEPacklTime" name="IEPacklTime">
+
+                                      @*  <option value="">-- Select Pick up Time --</option>*@
+                                        <option data-ng-value="00:00">00:00</option>
+                                        <option data-ng-value="00:15">00:15</option>
+                                        <option data-ng-value="00:30">00:30</option>
+                                        <option data-ng-value="00:45">00:45</option>
+                                        <option data-ng-value="01:00">01:00</option>
+                                        <option data-ng-value="01:15">01:15</option>
+                                        <option data-ng-value="01:30">01:30</option>
+                                        <option data-ng-value="01:45">01:45</option>
+                                        <option data-ng-value="02:00">02:00</option>
+                                        <option data-ng-value="02:15">02:15</option>
+                                        <option data-ng-value="02:30">02:30</option>
+                                        <option data-ng-value="02:45">02:45</option>
+                                        <option data-ng-value="03:00">03:00</option>
+                                        <option data-ng-value="03:15">03:15</option>
+                                        <option data-ng-value="03:30">03:30</option>
+                                        <option data-ng-value="03:45">03:45</option>
+                                        <option data-ng-value="04:00">04:00</option>
+                                        <option data-ng-value="04:15">04:15</option>
+                                        <option data-ng-value="04:30">04:30</option>
+                                        <option data-ng-value="04:45">04:45</option>
+                                        <option data-ng-value="05:00">05:00</option>
+                                        <option data-ng-value="05:15">05:15</option>
+                                        <option data-ng-value="05:30">05:30</option>
+                                        <option data-ng-value="05:45">05:45</option>
+                                        <option data-ng-value="06:00">06:00</option>
+                                        <option data-ng-value="06:15">06:15</option>
+                                        <option data-ng-value="06:30">06:30</option>
+                                        <option data-ng-value="06:45">06:45</option>
+                                        <option data-ng-value="07:00">07:00</option>
+                                        <option data-ng-value="07:15">07:15</option>
+                                        <option data-ng-value="07:30">07:30</option>
+                                        <option data-ng-value="07:45">07:45</option>
+                                        <option data-ng-value="08:00">08:00</option>
+                                        <option data-ng-value="08:15">08:15</option>
+                                        <option data-ng-value="08:30">08:30</option>
+                                        <option data-ng-value="08:45">08:45</option>
+                                        <option selected data-ng-value="09:00">09:00</option>
+                                        <option data-ng-value="09:15">09:15</option>
+                                        <option data-ng-value="09:30">09:30</option>
+                                        <option data-ng-value="09:45">09:45</option>
+                                        <option data-ng-value="10:00">10:00</option>
+                                        <option data-ng-value="10:15">10:15</option>
+                                        <option data-ng-value="10:30">10:30</option>
+                                        <option data-ng-value="10:45">10:45</option>
+                                        <option data-ng-value="11:00">11:00</option>
+                                        <option data-ng-value="11:15">11:15</option>
+                                        <option data-ng-value="11:30">11:30</option>
+                                        <option data-ng-value="11:45">11:45</option>
+                                        <option data-ng-value="12:00">12:00</option>
+                                        <option data-ng-value="12:15">12:15</option>
+                                        <option data-ng-value="12:30">12:30</option>
+                                        <option data-ng-value="12:45">12:45</option>
+                                        <option data-ng-value="13:00">13:00</option>
+                                        <option data-ng-value="13:15">13:15</option>
+                                        <option data-ng-value="13:30">13:30</option>
+                                        <option data-ng-value="13:45">13:45</option>
+                                        <option data-ng-value="14:00">14:00</option>
+                                        <option data-ng-value="14:15">14:15</option>
+                                        <option data-ng-value="14:30">14:30</option>
+                                        <option data-ng-value="14:45">14:45</option>
+                                        <option data-ng-value="15:00">15:00</option>
+                                        <option data-ng-value="15:15">15:15</option>
+                                        <option data-ng-value="15:30">15:30</option>
+                                        <option data-ng-value="15:45">15:45</option>
+                                        <option data-ng-value="16:00">16:00</option>
+                                        <option data-ng-value="16:15">16:15</option>
+                                        <option data-ng-value="16:30">16:30</option>
+                                        <option data-ng-value="16:45">16:45</option>
+                                        <option data-ng-value="17:00">17:00</option>
+                                        <option data-ng-value="17:15">17:15</option>
+                                        <option data-ng-value="17:30">17:30</option>
+                                        <option data-ng-value="17:45">17:45</option>
+                                        <option data-ng-value="18:00">18:00</option>
+                                        <option data-ng-value="18:15">18:15</option>
+                                        <option data-ng-value="18:30">18:30</option>
+                                        <option data-ng-value="18:45">18:45</option>
+                                        <option data-ng-value="19:00">19:00</option>
+                                        <option data-ng-value="19:15">19:15</option>
+                                        <option data-ng-value="19:30">19:30</option>
+                                        <option data-ng-value="19:45">19:45</option>
+                                        <option data-ng-value="20:00">20:00</option>
+                                        <option data-ng-value="20:15">20:15</option>
+                                        <option data-ng-value="20:30">20:30</option>
+                                        <option data-ng-value="20:45">20:45</option>
+                                        <option data-ng-value="21:00">21:00</option>
+                                        <option data-ng-value="21:15">21:15</option>
+                                        <option data-ng-value="21:30">21:30</option>
+                                        <option data-ng-value="21:45">21:45</option>
+                                        <option data-ng-value="22:00">22:00</option>
+                                        <option data-ng-value="22:15">22:15</option>
+                                        <option data-ng-value="22:30">22:30</option>
+                                        <option data-ng-value="22:45">22:45</option>
+                                        <option data-ng-value="23:00">23:00</option>
+                                        <option data-ng-value="23:15">23:15</option>
+                                        <option data-ng-value="23:30">23:30</option>
+                                        <option data-ng-value="23:45">23:45</option>
+                                    </select>
+                                </div>
+                            </div>
+                            &nbsp;
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Feeder Vessel</label>
+                                    <input type="text" id="IEFeeder" name="IEFeeder" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Mother Vessel</label>
+                                    <input type="text" id="IEMother" name="IEMother" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>CY Date</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="IECYDate" name="IECYDate" type="date" value="1/11/1989" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>ETD</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="IEETDDate" name="IEETDDate" type="date" value="1/11/1989" />
+                                    </div>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Contact</label>
+                                    <input type="text" id="IEContact" name="IEContact" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>ETA</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="IEETADate" name="IEETADate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>AT</label>
+                                    <input type="text" id="IEAT" name="IEAT" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Tel</label>
+                                    <input type="text" id="IETel" name="IETel" class="form-control" placeholder="">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>ใบเสร็จค่าใช้จ่ายออกในนาม</label>
+                                    <input type="text" id="IEBill " name="IEBill" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>ค่าผ่านท่า</label>
+                                    <input type="text" id="IEPortPrice" name="IEPortPrice" class="form-control" placeholder="" onkeypress="return isNumberKey(event)">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>ค่าผ่านลาน</label>
+                                    <input type="text" id="IELanPrice" name="IELanPrice" class="form-control" placeholder="" onkeypress="return isNumberKey(event)">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>ค่า Lift on/Lift off</label>
+                                    <input type="text" id="IELiftPrice" name="IELiftPrice" class="form-control" placeholder="" onkeypress="return isNumberKey(event)">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Closing Date</label>
+
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+
+                                        <input class="form-control" data-val="true" data-val-required="Date is required"
+                                               id="IECLosingDate" name="IECLosingDate" type="date" value="@dDate" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Closing Time</label>
+                                    <select class="form-control" id="IEClosingTime" name="IEClosingTime">
+
+                                    @*    <option value="">-- Select Pick up Time --</option>*@
+                                        <option data-ng-value="00:00">00:00</option>
+                                        <option data-ng-value="00:15">00:15</option>
+                                        <option data-ng-value="00:30">00:30</option>
+                                        <option data-ng-value="00:45">00:45</option>
+                                        <option data-ng-value="01:00">01:00</option>
+                                        <option data-ng-value="01:15">01:15</option>
+                                        <option data-ng-value="01:30">01:30</option>
+                                        <option data-ng-value="01:45">01:45</option>
+                                        <option data-ng-value="02:00">02:00</option>
+                                        <option data-ng-value="02:15">02:15</option>
+                                        <option data-ng-value="02:30">02:30</option>
+                                        <option data-ng-value="02:45">02:45</option>
+                                        <option data-ng-value="03:00">03:00</option>
+                                        <option data-ng-value="03:15">03:15</option>
+                                        <option data-ng-value="03:30">03:30</option>
+                                        <option data-ng-value="03:45">03:45</option>
+                                        <option data-ng-value="04:00">04:00</option>
+                                        <option data-ng-value="04:15">04:15</option>
+                                        <option data-ng-value="04:30">04:30</option>
+                                        <option data-ng-value="04:45">04:45</option>
+                                        <option data-ng-value="05:00">05:00</option>
+                                        <option data-ng-value="05:15">05:15</option>
+                                        <option data-ng-value="05:30">05:30</option>
+                                        <option data-ng-value="05:45">05:45</option>
+                                        <option data-ng-value="06:00">06:00</option>
+                                        <option data-ng-value="06:15">06:15</option>
+                                        <option data-ng-value="06:30">06:30</option>
+                                        <option data-ng-value="06:45">06:45</option>
+                                        <option data-ng-value="07:00">07:00</option>
+                                        <option data-ng-value="07:15">07:15</option>
+                                        <option data-ng-value="07:30">07:30</option>
+                                        <option data-ng-value="07:45">07:45</option>
+                                        <option data-ng-value="08:00">08:00</option>
+                                        <option data-ng-value="08:15">08:15</option>
+                                        <option data-ng-value="08:30">08:30</option>
+                                        <option data-ng-value="08:45">08:45</option>
+                                        <option selected data-ng-value="09:00">09:00</option>
+                                        <option data-ng-value="09:15">09:15</option>
+                                        <option data-ng-value="09:30">09:30</option>
+                                        <option data-ng-value="09:45">09:45</option>
+                                        <option data-ng-value="10:00">10:00</option>
+                                        <option data-ng-value="10:15">10:15</option>
+                                        <option data-ng-value="10:30">10:30</option>
+                                        <option data-ng-value="10:45">10:45</option>
+                                        <option data-ng-value="11:00">11:00</option>
+                                        <option data-ng-value="11:15">11:15</option>
+                                        <option data-ng-value="11:30">11:30</option>
+                                        <option data-ng-value="11:45">11:45</option>
+                                        <option data-ng-value="12:00">12:00</option>
+                                        <option data-ng-value="12:15">12:15</option>
+                                        <option data-ng-value="12:30">12:30</option>
+                                        <option data-ng-value="12:45">12:45</option>
+                                        <option data-ng-value="13:00">13:00</option>
+                                        <option data-ng-value="13:15">13:15</option>
+                                        <option data-ng-value="13:30">13:30</option>
+                                        <option data-ng-value="13:45">13:45</option>
+                                        <option data-ng-value="14:00">14:00</option>
+                                        <option data-ng-value="14:15">14:15</option>
+                                        <option data-ng-value="14:30">14:30</option>
+                                        <option data-ng-value="14:45">14:45</option>
+                                        <option data-ng-value="15:00">15:00</option>
+                                        <option data-ng-value="15:15">15:15</option>
+                                        <option data-ng-value="15:30">15:30</option>
+                                        <option data-ng-value="15:45">15:45</option>
+                                        <option data-ng-value="16:00">16:00</option>
+                                        <option data-ng-value="16:15">16:15</option>
+                                        <option data-ng-value="16:30">16:30</option>
+                                        <option data-ng-value="16:45">16:45</option>
+                                        <option data-ng-value="17:00">17:00</option>
+                                        <option data-ng-value="17:15">17:15</option>
+                                        <option data-ng-value="17:30">17:30</option>
+                                        <option data-ng-value="17:45">17:45</option>
+                                        <option data-ng-value="18:00">18:00</option>
+                                        <option data-ng-value="18:15">18:15</option>
+                                        <option data-ng-value="18:30">18:30</option>
+                                        <option data-ng-value="18:45">18:45</option>
+                                        <option data-ng-value="19:00">19:00</option>
+                                        <option data-ng-value="19:15">19:15</option>
+                                        <option data-ng-value="19:30">19:30</option>
+                                        <option data-ng-value="19:45">19:45</option>
+                                        <option data-ng-value="20:00">20:00</option>
+                                        <option data-ng-value="20:15">20:15</option>
+                                        <option data-ng-value="20:30">20:30</option>
+                                        <option data-ng-value="20:45">20:45</option>
+                                        <option data-ng-value="21:00">21:00</option>
+                                        <option data-ng-value="21:15">21:15</option>
+                                        <option data-ng-value="21:30">21:30</option>
+                                        <option data-ng-value="21:45">21:45</option>
+                                        <option data-ng-value="22:00">22:00</option>
+                                        <option data-ng-value="22:15">22:15</option>
+                                        <option data-ng-value="22:30">22:30</option>
+                                        <option data-ng-value="22:45">22:45</option>
+                                        <option data-ng-value="23:00">23:00</option>
+                                        <option data-ng-value="23:15">23:15</option>
+                                        <option data-ng-value="23:30">23:30</option>
+                                        <option data-ng-value="23:45">23:45</option>
+                                    </select>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>Agent</label>
+                                    <input type="text" id="IEAgent2" name="IEAgent2" class="form-control" placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>จำนวนตู้</label>
+                                    <select class="form-control" id="Num3" name="Num3" onchange="chk_Num3();">
+
+                                        @* <option value=" ">
+                                -- Select No of luggage --</option>*@
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div id="sNum31">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum1" name="nNum1" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum1" name="pnNum1" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum32">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum2" name="nNum2" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum2" name="pnNum2" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum33">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum3" name="nNum3" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum3" name="pnNum3" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum34">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum4" name="nNum4" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum4" name="pnNum4" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum35">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum5" name="nNum5" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum5" name="pnNum5" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum36">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum6" name="nNum6" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum6" name="pnNum6" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum37">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum7" name="nNum7" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum7" name="pnNum7" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum38">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum8" name="nNum8" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum8" name="pnNum8" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum39">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum9" name="nNum9" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum9" name="pnNum9" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div id="sNum310">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        &nbsp;
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ตู้</label>
+                                        <input id="nNum10" name="nNum10" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>เบอร์ซีล</label>
+                                        <input id="pnNum10" name="pnNum10" type="text" class="form-control" placeholder="Enter ...">
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label>หมายเหตุ</label>
+                                    <textarea id="Remark" name="Remark" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="box-footer clearfix">
+                                        <input type="hidden" id="OrderType" name="OrderType" class="form-control" value="3">
+                                        <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ORDER NOW</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
                     </div>
-                    <div class="box-body">
-
-                        <!-- text input -->
-
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Order ID</label>
-                                <input type="text" class="form-control" placeholder="xx-xxxxx" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Booking No.</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Customer</label>
-                                <select class="form-control" id="ToReturn2" name="ToReturn2" placeholder="-- Type drop-off location --" onchange="chk_ToOneWay();">
-                                    <option value="">-- Select Customer --</option>
-                                    @*@foreach (var TItem in item.sToModel)
-                            {
-                                <option value="@TItem.TId">@TItem.TDetail</option>
-                            }*@
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Route</label>
-                                <select class="form-control" id="ToReturn2" name="ToReturn2" placeholder="-- Type drop-off location --" onchange="chk_ToOneWay();">
-                                    <option value="">-- Select Route --</option>
-                                    @*@foreach (var TItem in item.sToModel)
-                            {
-                                <option value="@TItem.TId">@TItem.TDetail</option>
-                            }*@
-                                </select>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>วันที่รับ</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>วันที่ส่ง</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Type</label>
-                              
-                                <select class="form-control" id="ToReturn2" name="ToReturn2" placeholder="-- Type drop-off location --" onchange="chk_ToOneWay();">
-                                    <option value="">-- Select Type --</option>
-                                    <option value="1">Import</option>
-                                    <option value="2">Export</option>
-                          
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Shipper/Consignee</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                           
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Agent</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Port of Discharge/Loading</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Shipping</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>เบอร์ติดต่อ</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        &nbsp;
-                      
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>สถานที่เปิดตู้/บรรจุตู้</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>สถานที่รับตู้/คืนตู้</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <label>ไฟล์แผนที่</label>
-                                <input type="file" id="exampleInputFile">
-                            </div>
-                          
-                        </div>
-                        &nbsp;
-                       
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Liner</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>วันที่รับตู้หนัก/เปล่า</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>วันที่บรรจุ/เปิดตู้</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>เวลาบรรจุ/เปิดตู้</label>
-                                <select class="form-control" id="Time" name="Time">
-
-                                    <option value="">-- Select Pick up Time --</option>
-                                    <option data-ng-value="00:00">00:00</option>
-                                    <option data-ng-value="00:15">00:15</option>
-                                    <option data-ng-value="00:30">00:30</option>
-                                    <option data-ng-value="00:45">00:45</option>
-                                    <option data-ng-value="01:00">01:00</option>
-                                    <option data-ng-value="01:15">01:15</option>
-                                    <option data-ng-value="01:30">01:30</option>
-                                    <option data-ng-value="01:45">01:45</option>
-                                    <option data-ng-value="02:00">02:00</option>
-                                    <option data-ng-value="02:15">02:15</option>
-                                    <option data-ng-value="02:30">02:30</option>
-                                    <option data-ng-value="02:45">02:45</option>
-                                    <option data-ng-value="03:00">03:00</option>
-                                    <option data-ng-value="03:15">03:15</option>
-                                    <option data-ng-value="03:30">03:30</option>
-                                    <option data-ng-value="03:45">03:45</option>
-                                    <option data-ng-value="04:00">04:00</option>
-                                    <option data-ng-value="04:15">04:15</option>
-                                    <option data-ng-value="04:30">04:30</option>
-                                    <option data-ng-value="04:45">04:45</option>
-                                    <option data-ng-value="05:00">05:00</option>
-                                    <option data-ng-value="05:15">05:15</option>
-                                    <option data-ng-value="05:30">05:30</option>
-                                    <option data-ng-value="05:45">05:45</option>
-                                    <option data-ng-value="06:00">06:00</option>
-                                    <option data-ng-value="06:15">06:15</option>
-                                    <option data-ng-value="06:30">06:30</option>
-                                    <option data-ng-value="06:45">06:45</option>
-                                    <option data-ng-value="07:00">07:00</option>
-                                    <option data-ng-value="07:15">07:15</option>
-                                    <option data-ng-value="07:30">07:30</option>
-                                    <option data-ng-value="07:45">07:45</option>
-                                    <option data-ng-value="08:00">08:00</option>
-                                    <option data-ng-value="08:15">08:15</option>
-                                    <option data-ng-value="08:30">08:30</option>
-                                    <option data-ng-value="08:45">08:45</option>
-                                    <option data-ng-value="09:00">09:00</option>
-                                    <option data-ng-value="09:15">09:15</option>
-                                    <option data-ng-value="09:30">09:30</option>
-                                    <option data-ng-value="09:45">09:45</option>
-                                    <option data-ng-value="10:00">10:00</option>
-                                    <option data-ng-value="10:15">10:15</option>
-                                    <option data-ng-value="10:30">10:30</option>
-                                    <option data-ng-value="10:45">10:45</option>
-                                    <option data-ng-value="11:00">11:00</option>
-                                    <option data-ng-value="11:15">11:15</option>
-                                    <option data-ng-value="11:30">11:30</option>
-                                    <option data-ng-value="11:45">11:45</option>
-                                    <option data-ng-value="12:00">12:00</option>
-                                    <option data-ng-value="12:15">12:15</option>
-                                    <option data-ng-value="12:30">12:30</option>
-                                    <option data-ng-value="12:45">12:45</option>
-                                    <option data-ng-value="13:00">13:00</option>
-                                    <option data-ng-value="13:15">13:15</option>
-                                    <option data-ng-value="13:30">13:30</option>
-                                    <option data-ng-value="13:45">13:45</option>
-                                    <option data-ng-value="14:00">14:00</option>
-                                    <option data-ng-value="14:15">14:15</option>
-                                    <option data-ng-value="14:30">14:30</option>
-                                    <option data-ng-value="14:45">14:45</option>
-                                    <option data-ng-value="15:00">15:00</option>
-                                    <option data-ng-value="15:15">15:15</option>
-                                    <option data-ng-value="15:30">15:30</option>
-                                    <option data-ng-value="15:45">15:45</option>
-                                    <option data-ng-value="16:00">16:00</option>
-                                    <option data-ng-value="16:15">16:15</option>
-                                    <option data-ng-value="16:30">16:30</option>
-                                    <option data-ng-value="16:45">16:45</option>
-                                    <option data-ng-value="17:00">17:00</option>
-                                    <option data-ng-value="17:15">17:15</option>
-                                    <option data-ng-value="17:30">17:30</option>
-                                    <option data-ng-value="17:45">17:45</option>
-                                    <option data-ng-value="18:00">18:00</option>
-                                    <option data-ng-value="18:15">18:15</option>
-                                    <option data-ng-value="18:30">18:30</option>
-                                    <option data-ng-value="18:45">18:45</option>
-                                    <option data-ng-value="19:00">19:00</option>
-                                    <option data-ng-value="19:15">19:15</option>
-                                    <option data-ng-value="19:30">19:30</option>
-                                    <option data-ng-value="19:45">19:45</option>
-                                    <option data-ng-value="20:00">20:00</option>
-                                    <option data-ng-value="20:15">20:15</option>
-                                    <option data-ng-value="20:30">20:30</option>
-                                    <option data-ng-value="20:45">20:45</option>
-                                    <option data-ng-value="21:00">21:00</option>
-                                    <option data-ng-value="21:15">21:15</option>
-                                    <option data-ng-value="21:30">21:30</option>
-                                    <option data-ng-value="21:45">21:45</option>
-                                    <option data-ng-value="22:00">22:00</option>
-                                    <option data-ng-value="22:15">22:15</option>
-                                    <option data-ng-value="22:30">22:30</option>
-                                    <option data-ng-value="22:45">22:45</option>
-                                    <option data-ng-value="23:00">23:00</option>
-                                    <option data-ng-value="23:15">23:15</option>
-                                    <option data-ng-value="23:30">23:30</option>
-                                    <option data-ng-value="23:45">23:45</option>
-                                </select>
-                            </div>
-                        </div>
-                        &nbsp;
-                      
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Feeder Vessel</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Mother Vessel</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>CY Date</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>ETD</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Contact</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>ETA</label>
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>AT</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Tel</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>ใบเสร็จค่าใช้จ่ายออกในนาม</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>ค่าผ่านท่า</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>ค่าผ่านลาน</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>ค่า Lift on/Lift off</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Closing Date</label>
-
-                                <div class="input-group date">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-
-                                    <input class="form-control" data-val="true" data-val-required="Date is required"
-                                           id="Date3" name="Date3" type="date" value="1/11/1989" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Closing Time</label>
-                                <select class="form-control" id="Time" name="Time">
-
-                                    <option value="">-- Select Pick up Time --</option>
-                                    <option data-ng-value="00:00">00:00</option>
-                                    <option data-ng-value="00:15">00:15</option>
-                                    <option data-ng-value="00:30">00:30</option>
-                                    <option data-ng-value="00:45">00:45</option>
-                                    <option data-ng-value="01:00">01:00</option>
-                                    <option data-ng-value="01:15">01:15</option>
-                                    <option data-ng-value="01:30">01:30</option>
-                                    <option data-ng-value="01:45">01:45</option>
-                                    <option data-ng-value="02:00">02:00</option>
-                                    <option data-ng-value="02:15">02:15</option>
-                                    <option data-ng-value="02:30">02:30</option>
-                                    <option data-ng-value="02:45">02:45</option>
-                                    <option data-ng-value="03:00">03:00</option>
-                                    <option data-ng-value="03:15">03:15</option>
-                                    <option data-ng-value="03:30">03:30</option>
-                                    <option data-ng-value="03:45">03:45</option>
-                                    <option data-ng-value="04:00">04:00</option>
-                                    <option data-ng-value="04:15">04:15</option>
-                                    <option data-ng-value="04:30">04:30</option>
-                                    <option data-ng-value="04:45">04:45</option>
-                                    <option data-ng-value="05:00">05:00</option>
-                                    <option data-ng-value="05:15">05:15</option>
-                                    <option data-ng-value="05:30">05:30</option>
-                                    <option data-ng-value="05:45">05:45</option>
-                                    <option data-ng-value="06:00">06:00</option>
-                                    <option data-ng-value="06:15">06:15</option>
-                                    <option data-ng-value="06:30">06:30</option>
-                                    <option data-ng-value="06:45">06:45</option>
-                                    <option data-ng-value="07:00">07:00</option>
-                                    <option data-ng-value="07:15">07:15</option>
-                                    <option data-ng-value="07:30">07:30</option>
-                                    <option data-ng-value="07:45">07:45</option>
-                                    <option data-ng-value="08:00">08:00</option>
-                                    <option data-ng-value="08:15">08:15</option>
-                                    <option data-ng-value="08:30">08:30</option>
-                                    <option data-ng-value="08:45">08:45</option>
-                                    <option data-ng-value="09:00">09:00</option>
-                                    <option data-ng-value="09:15">09:15</option>
-                                    <option data-ng-value="09:30">09:30</option>
-                                    <option data-ng-value="09:45">09:45</option>
-                                    <option data-ng-value="10:00">10:00</option>
-                                    <option data-ng-value="10:15">10:15</option>
-                                    <option data-ng-value="10:30">10:30</option>
-                                    <option data-ng-value="10:45">10:45</option>
-                                    <option data-ng-value="11:00">11:00</option>
-                                    <option data-ng-value="11:15">11:15</option>
-                                    <option data-ng-value="11:30">11:30</option>
-                                    <option data-ng-value="11:45">11:45</option>
-                                    <option data-ng-value="12:00">12:00</option>
-                                    <option data-ng-value="12:15">12:15</option>
-                                    <option data-ng-value="12:30">12:30</option>
-                                    <option data-ng-value="12:45">12:45</option>
-                                    <option data-ng-value="13:00">13:00</option>
-                                    <option data-ng-value="13:15">13:15</option>
-                                    <option data-ng-value="13:30">13:30</option>
-                                    <option data-ng-value="13:45">13:45</option>
-                                    <option data-ng-value="14:00">14:00</option>
-                                    <option data-ng-value="14:15">14:15</option>
-                                    <option data-ng-value="14:30">14:30</option>
-                                    <option data-ng-value="14:45">14:45</option>
-                                    <option data-ng-value="15:00">15:00</option>
-                                    <option data-ng-value="15:15">15:15</option>
-                                    <option data-ng-value="15:30">15:30</option>
-                                    <option data-ng-value="15:45">15:45</option>
-                                    <option data-ng-value="16:00">16:00</option>
-                                    <option data-ng-value="16:15">16:15</option>
-                                    <option data-ng-value="16:30">16:30</option>
-                                    <option data-ng-value="16:45">16:45</option>
-                                    <option data-ng-value="17:00">17:00</option>
-                                    <option data-ng-value="17:15">17:15</option>
-                                    <option data-ng-value="17:30">17:30</option>
-                                    <option data-ng-value="17:45">17:45</option>
-                                    <option data-ng-value="18:00">18:00</option>
-                                    <option data-ng-value="18:15">18:15</option>
-                                    <option data-ng-value="18:30">18:30</option>
-                                    <option data-ng-value="18:45">18:45</option>
-                                    <option data-ng-value="19:00">19:00</option>
-                                    <option data-ng-value="19:15">19:15</option>
-                                    <option data-ng-value="19:30">19:30</option>
-                                    <option data-ng-value="19:45">19:45</option>
-                                    <option data-ng-value="20:00">20:00</option>
-                                    <option data-ng-value="20:15">20:15</option>
-                                    <option data-ng-value="20:30">20:30</option>
-                                    <option data-ng-value="20:45">20:45</option>
-                                    <option data-ng-value="21:00">21:00</option>
-                                    <option data-ng-value="21:15">21:15</option>
-                                    <option data-ng-value="21:30">21:30</option>
-                                    <option data-ng-value="21:45">21:45</option>
-                                    <option data-ng-value="22:00">22:00</option>
-                                    <option data-ng-value="22:15">22:15</option>
-                                    <option data-ng-value="22:30">22:30</option>
-                                    <option data-ng-value="22:45">22:45</option>
-                                    <option data-ng-value="23:00">23:00</option>
-                                    <option data-ng-value="23:15">23:15</option>
-                                    <option data-ng-value="23:30">23:30</option>
-                                    <option data-ng-value="23:45">23:45</option>
-                                </select>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Agent</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-6">
-                                <label>จำนวนตู้</label>
-                                <select class="form-control" id="Num3" name="Num3" onchange="chk_Num3();">
-
-                                    @* <option value=" ">
-            -- Select No of luggage --</option>*@
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-
-                                </select>
-                            </div>
-                        </div>
-                        &nbsp;
-                        <div id="sNum31">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum11" name="nNum11" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum32">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum12" name="nNum12" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum33">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum13" name="nNum13" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum34">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum14" name="nNum14" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum35">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum15" name="nNum15" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum36">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum16" name="nNum16" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum37">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum17" name="nNum17" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum38">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum18" name="nNum18" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum39">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum19" name="nNum19" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div id="sNum310">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    &nbsp;
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ตู้</label>
-                                    <input id="nNum16" name="nNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-
-                                <div class="col-md-3">
-                                    <label>เบอร์ซีล</label>
-                                    <input id="nNum16" name="pNum210" type="text" class="form-control" placeholder="Enter ...">
-                                </div>
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <label>หมายเหตุ</label>
-                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            </div>
-
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <div class="box-footer clearfix">
-
-                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ORDER NOW</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-            </div>
+                    </form>
+</div>
         </div>
         
     </div>
-@*}*@
+}
 </section>
 <script language="JavaScript" type="text/javascript">
     document.getElementById('Type2').style.display = 'none';
     document.getElementById('Type3').style.display = 'none';
 
-    document.getElementById('sNum12').style.display = 'none';
-    document.getElementById('sNum13').style.display = 'none';
-    document.getElementById('sNum14').style.display = 'none';
-    document.getElementById('sNum15').style.display = 'none';
-    document.getElementById('sNum16').style.display = 'none';
-    document.getElementById('sNum17').style.display = 'none';
-    document.getElementById('sNum18').style.display = 'none';
-    document.getElementById('sNum19').style.display = 'none';
-    document.getElementById('sNum110').style.display = 'none';
+    document.getElementById('sNum2').style.display = 'none';
+    document.getElementById('sNum3').style.display = 'none';
+    document.getElementById('sNum4').style.display = 'none';
+    document.getElementById('sNum5').style.display = 'none';
+    document.getElementById('sNum6').style.display = 'none';
+    document.getElementById('sNum7').style.display = 'none';
+    document.getElementById('sNum8').style.display = 'none';
+    document.getElementById('sNum9').style.display = 'none';
+    document.getElementById('sNum10').style.display = 'none';
 
     document.getElementById('sNum22').style.display = 'none';
     document.getElementById('sNum23').style.display = 'none';
@@ -1534,132 +1548,132 @@
 
     }
 
-    function chk_Num1() {
+    function chk_Num() {
 
-        var dFrom = $("#Num1").val();
+        var dFrom = $("#Num").val();
 
         if (dFrom == 1)
         {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'none';
-            document.getElementById('sNum13').style.display = 'none';
-            document.getElementById('sNum14').style.display = 'none';
-            document.getElementById('sNum15').style.display = 'none';
-            document.getElementById('sNum16').style.display = 'none';
-            document.getElementById('sNum17').style.display = 'none';
-            document.getElementById('sNum18').style.display = 'none';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'none';
+            document.getElementById('sNum3').style.display = 'none';
+            document.getElementById('sNum4').style.display = 'none';
+            document.getElementById('sNum5').style.display = 'none';
+            document.getElementById('sNum6').style.display = 'none';
+            document.getElementById('sNum7').style.display = 'none';
+            document.getElementById('sNum8').style.display = 'none';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 2) {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'none';
-            document.getElementById('sNum14').style.display = 'none';
-            document.getElementById('sNum15').style.display = 'none';
-            document.getElementById('sNum16').style.display = 'none';
-            document.getElementById('sNum17').style.display = 'none';
-            document.getElementById('sNum18').style.display = 'none';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'none';
+            document.getElementById('sNum4').style.display = 'none';
+            document.getElementById('sNum5').style.display = 'none';
+            document.getElementById('sNum6').style.display = 'none';
+            document.getElementById('sNum7').style.display = 'none';
+            document.getElementById('sNum8').style.display = 'none';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 3) {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'none';
-            document.getElementById('sNum15').style.display = 'none';
-            document.getElementById('sNum16').style.display = 'none';
-            document.getElementById('sNum17').style.display = 'none';
-            document.getElementById('sNum18').style.display = 'none';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'none';
+            document.getElementById('sNum5').style.display = 'none';
+            document.getElementById('sNum6').style.display = 'none';
+            document.getElementById('sNum7').style.display = 'none';
+            document.getElementById('sNum8').style.display = 'none';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 4) {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'block';
-            document.getElementById('sNum15').style.display = 'none';
-            document.getElementById('sNum16').style.display = 'none';
-            document.getElementById('sNum17').style.display = 'none';
-            document.getElementById('sNum18').style.display = 'none';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'block';
+            document.getElementById('sNum5').style.display = 'none';
+            document.getElementById('sNum6').style.display = 'none';
+            document.getElementById('sNum7').style.display = 'none';
+            document.getElementById('sNum8').style.display = 'none';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 5) {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'block';
-            document.getElementById('sNum15').style.display = 'block';
-            document.getElementById('sNum16').style.display = 'none';
-            document.getElementById('sNum17').style.display = 'none';
-            document.getElementById('sNum18').style.display = 'none';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'block';
+            document.getElementById('sNum5').style.display = 'block';
+            document.getElementById('sNum6').style.display = 'none';
+            document.getElementById('sNum7').style.display = 'none';
+            document.getElementById('sNum8').style.display = 'none';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 6) {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'block';
-            document.getElementById('sNum15').style.display = 'block';
-            document.getElementById('sNum16').style.display = 'block';
-            document.getElementById('sNum17').style.display = 'none';
-            document.getElementById('sNum18').style.display = 'none';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'block';
+            document.getElementById('sNum5').style.display = 'block';
+            document.getElementById('sNum6').style.display = 'block';
+            document.getElementById('sNum7').style.display = 'none';
+            document.getElementById('sNum8').style.display = 'none';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 7) {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'block';
-            document.getElementById('sNum15').style.display = 'block';
-            document.getElementById('sNum16').style.display = 'block';
-            document.getElementById('sNum17').style.display = 'block';
-            document.getElementById('sNum18').style.display = 'none';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'block';
+            document.getElementById('sNum5').style.display = 'block';
+            document.getElementById('sNum6').style.display = 'block';
+            document.getElementById('sNum7').style.display = 'block';
+            document.getElementById('sNum8').style.display = 'none';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 8) {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'block';
-            document.getElementById('sNum15').style.display = 'block';
-            document.getElementById('sNum16').style.display = 'block';
-            document.getElementById('sNum17').style.display = 'block';
-            document.getElementById('sNum18').style.display = 'block';
-            document.getElementById('sNum19').style.display = 'none';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'block';
+            document.getElementById('sNum5').style.display = 'block';
+            document.getElementById('sNum6').style.display = 'block';
+            document.getElementById('sNum7').style.display = 'block';
+            document.getElementById('sNum8').style.display = 'block';
+            document.getElementById('sNum9').style.display = 'none';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 9)
         {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'block';
-            document.getElementById('sNum15').style.display = 'block';
-            document.getElementById('sNum16').style.display = 'block';
-            document.getElementById('sNum17').style.display = 'block';
-            document.getElementById('sNum18').style.display = 'block';
-            document.getElementById('sNum19').style.display = 'block';
-            document.getElementById('sNum110').style.display = 'none';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'block';
+            document.getElementById('sNum5').style.display = 'block';
+            document.getElementById('sNum6').style.display = 'block';
+            document.getElementById('sNum7').style.display = 'block';
+            document.getElementById('sNum8').style.display = 'block';
+            document.getElementById('sNum9').style.display = 'block';
+            document.getElementById('sNum10').style.display = 'none';
         }
         else if (dFrom == 10)
         {
-            document.getElementById('sNum11').style.display = 'block';
-            document.getElementById('sNum12').style.display = 'block';
-            document.getElementById('sNum13').style.display = 'block';
-            document.getElementById('sNum14').style.display = 'block';
-            document.getElementById('sNum15').style.display = 'block';
-            document.getElementById('sNum16').style.display = 'block';
-            document.getElementById('sNum17').style.display = 'block';
-            document.getElementById('sNum18').style.display = 'block';
-            document.getElementById('sNum19').style.display = 'block';
-            document.getElementById('sNum110').style.display = 'block';
+            document.getElementById('sNum1').style.display = 'block';
+            document.getElementById('sNum2').style.display = 'block';
+            document.getElementById('sNum3').style.display = 'block';
+            document.getElementById('sNum4').style.display = 'block';
+            document.getElementById('sNum5').style.display = 'block';
+            document.getElementById('sNum6').style.display = 'block';
+            document.getElementById('sNum7').style.display = 'block';
+            document.getElementById('sNum8').style.display = 'block';
+            document.getElementById('sNum9').style.display = 'block';
+            document.getElementById('sNum10').style.display = 'block';
         }
       
         return false;
@@ -1917,5 +1931,13 @@
         }
 
         return false;
+    }
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
     }
     </script>

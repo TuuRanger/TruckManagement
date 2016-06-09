@@ -41,13 +41,29 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="40" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" />
           <Property Name="Address" Type="nvarchar" MaxLength="500" />
-          <Property Name="ProviceID" Type="int" />
+          <Property Name="Province" Type="nvarchar" MaxLength="100" />
           <Property Name="ZipCode" Type="char" MaxLength="5" />
           <Property Name="Telephone" Type="nvarchar" MaxLength="40" />
-          <Property Name="Email" Type="nvarchar" MaxLength="40" />
-          <Property Name="Contact" Type="nvarchar" MaxLength="40" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Payment" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact1" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email1" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact2" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact3" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email3" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact4" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email4" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact5" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email5" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position5" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DeliveryPrice">
           <Key>
@@ -63,33 +79,37 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmpID" Type="char" MaxLength="5" />
-          <Property Name="DriverLicence" Type="char" MaxLength="8" />
+          <Property Name="EmpID" Type="nvarchar" MaxLength="10" />
+          <Property Name="DriverLicence" Type="nvarchar" MaxLength="10" />
           <Property Name="Type" Type="nvarchar" MaxLength="40" />
           <Property Name="DIssueDate" Type="date" />
           <Property Name="DExpireDate" Type="date" />
-          <Property Name="BOD" Type="date" />
-          <Property Name="Lineage" Type="nvarchar" MaxLength="40" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Race" Type="nvarchar" MaxLength="40" />
           <Property Name="Nationality" Type="nvarchar" MaxLength="40" />
           <Property Name="Religion" Type="nvarchar" MaxLength="40" />
-          <Property Name="NationalID" Type="nvarchar" MaxLength="13" />
+          <Property Name="IDCard" Type="nvarchar" MaxLength="13" />
           <Property Name="IssuseDate" Type="date" />
           <Property Name="ExpireDate" Type="date" />
           <Property Name="Weight" Type="float" />
           <Property Name="Height" Type="float" />
           <Property Name="MarriageStatusID" Type="int" />
           <Property Name="MilitaryStatusID" Type="int" />
-          <Property Name="EducationID" Type="int" />
+          <Property Name="Education" Type="nvarchar" MaxLength="100" />
           <Property Name="Address" Type="nvarchar" MaxLength="500" />
-          <Property Name="ProviceID" Type="int" />
+          <Property Name="Province" Type="nvarchar" MaxLength="100" />
           <Property Name="ZipCode" Type="char" MaxLength="5" />
           <Property Name="FatherFullName" Type="nvarchar" MaxLength="40" />
-          <Property Name="BODFather" Type="date" />
+          <Property Name="DOBFather" Type="date" />
           <Property Name="MotherFullName" Type="varchar" MaxLength="40" />
-          <Property Name="BODMother" Type="date" />
+          <Property Name="DOBMother" Type="date" />
           <Property Name="WifeFullName" Type="nvarchar" MaxLength="40" />
           <Property Name="Workplace" Type="nvarchar" MaxLength="40" />
+          <Property Name="WPosition" Type="nvarchar" MaxLength="50" />
           <Property Name="Child" Type="int" />
+          <Property Name="FileDriver" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileIDCard" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileRegistration" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="FuelType">
           <Key>
@@ -97,6 +117,18 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Garage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Payment" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GasRefill">
           <Key>
@@ -110,6 +142,17 @@
           <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Lite" Type="float" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="GasStation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GPSViolationHistory">
           <Key>
@@ -173,25 +216,60 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="OrderTypeID" Type="int" />
-          <Property Name="BookingID" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderType" Type="int" />
+          <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+          <Property Name="BookingNo" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerID" Type="int" />
-          <Property Name="OrderDate" Type="varchar" MaxLength="40" />
-          <Property Name="DliveryDate" Type="varchar" MaxLength="40" />
+          <Property Name="OrderDate" Type="date" />
+          <Property Name="ReceiveDate" Type="date" />
+          <Property Name="DliveryDate" Type="date" />
           <Property Name="RoutID" Type="int" />
-          <Property Name="20DC" Type="int" />
-          <Property Name="40DC" Type="int" />
-          <Property Name="40HC" Type="int" />
+          <Property Name="NumberOrder" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="PPackDate" Type="date" />
+          <Property Name="TPackDate" Type="date" />
+          <Property Name="IEType" Type="int" />
+          <Property Name="IEShipper" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEAgent" Type="nvarchar" MaxLength="100" />
+          <Property Name="IELoading" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEShipping" Type="nvarchar" MaxLength="100" />
+          <Property Name="IETelephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="IELocationPack" Type="nvarchar" MaxLength="100" />
+          <Property Name="IELocationReceive" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEMap" Type="nvarchar" MaxLength="100" />
+          <Property Name="IELiner" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEReceiveDate" Type="date" />
+          <Property Name="IEPackDate" Type="date" />
+          <Property Name="IEPacklTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="IEFeeder" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEMother" Type="nvarchar" MaxLength="100" />
+          <Property Name="IECYDate" Type="date" />
+          <Property Name="IEETDDate" Type="date" />
+          <Property Name="IEContact" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEETADate" Type="date" />
+          <Property Name="IEAT" Type="nvarchar" MaxLength="100" />
+          <Property Name="IETel" Type="nvarchar" MaxLength="50" />
+          <Property Name="IEBill" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEPortPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IELanPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IELiftPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IECLosingDate" Type="date" />
+          <Property Name="IEClosingTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="IEAgent2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContainerNO" Type="nvarchar" MaxLength="40" />
-          <Property Name="Size" Type="nvarchar" MaxLength="40" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="OID" Type="int" />
+          <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContainerNo" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position" Type="nvarchar" MaxLength="1" />
+          <Property Name="PackNo" Type="nvarchar" MaxLength="40" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="OrderType">
           <Key>
@@ -212,8 +290,146 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="From" Type="nvarchar" MaxLength="40" />
-          <Property Name="TO" Type="nvarchar" MaxLength="40" />
+          <Property Name="FromDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="FromProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="ToDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ToProvince" Type="nvarchar" MaxLength="50" />
+          <Property Name="Distance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OilVolume" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Toll" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DeliveryCost" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OTPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OTPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OTDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="POTPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="POTPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="POTDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="TaxPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TaxDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="HPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="HPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="HDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="SPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="PSPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PSPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PSDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="STaxPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="STaxPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="STaxDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="ITPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ITPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ITDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="IHPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IHPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IHDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="IPPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IPPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IPDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="LTPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="LTPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="LTDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="LHPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="LHPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="LHDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="GPSPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GPSPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GPSDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="SalaryPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SalaryPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SalaryDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="OtherPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OtherPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OtherDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="RentPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RentPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RentDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="MPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="CPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="SumPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SumPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SumDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="CPPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CPPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CPDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="OilPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OilPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OilDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="TirePrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TirePriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TireDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="DrivePrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DrivePriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DriveDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="RPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="VarPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="VarPriceMonth" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="VarDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="NDay" Type="int" />
+          <Property Name="NPerDay" Type="int" />
+          <Property Name="NMonth" Type="int" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SDate" Type="date" />
+          <Property Name="SDetail" Type="nvarchar" MaxLength="255" />
+          <Property Name="SNumber" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SRemark" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="SubContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact1" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email1" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact2" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email2" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact3" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email3" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact4" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email4" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact5" Type="nvarchar" MaxLength="40" />
+          <Property Name="Email5" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position5" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tire">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SN" Type="nvarchar" MaxLength="20" />
+          <Property Name="SizeTire" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UsedKM" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="ExprieDate" Type="date" />
+          <Property Name="SaleBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TruckID" Type="int" />
+          <Property Name="PositionWheel" Type="int" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="TireChange">
           <Key>
@@ -245,18 +461,40 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LicensePlate" Type="nvarchar" MaxLength="40" />
-          <Property Name="Brand" Type="nvarchar" MaxLength="40" />
-          <Property Name="FuelTypeID" Type="int" />
+          <Property Name="License" Type="nvarchar" MaxLength="40" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="100" />
           <Property Name="TruckType" Type="nvarchar" MaxLength="40" />
-          <Property Name="Model" Type="nvarchar" MaxLength="40" />
-          <Property Name="EngineBrand" Type="nvarchar" MaxLength="40" />
-          <Property Name="Insurer" Type="nvarchar" MaxLength="40" />
-          <Property Name="InsuranceNum" Type="nvarchar" MaxLength="40" />
-          <Property Name="IssueDate" Type="date" />
-          <Property Name="ExpireDate" Type="date" />
-          <Property Name="Premium" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="HeadID" Type="int" />
+          <Property Name="Detail" Type="nvarchar" MaxLength="255" />
+          <Property Name="HitchLicense" Type="nvarchar" MaxLength="40" />
+          <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="weightTruck" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="WeightSum" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="BrandEngine" Type="nvarchar" MaxLength="100" />
+          <Property Name="NumberEngine" Type="nvarchar" MaxLength="40" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberPresure" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="HosePower" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NumWheel" Type="int" />
+          <Property Name="SizeWheel" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="TypeFuel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisterDate" Type="date" />
+          <Property Name="ChassisNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="RWeight" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ExprieDate" Type="date" />
+          <Property Name="RTax" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ICompany" Type="nvarchar" MaxLength="100" />
+          <Property Name="INumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IExprieDate" Type="date" />
+          <Property Name="IType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IPremium" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IBroker" Type="nvarchar" MaxLength="50" />
+          <Property Name="IContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="IMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="ACompany" Type="nvarchar" MaxLength="100" />
+          <Property Name="ANumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="AExprieDate" Type="date" />
+          <Property Name="APremium" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="WorkingHistory">
           <Key>
@@ -274,7 +512,9 @@
           <EntitySet Name="DeliveryPrice" EntityType="Self.DeliveryPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FuelType" EntityType="Self.FuelType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Garage" EntityType="Self.Garage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GasRefill" EntityType="Self.GasRefill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GasStation" EntityType="Self.GasStation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GPSViolationHistory" EntityType="Self.GPSViolationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
@@ -286,6 +526,9 @@
           <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provice" EntityType="Self.Provice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubContact" EntityType="Self.SubContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tire" EntityType="Self.Tire" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TireChange" EntityType="Self.TireChange" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TrainingHistory" EntityType="Self.TrainingHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
@@ -332,13 +575,29 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ProviceID" Type="Int32" />
+          <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="Telephone" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Contact" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DeliveryPrice">
           <Key>
@@ -354,33 +613,37 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmpID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Name="DriverLicence" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="EmpID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DriverLicence" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="DIssueDate" Type="DateTime" Precision="0" />
           <Property Name="DExpireDate" Type="DateTime" Precision="0" />
-          <Property Name="BOD" Type="DateTime" Precision="0" />
-          <Property Name="Lineage" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Race" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="Nationality" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="Religion" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="NationalID" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="IDCard" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
           <Property Name="IssuseDate" Type="DateTime" Precision="0" />
           <Property Name="ExpireDate" Type="DateTime" Precision="0" />
           <Property Name="Weight" Type="Double" />
           <Property Name="Height" Type="Double" />
           <Property Name="MarriageStatusID" Type="Int32" />
           <Property Name="MilitaryStatusID" Type="Int32" />
-          <Property Name="EducationID" Type="Int32" />
+          <Property Name="Education" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ProviceID" Type="Int32" />
+          <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
           <Property Name="FatherFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="BODFather" Type="DateTime" Precision="0" />
+          <Property Name="DOBFather" Type="DateTime" Precision="0" />
           <Property Name="MotherFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="BODMother" Type="DateTime" Precision="0" />
+          <Property Name="DOBMother" Type="DateTime" Precision="0" />
           <Property Name="WifeFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="Workplace" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="WPosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Child" Type="Int32" />
+          <Property Name="FileDriver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileIDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FuelType">
           <Key>
@@ -388,6 +651,18 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Garage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="GasRefill">
           <Key>
@@ -401,6 +676,17 @@
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Lite" Type="Double" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GasStation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="GPSViolationHistory">
           <Key>
@@ -464,25 +750,60 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="OrderTypeID" Type="Int32" />
-          <Property Name="BookingID" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderType" Type="Int32" />
+          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerID" Type="Int32" />
-          <Property Name="OrderDate" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="DliveryDate" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
+          <Property Name="DliveryDate" Type="DateTime" Precision="0" />
           <Property Name="RoutID" Type="Int32" />
-          <Property Name="C20DC" Type="Int32" />
-          <Property Name="C40DC" Type="Int32" />
-          <Property Name="C40HC" Type="Int32" />
+          <Property Name="NumberOrder" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PPackDate" Type="DateTime" Precision="0" />
+          <Property Name="TPackDate" Type="DateTime" Precision="0" />
+          <Property Name="IEType" Type="Int32" />
+          <Property Name="IEShipper" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEAgent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IELoading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IELocationPack" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IELiner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEReceiveDate" Type="DateTime" Precision="0" />
+          <Property Name="IEPackDate" Type="DateTime" Precision="0" />
+          <Property Name="IEPacklTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IEFeeder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEMother" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IECYDate" Type="DateTime" Precision="0" />
+          <Property Name="IEETDDate" Type="DateTime" Precision="0" />
+          <Property Name="IEContact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEETADate" Type="DateTime" Precision="0" />
+          <Property Name="IEAT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IETel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IECLosingDate" Type="DateTime" Precision="0" />
+          <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IEAgent2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContainerNO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Size" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OID" Type="Int32" />
+          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ContainerNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PackNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="OrderType">
           <Key>
@@ -503,8 +824,146 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="From" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="TO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="FromDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FromProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ToDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ToProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Distance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OilVolume" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Toll" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DeliveryCost" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OTPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OTPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OTDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POTPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="POTPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="POTDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TaxPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TaxDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PSPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PSPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PSDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="STaxPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="STaxPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="STaxDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ITPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ITPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ITDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IHPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IHPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IHDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IPPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IPPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IPDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LTPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LTPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LTDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LHPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LHPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="LHDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GPSPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GPSPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GPSDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SalaryPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SalaryPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SalaryDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OtherPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OtherPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OtherDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RentPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RentPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RentDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SumPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SumPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SumDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CPPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CPPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CPDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OilPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OilPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OilDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TirePrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TirePriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TireDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DrivePrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DrivePriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DriveDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VarPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VarPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VarDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NDay" Type="Int32" />
+          <Property Name="NPerDay" Type="Int32" />
+          <Property Name="NMonth" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SDate" Type="DateTime" Precision="0" />
+          <Property Name="SDetail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SNumber" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SRemark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SubContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Email5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tire">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SizeTire" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UsedKM" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="ExprieDate" Type="DateTime" Precision="0" />
+          <Property Name="SaleBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TruckID" Type="Int32" />
+          <Property Name="PositionWheel" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="TireChange">
           <Key>
@@ -536,18 +995,40 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LicensePlate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Brand" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="FuelTypeID" Type="Int32" />
+          <Property Name="License" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TruckType" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="EngineBrand" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Insurer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="InsuranceNum" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="IssueDate" Type="DateTime" Precision="0" />
-          <Property Name="ExpireDate" Type="DateTime" Precision="0" />
-          <Property Name="Premium" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="HeadID" Type="Int32" />
+          <Property Name="Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HitchLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="weightTruck" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="WeightSum" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BrandEngine" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NumberEngine" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPresure" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HosePower" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NumWheel" Type="Int32" />
+          <Property Name="SizeWheel" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="TypeFuel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="0" />
+          <Property Name="ChassisNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RWeight" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ExprieDate" Type="DateTime" Precision="0" />
+          <Property Name="RTax" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ICompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="INumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IExprieDate" Type="DateTime" Precision="0" />
+          <Property Name="IType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IPremium" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IBroker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ACompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AExprieDate" Type="DateTime" Precision="0" />
+          <Property Name="APremium" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="WorkingHistory">
           <Key>
@@ -565,7 +1046,9 @@
           <EntitySet Name="DeliveryPrices" EntityType="Self.DeliveryPrice" />
           <EntitySet Name="Drivers" EntityType="Self.Driver" />
           <EntitySet Name="FuelTypes" EntityType="Self.FuelType" />
+          <EntitySet Name="Garages" EntityType="Self.Garage" />
           <EntitySet Name="GasRefills" EntityType="Self.GasRefill" />
+          <EntitySet Name="GasStations" EntityType="Self.GasStation" />
           <EntitySet Name="GPSViolationHistories" EntityType="Self.GPSViolationHistory" />
           <EntitySet Name="Jobs" EntityType="Self.Job" />
           <EntitySet Name="Maintenances" EntityType="Self.Maintenance" />
@@ -577,6 +1060,9 @@
           <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
           <EntitySet Name="Provices" EntityType="Self.Provice" />
           <EntitySet Name="Routes" EntityType="Self.Route" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="SubContacts" EntityType="Self.SubContact" />
+          <EntitySet Name="Tires" EntityType="Self.Tire" />
           <EntitySet Name="TireChanges" EntityType="Self.TireChange" />
           <EntitySet Name="TrainingHistories" EntityType="Self.TrainingHistory" />
           <EntitySet Name="Trucks" EntityType="Self.Truck" />
@@ -626,13 +1112,29 @@
             <EntityTypeMapping TypeName="TMSModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ProviceID" ColumnName="ProviceID" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
                 <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
                 <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Position1" ColumnName="Position1" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Position2" ColumnName="Position2" />
+                <ScalarProperty Name="Contact3" ColumnName="Contact3" />
+                <ScalarProperty Name="Email3" ColumnName="Email3" />
+                <ScalarProperty Name="Position3" ColumnName="Position3" />
+                <ScalarProperty Name="Contact4" ColumnName="Contact4" />
+                <ScalarProperty Name="Email4" ColumnName="Email4" />
+                <ScalarProperty Name="Position4" ColumnName="Position4" />
+                <ScalarProperty Name="Contact5" ColumnName="Contact5" />
+                <ScalarProperty Name="Email5" ColumnName="Email5" />
+                <ScalarProperty Name="Position5" ColumnName="Position5" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -655,28 +1157,32 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="DIssueDate" ColumnName="DIssueDate" />
                 <ScalarProperty Name="DExpireDate" ColumnName="DExpireDate" />
-                <ScalarProperty Name="BOD" ColumnName="BOD" />
-                <ScalarProperty Name="Lineage" ColumnName="Lineage" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Race" ColumnName="Race" />
                 <ScalarProperty Name="Nationality" ColumnName="Nationality" />
                 <ScalarProperty Name="Religion" ColumnName="Religion" />
-                <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
                 <ScalarProperty Name="IssuseDate" ColumnName="IssuseDate" />
                 <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Height" ColumnName="Height" />
                 <ScalarProperty Name="MarriageStatusID" ColumnName="MarriageStatusID" />
                 <ScalarProperty Name="MilitaryStatusID" ColumnName="MilitaryStatusID" />
-                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ProviceID" ColumnName="ProviceID" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
                 <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
                 <ScalarProperty Name="FatherFullName" ColumnName="FatherFullName" />
-                <ScalarProperty Name="BODFather" ColumnName="BODFather" />
+                <ScalarProperty Name="DOBFather" ColumnName="DOBFather" />
                 <ScalarProperty Name="MotherFullName" ColumnName="MotherFullName" />
-                <ScalarProperty Name="BODMother" ColumnName="BODMother" />
+                <ScalarProperty Name="DOBMother" ColumnName="DOBMother" />
                 <ScalarProperty Name="WifeFullName" ColumnName="WifeFullName" />
                 <ScalarProperty Name="Workplace" ColumnName="Workplace" />
+                <ScalarProperty Name="WPosition" ColumnName="WPosition" />
                 <ScalarProperty Name="Child" ColumnName="Child" />
+                <ScalarProperty Name="FileDriver" ColumnName="FileDriver" />
+                <ScalarProperty Name="FileIDCard" ColumnName="FileIDCard" />
+                <ScalarProperty Name="FileRegistration" ColumnName="FileRegistration" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -685,6 +1191,19 @@
               <MappingFragment StoreEntitySet="FuelType">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Garages">
+            <EntityTypeMapping TypeName="TMSModel.Garage">
+              <MappingFragment StoreEntitySet="Garage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -699,6 +1218,18 @@
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Lite" ColumnName="Lite" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GasStations">
+            <EntityTypeMapping TypeName="TMSModel.GasStation">
+              <MappingFragment StoreEntitySet="GasStation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -770,15 +1301,47 @@
             <EntityTypeMapping TypeName="TMSModel.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderTypeID" ColumnName="OrderTypeID" />
-                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
                 <ScalarProperty Name="DliveryDate" ColumnName="DliveryDate" />
                 <ScalarProperty Name="RoutID" ColumnName="RoutID" />
-                <ScalarProperty Name="C20DC" ColumnName="20DC" />
-                <ScalarProperty Name="C40DC" ColumnName="40DC" />
-                <ScalarProperty Name="C40HC" ColumnName="40HC" />
+                <ScalarProperty Name="NumberOrder" ColumnName="NumberOrder" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="PPackDate" ColumnName="PPackDate" />
+                <ScalarProperty Name="TPackDate" ColumnName="TPackDate" />
+                <ScalarProperty Name="IEType" ColumnName="IEType" />
+                <ScalarProperty Name="IEShipper" ColumnName="IEShipper" />
+                <ScalarProperty Name="IEAgent" ColumnName="IEAgent" />
+                <ScalarProperty Name="IELoading" ColumnName="IELoading" />
+                <ScalarProperty Name="IEShipping" ColumnName="IEShipping" />
+                <ScalarProperty Name="IETelephone" ColumnName="IETelephone" />
+                <ScalarProperty Name="IELocationPack" ColumnName="IELocationPack" />
+                <ScalarProperty Name="IELocationReceive" ColumnName="IELocationReceive" />
+                <ScalarProperty Name="IEMap" ColumnName="IEMap" />
+                <ScalarProperty Name="IELiner" ColumnName="IELiner" />
+                <ScalarProperty Name="IEReceiveDate" ColumnName="IEReceiveDate" />
+                <ScalarProperty Name="IEPackDate" ColumnName="IEPackDate" />
+                <ScalarProperty Name="IEPacklTime" ColumnName="IEPacklTime" />
+                <ScalarProperty Name="IEFeeder" ColumnName="IEFeeder" />
+                <ScalarProperty Name="IEMother" ColumnName="IEMother" />
+                <ScalarProperty Name="IECYDate" ColumnName="IECYDate" />
+                <ScalarProperty Name="IEETDDate" ColumnName="IEETDDate" />
+                <ScalarProperty Name="IEContact" ColumnName="IEContact" />
+                <ScalarProperty Name="IEETADate" ColumnName="IEETADate" />
+                <ScalarProperty Name="IEAT" ColumnName="IEAT" />
+                <ScalarProperty Name="IETel" ColumnName="IETel" />
+                <ScalarProperty Name="IEBill" ColumnName="IEBill" />
+                <ScalarProperty Name="IEPortPrice" ColumnName="IEPortPrice" />
+                <ScalarProperty Name="IELanPrice" ColumnName="IELanPrice" />
+                <ScalarProperty Name="IELiftPrice" ColumnName="IELiftPrice" />
+                <ScalarProperty Name="IECLosingDate" ColumnName="IECLosingDate" />
+                <ScalarProperty Name="IEClosingTime" ColumnName="IEClosingTime" />
+                <ScalarProperty Name="IEAgent2" ColumnName="IEAgent2" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -786,9 +1349,12 @@
             <EntityTypeMapping TypeName="TMSModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ContainerNO" ColumnName="ContainerNO" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="PackNo" ColumnName="PackNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -812,8 +1378,149 @@
             <EntityTypeMapping TypeName="TMSModel.Route">
               <MappingFragment StoreEntitySet="Route">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="From" ColumnName="From" />
-                <ScalarProperty Name="TO" ColumnName="TO" />
+                <ScalarProperty Name="FromDetail" ColumnName="FromDetail" />
+                <ScalarProperty Name="FromProvince" ColumnName="FromProvince" />
+                <ScalarProperty Name="ToDetail" ColumnName="ToDetail" />
+                <ScalarProperty Name="ToProvince" ColumnName="ToProvince" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="OilVolume" ColumnName="OilVolume" />
+                <ScalarProperty Name="Toll" ColumnName="Toll" />
+                <ScalarProperty Name="DeliveryCost" ColumnName="DeliveryCost" />
+                <ScalarProperty Name="OTPrice" ColumnName="OTPrice" />
+                <ScalarProperty Name="OTPriceMonth" ColumnName="OTPriceMonth" />
+                <ScalarProperty Name="OTDetail" ColumnName="OTDetail" />
+                <ScalarProperty Name="POTPrice" ColumnName="POTPrice" />
+                <ScalarProperty Name="POTPriceMonth" ColumnName="POTPriceMonth" />
+                <ScalarProperty Name="POTDetail" ColumnName="POTDetail" />
+                <ScalarProperty Name="TaxPrice" ColumnName="TaxPrice" />
+                <ScalarProperty Name="TaxPriceMonth" ColumnName="TaxPriceMonth" />
+                <ScalarProperty Name="TaxDetail" ColumnName="TaxDetail" />
+                <ScalarProperty Name="HPrice" ColumnName="HPrice" />
+                <ScalarProperty Name="HPriceMonth" ColumnName="HPriceMonth" />
+                <ScalarProperty Name="HDetail" ColumnName="HDetail" />
+                <ScalarProperty Name="SPrice" ColumnName="SPrice" />
+                <ScalarProperty Name="SPriceMonth" ColumnName="SPriceMonth" />
+                <ScalarProperty Name="SDetail" ColumnName="SDetail" />
+                <ScalarProperty Name="PSPrice" ColumnName="PSPrice" />
+                <ScalarProperty Name="PSPriceMonth" ColumnName="PSPriceMonth" />
+                <ScalarProperty Name="PSDetail" ColumnName="PSDetail" />
+                <ScalarProperty Name="STaxPrice" ColumnName="STaxPrice" />
+                <ScalarProperty Name="STaxPriceMonth" ColumnName="STaxPriceMonth" />
+                <ScalarProperty Name="STaxDetail" ColumnName="STaxDetail" />
+                <ScalarProperty Name="ITPrice" ColumnName="ITPrice" />
+                <ScalarProperty Name="ITPriceMonth" ColumnName="ITPriceMonth" />
+                <ScalarProperty Name="ITDetail" ColumnName="ITDetail" />
+                <ScalarProperty Name="IHPrice" ColumnName="IHPrice" />
+                <ScalarProperty Name="IHPriceMonth" ColumnName="IHPriceMonth" />
+                <ScalarProperty Name="IHDetail" ColumnName="IHDetail" />
+                <ScalarProperty Name="IPPrice" ColumnName="IPPrice" />
+                <ScalarProperty Name="IPPriceMonth" ColumnName="IPPriceMonth" />
+                <ScalarProperty Name="IPDetail" ColumnName="IPDetail" />
+                <ScalarProperty Name="LTPrice" ColumnName="LTPrice" />
+                <ScalarProperty Name="LTPriceMonth" ColumnName="LTPriceMonth" />
+                <ScalarProperty Name="LTDetail" ColumnName="LTDetail" />
+                <ScalarProperty Name="LHPrice" ColumnName="LHPrice" />
+                <ScalarProperty Name="LHPriceMonth" ColumnName="LHPriceMonth" />
+                <ScalarProperty Name="LHDetail" ColumnName="LHDetail" />
+                <ScalarProperty Name="GPSPrice" ColumnName="GPSPrice" />
+                <ScalarProperty Name="GPSPriceMonth" ColumnName="GPSPriceMonth" />
+                <ScalarProperty Name="GPSDetail" ColumnName="GPSDetail" />
+                <ScalarProperty Name="SalaryPrice" ColumnName="SalaryPrice" />
+                <ScalarProperty Name="SalaryPriceMonth" ColumnName="SalaryPriceMonth" />
+                <ScalarProperty Name="SalaryDetail" ColumnName="SalaryDetail" />
+                <ScalarProperty Name="OtherPrice" ColumnName="OtherPrice" />
+                <ScalarProperty Name="OtherPriceMonth" ColumnName="OtherPriceMonth" />
+                <ScalarProperty Name="OtherDetail" ColumnName="OtherDetail" />
+                <ScalarProperty Name="RentPrice" ColumnName="RentPrice" />
+                <ScalarProperty Name="RentPriceMonth" ColumnName="RentPriceMonth" />
+                <ScalarProperty Name="RentDetail" ColumnName="RentDetail" />
+                <ScalarProperty Name="MPrice" ColumnName="MPrice" />
+                <ScalarProperty Name="MPriceMonth" ColumnName="MPriceMonth" />
+                <ScalarProperty Name="MDetail" ColumnName="MDetail" />
+                <ScalarProperty Name="CPrice" ColumnName="CPrice" />
+                <ScalarProperty Name="CPriceMonth" ColumnName="CPriceMonth" />
+                <ScalarProperty Name="CDetail" ColumnName="CDetail" />
+                <ScalarProperty Name="SumPrice" ColumnName="SumPrice" />
+                <ScalarProperty Name="SumPriceMonth" ColumnName="SumPriceMonth" />
+                <ScalarProperty Name="SumDetail" ColumnName="SumDetail" />
+                <ScalarProperty Name="CPPrice" ColumnName="CPPrice" />
+                <ScalarProperty Name="CPPriceMonth" ColumnName="CPPriceMonth" />
+                <ScalarProperty Name="CPDetail" ColumnName="CPDetail" />
+                <ScalarProperty Name="OilPrice" ColumnName="OilPrice" />
+                <ScalarProperty Name="OilPriceMonth" ColumnName="OilPriceMonth" />
+                <ScalarProperty Name="OilDetail" ColumnName="OilDetail" />
+                <ScalarProperty Name="TirePrice" ColumnName="TirePrice" />
+                <ScalarProperty Name="TirePriceMonth" ColumnName="TirePriceMonth" />
+                <ScalarProperty Name="TireDetail" ColumnName="TireDetail" />
+                <ScalarProperty Name="DrivePrice" ColumnName="DrivePrice" />
+                <ScalarProperty Name="DrivePriceMonth" ColumnName="DrivePriceMonth" />
+                <ScalarProperty Name="DriveDetail" ColumnName="DriveDetail" />
+                <ScalarProperty Name="RPrice" ColumnName="RPrice" />
+                <ScalarProperty Name="RPriceMonth" ColumnName="RPriceMonth" />
+                <ScalarProperty Name="RDetail" ColumnName="RDetail" />
+                <ScalarProperty Name="VarPrice" ColumnName="VarPrice" />
+                <ScalarProperty Name="VarPriceMonth" ColumnName="VarPriceMonth" />
+                <ScalarProperty Name="VarDetail" ColumnName="VarDetail" />
+                <ScalarProperty Name="NDay" ColumnName="NDay" />
+                <ScalarProperty Name="NPerDay" ColumnName="NPerDay" />
+                <ScalarProperty Name="NMonth" ColumnName="NMonth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="TMSModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SDate" ColumnName="SDate" />
+                <ScalarProperty Name="SDetail" ColumnName="SDetail" />
+                <ScalarProperty Name="SNumber" ColumnName="SNumber" />
+                <ScalarProperty Name="SRemark" ColumnName="SRemark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubContacts">
+            <EntityTypeMapping TypeName="TMSModel.SubContact">
+              <MappingFragment StoreEntitySet="SubContact">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Position1" ColumnName="Position1" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Position2" ColumnName="Position2" />
+                <ScalarProperty Name="Contact3" ColumnName="Contact3" />
+                <ScalarProperty Name="Email3" ColumnName="Email3" />
+                <ScalarProperty Name="Position3" ColumnName="Position3" />
+                <ScalarProperty Name="Contact4" ColumnName="Contact4" />
+                <ScalarProperty Name="Email4" ColumnName="Email4" />
+                <ScalarProperty Name="Position4" ColumnName="Position4" />
+                <ScalarProperty Name="Contact5" ColumnName="Contact5" />
+                <ScalarProperty Name="Email5" ColumnName="Email5" />
+                <ScalarProperty Name="Position5" ColumnName="Position5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tires">
+            <EntityTypeMapping TypeName="TMSModel.Tire">
+              <MappingFragment StoreEntitySet="Tire">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="SizeTire" ColumnName="SizeTire" />
+                <ScalarProperty Name="UsedKM" ColumnName="UsedKM" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+                <ScalarProperty Name="SaleBy" ColumnName="SaleBy" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="PositionWheel" ColumnName="PositionWheel" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -848,18 +1555,40 @@
             <EntityTypeMapping TypeName="TMSModel.Truck">
               <MappingFragment StoreEntitySet="Truck">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
+                <ScalarProperty Name="License" ColumnName="License" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
-                <ScalarProperty Name="FuelTypeID" ColumnName="FuelTypeID" />
                 <ScalarProperty Name="TruckType" ColumnName="TruckType" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="EngineBrand" ColumnName="EngineBrand" />
-                <ScalarProperty Name="Insurer" ColumnName="Insurer" />
-                <ScalarProperty Name="InsuranceNum" ColumnName="InsuranceNum" />
-                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
-                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
-                <ScalarProperty Name="Premium" ColumnName="Premium" />
-                <ScalarProperty Name="HeadID" ColumnName="HeadID" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="HitchLicense" ColumnName="HitchLicense" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="weightTruck" ColumnName="weightTruck" />
+                <ScalarProperty Name="WeightSum" ColumnName="WeightSum" />
+                <ScalarProperty Name="BrandEngine" ColumnName="BrandEngine" />
+                <ScalarProperty Name="NumberEngine" ColumnName="NumberEngine" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="NumberPresure" ColumnName="NumberPresure" />
+                <ScalarProperty Name="HosePower" ColumnName="HosePower" />
+                <ScalarProperty Name="NumWheel" ColumnName="NumWheel" />
+                <ScalarProperty Name="SizeWheel" ColumnName="SizeWheel" />
+                <ScalarProperty Name="TypeFuel" ColumnName="TypeFuel" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
+                <ScalarProperty Name="RWeight" ColumnName="RWeight" />
+                <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+                <ScalarProperty Name="RTax" ColumnName="RTax" />
+                <ScalarProperty Name="ICompany" ColumnName="ICompany" />
+                <ScalarProperty Name="INumber" ColumnName="INumber" />
+                <ScalarProperty Name="IExprieDate" ColumnName="IExprieDate" />
+                <ScalarProperty Name="IType" ColumnName="IType" />
+                <ScalarProperty Name="IPremium" ColumnName="IPremium" />
+                <ScalarProperty Name="IBroker" ColumnName="IBroker" />
+                <ScalarProperty Name="IContact" ColumnName="IContact" />
+                <ScalarProperty Name="IMobile" ColumnName="IMobile" />
+                <ScalarProperty Name="ACompany" ColumnName="ACompany" />
+                <ScalarProperty Name="ANumber" ColumnName="ANumber" />
+                <ScalarProperty Name="AExprieDate" ColumnName="AExprieDate" />
+                <ScalarProperty Name="APremium" ColumnName="APremium" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

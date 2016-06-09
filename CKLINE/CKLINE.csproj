@@ -186,7 +186,13 @@
     <Compile Include="FuelType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Garage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="GasRefill.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GasStation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -257,6 +263,15 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Stock.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubContact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tire.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="TireChange.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -943,6 +958,8 @@
     <Content Include="plugins\datatables\jquery.dataTables.min.css" />
     <Content Include="plugins\datatables\jquery.dataTables.min.js" />
     <Content Include="plugins\datatables\jquery.dataTables_themeroller.css" />
+    <Content Include="plugins\datepicker2\css\datepicker.css" />
+    <Content Include="plugins\datepicker2\js\bootstrap-datepicker.js" />
     <Content Include="plugins\datepicker\bootstrap-datepicker.js" />
     <Content Include="plugins\datepicker\datepicker3.css" />
     <Content Include="plugins\datepicker\locales\bootstrap-datepicker.ar.js" />
@@ -1391,6 +1408,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="plugins\datepicker2\less\datepicker.less" />
     <None Include="Properties\PublishProfiles\CKLINE.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1491,9 +1509,12 @@
     <Content Include="Views\Report\TransportingList.cshtml" />
     <Content Include="Views\TMS\Stock.cshtml" />
     <Content Include="Views\TMS\StockDetail.cshtml" />
+    <Content Include="Views\TMS\OrderCommit.cshtml" />
+    <Content Include="Views\TMS\OrderInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="MapFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

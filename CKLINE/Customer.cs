@@ -15,12 +15,28 @@ namespace CKLINE
     public partial class Customer
     {
         public int ID { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public Nullable<int> ProviceID { get; set; }
+        public string Province { get; set; }
         public string ZipCode { get; set; }
         public string Telephone { get; set; }
-        public string Email { get; set; }
-        public string Contact { get; set; }
+        public string Fax { get; set; }
+        public string Payment { get; set; }
+        public string Contact1 { get; set; }
+        public string Email1 { get; set; }
+        public string Position1 { get; set; }
+        public string Contact2 { get; set; }
+        public string Email2 { get; set; }
+        public string Position2 { get; set; }
+        public string Contact3 { get; set; }
+        public string Email3 { get; set; }
+        public string Position3 { get; set; }
+        public string Contact4 { get; set; }
+        public string Email4 { get; set; }
+        public string Position4 { get; set; }
+        public string Contact5 { get; set; }
+        public string Email5 { get; set; }
+        public string Position5 { get; set; }
     }
 }

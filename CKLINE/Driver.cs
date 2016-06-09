@@ -20,27 +20,31 @@ namespace CKLINE
         public string Type { get; set; }
         public Nullable<System.DateTime> DIssueDate { get; set; }
         public Nullable<System.DateTime> DExpireDate { get; set; }
-        public Nullable<System.DateTime> BOD { get; set; }
-        public string Lineage { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
+        public string Race { get; set; }
         public string Nationality { get; set; }
         public string Religion { get; set; }
-        public string NationalID { get; set; }
+        public string IDCard { get; set; }
         public Nullable<System.DateTime> IssuseDate { get; set; }
         public Nullable<System.DateTime> ExpireDate { get; set; }
         public Nullable<double> Weight { get; set; }
         public Nullable<double> Height { get; set; }
         public Nullable<int> MarriageStatusID { get; set; }
         public Nullable<int> MilitaryStatusID { get; set; }
-        public Nullable<int> EducationID { get; set; }
+        public string Education { get; set; }
         public string Address { get; set; }
-        public Nullable<int> ProviceID { get; set; }
+        public string Province { get; set; }
         public string ZipCode { get; set; }
         public string FatherFullName { get; set; }
-        public Nullable<System.DateTime> BODFather { get; set; }
+        public Nullable<System.DateTime> DOBFather { get; set; }
         public string MotherFullName { get; set; }
-        public Nullable<System.DateTime> BODMother { get; set; }
+        public Nullable<System.DateTime> DOBMother { get; set; }
         public string WifeFullName { get; set; }
         public string Workplace { get; set; }
+        public string WPosition { get; set; }
         public Nullable<int> Child { get; set; }
+        public string FileDriver { get; set; }
+        public string FileIDCard { get; set; }
+        public string FileRegistration { get; set; }
     }
 }

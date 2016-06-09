@@ -36,13 +36,29 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="ProviceID" Type="Int32" />
+    <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
     <Property Name="Telephone" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Contact" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DeliveryPrice">
     <Key>
@@ -58,33 +74,37 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EmpID" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="DriverLicence" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="EmpID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="DriverLicence" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="DIssueDate" Type="DateTime" Precision="0" />
     <Property Name="DExpireDate" Type="DateTime" Precision="0" />
-    <Property Name="BOD" Type="DateTime" Precision="0" />
-    <Property Name="Lineage" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Race" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Nationality" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Religion" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="NationalID" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="IDCard" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
     <Property Name="IssuseDate" Type="DateTime" Precision="0" />
     <Property Name="ExpireDate" Type="DateTime" Precision="0" />
     <Property Name="Weight" Type="Double" />
     <Property Name="Height" Type="Double" />
     <Property Name="MarriageStatusID" Type="Int32" />
     <Property Name="MilitaryStatusID" Type="Int32" />
-    <Property Name="EducationID" Type="Int32" />
+    <Property Name="Education" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="ProviceID" Type="Int32" />
+    <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
     <Property Name="FatherFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="BODFather" Type="DateTime" Precision="0" />
+    <Property Name="DOBFather" Type="DateTime" Precision="0" />
     <Property Name="MotherFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="BODMother" Type="DateTime" Precision="0" />
+    <Property Name="DOBMother" Type="DateTime" Precision="0" />
     <Property Name="WifeFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Workplace" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="WPosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Child" Type="Int32" />
+    <Property Name="FileDriver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FileIDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FileRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="FuelType">
     <Key>
@@ -92,6 +112,18 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Garage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="GasRefill">
     <Key>
@@ -105,6 +137,17 @@
     <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Lite" Type="Double" />
     <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GasStation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="GPSViolationHistory">
     <Key>
@@ -168,25 +211,60 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="OrderTypeID" Type="Int32" />
-    <Property Name="BookingID" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderType" Type="Int32" />
+    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CustomerID" Type="Int32" />
-    <Property Name="OrderDate" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="DliveryDate" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
+    <Property Name="DliveryDate" Type="DateTime" Precision="0" />
     <Property Name="RoutID" Type="Int32" />
-    <Property Name="C20DC" Type="Int32" />
-    <Property Name="C40DC" Type="Int32" />
-    <Property Name="C40HC" Type="Int32" />
+    <Property Name="NumberOrder" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PPackDate" Type="DateTime" Precision="0" />
+    <Property Name="TPackDate" Type="DateTime" Precision="0" />
+    <Property Name="IEType" Type="Int32" />
+    <Property Name="IEShipper" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEAgent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IELoading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IELocationPack" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IELiner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEReceiveDate" Type="DateTime" Precision="0" />
+    <Property Name="IEPackDate" Type="DateTime" Precision="0" />
+    <Property Name="IEPacklTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="IEFeeder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEMother" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IECYDate" Type="DateTime" Precision="0" />
+    <Property Name="IEETDDate" Type="DateTime" Precision="0" />
+    <Property Name="IEContact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEETADate" Type="DateTime" Precision="0" />
+    <Property Name="IEAT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IETel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IECLosingDate" Type="DateTime" Precision="0" />
+    <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="IEAgent2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ContainerNO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Size" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="OID" Type="Int32" />
+    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ContainerNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="PackNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="OrderType">
     <Key>
@@ -207,8 +285,146 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="From" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="TO" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="FromDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FromProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ToProvince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Distance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OilVolume" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Toll" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DeliveryCost" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OTPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OTPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OTDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="POTPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="POTPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="POTDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TaxPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TaxPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TaxDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PSPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PSPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PSDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="STaxPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="STaxPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="STaxDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ITPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ITPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ITDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IHPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IHPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IHDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IPPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IPPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IPDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LTPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="LTPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="LTDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LHPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="LHPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="LHDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GPSPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GPSPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GPSDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SalaryPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SalaryPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SalaryDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OtherPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OtherPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OtherDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RentPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RentPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RentDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SumPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SumPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SumDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CPPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CPPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CPDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OilPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OilPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OilDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TirePrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TirePriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TireDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DrivePrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DrivePriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DriveDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="VarPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="VarPriceMonth" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="VarDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NDay" Type="Int32" />
+    <Property Name="NPerDay" Type="Int32" />
+    <Property Name="NMonth" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SDate" Type="DateTime" Precision="0" />
+    <Property Name="SDetail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SNumber" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SRemark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SubContact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tire">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SizeTire" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="UsedKM" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+    <Property Name="ExprieDate" Type="DateTime" Precision="0" />
+    <Property Name="SaleBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TruckID" Type="Int32" />
+    <Property Name="PositionWheel" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="TireChange">
     <Key>
@@ -240,18 +456,40 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LicensePlate" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Brand" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="FuelTypeID" Type="Int32" />
+    <Property Name="License" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="TruckType" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Model" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="EngineBrand" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Insurer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="InsuranceNum" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="IssueDate" Type="DateTime" Precision="0" />
-    <Property Name="ExpireDate" Type="DateTime" Precision="0" />
-    <Property Name="Premium" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="HeadID" Type="Int32" />
+    <Property Name="Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HitchLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="weightTruck" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WeightSum" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BrandEngine" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NumberEngine" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumberPresure" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HosePower" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NumWheel" Type="Int32" />
+    <Property Name="SizeWheel" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TypeFuel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterDate" Type="DateTime" Precision="0" />
+    <Property Name="ChassisNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RWeight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ExprieDate" Type="DateTime" Precision="0" />
+    <Property Name="RTax" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ICompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="INumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IExprieDate" Type="DateTime" Precision="0" />
+    <Property Name="IType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IPremium" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IBroker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AExprieDate" Type="DateTime" Precision="0" />
+    <Property Name="APremium" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="WorkingHistory">
     <Key>
@@ -269,7 +507,9 @@
     <EntitySet Name="DeliveryPrices" EntityType="Self.DeliveryPrice" />
     <EntitySet Name="Drivers" EntityType="Self.Driver" />
     <EntitySet Name="FuelTypes" EntityType="Self.FuelType" />
+    <EntitySet Name="Garages" EntityType="Self.Garage" />
     <EntitySet Name="GasRefills" EntityType="Self.GasRefill" />
+    <EntitySet Name="GasStations" EntityType="Self.GasStation" />
     <EntitySet Name="GPSViolationHistories" EntityType="Self.GPSViolationHistory" />
     <EntitySet Name="Jobs" EntityType="Self.Job" />
     <EntitySet Name="Maintenances" EntityType="Self.Maintenance" />
@@ -281,6 +521,9 @@
     <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
     <EntitySet Name="Provices" EntityType="Self.Provice" />
     <EntitySet Name="Routes" EntityType="Self.Route" />
+    <EntitySet Name="Stocks" EntityType="Self.Stock" />
+    <EntitySet Name="SubContacts" EntityType="Self.SubContact" />
+    <EntitySet Name="Tires" EntityType="Self.Tire" />
     <EntitySet Name="TireChanges" EntityType="Self.TireChange" />
     <EntitySet Name="TrainingHistories" EntityType="Self.TrainingHistory" />
     <EntitySet Name="Trucks" EntityType="Self.Truck" />

@@ -15,17 +15,39 @@ namespace CKLINE
     public partial class Truck
     {
         public int ID { get; set; }
-        public string LicensePlate { get; set; }
+        public string License { get; set; }
         public string Brand { get; set; }
-        public Nullable<int> FuelTypeID { get; set; }
         public string TruckType { get; set; }
-        public string Model { get; set; }
-        public string EngineBrand { get; set; }
-        public string Insurer { get; set; }
-        public string InsuranceNum { get; set; }
-        public Nullable<System.DateTime> IssueDate { get; set; }
-        public Nullable<System.DateTime> ExpireDate { get; set; }
-        public Nullable<decimal> Premium { get; set; }
-        public Nullable<int> HeadID { get; set; }
+        public string Detail { get; set; }
+        public string HitchLicense { get; set; }
+        public Nullable<decimal> Weight { get; set; }
+        public Nullable<decimal> weightTruck { get; set; }
+        public Nullable<decimal> WeightSum { get; set; }
+        public string BrandEngine { get; set; }
+        public string NumberEngine { get; set; }
+        public string Position { get; set; }
+        public Nullable<decimal> NumberPresure { get; set; }
+        public Nullable<decimal> HosePower { get; set; }
+        public Nullable<int> NumWheel { get; set; }
+        public Nullable<decimal> SizeWheel { get; set; }
+        public string TypeFuel { get; set; }
+        public string Color { get; set; }
+        public Nullable<System.DateTime> RegisterDate { get; set; }
+        public string ChassisNumber { get; set; }
+        public Nullable<decimal> RWeight { get; set; }
+        public Nullable<System.DateTime> ExprieDate { get; set; }
+        public Nullable<decimal> RTax { get; set; }
+        public string ICompany { get; set; }
+        public string INumber { get; set; }
+        public Nullable<System.DateTime> IExprieDate { get; set; }
+        public string IType { get; set; }
+        public Nullable<decimal> IPremium { get; set; }
+        public string IBroker { get; set; }
+        public string IContact { get; set; }
+        public string IMobile { get; set; }
+        public string ACompany { get; set; }
+        public string ANumber { get; set; }
+        public Nullable<System.DateTime> AExprieDate { get; set; }
+        public Nullable<decimal> APremium { get; set; }
     }
 }
