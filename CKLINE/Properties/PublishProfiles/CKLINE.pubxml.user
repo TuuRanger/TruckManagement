@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:04</publishTime>
     </File>
     <File Include="bin/CKLINE.dll">
-      <publishTime>06/09/2016 22:55:19</publishTime>
+      <publishTime>06/13/2016 15:20:29</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/10/2016 19:23:09</publishTime>
@@ -667,7 +667,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 20:11:50</publishTime>
     </File>
     <File Include="Model1.edmx.diagram">
-      <publishTime>06/08/2016 21:37:55</publishTime>
+      <publishTime>06/13/2016 04:37:15</publishTime>
     </File>
     <File Include="package.json">
       <publishTime>04/10/2016 20:11:50</publishTime>
@@ -1000,7 +1000,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 20:11:38</publishTime>
     </File>
     <File Include="plugins/ckeditor/lang/tr.js">
-      <publishTime>10/04/2016 20:11:39</publishTime>
+      <publishTime>04/10/2016 20:11:39</publishTime>
     </File>
     <File Include="plugins/ckeditor/lang/tt.js">
       <publishTime>04/10/2016 20:11:39</publishTime>
@@ -2383,7 +2383,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 20:11:45</publishTime>
     </File>
     <File Include="plugins/datepicker/locales/bootstrap-datepicker.el.js">
-      <publishTime>10/04/2016 20:11:46</publishTime>
+      <publishTime>04/10/2016 20:11:46</publishTime>
     </File>
     <File Include="plugins/datepicker/locales/bootstrap-datepicker.es.js">
       <publishTime>04/10/2016 20:11:46</publishTime>
@@ -3175,7 +3175,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 20:11:49</publishTime>
     </File>
     <File Include="plugins/select2/i18n/nb.js">
-      <publishTime>10/04/2016 20:11:50</publishTime>
+      <publishTime>04/10/2016 20:11:50</publishTime>
     </File>
     <File Include="plugins/select2/i18n/nl.js">
       <publishTime>04/10/2016 20:11:50</publishTime>
@@ -3457,7 +3457,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/23/2016 03:35:02</publishTime>
     </File>
     <File Include="Views/TMS/CarDetail.cshtml">
-      <publishTime>03/06/2016 11:45:35</publishTime>
+      <publishTime>06/03/2016 11:45:35</publishTime>
     </File>
     <File Include="Views/TMS/CloseJob.cshtml">
       <publishTime>05/11/2016 23:04:41</publishTime>
@@ -3469,10 +3469,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/23/2016 03:34:23</publishTime>
     </File>
     <File Include="Views/TMS/CustomerDetail.cshtml">
-      <publishTime>03/06/2016 11:35:09</publishTime>
+      <publishTime>06/03/2016 11:35:09</publishTime>
     </File>
     <File Include="Views/TMS/DriverDetails.cshtml">
-      <publishTime>03/06/2016 11:22:13</publishTime>
+      <publishTime>06/03/2016 11:22:13</publishTime>
     </File>
     <File Include="Views/TMS/Drivers.cshtml">
       <publishTime>05/23/2016 03:34:44</publishTime>
@@ -3492,11 +3492,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/TMS/Index.cshtml">
       <publishTime>06/09/2016 13:57:46</publishTime>
     </File>
+    <File Include="Views/TMS/JobCommit.cshtml">
+      <publishTime>06/13/2016 13:53:24</publishTime>
+    </File>
     <File Include="Views/TMS/Jobs.cshtml">
-      <publishTime>05/17/2016 01:06:39</publishTime>
+      <publishTime>06/13/2016 14:28:13</publishTime>
     </File>
     <File Include="Views/TMS/NewOrder.cshtml">
-      <publishTime>06/09/2016 22:41:22</publishTime>
+      <publishTime>06/12/2016 23:01:27</publishTime>
     </File>
     <File Include="Views/TMS/NewRoute.cshtml">
       <publishTime>05/31/2016 01:30:43</publishTime>
@@ -3511,7 +3514,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/08/2016 12:58:16</publishTime>
     </File>
     <File Include="Views/TMS/OrderInfo.cshtml">
-      <publishTime>06/09/2016 13:39:09</publishTime>
+      <publishTime>06/12/2016 23:16:33</publishTime>
     </File>
     <File Include="Views/TMS/OrderList.cshtml">
       <publishTime>06/09/2016 14:00:34</publishTime>
@@ -3520,28 +3523,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2016 01:09:59</publishTime>
     </File>
     <File Include="Views/TMS/RepairDetail.cshtml">
-      <publishTime>03/06/2016 11:42:42</publishTime>
+      <publishTime>06/03/2016 11:42:42</publishTime>
     </File>
     <File Include="Views/TMS/Route.cshtml">
       <publishTime>05/31/2016 01:28:44</publishTime>
     </File>
     <File Include="Views/TMS/RouteDetail.cshtml">
-      <publishTime>03/06/2016 11:36:15</publishTime>
+      <publishTime>06/03/2016 11:36:15</publishTime>
     </File>
     <File Include="Views/TMS/rTest.cshtml">
       <publishTime>04/19/2016 00:27:06</publishTime>
     </File>
     <File Include="Views/TMS/Stock.cshtml">
-      <publishTime>03/06/2016 11:52:24</publishTime>
+      <publishTime>06/03/2016 11:52:24</publishTime>
     </File>
     <File Include="Views/TMS/StockDetail.cshtml">
-      <publishTime>03/06/2016 12:18:33</publishTime>
+      <publishTime>06/03/2016 12:18:33</publishTime>
     </File>
     <File Include="Views/TMS/Sub.cshtml">
       <publishTime>05/23/2016 03:34:10</publishTime>
     </File>
     <File Include="Views/TMS/SubDetail.cshtml">
-      <publishTime>03/06/2016 11:40:30</publishTime>
+      <publishTime>06/03/2016 11:40:30</publishTime>
     </File>
     <File Include="Views/TMS/test.cshtml">
       <publishTime>06/09/2016 22:11:59</publishTime>

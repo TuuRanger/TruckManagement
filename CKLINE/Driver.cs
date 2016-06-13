@@ -46,5 +46,11 @@ namespace CKLINE
         public string FileDriver { get; set; }
         public string FileIDCard { get; set; }
         public string FileRegistration { get; set; }
+        public string Title { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string NickName { get; set; }
+        public string Mobile { get; set; }
+        public Nullable<int> TruckID { get; set; }
     }
 }

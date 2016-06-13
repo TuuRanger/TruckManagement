@@ -49,5 +49,7 @@ namespace CKLINE
         public string ANumber { get; set; }
         public Nullable<System.DateTime> AExprieDate { get; set; }
         public Nullable<decimal> APremium { get; set; }
+        public Nullable<int> HitchID { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }

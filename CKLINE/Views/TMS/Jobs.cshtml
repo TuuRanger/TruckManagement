@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TMS.Models.JobList> 
+@{
     ViewBag.Title = "Jobs";
 }
 
@@ -12,7 +13,10 @@
         </ol>*@
 </section>
 <section class="content">
-
+@foreach (var item in Model)
+{
+    <input id="J" name="J" type="hidden" class="form-control" value="@Request.QueryString["J"]">
+    <input id="C" name="C" type="hidden" class="form-control" value="@Request.QueryString["C"]">
     <div class="row">
         <div class="col-md-12">
 
@@ -39,60 +43,48 @@
                                                 <th>วันที่รับ</th>
                                                 <th>วันที่ส่ง</th>
                                                 <th>จำนวน</th>
-                                                <th></th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                          @foreach (var OItem in item.JOrder)
+                                        {
+                                            String Status = "";
+                                            String SClass = "";
+                                            if (OItem.Status == 1)
+                                            {
+                                                Status = "New";
+                                                SClass = "label label-success";
+                                            }
+                                            else if (OItem.Status == 2)
+                                            {
+                                                Status = "Queue";
+                                                SClass = "label label-warning";
+                                            }
+                                            else if (OItem.Status == 3)
+                                            {
+                                                Status = "Delivered";
+                                                SClass = "label label-primary";
+                                            }
+                                            else if (OItem.Status == 4)
+                                            {
+                                                Status = "Finish";
+                                                SClass = "label label-info";
+                                            }
+                                            else if (OItem.Status == 5)
+                                            {
+                                                Status = "Cancel";
+                                                SClass = "label label-danger";
+                                            }
                                             <tr>
-                                                <td>PA59050001</td>
-                                                <td>27/05/2559</td>
-                                                <td>27/05/2559</td>
-                                                <td>3</td>
-                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
-
+                                                <td><a href="~/TMS/Jobs?J=1&OID=@OItem.OrderID&OT=@OItem.OrderType">@OItem.OrderID</a></td> 
+                                                <td>@OItem.ReceiveDate.ToString("dd/MM/yyyy")</td>
+                                                <td>@OItem.DliveryDate.ToString("dd/MM/yyyy")</td>
+                                                <td>@OItem.NumberOrder</td>
+                                                <td><span class="@SClass">@Status</span></td>
                                             </tr>
-                                            <tr>
-                                                <td>PA59050002</td>
-                                                <td>27/05/2559</td>
-                                                <td>27/05/2559</td>
-                                                <td>3</td>
-                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>CK59050001</td>
-                                                <td>27/05/2559</td>
-                                                <td>27/05/2559</td>
-                                                <td>3</td>
-                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>CK59050002</td>
-                                                <td>27/05/2559</td>
-                                                <td>27/05/2559</td>
-                                                <td>3</td>
-                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>CK59050003</td>
-                                                <td>27/05/2559</td>
-                                                <td>27/05/2559</td>
-                                                <td>3</td>
-                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>GL59050001</td>
-                                                <td>27/05/2559</td>
-                                                <td>27/05/2559</td>
-                                                <td>3</td>
-                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>GL59050002</td>
-                                                <td>27/05/2559</td>
-                                                <td>27/05/2559</td>
-                                                <td>3</td>
-                                                <td><button type="submit" class="btn btn-primary btn-block">Select</button></td>
-                                            </tr>
+                                          }
+                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -102,10 +94,11 @@
                     <!-- /.box-body -->
                 </div>
             </div>
+
             <div class="col-md-6">
-                <div class="box box-info">
+                <div class="box box-info" id="J2">
                     <div class="box-header with-border">
-                        <h3 class="box-title">2.Select Job (PA59050001)</h3>
+                        <h3 class="box-title">2.Select Job (@Request.QueryString["OID"])</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -120,28 +113,77 @@
                                 <div class="table-responsive">
                                     <table class="table no-margin">
                                         <thead>
-                                            <tr>
-                                                <th>ชื่อตู้</th>
-                                                <th>ขนาดตู้</th>
-                                                <th></th>
-                                            </tr>
+                                            @if (Request.QueryString["OT"] == "1")
+                                            {
+                                                <tr>
+                                                    <th>เบอร์ตู้</th>
+                                                    <th>ตำแหน่งวาวล์</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <th>เบอร์ตู้</th>
+                                                    <th>เบอร์ซีล</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            }
                                         </thead>
                                         <tbody>
+                                        @foreach (var ODItem in item.JOrderD)
+                                        {
+                                            String StatusD = "";
+                                            String SClassD = "";
+                                            if (ODItem.Status == 1)
+                                            {
+                                                StatusD = "New";
+                                                SClassD = "label label-success";
+                                            }
+                                            else if (ODItem.Status == 2)
+                                            {
+                                                StatusD = "Queue";
+                                                SClassD = "label label-warning";
+                                            }
+                                            else if (ODItem.Status == 3)
+                                            {
+                                                StatusD = "Delivered";
+                                                SClassD = "label label-primary";
+                                            }
+                                            else if (ODItem.Status == 4)
+                                            {
+                                                StatusD = "Finish";
+                                                SClassD = "label label-info";
+                                            }
+                                            else if (ODItem.Status == 5)
+                                            {
+                                                StatusD = "Cancel";
+                                                SClassD = "label label-danger";
+                                            }
                                             <tr>
-                                                <td>BEAU22380837</td>
-                                                <td>20'DC</td>
-                                                <td><button type="submit" class="btn btn-info btn-block">Select</button></td>
+
+                                                <td><a href="~/TMS/Jobs?J=2&OID=@Request.QueryString["OID"]&OT=@Request.QueryString["OT"]&ODID=@ODItem.ID">@ODItem.ContainerNo</a></td> 
+                                               @if (Request.QueryString["OT"] =="1")
+                                               {
+                                                   var sPosition = "";
+                                                   if(ODItem.Position == "L")
+                                                   {
+                                                       sPosition = "ด้านซ้าย";
+                                                   }
+                                                   else
+                                                   {
+                                                       sPosition = "ด้านขวา";
+                                                   }
+                                                <td>@sPosition</td>
+                                               }
+                                               else          
+                                            {
+                                                <td>@ODItem.PackNo</td>
+                                            }
+                                                
+                                                <td><span class="@SClassD">@StatusD</span></td>
                                             </tr>
-                                            <tr>
-                                                <td>BEAU22780837</td>
-                                                <td>20'DC</td>
-                                                <td><button type="submit" class="btn btn-info btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>BEAU22780838</td>
-                                                <td>20'DC</td>
-                                                <td><button type="submit" class="btn btn-info btn-block">Select</button></td>
-                                            </tr>
+}
 
                                         </tbody>
                                     </table>
@@ -155,450 +197,509 @@
         </div>
         <div class="col-md-12">
             <div class="col-md-6">
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">3.TRUCK</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
+                <div id="J3">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">3.TRUCK</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
 
+                            </div>
                         </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <form role="form">
-                            <div class="form-group">
-                                
-                                <div class="radio">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form role="form">
+                                <div class="form-group">
 
-                                    <div class="col-md-3">
+                                    <div class="radio">
 
-                                        <label>
-                                            <input type="radio" name="optiosType" id="optiosType1" value="CKLINE" checked="checked" onclick="showhidediv(this);">
-                                            CKLINE
-                                        </label>
+                                        <div class="col-md-3">
+
+                                            <label>
+                                                <input type="radio" name="optiosType" id="optiosType1" value="CKLINE" checked="checked" onclick="showhidediv(this);">
+                                                CKLINE
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>
+                                                <input type="radio" name="optiosType" id="optiosType2" value="SUB" onclick="showhidediv(this);">
+                                                SUB
+                                            </label>
+                                        </div>
+
                                     </div>
-                                    <div class="col-md-3">
-                                        <label>
-                                            <input type="radio" name="optiosType" id="optiosType2" value="SUB" onclick="showhidediv(this);">
-                                            SUB
-                                        </label>
+
+
+
+                                </div>
+
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <div class="box box-warning" id="Type1">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">3.1 CKL</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>หัวลาก</th>
+                                                    <th>หางลาก</th>
+                                                    <th>คนขับรถ</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                        @foreach (var TItem in item.JTruck)
+                                        {
+                                            String StatusT = "";
+                                            String SClassT = "";
+                                            if (TItem.TStatus == 1)
+                                            {
+                                                StatusT = "Avaliable";
+                                                SClassT = "label label-success";
+                                            }
+                                            else if (TItem.TStatus == 2)
+                                            {
+                                                StatusT = "Queue";
+                                                SClassT = "label label-warning";
+                                            }
+                                            else if (TItem.TStatus == 3)
+                                            {
+                                                StatusT = "Delivered";
+                                                SClassT = "label label-primary";
+                                            }
+                                            else if (TItem.TStatus == 4)
+                                            {
+                                                StatusT = "Finish";
+                                                SClassT = "label label-info";
+                                            }
+                                            else if (TItem.TStatus == 5)
+                                            {
+                                                StatusT = "Cancel";
+                                                SClassT = "label label-danger";
+                                            }
+                                                <tr>
+                                                    <td><a href="~/TMS/Jobs?J=3&OID=@Request.QueryString["OID"]&OT=@Request.QueryString["OT"]&ODID=@Request.QueryString["ODID"]&C=1&T=@TItem.TID&H=@TItem.HID&D=@TItem.DID&TD=@TItem.License&HD=@TItem.HitchLicense">@TItem.License</a></td> 
+                                                    <td>@TItem.HitchLicense</td>
+                                                    <td>@TItem.DTitle @TItem.DFirstName &nbsp; @TItem.DLastName</td>
+                                                    <td><span class="@SClassT">@StatusT</span></td>
+                                                </tr>
+                                            }
+                                            </tbody>
+                                        </table>
                                     </div>
-                                   
                                 </div>
-
-
-
-                            </div>
-
-                        </form>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-warning" id="Type1">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">3.1 CKL</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-
+                            </form>
                         </div>
+                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <div class="table-responsive">
-                                    <table class="table no-margin">
-                                        <thead>
-                                            <tr>
-                                                <th>ทะเบียนรถ</th>
-                                                <th>คนขับรถ</th>
-                                                <th>Status</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>กอ2345</td>
-                                                <td>Mr.ccc cccc</td>
-                                                <td><span class="label label-success">Shipped</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>ss45677</td>
-                                                <td>Mr.aaaa vvvvv</td>
-                                                <td><span class="label label-success">Shipped</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>jj8907</td>
-                                                <td>Mr.dddd ffff</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>hh87689</td>
-                                                <td>Mr.gggg fffffff</td>
-                                                <td><span class="label label-danger">Delivered</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>jj89765</td>
-                                                <td>Mr.ffgg gggg</td>
-                                                <td><span class="label label-danger">Delivered</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
+                    <div class="box box-warning" id="Type2">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">3.2 Sub</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
 
-
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
-                        </form>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <div class="box box-warning" id="Type2">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">3.2 Sub</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-
                         </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <div class="table-responsive">
-                                    <table class="table no-margin">
-                                        <thead>
-                                            <tr>
-                                                <th>ชื่อ Sub</th>
-                                                <th>Status</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
-                                                <td><span class="label label-success">Shipped</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
-                                                <td><span class="label label-success">Shipped</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
-                                                <td><span class="label label-danger">Delivered</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>xxxxxxxxxxxxxxxxxxxxxxxx</td>
-                                                <td><span class="label label-danger">Delivered</span></td>
-                                                <td><button type="submit" class="btn btn-warning btn-block">Select</button></td>
-                                            </tr>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>รหัส Sub</th>
+                                                    <th>ชื่อบริษัท</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+@foreach (var SItem in item.JSub)
+{
+    <tr>
+        <td><a href="~/TMS/Jobs?J=3&OID=@Request.QueryString["OID"]&OT=@Request.QueryString["OT"]&ODID=@Request.QueryString["ODID"]&C=2&S=@SItem.SID&SC=@SItem.SCode">@SItem.SCode</a></td> 
+       <td>@SItem.SName</td>
+    </tr>
+}
+                                               
+                                            
 
-
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box-body -->
                 </div>
             </div>
             <div class="col-md-6">
+                <div id="J4">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            @if (@Request.QueryString["C"] == "1")
+                            {
+                                <h3 class="box-title">4.Queue (CKLINE/@Request.QueryString["TD"])</h3>
+                            }
+                            else if (@Request.QueryString["C"] == "2")
+                            {
+                                <h3 class="box-title">4.Queue (SUB/@Request.QueryString["SC"])</h3>
+                            }
+                           
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
 
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">4.Queue (ss45677)</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <div class="table-responsive">
-                                    <table class="table no-margin">
-                                        <thead>
-                                            <tr>
-                                                <th>Order ID</th>
-                                                <th>ชื่อตู้</th>
-                                                <th>วันที่</th>
-                                                <th>เวลา</th>
-                                                <th>Status</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>CK59050003</td>
-                                                <td>BEAU22380837</td>
-                                                <td>27/05/2559</td>
-                                                <td>11:00</td>
-                                                <td><span class="label label-success">Shipped</span></td>
-                                                <td><button type="submit" class="btn btn-danger btn-block">Cancel</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>CK59050003</td>
-                                                <td>BEAU22380837</td>
-                                                <td>27/05/2559</td>
-                                                <td>11:00</td>
-                                                <td><span class="label label-success">Shipped</span></td>
-                                                <td><button type="submit" class="btn btn-danger btn-block">Cancel</button></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <div class="table-responsive">
+                                        <table class="table no-margin">
+                                            <thead>
+                                                <tr>
+                                                    <th>Order ID</th>
+                                                    <th>เบอร์ตู้</th>
+                                                    <th>วันที่รับ</th>
+                                                    <th>วันที่ส่ง</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+@foreach (var JItem in item.JJob)
+{
+    String StatusJ = "";
+    String SClassJ = "";
+   
+    if (JItem.Status == 1)
+    {
+        StatusJ = "Queue";
+        SClassJ = "label label-warning";
+    }
+    else if (JItem.Status == 2)
+    {
+        StatusJ = "Delivered";
+        SClassJ = "label label-primary";
+    }
+    else if (JItem.Status  == 3)
+    {
+        StatusJ = "Finish";
+        SClassJ = "label label-info";
+    }
+    else if (JItem.Status == 4)
+    {
+        StatusJ = "Cancel";
+        SClassJ = "label label-danger";
+    }
+                                                <tr>
+                                                    <td>@JItem.OrderID</td>
+                                                    <td>@JItem.ContainerNo</td>
+                                                    <td>@JItem.ReceiveDate.ToString("dd/MM/yyyy")</td>
+                                                    <td>@JItem.DliveryDate.ToString("dd/MM/yyyy")</td>
+                                                    <td><span class="@SClassJ">@StatusJ</span></td>
+                                                    <td><button type="submit" class="btn btn-danger btn-block">Cancel</button></td>
+                                                </tr>
+}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
 
-                        </form>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box-body -->
-                </div>
+                    </div>
+                  
 
-            </div>
+                </div>
         </div>
         <div class="col-md-12">
         
             <div class="col-md-12">
+                <div id="J5">
+                    <div class="box box-success" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title">5.Add Job</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
 
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">5.Add Job</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-
+                            </div>
                         </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <form role="form">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <label>Order ID</label>
-                                        <input type="text" class="form-control" placeholder="PA59050001" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Booking No.</label>
-                                        <input type="text" class="form-control" placeholder="TH59050001" disabled>
-                                    </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form action="~/TMS/JobCommit" method="post" onsubmit="return chk_form()">
 
-                                </div>
-                                &nbsp;
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <label>ชื่อตู้</label>
-                                        <input type="text" class="form-control" placeholder="BEAU22380837" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>ขนาดตู้</label>
-                                        <input type="text" class="form-control" placeholder="20'DC" disabled>
-                                    </div>
+                                @foreach (var OAItem in item.JOrderA)
+                                {
+                                    <div class="col-md-12">
 
-                                </div>
-                                &nbsp;
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <label>Customer</label>
-                                        <input type="text" class="form-control" placeholder="aaaaaaasddfdf" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Route</label>
-                                        <input type="text" class="form-control" placeholder="vvvvvvvvvvvv" disabled>
-                                    </div>
-
-                                </div>
-                                &nbsp;
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <label>ทะเบียนรถ</label>
-                                        <input type="text" class="form-control" placeholder="กอ2345" disabled>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>คนขับ</label>
-                                        <input type="text" class="form-control" placeholder="Mr.ccc cccc" disabled>
-                                    </div>
-
-                                </div>
-                                &nbsp;
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <label>วันที่</label>
-                                        <div class="input-group date">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label>Job No.</label>
+                                                <input type="text" id="JobNo" name="JobNo" class="form-control" placeholder="xxxxxx" disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Order ID</label>
+                                                <input type="text" id="OrderID" name="OrderID" class="form-control" value="@OAItem.OrderID" readonly>
                                             </div>
 
-                                            <input class="form-control" data-val="true" data-val-required="Date is required"
-                                                   id="Date3" name="Date3" type="date" value="1/11/1989" />
+
+                                        </div>
+                                        &nbsp;
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label>เบอรตู้</label>
+                                                <input type="text" id="ContainerNo" name="ContainerNo" class="form-control" value="@OAItem.ContainerNo" readonly>
+                                            </div>
+                                            @if (OAItem.OrderType == 1)
+                                            {
+                                                string sPosition = "";
+                                                if (@OAItem.Position == "L")
+                                                {
+                                                    sPosition = "ด้านซ้าย";
+                                                }
+                                                else if (@OAItem.Position == "R")
+                                                {
+                                                    sPosition = "ด้านขวา";
+                                                }
+                                                <div class="col-md-6">
+                                                    <label>ตำแหน่งวาวล์</label>
+                                                    <input type="text" id="Position" name="Position" class="form-control" value="@sPosition" readonly>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-md-6">
+                                                    <label>เบอร์ซีล</label>
+                                                    <input type="text" id="PackNo" name="PackNo" class="form-control" value="@OAItem.PackNo" readonly>
+                                                </div>
+                                            }
+
+
+                                        </div>
+                                        &nbsp;
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label>Customer</label>
+                                                <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" disabled>
+                                                    @*   <option value="">-- Select Customer --</option>*@
+
+                                                    <option value="@OAItem.CustomerID">@OAItem.CustomerName</option>
+
+                                                </select>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Route</label>
+                                                <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" disabled>
+                                                    @*  <option value="">-- Select Route --</option>*@
+
+                                                    <option value="@OAItem.RouteID">@OAItem.FromDetail > @OAItem.ToDetail</option>
+
+                                                </select>
+
+                                            </div>
+
+                                        </div>
+                                        &nbsp;
+
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label>วันที่รับ</label>
+                                                <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@OAItem.ReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>วันที่ส่ง</label>
+                                                <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@OAItem.DliveryDate.ToString("dd/MM/yyyy")" readonly>
+                                            </div>
+
+                                        </div>
+                                        &nbsp;
+                                    </div>
+                                }
+                                <div class="col-md-12">
+                                    @if (Request.QueryString["C"] == "1")
+                                    {
+
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label>หัวลาก</label>
+                                                <input type="hidden" id="TID" name="TID" class="form-control" value="@Request.QueryString["T"]" readonly>
+
+                                                <input type="text" id="License" name="License" class="form-control" value="@Request.QueryString["TD"]" readonly>
+
+
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>หางลาก</label>
+                                                <input type="hidden" id="HID" name="HID" class="form-control" value="@Request.QueryString["H"]" readonly>
+
+                                                <input type="text" id="HitchLicense" name="HitchLicense" class="form-control" value="@Request.QueryString["HD"]" readonly>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>คนขับ</label>
+
+                                                <select class="form-control" id="Driver" name="Driver" placeholder="-- Select Customer --" disabled>
+                                                    @*   <option value="">-- Select Customer --</option>*@
+                                                    @foreach (var iDriver in item.JTruck)
+                                                    {
+                                                        if (iDriver.DID == Convert.ToInt32(@Request.QueryString["D"]))
+                                                        {
+                                                            <option value="@iDriver.DID">@iDriver.DTitle @iDriver.DFirstName &nbsp; @iDriver.DLastName</option>
+                                                        }
+
+                                                    }
+                                                </select>
+
+                                            </div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>Sub</label>
+                                                <select class="form-control" id="Sub" name="Sub" placeholder="-- Select Customer --" disabled>
+                                                    @*   <option value="">-- Select Customer --</option>*@
+                                                    @foreach (var iSub in item.JSub)
+                                                    {
+                                                        if (@iSub.SID == Convert.ToInt32(@Request.QueryString["S"]))
+                                                        {
+                                                            <option value="@iSub.SID">@iSub.SName</option>
+                                                        }
+
+                                                    }
+                                                </select>
+                                            </div>
+
+
+                                        </div>
+                                    }
+                                    &nbsp;
+
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>หมายเหตุ</label>
+                                            <input type="text" id="OT" name="OT" class="form-control" value="@Request.QueryString["OT"]" readonly>
+                                            <input type="text" id="ODID" name="ODID" class="form-control" value="@Request.QueryString["ODID"]" readonly>
+                                            <input type="text" id="SType" name="SType" class="form-control" value="@Request.QueryString["C"]" readonly>
+                                            <input type="text" id="DID" name="DID" class="form-control" value="@Request.QueryString["D"]" readonly>
+                                            <input type="text" id="SID" name="SID" class="form-control" value="@Request.QueryString["S"]" readonly>
+                                            <textarea id="Remark" name="Remark" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label>เวลา</label>
-                                        <select class="form-control" id="Time" name="Time">
 
-                                            <option value="">-- Select Pick up Time --</option>
-                                            <option data-ng-value="00:00">00:00</option>
-                                            <option data-ng-value="00:15">00:15</option>
-                                            <option data-ng-value="00:30">00:30</option>
-                                            <option data-ng-value="00:45">00:45</option>
-                                            <option data-ng-value="01:00">01:00</option>
-                                            <option data-ng-value="01:15">01:15</option>
-                                            <option data-ng-value="01:30">01:30</option>
-                                            <option data-ng-value="01:45">01:45</option>
-                                            <option data-ng-value="02:00">02:00</option>
-                                            <option data-ng-value="02:15">02:15</option>
-                                            <option data-ng-value="02:30">02:30</option>
-                                            <option data-ng-value="02:45">02:45</option>
-                                            <option data-ng-value="03:00">03:00</option>
-                                            <option data-ng-value="03:15">03:15</option>
-                                            <option data-ng-value="03:30">03:30</option>
-                                            <option data-ng-value="03:45">03:45</option>
-                                            <option data-ng-value="04:00">04:00</option>
-                                            <option data-ng-value="04:15">04:15</option>
-                                            <option data-ng-value="04:30">04:30</option>
-                                            <option data-ng-value="04:45">04:45</option>
-                                            <option data-ng-value="05:00">05:00</option>
-                                            <option data-ng-value="05:15">05:15</option>
-                                            <option data-ng-value="05:30">05:30</option>
-                                            <option data-ng-value="05:45">05:45</option>
-                                            <option data-ng-value="06:00">06:00</option>
-                                            <option data-ng-value="06:15">06:15</option>
-                                            <option data-ng-value="06:30">06:30</option>
-                                            <option data-ng-value="06:45">06:45</option>
-                                            <option data-ng-value="07:00">07:00</option>
-                                            <option data-ng-value="07:15">07:15</option>
-                                            <option data-ng-value="07:30">07:30</option>
-                                            <option data-ng-value="07:45">07:45</option>
-                                            <option data-ng-value="08:00">08:00</option>
-                                            <option data-ng-value="08:15">08:15</option>
-                                            <option data-ng-value="08:30">08:30</option>
-                                            <option data-ng-value="08:45">08:45</option>
-                                            <option data-ng-value="09:00">09:00</option>
-                                            <option data-ng-value="09:15">09:15</option>
-                                            <option data-ng-value="09:30">09:30</option>
-                                            <option data-ng-value="09:45">09:45</option>
-                                            <option data-ng-value="10:00">10:00</option>
-                                            <option data-ng-value="10:15">10:15</option>
-                                            <option data-ng-value="10:30">10:30</option>
-                                            <option data-ng-value="10:45">10:45</option>
-                                            <option data-ng-value="11:00">11:00</option>
-                                            <option data-ng-value="11:15">11:15</option>
-                                            <option data-ng-value="11:30">11:30</option>
-                                            <option data-ng-value="11:45">11:45</option>
-                                            <option data-ng-value="12:00">12:00</option>
-                                            <option data-ng-value="12:15">12:15</option>
-                                            <option data-ng-value="12:30">12:30</option>
-                                            <option data-ng-value="12:45">12:45</option>
-                                            <option data-ng-value="13:00">13:00</option>
-                                            <option data-ng-value="13:15">13:15</option>
-                                            <option data-ng-value="13:30">13:30</option>
-                                            <option data-ng-value="13:45">13:45</option>
-                                            <option data-ng-value="14:00">14:00</option>
-                                            <option data-ng-value="14:15">14:15</option>
-                                            <option data-ng-value="14:30">14:30</option>
-                                            <option data-ng-value="14:45">14:45</option>
-                                            <option data-ng-value="15:00">15:00</option>
-                                            <option data-ng-value="15:15">15:15</option>
-                                            <option data-ng-value="15:30">15:30</option>
-                                            <option data-ng-value="15:45">15:45</option>
-                                            <option data-ng-value="16:00">16:00</option>
-                                            <option data-ng-value="16:15">16:15</option>
-                                            <option data-ng-value="16:30">16:30</option>
-                                            <option data-ng-value="16:45">16:45</option>
-                                            <option data-ng-value="17:00">17:00</option>
-                                            <option data-ng-value="17:15">17:15</option>
-                                            <option data-ng-value="17:30">17:30</option>
-                                            <option data-ng-value="17:45">17:45</option>
-                                            <option data-ng-value="18:00">18:00</option>
-                                            <option data-ng-value="18:15">18:15</option>
-                                            <option data-ng-value="18:30">18:30</option>
-                                            <option data-ng-value="18:45">18:45</option>
-                                            <option data-ng-value="19:00">19:00</option>
-                                            <option data-ng-value="19:15">19:15</option>
-                                            <option data-ng-value="19:30">19:30</option>
-                                            <option data-ng-value="19:45">19:45</option>
-                                            <option data-ng-value="20:00">20:00</option>
-                                            <option data-ng-value="20:15">20:15</option>
-                                            <option data-ng-value="20:30">20:30</option>
-                                            <option data-ng-value="20:45">20:45</option>
-                                            <option data-ng-value="21:00">21:00</option>
-                                            <option data-ng-value="21:15">21:15</option>
-                                            <option data-ng-value="21:30">21:30</option>
-                                            <option data-ng-value="21:45">21:45</option>
-                                            <option data-ng-value="22:00">22:00</option>
-                                            <option data-ng-value="22:15">22:15</option>
-                                            <option data-ng-value="22:30">22:30</option>
-                                            <option data-ng-value="22:45">22:45</option>
-                                            <option data-ng-value="23:00">23:00</option>
-                                            <option data-ng-value="23:15">23:15</option>
-                                            <option data-ng-value="23:30">23:30</option>
-                                            <option data-ng-value="23:45">23:45</option>
-                                        </select>
-                                    </div>
+                                    &nbsp;
 
-                                </div>
-                            </div>
-                            &nbsp;
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <label>หมายเหตุ</label>
-                                        <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <div class="form-group">
+                                        <div class="box-footer clearfix">
+
+                                            <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ADD JOB</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            &nbsp;
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <div class="box-footer clearfix">
 
-                                        <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">ADD JOB</button>
-                                    </div>
-                                </div>
-                                </div>
-                        </form>
+
+
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box-body -->
                 </div>
-
             </div>
         </div>
        
    </div>
-
+}
 </section>
 <script language="JavaScript" type="text/javascript">
     document.getElementById('Type2').style.display = 'none';
- 
+
+  //  document.getElementById('J').value = "Set The Text";
+    var J = document.getElementById('J').value
+
+    if (J == 1)
+    {
+        document.getElementById('J2').style.display = 'block';
+        document.getElementById('J3').style.display = 'none';
+        document.getElementById('J4').style.display = 'none';
+        document.getElementById('J5').style.display = 'none';
+
+        document.getElementById('J2').scrollIntoView();
+    }
+    else if (J == 2) {
+
+        document.getElementById('J2').style.display = 'block';
+        document.getElementById('J3').style.display = 'block';
+        document.getElementById('J4').style.display = 'none';
+        document.getElementById('J5').style.display = 'none';
+
+        document.getElementById('J3').scrollIntoView();
+    }
+    else if (J == 3) {
+        document.getElementById('J2').style.display = 'block';
+        document.getElementById('J3').style.display = 'block';
+        document.getElementById('J4').style.display = 'block';
+        document.getElementById('J5').style.display = 'block';
+
+        document.getElementById('J5').scrollIntoView();
+    }
+    else if (J == 4) {
+        document.getElementById('J2').style.display = 'block';
+        document.getElementById('J3').style.display = 'block';
+        document.getElementById('J4').style.display = 'block';
+        document.getElementById('J5').style.display = 'block';
+
+        document.getElementById('J5').scrollIntoView();
+    }
+    else  {
+        document.getElementById('J2').style.display = 'none';
+        document.getElementById('J3').style.display = 'none';
+        document.getElementById('J4').style.display = 'none';
+        document.getElementById('J5').style.display = 'none';
+    }
+   
+    var C = document.getElementById('C').value
+    if (C == 1)
+    {
+        document.getElementById('optiosType1').prop("checked", "checked");
+    }
+    else {
+        document.getElementById('optiosType2').prop("checked", "checked");
+    }
+
     function showhidediv(rad) {
         var rads = document.getElementsByName(rad.name);
         document.getElementById('Type1').style.display = (rads[0].checked) ? 'block' : 'none';
         document.getElementById('Type2').style.display = (rads[1].checked) ? 'block' : 'none';
-      
+
     }
 
+   
 </script>

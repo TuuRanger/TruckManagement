@@ -78,6 +78,12 @@
     <EntitySetMapping Name="Drivers">
       <EntityTypeMapping TypeName="TMSModel.Driver">
         <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="EmpID" ColumnName="EmpID" />
           <ScalarProperty Name="DriverLicence" ColumnName="DriverLicence" />
@@ -167,20 +173,6 @@
           <ScalarProperty Name="DriverID" ColumnName="DriverID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Datail" ColumnName="Datail" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Jobs">
-      <EntityTypeMapping TypeName="TMSModel.Job">
-        <MappingFragment StoreEntitySet="Job">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="BookingID" ColumnName="BookingID" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
-          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
-          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -481,6 +473,8 @@
     <EntitySetMapping Name="Trucks">
       <EntityTypeMapping TypeName="TMSModel.Truck">
         <MappingFragment StoreEntitySet="Truck">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="HitchID" ColumnName="HitchID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="License" ColumnName="License" />
           <ScalarProperty Name="Brand" ColumnName="Brand" />
@@ -525,6 +519,24 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="DriverID" ColumnName="DriverID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="TMSModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
+          <ScalarProperty Name="ODID" ColumnName="ODID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="JDate" ColumnName="JDate" />
+          <ScalarProperty Name="SType" ColumnName="SType" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="HitchID" ColumnName="HitchID" />
+          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

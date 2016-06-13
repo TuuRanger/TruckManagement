@@ -1518,6 +1518,7 @@
     <Content Include="Views\TMS\OrderInfo.cshtml" />
     <Content Include="Views\TMS\test.cshtml" />
     <Content Include="Views\TMS\test2.cshtml" />
+    <Content Include="Views\TMS\JobCommit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

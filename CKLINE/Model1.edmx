@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccidentHistory">
           <Key>
             <PropertyRef Name="ID" />
@@ -80,6 +80,11 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmpID" Type="nvarchar" MaxLength="10" />
+          <Property Name="Title" Type="nvarchar" MaxLength="5" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
           <Property Name="DriverLicence" Type="nvarchar" MaxLength="10" />
           <Property Name="Type" Type="nvarchar" MaxLength="40" />
           <Property Name="DIssueDate" Type="date" />
@@ -110,6 +115,7 @@
           <Property Name="FileDriver" Type="nvarchar" MaxLength="50" />
           <Property Name="FileIDCard" Type="nvarchar" MaxLength="50" />
           <Property Name="FileRegistration" Type="nvarchar" MaxLength="50" />
+          <Property Name="TruckID" Type="int" />
         </EntityType>
         <EntityType Name="FuelType">
           <Key>
@@ -168,12 +174,16 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BookingID" Type="nvarchar" MaxLength="40" />
-          <Property Name="OrderID" Type="int" />
+          <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+          <Property Name="ODID" Type="int" />
+          <Property Name="ContainerNo" Type="nvarchar" MaxLength="40" />
+          <Property Name="TruckID" Type="int" />
+          <Property Name="HitchID" Type="int" />
           <Property Name="DriverID" Type="int" />
-          <Property Name="TruckID" Type="varchar" MaxLength="40" />
-          <Property Name="BeginDate" Type="date" />
-          <Property Name="EndDate" Type="date" />
+          <Property Name="SID" Type="int" />
+          <Property Name="SType" Type="int" />
+          <Property Name="JDate" Type="date" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
           <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="Maintenance">
@@ -465,6 +475,7 @@
           <Property Name="Brand" Type="nvarchar" MaxLength="100" />
           <Property Name="TruckType" Type="nvarchar" MaxLength="40" />
           <Property Name="Detail" Type="nvarchar" MaxLength="255" />
+          <Property Name="HitchID" Type="int" />
           <Property Name="HitchLicense" Type="nvarchar" MaxLength="40" />
           <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
           <Property Name="weightTruck" Type="decimal" Precision="18" Scale="0" />
@@ -495,6 +506,7 @@
           <Property Name="ANumber" Type="nvarchar" MaxLength="50" />
           <Property Name="AExprieDate" Type="date" />
           <Property Name="APremium" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="WorkingHistory">
           <Key>
@@ -534,8 +546,7 @@
           <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkingHistory" EntityType="Self.WorkingHistory" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -644,6 +655,12 @@
           <Property Name="FileDriver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FileIDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FileRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TruckID" Type="Int32" />
         </EntityType>
         <EntityType Name="FuelType">
           <Key>
@@ -696,19 +713,6 @@
           <Property Name="DriverID" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Datail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Job">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BookingID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="OrderID" Type="Int32" />
-          <Property Name="DriverID" Type="Int32" />
-          <Property Name="TruckID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="BeginDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
-          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="Maintenance">
           <Key>
@@ -1029,6 +1033,8 @@
           <Property Name="ANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AExprieDate" Type="DateTime" Precision="0" />
           <Property Name="APremium" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="HitchID" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="WorkingHistory">
           <Key>
@@ -1050,7 +1056,6 @@
           <EntitySet Name="GasRefills" EntityType="Self.GasRefill" />
           <EntitySet Name="GasStations" EntityType="Self.GasStation" />
           <EntitySet Name="GPSViolationHistories" EntityType="Self.GPSViolationHistory" />
-          <EntitySet Name="Jobs" EntityType="Self.Job" />
           <EntitySet Name="Maintenances" EntityType="Self.Maintenance" />
           <EntitySet Name="MaintenanceTypes" EntityType="Self.MaintenanceType" />
           <EntitySet Name="MarriageStatus" EntityType="Self.MarriageStatu" />
@@ -1067,7 +1072,25 @@
           <EntitySet Name="TrainingHistories" EntityType="Self.TrainingHistory" />
           <EntitySet Name="Trucks" EntityType="Self.Truck" />
           <EntitySet Name="WorkingHistories" EntityType="Self.WorkingHistory" />
+          <EntitySet Name="Jobs" EntityType="TMSModel.Job" />
         </EntityContainer>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TruckID" Type="Int32" />
+          <Property Name="HitchID" Type="Int32" />
+          <Property Name="DriverID" Type="Int32" />
+          <Property Name="SType" Type="Int32" />
+          <Property Name="JDate" Type="DateTime" Precision="0" />
+          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ODID" Type="Int32" />
+          <Property Name="ContainerNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="SID" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1151,6 +1174,12 @@
           <EntitySetMapping Name="Drivers">
             <EntityTypeMapping TypeName="TMSModel.Driver">
               <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EmpID" ColumnName="EmpID" />
                 <ScalarProperty Name="DriverLicence" ColumnName="DriverLicence" />
@@ -1240,20 +1269,6 @@
                 <ScalarProperty Name="DriverID" ColumnName="DriverID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Datail" ColumnName="Datail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="TMSModel.Job">
-              <MappingFragment StoreEntitySet="Job">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
-                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
-                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1554,6 +1569,8 @@
           <EntitySetMapping Name="Trucks">
             <EntityTypeMapping TypeName="TMSModel.Truck">
               <MappingFragment StoreEntitySet="Truck">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HitchID" ColumnName="HitchID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="License" ColumnName="License" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
@@ -1598,6 +1615,24 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DriverID" ColumnName="DriverID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="TMSModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
+                <ScalarProperty Name="ODID" ColumnName="ODID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="JDate" ColumnName="JDate" />
+                <ScalarProperty Name="SType" ColumnName="SType" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="HitchID" ColumnName="HitchID" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

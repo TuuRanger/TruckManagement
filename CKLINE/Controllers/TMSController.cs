@@ -316,7 +316,100 @@ namespace CKLINE.Controllers
             return View(model);
           //  return View();
         }
-        public ActionResult OrderCommit(FormCollection form)
+        public ActionResult JobCommit(FormCollection form)
+        {
+         //   return RedirectToAction("~/TMS/Jobs?J=2&OID="+ form["OrderID"] +"&OT="+ form["OT"]+"&ODID="+form["ODID"]);
+            int DriverID = 0;
+            int TID = 0;
+            int HID = 0;
+            int ODID = 0;
+            int SID = 0;
+            int SType = 0;
+
+            if (form["DID"] != "")
+            {
+                DriverID = Convert.ToInt32(form["DID"]);
+            }
+            if (form["TID"] != "")
+            {
+                TID = Convert.ToInt32(form["TID"]);
+            }
+            if (form["HID"] != "")
+            {
+                HID = Convert.ToInt32(form["HID"]);
+            }
+            if (form["ODID"] != "")
+            {
+                ODID = Convert.ToInt32(form["ODID"]);
+            }
+            if (form["SID"] != "")
+            {
+                SID = Convert.ToInt32(form["SID"]);
+            }
+            if (form["SType"] != "")
+            {
+                SType = Convert.ToInt32(form["SType"]);
+            }
+
+            string OrderID = form["OrderID"];
+            Job AddJob = new Job();
+            AddJob.ContainerNo = form["ContainerNo"];
+            AddJob.TruckID = TID;
+            AddJob.DriverID = DriverID;
+            AddJob.HitchID = HID;
+            AddJob.JDate = DateTime.Now.Date;
+            AddJob.ODID = ODID;
+            AddJob.OrderID = OrderID;
+            AddJob.Remark = form["Remark"];
+            AddJob.SID = SID;
+            AddJob.Status = 1;
+            AddJob.SType = SType;
+
+            db.Jobs.Add(AddJob);
+            db.SaveChanges();
+
+            Order UpdateO = new Order();
+
+            var Order = (from o in db.Orders
+                         where o.OrderID == OrderID
+                               select o).SingleOrDefault();
+
+            Order.Status = 2;
+            db.SaveChanges();
+
+            OrderDetail UpdateOD = new OrderDetail();
+
+            var OrderDetail = (from od in db.OrderDetails
+                               where od.ID == ODID
+                               select od).Single();
+
+            OrderDetail.Status = 2;
+            db.SaveChanges();
+
+
+            if (SType == 1)
+            {
+                Truck UpdateT = new Truck();
+
+                var Truck = (from t in db.Trucks
+                             where t.ID == TID
+                             select t).Single();
+
+                Truck.Status = 2;
+                db.SaveChanges();
+
+                var Hitch = (from t in db.Trucks
+                             where t.ID == HID
+                             select t).Single();
+
+                Hitch.Status = 2;
+                db.SaveChanges();
+            }
+         
+
+            return RedirectToAction("Jobs", "TMS", new { J = 1,OID = form["OrderID"],OT=form["OT"]});
+        }
+        public ActionResult OrderCommit(FormCollection form, HttpPostedFileBase file)
         {
             string ReceiveDate = form["ReceiveDate"];
               //  Request.Form["ReceiveDate"];
@@ -559,7 +652,7 @@ namespace CKLINE.Controllers
             dOrder.IETelephone = Request.Form["IETelephone"];
             dOrder.IELocationPack = Request.Form["IELocationPack"];
             dOrder.IELocationReceive = Request.Form["IELocationReceive"];
-            dOrder.IEMap = Request.Form["IEMap"];
+            dOrder.IEMap = file.FileName;
             dOrder.IELiner = Request.Form["IELiner"];
             dOrder.IEPacklTime = Request.Form["IEPacklTime"];
             dOrder.IEFeeder = Request.Form["IEFeeder"];
@@ -675,7 +768,7 @@ namespace CKLINE.Controllers
             db.Orders.Add(AddOrder);
             db.SaveChanges();
 
-            
+
             //string path = Path.Combine(Server.MapPath("~/MapFile"), Path.GetFileName(IEMap.FileName));
             //IEMap.SaveAs(path);
 
@@ -690,7 +783,12 @@ namespace CKLINE.Controllers
             //    hpf.SaveAs(savedFileName);
 
             //}
-
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/MapFile"), fileName);
+                file.SaveAs(path);
+            }
             List<ContainerList> ContainerList = new List<ContainerList>();
 
 
@@ -729,23 +827,27 @@ namespace CKLINE.Controllers
         public ActionResult OrderInfo()
         {
             string OID = "PA16060001";
-            if (Session["OrderID"] != null)
+
+            if (Request.QueryString["OID"] != null)
             {
-                OID = Session["OrderID"].ToString();
+                OID = Request.QueryString["OID"];
             }
             else
             {
-                if (Request.QueryString["OID"] != null)
+                if (Session["OrderID"] != null)
                 {
-                    OID = Request.QueryString["OID"];
+                    OID = Session["OrderID"].ToString();
                 }
                 else
                 {
                     OID = "";
                     return RedirectToAction("Index", "TMS");
-                }
 
+                }
+               
             }
+
+          
             List<OrderInfo> model = new List<OrderInfo>();
             List<OrderDetailInfo> modelD = new List<OrderDetailInfo>();
 
@@ -1241,7 +1343,377 @@ namespace CKLINE.Controllers
         }
         public ActionResult Jobs()
         {
-            return View();
+            List<JobList> model = new List<JobList>();
+            List<JOrderList> JOrderList = new List<JOrderList>();
+
+            string J = Request.QueryString["J"];
+            string OID = Request.QueryString["OID"];
+            string ODID = Request.QueryString["ODID"];
+            string OT = Request.QueryString["OT"];
+            string C = Request.QueryString["C"];
+            string T = Request.QueryString["T"];
+            string H = Request.QueryString["H"];
+            string D = Request.QueryString["D"];
+            string TD = Request.QueryString["TD"];
+            string HD = Request.QueryString["HD"];
+            string S = Request.QueryString["S"];
+            string SC = Request.QueryString["SC"];
+
+            var jOrder = (from o in db.Orders
+                              join c in db.Customers on o.CustomerID equals c.ID
+                              join r in db.Routes on o.RoutID equals r.ID
+                              //join a in db.LMS_SubAgent on b.AgentID equals a.ID
+                              //  join d in db.LMS_Driver on b.DriverID equals d.ID
+                              where o.Status == 1 || o.Status == 2
+                              orderby o.ReceiveDate,o.DliveryDate,o.OrderID descending
+                              select new
+                              {
+                                  OrderType = o.OrderType,
+                                  OrderID = o.OrderID,
+                                  BookingNo = o.BookingNo,
+                                  CustomerID = o.CustomerID,
+                                  OrderDate = o.OrderDate,
+                                  ReceiveDate = o.ReceiveDate,
+                                  DliveryDate = o.DliveryDate,
+                                  RoutID = o.RoutID,
+                                  NumberOrder = o.NumberOrder,
+                                  Remark = o.Remark,
+                                  PPackDate = o.PPackDate,
+                                  TPackDate = o.TPackDate,
+                                  IEType = o.IEType,
+                                  IEShipper = o.IEShipper,
+                                  IEAgent = o.IEAgent,
+                                  IELoading = o.IELoading,
+                                  IEShipping = o.IEShipping,
+                                  IETelephone = o.IETelephone,
+                                  IELocationPack = o.IELocationPack,
+                                  IELocationReceive = o.IELocationReceive,
+                                  IEMap = o.IEMap,
+                                  IELiner = o.IELiner,
+                                  IEReceiveDate = o.IEReceiveDate,
+                                  IEPackDate = o.IEPackDate,
+                                  IEPacklTime = o.IEPacklTime,
+                                  IEFeeder = o.IEFeeder,
+                                  IEMother = o.IEMother,
+                                  IECYDate = o.IECYDate,
+                                  IEETDDate = o.IEETDDate,
+                                  IEContact = o.IEContact,
+                                  IEETADate = o.IEETADate,
+                                  IEAT = o.IEAT,
+                                  IETel = o.IETel,
+                                  IEBill = o.IEBill,
+                                  IEPortPrice = o.IEPortPrice,
+                                  IELanPrice = o.IELanPrice,
+                                  IELiftPrice = o.IELiftPrice,
+                                  IECLosingDate = o.IECLosingDate,
+                                  IEClosingTime = o.IEClosingTime,
+                                  IEAgent2 = o.IEAgent2,
+                                  Status = o.Status,
+
+                                  CName = c.Name,
+                                  CAddress = c.Address,
+                                  CProvince = c.Province,
+                                  CZipCode = c.ZipCode,
+                                  CTelephone = c.Telephone,
+
+                                  RFromDetail = r.FromDetail,
+                                  RFromProvince = r.FromProvince,
+                                  RToDetail = r.ToDetail,
+                                  RToProvince = r.ToProvince
+                              }
+             ).ToList();
+
+            foreach (var ol in jOrder)
+            {
+                JOrderList jol = new JOrderList();
+
+                jol.OrderID = ol.OrderID;
+                jol.BookingNo = ol.BookingNo;
+                jol.CustomerID = Convert.ToInt32(ol.CustomerID);
+                jol.OrderType = Convert.ToInt32(ol.OrderType);
+                if (ol.DliveryDate == null)
+                {
+                    jol.DliveryDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    jol.DliveryDate = Convert.ToDateTime(ol.DliveryDate);
+                }
+
+
+
+                jol.NumberOrder = Convert.ToInt32(ol.NumberOrder);
+
+               
+
+                if (ol.ReceiveDate == null)
+                {
+                    jol.ReceiveDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    jol.ReceiveDate = Convert.ToDateTime(ol.ReceiveDate);
+                }
+
+
+                jol.RoutID = Convert.ToInt32(ol.RoutID);
+                jol.Status = Convert.ToInt32(ol.Status);
+
+              JOrderList.Add(jol);
+                
+            }
+
+            List<JOrderDList> JOrderDList = new List<JOrderDList>();
+                var jOrderD = (from od in db.OrderDetails               
+                               where od.OrderID == OID
+                               select new
+                               {
+                                   ODID = od.ID,
+                                   ContainerNo = od.ContainerNo,
+                                   Position = od.Position,
+                                   PackNo = od.PackNo,
+                                   Status = od.Status
+                               }
+                ).ToList();
+
+                foreach (var odl in jOrderD)
+                {
+                    JOrderDList jd = new JOrderDList();
+
+                    jd.ID = odl.ODID;
+                    jd.ContainerNo = odl.ContainerNo;
+                    jd.PackNo = odl.PackNo;
+                    jd.Position = odl.Position;
+                    jd.Status = Convert.ToInt32(odl.Status);
+
+                    JOrderDList.Add(jd);
+
+                }
+
+                List<JTruckList> JTruckList = new List<JTruckList>();
+                var jTruck = (from t in db.Trucks
+                              join d in db.Drivers on t.ID equals d.TruckID
+                               where t.TruckType == "1"
+                               select new
+                               {
+                                   TID = t.ID,
+                                   HID = t.HitchID,
+                                   DID = d.ID,
+                                   License = t.License,
+                                   HitchLicense = t.HitchLicense,
+                                   DTitle =d.Title,
+                                   DFirstName = d.FirstName,
+                                   DLastName = d.LastName,
+                                   TStatus = t.Status
+                               }
+                ).ToList();
+
+                foreach (var tl in jTruck)
+                {
+                    JTruckList td = new JTruckList();
+
+                    td.DFirstName = tl.DFirstName;
+                    td.DID = Convert.ToInt32(tl.DID);
+                    td.DLastName = tl.DLastName;
+                    td.DTitle = tl.DTitle;
+                    td.HID = Convert.ToInt32(tl.HID);
+                    td.HitchLicense = tl.HitchLicense;
+                    td.License = tl.License;
+                    td.TID = Convert.ToInt32(tl.TID);
+                    td.TStatus = Convert.ToInt32(tl.TStatus);
+
+
+                    JTruckList.Add(td);
+
+                }
+
+                List<JSubList> JSubList = new List<JSubList>();
+                var JSub = (from s in db.SubContacts
+                           //   join d in db.Drivers on t.ID equals d.TruckID
+                              //where
+                              select new
+                              {
+                                  SID = s.ID,
+                                  SCode = s.Code,
+                                  SName = s.Name
+                                 
+                              }
+                ).ToList();
+
+                foreach (var sl in JSub)
+                {
+                    JSubList sd = new JSubList();
+
+                    sd.SCode = sl.SCode;
+                    sd.SID = sl.SID;
+                    sd.SName = sl.SName;
+
+
+                    JSubList.Add(sd);
+
+                }
+
+                int nT = 0;
+                int nD = 0;
+                int nH = 0;
+                int nS = 0;
+
+                if (T != "")
+                {
+                    nT = Convert.ToInt32(T);
+                }
+                if (D != "")
+                {
+                    nD = Convert.ToInt32(D);
+                }
+                if (H != "")
+                {
+                    nH = Convert.ToInt32(H);
+                }
+                if (S != "")
+                {
+                    nS = Convert.ToInt32(S);
+                }
+                List<JJobList> JJobList = new List<JJobList>();
+            if (C == "1")
+            {
+                var JJob = (from j in db.Jobs
+                            join o in db.Orders on j.OrderID equals o.OrderID
+                            where j.TruckID == nT && j.HitchID == nH && j.DriverID == nD 
+                          
+                            //where
+                            select new
+                            {
+                                JID = j.ID,
+                                OrderID  = j.OrderID,
+                                ODID = j.ODID,
+                                ContainerNo = j.ContainerNo,
+                                Status = j.Status,
+                                ReceiveDate = o.ReceiveDate,
+                                DliveryDate = o.DliveryDate
+                            }
+                ).ToList();
+
+                foreach (var jl in JJob)
+                {
+                    JJobList jd = new JJobList();
+
+                    jd.ContainerNo = jl.ContainerNo;
+                    jd.DliveryDate = Convert.ToDateTime(jl.DliveryDate).Date;
+                    jd.JID = jl.JID;
+                    jd.ODID = Convert.ToInt32(jl.ODID);
+                    jd.OrderID = jl.OrderID;
+                    jd.ReceiveDate = Convert.ToDateTime(jl.ReceiveDate).Date;
+                    jd.Status = Convert.ToInt32(jl.Status);
+
+                    JJobList.Add(jd);
+
+                }
+            }
+            else if (C == "2")
+            {
+                var JJob = (from j in db.Jobs
+                            join o in db.Orders on j.OrderID equals o.OrderID
+                            where j.OrderID == OID && j.SID == nS
+
+                            //where
+                            select new
+                            {
+                                JID = j.ID,
+                                OrderID = j.OrderID,
+                                ODID = j.ODID,
+                                ContainerNo = j.ContainerNo,
+                                Status = j.Status,
+                                ReceiveDate = o.ReceiveDate,
+                                DliveryDate = o.DliveryDate
+                            }
+                ).ToList();
+
+                foreach (var jl in JJob)
+                {
+                    JJobList jd = new JJobList();
+
+                    jd.ContainerNo = jl.ContainerNo;
+                    jd.DliveryDate = Convert.ToDateTime(jl.DliveryDate).Date;
+                    jd.JID = jl.JID;
+                    jd.ODID = Convert.ToInt32(jl.ODID);
+                    jd.OrderID = jl.OrderID;
+                    jd.ReceiveDate = Convert.ToDateTime(jl.ReceiveDate).Date;
+                    jd.Status = Convert.ToInt32(jl.Status);
+
+                    JJobList.Add(jd);
+
+                }
+            }
+
+            int nOD = 0;
+
+            if (ODID != "")
+            {
+                nOD = Convert.ToInt32(ODID);
+            }
+
+            List<JOrderAdd> JOrderAdd = new List<JOrderAdd>();
+            var JOA = (from o in db.Orders
+                       join od in db.OrderDetails on o.OrderID equals od.OrderID
+                       join c in db.Customers on o.CustomerID equals c.ID
+                       join r in db.Routes on o.RoutID equals r.ID
+                        where o.OrderID == OID && od.ID == nOD
+
+                        //where
+                        select new
+                        {
+   
+                            OrderID = o.OrderID,
+                            ReceiveDate = o.ReceiveDate,
+                            DliveryDate = o.DliveryDate,
+                            OrderType = o.OrderType,
+                           CustomerID = o.CustomerID,
+                            RouteID = o.RoutID,
+
+                              ODID = od.ID,
+                           ContainerNo = od.ContainerNo,
+                           Position = od.Position,
+                           PackNo = od.PackNo,
+                            CustomerName = c.Name,
+                            rToDetail = r.ToDetail,
+                            rFromDetail = r.FromDetail
+                        }
+                ).ToList();
+
+            foreach (var joal in JOA)
+            {
+                JOrderAdd joad = new JOrderAdd();
+
+                joad.CustomerID = Convert.ToInt32(joal.CustomerID);
+                joad.DliveryDate = Convert.ToDateTime(joal.DliveryDate).Date;
+                joad.OrderID = joal.OrderID;
+                joad.OrderType = Convert.ToInt32(joal.OrderType);
+                joad.ReceiveDate = Convert.ToDateTime(joal.ReceiveDate).Date;
+                joad.RouteID = Convert.ToInt32(joal.RouteID);
+                joad.ContainerNo = joal.ContainerNo;
+                joad.ODID = joal.ODID;
+                joad.PackNo = joal.PackNo;
+                joad.Position = joal.Position;
+                joad.ToDetail = joal.rToDetail;
+                joad.FromDetail = joal.rFromDetail;
+                joad.CustomerName = joal.CustomerName;
+              
+                JOrderAdd.Add(joad);
+
+            }
+
+          
+            JobList JL = new JobList();
+            JL.JOrder = JOrderList.ToList();
+            JL.JOrderD = JOrderDList.ToList();
+            JL.JTruck = JTruckList.ToList();
+            JL.JSub = JSubList.ToList();
+            JL.JJob = JJobList.ToList();
+            JL.JOrderA = JOrderAdd.ToList();
+          
+            model.Add(JL);
+            return View(model);
         }
         public ActionResult OpenJob()
         {

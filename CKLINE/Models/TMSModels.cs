@@ -169,4 +169,92 @@ namespace TMS.Models
         public string PackNo { get; set; }
         public int Status { get; set; }
     }
+
+    public class JobList
+    {
+        public List<JOrderList> JOrder { get; set; }
+        public List<JOrderDList> JOrderD { get; set; }
+        public List<JTruckList> JTruck { get; set; }
+        public List<JSubList> JSub { get; set; }
+        public List<JJobList> JJob { get; set; }
+        public List<JOrderAdd> JOrderA { get; set; }
+     
+    }
+    public class JOrderList
+    {
+        public int OID { get; set; }
+        public string OrderID { get; set; }
+        public DateTime ReceiveDate { get; set; }
+        public DateTime DliveryDate { get; set; }
+        public int RoutID { get; set; }
+        public int CustomerID { get; set; }
+        public int NumberOrder { get; set; }
+        public string BookingNo { get; set; }
+        public int Status { get; set; }
+        public int OrderType { get; set; }
+    }
+    public class JOrderDList
+    {
+        public int ID { get; set; }
+        public int OID { get; set; }
+     
+        public string OrderID { get; set; }
+        public string ContainerNo { get; set; }
+        public string Position { get; set; }
+        public string PackNo { get; set; }
+        public int Status { get; set; }
+    }
+
+    public class JTruckList
+    {
+        public int TID { get; set; }
+        public int HID { get; set; }
+        public int DID { get; set; }
+
+        public string License { get; set; }
+        public string HitchLicense { get; set; }
+        public string DTitle { get; set; }
+        public string DFirstName { get; set; }
+        public string DLastName { get; set; }
+        public int TStatus { get; set; }
+    }
+
+    public class JSubList
+    {
+        public int SID { get; set; }
+        public string SCode { get; set; }
+        public string SName { get; set; }
+    }
+
+    public class JJobList
+    {
+        public int JID { get; set; }
+        public int ODID { get; set; }
+        public string OrderID { get; set; }
+        public string ContainerNo { get; set; }
+        public DateTime ReceiveDate { get; set; }
+        public DateTime DliveryDate { get; set; }
+        public int Status { get; set; }
+    }
+
+    public class JOrderAdd
+    {
+ 
+        public string OrderID { get; set; } 
+        public DateTime ReceiveDate { get; set; }
+        public DateTime DliveryDate { get; set; }
+        public int OrderType { get; set; }
+        public int CustomerID { get; set; }
+        public int RouteID { get; set; }
+        public int ODID { get; set; }
+        public string ContainerNo { get; set; }
+        public string Position { get; set; }
+        public string PackNo { get; set; }
+        public string CustomerName { get; set; }
+        public string FromDetail { get; set; }
+        public string ToDetail { get; set; }
+    }
+
+  
+
 }

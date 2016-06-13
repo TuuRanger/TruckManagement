@@ -105,6 +105,12 @@
     <Property Name="FileDriver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="FileIDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="FileRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TruckID" Type="Int32" />
   </EntityType>
   <EntityType Name="FuelType">
     <Key>
@@ -157,19 +163,6 @@
     <Property Name="DriverID" Type="Int32" />
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="Datail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="Job">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BookingID" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="OrderID" Type="Int32" />
-    <Property Name="DriverID" Type="Int32" />
-    <Property Name="TruckID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="BeginDate" Type="DateTime" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
-    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="Maintenance">
     <Key>
@@ -490,6 +483,8 @@
     <Property Name="ANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AExprieDate" Type="DateTime" Precision="0" />
     <Property Name="APremium" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HitchID" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
   <EntityType Name="WorkingHistory">
     <Key>
@@ -511,7 +506,6 @@
     <EntitySet Name="GasRefills" EntityType="Self.GasRefill" />
     <EntitySet Name="GasStations" EntityType="Self.GasStation" />
     <EntitySet Name="GPSViolationHistories" EntityType="Self.GPSViolationHistory" />
-    <EntitySet Name="Jobs" EntityType="Self.Job" />
     <EntitySet Name="Maintenances" EntityType="Self.Maintenance" />
     <EntitySet Name="MaintenanceTypes" EntityType="Self.MaintenanceType" />
     <EntitySet Name="MarriageStatus" EntityType="Self.MarriageStatu" />
@@ -528,5 +522,23 @@
     <EntitySet Name="TrainingHistories" EntityType="Self.TrainingHistory" />
     <EntitySet Name="Trucks" EntityType="Self.Truck" />
     <EntitySet Name="WorkingHistories" EntityType="Self.WorkingHistory" />
+    <EntitySet Name="Jobs" EntityType="TMSModel.Job" />
   </EntityContainer>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TruckID" Type="Int32" />
+    <Property Name="HitchID" Type="Int32" />
+    <Property Name="DriverID" Type="Int32" />
+    <Property Name="SType" Type="Int32" />
+    <Property Name="JDate" Type="DateTime" Precision="0" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="ODID" Type="Int32" />
+    <Property Name="ContainerNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="SID" Type="Int32" />
+  </EntityType>
 </Schema>

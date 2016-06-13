@@ -15,12 +15,16 @@ namespace CKLINE
     public partial class Job
     {
         public int ID { get; set; }
-        public string BookingID { get; set; }
-        public Nullable<int> OrderID { get; set; }
+        public string OrderID { get; set; }
+        public Nullable<int> TruckID { get; set; }
+        public Nullable<int> HitchID { get; set; }
         public Nullable<int> DriverID { get; set; }
-        public string TruckID { get; set; }
-        public Nullable<System.DateTime> BeginDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
+        public Nullable<int> SType { get; set; }
+        public Nullable<System.DateTime> JDate { get; set; }
+        public string Remark { get; set; }
         public Nullable<int> Status { get; set; }
+        public Nullable<int> ODID { get; set; }
+        public string ContainerNo { get; set; }
+        public Nullable<int> SID { get; set; }
     }
 }

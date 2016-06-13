@@ -50,6 +50,6 @@ C:\Project\CKLINE\CKLINE\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Project\CKLINE\CKLINE\bin\Microsoft.Owin.Security.Google.xml
 C:\Project\CKLINE\CKLINE\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Project\CKLINE\CKLINE\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Project\CKLINE\CKLINE\obj\Debug\CKLINE.csprojResolveAssemblyReference.cache
 C:\Project\CKLINE\CKLINE\obj\Debug\CKLINE.dll
 C:\Project\CKLINE\CKLINE\obj\Debug\CKLINE.pdb
-C:\Project\CKLINE\CKLINE\obj\Debug\CKLINE.csprojResolveAssemblyReference.cache
