@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TMS.Models.OpenJob>
+@{
     ViewBag.Title = "OpenJob";
 }
 
@@ -12,14 +13,15 @@
         </ol>*@
 </section>
 <section class="content">
-
+@foreach (var item in Model)
+{
 
     <!-- /.row -->
     <div class="row">
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Latest Jobs</h3>
+                    <h3 class="box-title">Latest Jobs (CKLINE)</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
                             <i class="fa fa-minus"></i>
@@ -37,69 +39,53 @@
                                     <th>Order ID</th>
                                     <th>ชื่อตู้</th>
                                     <th>Route</th>
-                                    <th>Type</th>
+                                    <th>วันที่รับ</th>
                                     <th>วันที่ส่ง</th>
-                                    <th>เวลา</th>
-                                    <th>ทะเบียนรถ</th>
+                                    <th>หัวลาก</th>
+                                    <th>หางลาก</th>
+                                    <th>คนขับ</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
+@foreach (var Titem in item.sOpenJobT)
+{
+    String Status = "";
+    String SClass = "";
+    if (Titem.JStatus == 1)
+    {
+        Status = "Queue";
+        SClass = "label label-warning";
+    }
+    else if (Titem.JStatus == 2)
+    {
+        Status = "Delivered";
+        SClass = "label label-primary";
+    }
+    else if (Titem.JStatus == 3)
+    {
+        Status = "Finish";
+        SClass = "label label-info";
+    }
+    else if (Titem.JStatus == 4)
+    {
+        Status = "Cancel";
+        SClass = "label label-danger";
+    }
+
                                 <tr>
-                                    <td><a href="~/TMS/OpenJobDetail">2705590001</a></td>
-                                    <td>PA59050001</td>
-                                    <td>BEAU22380837</td>
-                                    <td>xxxxxxxxxxxxxxx</td>      
-                                    <td>Praxair</td>
-                                    <td>27/05/2559</td>
-                                    <td>12:00</td>
-                                    <td>กอ2345</td>
-                                    <td><span class="label label-warning">Pending</span></td>              
+                                    <td><a href="~/TMS/OpenJobDetail">@Titem.JID</a></td>
+                                    <td>@Titem.OrderID</td>
+                                    <td>@Titem.ContainerNo</td>
+                                    <td>@Titem.FromDetail > @Titem.ToDetail</td>      
+                                    <td>@Titem.ReceiveDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@Titem.DliveryDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@Titem.License</td>
+                                    <td>@Titem.HitchLicense</td>
+                                    <td>@Titem.DTitle @Titem.DFirstName &nbsp; @Titem.DLastName</td>
+                                    <td><span class="@SClass">@Status</span></td>
                                 </tr>
-                                <tr>
-                                    <td><a href="~/TMS/OpenJobDetail">2705590002</a></td>
-                                    <td>PA59050001</td>
-                                    <td>BEAU22380837</td>
-                                    <td>xxxxxxxxxxxxxxx</td>
-                                    <td>Praxair</td>
-                                    <td>27/05/2559</td>
-                                    <td>12:00</td>
-                                    <td>กอ2345</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/OpenJobDetail">2705590003</a></td>
-                                    <td>PA59050001</td>
-                                    <td>BEAU22380837</td>
-                                    <td>xxxxxxxxxxxxxxx</td>
-                                    <td>Praxair</td>
-                                    <td>27/05/2559</td>
-                                    <td>12:00</td>
-                                    <td>กอ2345</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/OpenJobDetail">2705590004</a></td>
-                                    <td>PA59050001</td>
-                                    <td>BEAU22380837</td>
-                                    <td>xxxxxxxxxxxxxxx</td>
-                                    <td>Praxair</td>
-                                    <td>27/05/2559</td>
-                                    <td>12:00</td>
-                                    <td>กอ2345</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/OpenJobDetail">2705590005</a></td>
-                                    <td>PA59050001</td>
-                                    <td>BEAU22380837</td>
-                                    <td>xxxxxxxxxxxxxxx</td>
-                                    <td>Praxair</td>
-                                    <td>27/05/2559</td>
-                                    <td>12:00</td>
-                                    <td>กอ2345</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                </tr>
+}                      
                             </tbody>
                         </table>
                     </div>
@@ -110,6 +96,80 @@
             <!-- /.box -->
         </div>
         <!-- /.col -->
-    </div>
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest Jobs (Sub Contract)</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>Job No.</th>
+                                    <th>Order ID</th>
+                                    <th>ชื่อตู้</th>
+                                    <th>Route</th>
+                                    <th>วันที่รับ</th>
+                                    <th>วันที่ส่ง</th>
+                                    <th>Sub</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var Sitem in item.sOpenJobS)
+                                {
+                                    String Status = "";
+                                    String SClass = "";
+                                    if (Sitem.JStatus == 1)
+                                    {
+                                        Status = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (Sitem.JStatus == 2)
+                                    {
+                                        Status = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (Sitem.JStatus == 3)
+                                    {
+                                        Status = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (Sitem.JStatus == 4)
+                                    {
+                                        Status = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
 
+                                    <tr>
+                                        <td><a href="~/TMS/OpenJobDetail">@Sitem.JID</a></td>
+                                        <td>@Sitem.OrderID</td>
+                                        <td>@Sitem.ContainerNo</td>
+                                        <td>@Sitem.FromDetail > @Sitem.ToDetail</td>
+                                        <td>@Sitem.ReceiveDate.ToString("dd/MM/yyyy")</td>
+                                        <td>@Sitem.DliveryDate.ToString("dd/MM/yyyy")</td>
+                                        <td>@Sitem.SName</td>
+                                     
+                                        <td><span class="@SClass">@Status</span></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+}
 </section>

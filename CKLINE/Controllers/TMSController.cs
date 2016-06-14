@@ -449,8 +449,8 @@ namespace CKLINE.Controllers
                 string d1 = ReceiveDate.Substring(0, 2);
                 string d2 = ReceiveDate.Substring(3, 2);
                 string d3 = ReceiveDate.Substring(6, 4);
-            //    string d4 = d1 + "/" + d2 + "/" + d3;
-               string d4 = d2 + "/" + d1 + "/" + d3;
+               // string d4 = d1 + "/" + d2 + "/" + d3;
+         string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.ReceiveDate = DateTime.Parse(d4);
 
                // dOrder.ReceiveDate = DateTime.Parse(ReceiveDate);
@@ -467,7 +467,7 @@ namespace CKLINE.Controllers
                 string d2 = DliveryDate.Substring(3, 2);
                 string d3 = DliveryDate.Substring(6, 4);
                // string d4 = d1 + "/" + d2 + "/" + d3;
-                   string d4 = d2 + "/" + d1 + "/" + d3;
+                  string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.DliveryDate = DateTime.Parse(d4);
              //   dOrder.DliveryDate = DateTime.Parse(DliveryDate);
                // dOrder.DliveryDate = Convert.ToDateTime(Request.Form["DliveryDate"]).Date;
@@ -482,7 +482,7 @@ namespace CKLINE.Controllers
                 string d1 = PPackDate.Substring(0, 2);
                 string d2 = PPackDate.Substring(3, 2);
                 string d3 = PPackDate.Substring(6, 4);
-               // string d4 = d1 + "/" + d2 + "/" + d3;
+              //  string d4 = d1 + "/" + d2 + "/" + d3;
                    string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.PPackDate = DateTime.Parse(d4);
              //   dOrder.PPackDate = DateTime.Parse(PPackDate);
@@ -498,7 +498,7 @@ namespace CKLINE.Controllers
                 string d1 = TPackDate.Substring(0, 2);
                 string d2 = TPackDate.Substring(3, 2);
                 string d3 = TPackDate.Substring(6, 4);
-                //string d4 = d1 + "/" + d2 + "/" + d3;
+              //  string d4 = d1 + "/" + d2 + "/" + d3;
                     string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.TPackDate = DateTime.Parse(d4);
                // dOrder.TPackDate = DateTime.Parse(TPackDate);
@@ -514,7 +514,7 @@ namespace CKLINE.Controllers
                 string d1 = IEReceiveDate.Substring(0, 2);
                 string d2 = IEReceiveDate.Substring(3, 2);
                 string d3 = IEReceiveDate.Substring(6, 4);
-                //string d4 = d1 + "/" + d2 + "/" + d3;
+               // string d4 = d1 + "/" + d2 + "/" + d3;
                     string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.IEReceiveDate = DateTime.Parse(d4);
               //  dOrder.IEReceiveDate = DateTime.Parse(IEReceiveDate);
@@ -530,8 +530,8 @@ namespace CKLINE.Controllers
                 string d1 = IEPackDate.Substring(0, 2);
                 string d2 = IEPackDate.Substring(3, 2);
                 string d3 = IEPackDate.Substring(6, 4);
-                //string d4 = d1 + "/" + d2 + "/" + d3;
-                    string d4 = d2 + "/" + d1 + "/" + d3;
+              //  string d4 = d1 + "/" + d2 + "/" + d3;
+                   string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.IEPackDate = DateTime.Parse(d4);
               //  dOrder.IEPackDate = DateTime.Parse(IEPackDate);
              //   dOrder.IEPackDate = Convert.ToDateTime(Request.Form["IEPackDate"]).Date;
@@ -546,7 +546,7 @@ namespace CKLINE.Controllers
                 string d1 = IECYDate.Substring(0, 2);
                 string d2 = IECYDate.Substring(3, 2);
                 string d3 = IECYDate.Substring(6, 4);
-                //string d4 = d1 + "/" + d2 + "/" + d3;
+           //     string d4 = d1 + "/" + d2 + "/" + d3;
                     string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.IECYDate = DateTime.Parse(d4);
              //   dOrder.IECYDate = DateTime.Parse(IECYDate);
@@ -562,7 +562,7 @@ namespace CKLINE.Controllers
                 string d1 = IEETDDate.Substring(0, 2);
                 string d2 = IEETDDate.Substring(3, 2);
                 string d3 = IEETDDate.Substring(6, 4);
-                //string d4 = d1 + "/" + d2 + "/" + d3;
+             //   string d4 = d1 + "/" + d2 + "/" + d3;
                     string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.IEETDDate = DateTime.Parse(d4);
              //   dOrder.IEETDDate = DateTime.Parse(IEETDDate);
@@ -578,7 +578,7 @@ namespace CKLINE.Controllers
                 string d1 = IEETADate.Substring(0, 2);
                 string d2 = IEETADate.Substring(3, 2);
                 string d3 = IEETADate.Substring(6, 4);
-                //string d4 = d1 + "/" + d2 + "/" + d3;
+             //   string d4 = d1 + "/" + d2 + "/" + d3;
                     string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.IEETADate = DateTime.Parse(d4);
               //  dOrder.IEETADate = DateTime.Parse(IEETADate);
@@ -594,18 +594,12 @@ namespace CKLINE.Controllers
                 string d1 = IECLosingDate.Substring(0, 2);
                 string d2 = IECLosingDate.Substring(3, 2);
                 string d3 = IECLosingDate.Substring(6, 4);
-                //string d4 = d1 + "/" + d2 + "/" + d3;
-                    string d4 = d2 + "/" + d1 + "/" + d3;
+               // string d4 = d1 + "/" + d2 + "/" + d3;
+                   string d4 = d2 + "/" + d1 + "/" + d3;
                 dOrder.IECLosingDate = DateTime.Parse(d4);
               //  dOrder.IECLosingDate = DateTime.Parse(IECLosingDate);
              //   dOrder.IECLosingDate = Convert.ToDateTime(Request.Form["IECLosingDate"]).Date;
             }
-
-
-           
-         
-
-
 
             string nOID = "";
             if (dOrder.OrderType == 1)
@@ -620,6 +614,7 @@ namespace CKLINE.Controllers
                 dOrder.IEETDDate = null;
                 dOrder.IEETADate = null;
                 dOrder.IECLosingDate = null;
+              //  dOrder.IEMap = null;
 
             }
             else if (dOrder.OrderType == 2)
@@ -634,6 +629,7 @@ namespace CKLINE.Controllers
                 dOrder.IEETDDate = null;
                 dOrder.IEETADate = null;
                 dOrder.IECLosingDate = null;
+              //  dOrder.IEMap = null;
             }
             else if (dOrder.OrderType == 3)
             {
@@ -642,6 +638,8 @@ namespace CKLINE.Controllers
                 dOrder.PPackDate = null;
 
                 dOrder.TPackDate = null;
+              
+            
             }
 
             dOrder.IEType = Convert.ToInt32(Request.Form["IEType"]);
@@ -652,7 +650,14 @@ namespace CKLINE.Controllers
             dOrder.IETelephone = Request.Form["IETelephone"];
             dOrder.IELocationPack = Request.Form["IELocationPack"];
             dOrder.IELocationReceive = Request.Form["IELocationReceive"];
-            dOrder.IEMap = file.FileName;
+            if (file == null)
+            {
+                dOrder.IEMap = null;
+            }
+            else
+            {
+                dOrder.IEMap = file.FileName;
+            }
             dOrder.IELiner = Request.Form["IELiner"];
             dOrder.IEPacklTime = Request.Form["IEPacklTime"];
             dOrder.IEFeeder = Request.Form["IEFeeder"];
@@ -766,7 +771,7 @@ namespace CKLINE.Controllers
             AddOrder.Status = 1;
 
             db.Orders.Add(AddOrder);
-            db.SaveChanges();
+           db.SaveChanges();
 
 
             //string path = Path.Combine(Server.MapPath("~/MapFile"), Path.GetFileName(IEMap.FileName));
@@ -783,7 +788,7 @@ namespace CKLINE.Controllers
             //    hpf.SaveAs(savedFileName);
 
             //}
-            if (file.ContentLength > 0)
+            if (dOrder.IEMap != null)
             {
                 var fileName = Path.GetFileName(file.FileName);
                 var path = Path.Combine(Server.MapPath("~/MapFile"), fileName);
@@ -1579,7 +1584,7 @@ namespace CKLINE.Controllers
             {
                 var JJob = (from j in db.Jobs
                             join o in db.Orders on j.OrderID equals o.OrderID
-                            where j.TruckID == nT && j.HitchID == nH && j.DriverID == nD 
+                            where j.TruckID == nT && j.HitchID == nH && j.DriverID == nD && j.Status != 4
                           
                             //where
                             select new
@@ -1717,7 +1722,162 @@ namespace CKLINE.Controllers
         }
         public ActionResult OpenJob()
         {
-            return View();
+            List<OpenJob> model = new List<OpenJob>();
+            List<OpenJobT> modelT = new List<OpenJobT>();
+
+            var sJobT = (from j in db.Jobs
+                        join o in db.Orders on j.OrderID equals o.OrderID
+                        join t in db.Trucks on j.TruckID equals t.ID
+                        join d in db.Drivers on j.DriverID equals d.ID
+                        join r in db.Routes on o.RoutID equals r.ID
+                         where j.Status == 1
+                     //   join s in db.SubContacts on j.SID equals s.ID
+                           
+                              orderby j.ID descending
+                              select new
+                              {
+                                  JID = j.ID,
+                                  OrderID = j.OrderID,
+                                  ContainerNo = j.ContainerNo,
+                                  FromDetail = r.FromDetail,
+                                  ToDetail = r.ToDetail,
+                                  ReceiveDate = o.ReceiveDate,
+                                  DliveryDate = o.DliveryDate,
+                                  License = t.License,
+                                  HitchLicense = t.HitchLicense,
+                                  DTitle = d.Title,
+                                  DFirstName = d.FirstName,
+                                  DLastName = d.LastName,
+                            //      SName = s.Name,
+                            //      Stype = j.SType,
+                                  JStatus = j.Status
+
+                              }
+             ).ToList();
+
+            foreach (var ol in sJobT)
+            {
+                OpenJobT a = new OpenJobT();
+
+                a.ContainerNo = ol.ContainerNo;
+                a.DFirstName = ol.DFirstName;
+                a.DLastName = ol.DLastName;
+
+                if (ol.DliveryDate == null)
+                {
+                    a.DliveryDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    a.DliveryDate = Convert.ToDateTime(ol.DliveryDate);
+                }
+
+               
+                if (ol.ReceiveDate == null)
+                {
+                    a.ReceiveDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    a.ReceiveDate = Convert.ToDateTime(ol.ReceiveDate);
+                }
+
+                a.DTitle = ol.DTitle;
+                a.FromDetail = ol.FromDetail;
+                a.HitchLicense = ol.HitchLicense;
+                a.JID = ol.JID;
+                a.JStatus = Convert.ToInt32(ol.JStatus);
+                a.License = ol.License;
+                a.OrderID = ol.OrderID;
+                a.ToDetail = ol.ToDetail;
+             //   a.SName = ol.SName;
+             //   a.SType = Convert.ToInt32(ol.Stype);
+
+                modelT.Add(a);
+
+            }
+            List<OpenJobS> modelS = new List<OpenJobS>();
+
+
+            var sJobS = (from j in db.Jobs
+                        join o in db.Orders on j.OrderID equals o.OrderID
+                     //   join t in db.Trucks on j.TruckID equals t.ID
+                       // join d in db.Drivers on j.DriverID equals d.ID
+                        join r in db.Routes on o.RoutID equals r.ID
+                          join s in db.SubContacts on j.SID equals s.ID
+                          where j.Status == 1
+                        orderby j.ID descending
+                        select new
+                        {
+                            JID = j.ID,
+                            OrderID = j.OrderID,
+                            ContainerNo = j.ContainerNo,
+                            FromDetail = r.FromDetail,
+                            ToDetail = r.ToDetail,
+                            ReceiveDate = o.ReceiveDate,
+                            DliveryDate = o.DliveryDate,
+                       //     License = t.License,
+                         //   HitchLicense = t.HitchLicense,
+                           // DTitle = d.Title,
+                          //  DFirstName = d.FirstName,
+                           // DLastName = d.LastName,
+                                  SName = s.Name,
+                                  Stype = j.SType,
+                            JStatus = j.Status
+
+                        }
+             ).ToList();
+
+            foreach (var ol in sJobS)
+            {
+                OpenJobS a = new OpenJobS();
+
+                a.ContainerNo = ol.ContainerNo;
+             //   a.DFirstName = ol.DFirstName;
+            //    a.DLastName = ol.DLastName;
+
+                if (ol.DliveryDate == null)
+                {
+                    a.DliveryDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    a.DliveryDate = Convert.ToDateTime(ol.DliveryDate);
+                }
+
+
+                if (ol.ReceiveDate == null)
+                {
+                    a.ReceiveDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    a.ReceiveDate = Convert.ToDateTime(ol.ReceiveDate);
+                }
+
+           //     a.DTitle = ol.DTitle;
+                a.FromDetail = ol.FromDetail;
+            //    a.HitchLicense = ol.HitchLicense;
+                a.JID = ol.JID;
+                a.JStatus = Convert.ToInt32(ol.JStatus);
+            //    a.License = ol.License;
+                a.OrderID = ol.OrderID;
+                a.ToDetail = ol.ToDetail;
+                a.SName = ol.SName;
+              a.SType = Convert.ToInt32(ol.Stype);
+
+                modelS.Add(a);
+
+            }
+
+            OpenJob JL = new OpenJob();
+            JL.sOpenJobT = modelT.ToList();
+            JL.sOpenJobS = modelS.ToList();
+           
+
+            model.Add(JL);
+            return View(model); 
+         
         }
         public ActionResult OpenJobDetail()
         {
@@ -1830,6 +1990,111 @@ namespace CKLINE.Controllers
         public ActionResult test2()
         {
             return View();
+        }
+
+        public ActionResult JobCancel()
+        {
+            int DriverID = 0;
+            int TID = 0;
+            int HID = 0;
+            int ODID = 0;
+            int SID = 0;
+            int SType = 0;
+
+            if (Request.QueryString["D"] != "")
+            {
+                DriverID = Convert.ToInt32(Request.QueryString["D"]);
+            }
+            if (Request.QueryString["T"] != "")
+            {
+                TID = Convert.ToInt32(Request.QueryString["T"]);
+            }
+            if (Request.QueryString["H"] != "")
+            {
+                HID = Convert.ToInt32(Request.QueryString["H"]);
+            }
+            if (Request.QueryString["ODID"] != "")
+            {
+                ODID = Convert.ToInt32(Request.QueryString["ODID"]);
+            }
+            if (Request.QueryString["S"] != "")
+            {
+                SID = Convert.ToInt32(Request.QueryString["S"]);
+            }
+
+
+            string OrderID = Request.QueryString["OID"];
+            Job AddJob = new Job();
+           
+            Order UpdateO = new Order();
+
+            var sOrderD = (from o in db.OrderDetails
+                         where o.OrderID == OrderID && o.Status == 2
+                         select o).Count();
+
+            if (sOrderD <=1)
+            {
+                var Order = (from o in db.Orders
+                             where o.OrderID == OrderID
+                             select o).SingleOrDefault();
+
+                Order.Status = 1;
+                db.SaveChanges();
+            }
+         
+
+            OrderDetail UpdateOD = new OrderDetail();
+
+            var OrderDetail = (from od in db.OrderDetails
+                               where od.ID == ODID
+                               select od).SingleOrDefault();
+
+            OrderDetail.Status = 1;
+            db.SaveChanges();
+
+            Job JobC = new Job();
+
+            var JJob = (from j in db.Jobs
+                        where j.TruckID == TID && j.HitchID == HID && j.DriverID == DriverID && j.Status != 4
+
+                        //where
+                        select j).Count();
+
+            var Job = (from od in db.Jobs
+                               where od.ODID == ODID && od.Status != 4
+                       select od).SingleOrDefault();
+
+            Job.Status = 4;
+            db.SaveChanges();
+
+          
+               
+            if (JJob <=1)
+            {
+                if (TID != 0)
+                {
+                    Truck UpdateT = new Truck();
+
+                    var Truck = (from t in db.Trucks
+                                 where t.ID == TID
+                                 select t).SingleOrDefault();
+
+                    Truck.Status = 1;
+                    db.SaveChanges();
+
+                    var Hitch = (from t in db.Trucks
+                                 where t.ID == HID
+                                 select t).SingleOrDefault();
+
+                    Hitch.Status = 1;
+                    db.SaveChanges();
+                }
+              
+          
+            }
+               
+
+            return RedirectToAction("Jobs", "TMS", new { J = 1, OID = Request.QueryString["OID"], OT = Request.QueryString["OT"] });
         }
     }
 }

@@ -161,8 +161,15 @@
                                                 SClassD = "label label-danger";
                                             }
                                             <tr>
-
-                                                <td><a href="~/TMS/Jobs?J=2&OID=@Request.QueryString["OID"]&OT=@Request.QueryString["OT"]&ODID=@ODItem.ID">@ODItem.ContainerNo</a></td> 
+                                                @if (ODItem.Status == 1)
+                                                {
+                                                    <td><a href="~/TMS/Jobs?J=2&OID=@Request.QueryString["OID"]&OT=@Request.QueryString["OT"]&ODID=@ODItem.ID">@ODItem.ContainerNo</a></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@ODItem.ContainerNo</td>
+                                                }
+                                               
                                                @if (Request.QueryString["OT"] =="1")
                                                {
                                                    var sPosition = "";
@@ -418,7 +425,7 @@
                                                     <td>@JItem.ReceiveDate.ToString("dd/MM/yyyy")</td>
                                                     <td>@JItem.DliveryDate.ToString("dd/MM/yyyy")</td>
                                                     <td><span class="@SClassJ">@StatusJ</span></td>
-                                                    <td><button type="submit" class="btn btn-danger btn-block">Cancel</button></td>
+                                                    <td><a href="~/TMS/JobCancel?J=3&OID=@JItem.OrderID&OT=@Request.QueryString["OT"]&ODID=@JItem.ODID&C=2&T=@Request.QueryString["T"]&H=@Request.QueryString["H"]&D=@Request.QueryString["D"]&S=@Request.QueryString["S"]">Cancel</a></td> 
                                                 </tr>
 }
                                             </tbody>
@@ -548,27 +555,59 @@
                                         <div class="form-group">
                                             <div class="col-md-3">
                                                 <label>หัวลาก</label>
-                                                <input type="hidden" id="TID" name="TID" class="form-control" value="@Request.QueryString["T"]" readonly>
+                                                @*<input type="hidden" id="TID" name="TID" class="form-control" value="@Request.QueryString["T"]" readonly>
 
-                                                <input type="text" id="License" name="License" class="form-control" value="@Request.QueryString["TD"]" readonly>
+                                                <input type="text" id="License" name="License" class="form-control" value="@Request.QueryString["TD"]" readonly>*@
 
-
-                                            </div>
+                                                <select class="form-control" id="TID" name="TID" placeholder="-- Select Customer --">
+    @*   <option value="">-- Select Customer --</option>*@
+                                                  @foreach (var iTruck in item.JTruck)
+                                                    {
+                                                         if (iTruck.TID == Convert.ToInt32(@Request.QueryString["T"]))
+                                                          {
+                                                               <option selected value="@iTruck.TID">@iTruck.License</option>
+                                                          }
+                                                           else
+                                                          {
+                                                            <option value="@iTruck.TID">@iTruck.License</option>
+                                                          }
+                                                    }
+                 
+                                                    </select>
+                               </div>
                                             <div class="col-md-3">
                                                 <label>หางลาก</label>
-                                                <input type="hidden" id="HID" name="HID" class="form-control" value="@Request.QueryString["H"]" readonly>
+                                                @*<input type="hidden" id="HID" name="HID" class="form-control" value="@Request.QueryString["H"]" readonly>*@
 
-                                                <input type="text" id="HitchLicense" name="HitchLicense" class="form-control" value="@Request.QueryString["HD"]" readonly>
+                                              @*  <input type="text" id="HitchLicense" name="HitchLicense" class="form-control" value="@Request.QueryString["HD"]" readonly>*@
+                                                <select class="form-control" id="HID" name="HID" placeholder="-- Select Customer --">
+                                                    @*   <option value="">-- Select Customer --</option>*@
+                                                    @foreach (var iHitch in item.JTruck)
+                                                    {
+                                                    if (iHitch.HID == Convert.ToInt32(@Request.QueryString["H"]))
+                                                    {
+                                                    <option selected value="@iHitch.HID">@iHitch.HitchLicense</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@iHitch.HID">@iHitch.HitchLicense</option>
+                                                    }
+                                                    }
+                                                </select>
 
                                             </div>
                                             <div class="col-md-6">
                                                 <label>คนขับ</label>
 
-                                                <select class="form-control" id="Driver" name="Driver" placeholder="-- Select Customer --" disabled>
+                                                <select class="form-control" id="Driver" name="Driver" placeholder="-- Select Customer --" >
                                                     @*   <option value="">-- Select Customer --</option>*@
                                                     @foreach (var iDriver in item.JTruck)
                                                     {
                                                         if (iDriver.DID == Convert.ToInt32(@Request.QueryString["D"]))
+                                                        {
+                                                            <option selected value="@iDriver.DID">@iDriver.DTitle @iDriver.DFirstName &nbsp; @iDriver.DLastName</option>
+                                                        }
+                                                        else
                                                         {
                                                             <option value="@iDriver.DID">@iDriver.DTitle @iDriver.DFirstName &nbsp; @iDriver.DLastName</option>
                                                         }
@@ -585,11 +624,15 @@
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>Sub</label>
-                                                <select class="form-control" id="Sub" name="Sub" placeholder="-- Select Customer --" disabled>
+                                                <select class="form-control" id="Sub" name="Sub" placeholder="-- Select Customer --" >
                                                     @*   <option value="">-- Select Customer --</option>*@
                                                     @foreach (var iSub in item.JSub)
                                                     {
                                                         if (@iSub.SID == Convert.ToInt32(@Request.QueryString["S"]))
+                                                        {
+                                                            <option selected value="@iSub.SID">@iSub.SName</option>
+                                                        }
+                                                        else
                                                         {
                                                             <option value="@iSub.SID">@iSub.SName</option>
                                                         }
@@ -606,11 +649,11 @@
                                     <div class="form-group">
                                         <div class="col-md-12">
                                             <label>หมายเหตุ</label>
-                                            <input type="text" id="OT" name="OT" class="form-control" value="@Request.QueryString["OT"]" readonly>
-                                            <input type="text" id="ODID" name="ODID" class="form-control" value="@Request.QueryString["ODID"]" readonly>
-                                            <input type="text" id="SType" name="SType" class="form-control" value="@Request.QueryString["C"]" readonly>
-                                            <input type="text" id="DID" name="DID" class="form-control" value="@Request.QueryString["D"]" readonly>
-                                            <input type="text" id="SID" name="SID" class="form-control" value="@Request.QueryString["S"]" readonly>
+                                            <input type="hidden" id="OT" name="OT" class="form-control" value="@Request.QueryString["OT"]" readonly>
+                                            <input type="hidden" id="ODID" name="ODID" class="form-control" value="@Request.QueryString["ODID"]" readonly>
+                                            <input type="hidden" id="SType" name="SType" class="form-control" value="@Request.QueryString["C"]" readonly>
+                                            <input type="hidden" id="DID" name="DID" class="form-control" value="@Request.QueryString["D"]" readonly>
+                                            <input type="hidden" id="SID" name="SID" class="form-control" value="@Request.QueryString["S"]" readonly>
                                             <textarea id="Remark" name="Remark" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                                         </div>
                                     </div>

@@ -255,6 +255,48 @@ namespace TMS.Models
         public string ToDetail { get; set; }
     }
 
+    public class OpenJob
+    {
+        public List<OpenJobT> sOpenJobT { get; set; }
+        public List<OpenJobS> sOpenJobS { get; set; }
+    }
+    public class OpenJobT
+    {
+        public int JID { get; set; }
+        public string OrderID { get; set; }
+        public string ContainerNo { get; set; }
+        public string FromDetail { get; set; }
+        public string ToDetail { get; set; }
+        public DateTime ReceiveDate { get; set; }
+        public DateTime DliveryDate { get; set; }
+        public string License { get; set; }
+        public string HitchLicense { get; set; }
+        public string DTitle { get; set; }
+        public string DFirstName { get; set; }
+        public string DLastName { get; set; }
+        public int JStatus { get; set; }
+        public int SType { get; set; }
+        public string SName { get; set; }
+    }
+    public class OpenJobS
+    {
+        public int JID { get; set; }
+        public string OrderID { get; set; }
+        public string ContainerNo { get; set; }
+        public string FromDetail { get; set; }
+        public string ToDetail { get; set; }
+        public DateTime ReceiveDate { get; set; }
+        public DateTime DliveryDate { get; set; }
+        public string License { get; set; }
+        public string HitchLicense { get; set; }
+        public string DTitle { get; set; }
+        public string DFirstName { get; set; }
+        public string DLastName { get; set; }
+        public int JStatus { get; set; }
+        public int SType { get; set; }
+        public string SName { get; set; }
+    }
+
   
 
 }
