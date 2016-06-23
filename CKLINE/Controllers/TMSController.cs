@@ -477,6 +477,12 @@ namespace CKLINE.Controllers
             dOrder.OrderDate = DateTime.Now.Date;
 
             dOrder.RoutID = Convert.ToInt32(Request.Form["Route"]);
+            dOrder.RoutID2 = Convert.ToInt32(Request.Form["Route2"]);
+            dOrder.RoutID3 = Convert.ToInt32(Request.Form["Route3"]);
+            dOrder.RoutID4 = Convert.ToInt32(Request.Form["Route4"]);
+
+           
+
             dOrder.Status = 1;
             dOrder.Remark = Request.Form["Remark"];
 
@@ -705,6 +711,12 @@ namespace CKLINE.Controllers
                 dOrder.TNumberOrder3 = 0;
                 dOrder.TNumberOrder4 = 0;
 
+                
+                dOrder.ContainerType1 = null;
+                dOrder.ContainerType2 = null;
+                dOrder.ContainerType3 = null;
+                dOrder.ContainerType4 = null;
+
                 dOrder.IEReceiveDate = null;
                 dOrder.IEPackDate = null;
                 dOrder.IEReturnDate = null;
@@ -720,6 +732,11 @@ namespace CKLINE.Controllers
                 dOrder.TNumberOrder2 = Convert.ToInt32(Request.Form["Num22"]);
                 dOrder.TNumberOrder3 = Convert.ToInt32(Request.Form["Num23"]);
                 dOrder.TNumberOrder4 = Convert.ToInt32(Request.Form["Num24"]);
+
+                dOrder.ContainerType1 = Request.Form["CType1"];
+                dOrder.ContainerType2 = Request.Form["CType2"];
+                dOrder.ContainerType3 = Request.Form["CType3"];
+                dOrder.ContainerType4 = Request.Form["CType4"];
 
                 dOrder.NumberOrder = dOrder.TNumberOrder1 + dOrder.TNumberOrder2 + dOrder.TNumberOrder3 + dOrder.TNumberOrder4;
 
@@ -760,6 +777,11 @@ namespace CKLINE.Controllers
                 dOrder.TPackDate2 = null;
                 dOrder.TPackDate3 = null;
                 dOrder.TPackDate4 = null;
+
+                dOrder.ContainerType1 = null;
+                dOrder.ContainerType2 = null;
+                dOrder.ContainerType3 = null;
+                dOrder.ContainerType4 = null;
 
                 dOrder.TNumberOrder1 = 0;
                 dOrder.TNumberOrder2 = 0;
@@ -866,17 +888,24 @@ namespace CKLINE.Controllers
             AddOrder.ReceiveDate = dOrder.ReceiveDate;
             AddOrder.DliveryDate = dOrder.DliveryDate;
             AddOrder.RoutID = dOrder.RoutID;
+            AddOrder.RoutID2 = dOrder.RoutID2;
+            AddOrder.RoutID3 = dOrder.RoutID3;
+            AddOrder.RoutID4 = dOrder.RoutID4;
             AddOrder.NumberOrder = dOrder.NumberOrder;
             AddOrder.Remark = dOrder.Remark;
             AddOrder.PPackDate = dOrder.PPackDate;
             AddOrder.TPackDate1 = dOrder.TPackDate1;
             AddOrder.TNumberOrder1 = dOrder.TNumberOrder1;
+            AddOrder.ContainerType1 = dOrder.ContainerType1;
             AddOrder.TPackDate2 = dOrder.TPackDate2;
             AddOrder.TNumberOrder2 = dOrder.TNumberOrder2;
+            AddOrder.ContainerType2 = dOrder.ContainerType2;
             AddOrder.TPackDate3 = dOrder.TPackDate3;
             AddOrder.TNumberOrder3 = dOrder.TNumberOrder3;
+            AddOrder.ContainerType3 = dOrder.ContainerType3;
             AddOrder.TPackDate4 = dOrder.TPackDate4;
             AddOrder.TNumberOrder4 = dOrder.TNumberOrder4;
+            AddOrder.ContainerType4 = dOrder.ContainerType4;
             AddOrder.IEType = dOrder.IEType;
             AddOrder.IEShipper = dOrder.IEShipper;
             AddOrder.IEQuantity = dOrder.IEQuantity;
@@ -972,11 +1001,11 @@ namespace CKLINE.Controllers
                         ContainerList cl = new ContainerList();
 
                         tNum = "tNum1" + i;
-                        tType = "tType1" + i;
+                      //  tType = "tType1" + i;
 
 
                         cl.Container = Request.Form[tNum];
-                        cl.ContainerType = Request.Form[tType];
+                        cl.ContainerType = dOrder.ContainerType1;
 
 
                         OrderDetail AddOrderDetail = new OrderDetail();
@@ -1001,11 +1030,11 @@ namespace CKLINE.Controllers
                         ContainerList cl = new ContainerList();
 
                         tNum = "tNum2" + i;
-                        tType = "tType2" + i;
+                     //   tType = "tType2" + i;
 
 
                         cl.Container = Request.Form[tNum];
-                        cl.ContainerType = Request.Form[tType];
+                        cl.ContainerType = dOrder.ContainerType2;
 
 
                         OrderDetail AddOrderDetail = new OrderDetail();
@@ -1030,11 +1059,11 @@ namespace CKLINE.Controllers
                         ContainerList cl = new ContainerList();
 
                         tNum = "tNum3" + i;
-                        tType = "tType3" + i;
+                      //  tType = "tType3" + i;
 
 
                         cl.Container = Request.Form[tNum];
-                        cl.ContainerType = Request.Form[tType];
+                        cl.ContainerType = dOrder.ContainerType3;
 
 
                         OrderDetail AddOrderDetail = new OrderDetail();
@@ -1058,11 +1087,11 @@ namespace CKLINE.Controllers
                         ContainerList cl = new ContainerList();
 
                         tNum = "tNum1" + i;
-                        tType = "tType1" + i;
+                       // tType = "tType1" + i;
 
 
                         cl.Container = Request.Form[tNum];
-                        cl.ContainerType = Request.Form[tType];
+                        cl.ContainerType = dOrder.ContainerType4;
 
 
                         OrderDetail AddOrderDetail = new OrderDetail();
@@ -1118,6 +1147,9 @@ namespace CKLINE.Controllers
                 var sOrderInfo = (from o in db.Orders
                                    join c in db.Customers on o.CustomerID equals c.ID
                                    join r in db.Routes on o.RoutID equals r.ID
+                                  join r2 in db.Routes on o.RoutID2 equals r2.ID
+                                  join r3 in db.Routes on o.RoutID3 equals r3.ID
+                                  join r4 in db.Routes on o.RoutID4 equals r4.ID
                                    //join a in db.LMS_SubAgent on b.AgentID equals a.ID
                                  //  join d in db.LMS_Driver on b.DriverID equals d.ID
                                 where o.OrderID == OID
@@ -1131,6 +1163,9 @@ namespace CKLINE.Controllers
             ReceiveDate = o.ReceiveDate,
            DliveryDate = o.DliveryDate,
             RoutID = o.RoutID,
+                                      RoutID2 = o.RoutID2,
+                                      RoutID3 = o.RoutID3,
+                                      RoutID4 = o.RoutID4,
            NumberOrder = o.NumberOrder,
             Remark = o.Remark,
            PPackDate = o.PPackDate,
@@ -1142,6 +1177,10 @@ namespace CKLINE.Controllers
                                       TNumberOrder2 = o.TNumberOrder2,
                                       TNumberOrder3 = o.TNumberOrder3,
                                       TNumberOrder4 = o.TNumberOrder4,
+                                      ContainerType1 = o.ContainerType1,
+                                      ContainerType2  = o.ContainerType2,
+                                      ContainerType3  = o.ContainerType3,
+                                      ContainerType4 = o.ContainerType4,
 
            IEType = o.IEType,
           IEShipper = o.IEShipper,
@@ -1182,7 +1221,22 @@ namespace CKLINE.Controllers
                                       RFromDetail = r.FromDetail,
                                       RFromProvince = r.FromProvince,
                                       RToDetail = r.ToDetail,
-                                      RToProvince = r.ToProvince
+                                      RToProvince = r.ToProvince,
+
+                                      RFromDetail2 = r2.FromDetail,
+                                      RFromProvince2 = r2.FromProvince,
+                                      RToDetail2 = r2.ToDetail,
+                                      RToProvince2 = r2.ToProvince,
+
+                                      RFromDetail3 = r3.FromDetail,
+                                      RFromProvince3 = r3.FromProvince,
+                                      RToDetail3 = r3.ToDetail,
+                                      RToProvince3 = r3.ToProvince,
+
+                                      RFromDetail4 = r4.FromDetail,
+                                      RFromProvince4 = r4.FromProvince,
+                                      RToDetail4 = r4.ToDetail,
+                                      RToProvince4 = r4.ToProvince
                                 }
                  ).ToList();
 
@@ -1322,6 +1376,9 @@ namespace CKLINE.Controllers
           
                 a.Remark = ol.Remark;
                 a.RoutID = Convert.ToInt32(ol.RoutID);
+                a.RoutID2 = Convert.ToInt32(ol.RoutID2);
+                a.RoutID3 = Convert.ToInt32(ol.RoutID3);
+                a.RoutID4 = Convert.ToInt32(ol.RoutID4);
                 a.Status = Convert.ToInt32(ol.Status);
 
                   if (ol.TPackDate1 == null)
@@ -1363,6 +1420,10 @@ namespace CKLINE.Controllers
                   a.TNumberOrder2 = Convert.ToInt32(ol.TNumberOrder2);
                   a.TNumberOrder3 = Convert.ToInt32(ol.TNumberOrder3);
                   a.TNumberOrder4 = Convert.ToInt32(ol.TNumberOrder4);
+                  a.ContainerType1 = ol.ContainerType1;
+                  a.ContainerType2 = ol.ContainerType2;
+                  a.ContainerType3 = ol.ContainerType3;
+                  a.ContainerType4 = ol.ContainerType4;
                 a.CAddress = ol.CAddress;
                 a.CProvince = ol.CProvince;
                   a.CName = ol.CName;
@@ -1373,7 +1434,21 @@ namespace CKLINE.Controllers
                   a.RFromProvince = ol.RFromProvince;
                   a.RToDetail = ol.RToDetail;
                   a.RToProvince = ol.RToProvince;
-                  
+
+                  a.RFromDetail2 = ol.RFromDetail2;
+                  a.RFromProvince2 = ol.RFromProvince2;
+                  a.RToDetail2 = ol.RToDetail2;
+                  a.RToProvince2 = ol.RToProvince2;
+
+                  a.RFromDetail3 = ol.RFromDetail3;
+                  a.RFromProvince3 = ol.RFromProvince3;
+                  a.RToDetail3 = ol.RToDetail3;
+                  a.RToProvince3 = ol.RToProvince3;
+
+                  a.RFromDetail4 = ol.RFromDetail4;
+                  a.RFromProvince4 = ol.RFromProvince4;
+                  a.RToDetail4 = ol.RToDetail4;
+                  a.RToProvince4 = ol.RToProvince4;
                 model.Add(a);
 
             }
@@ -1941,7 +2016,12 @@ namespace CKLINE.Controllers
                                 ContainerNo = j.ContainerNo,
                                 Status = j.Status,
                                 ReceiveDate = o.ReceiveDate,
-                                DliveryDate = o.DliveryDate
+                                DliveryDate = o.DliveryDate,
+                                PPackDate = o.PPackDate,
+                                IEPackDate = o.IEPackDate,
+                                IEReceiveDate = o.IEReceiveDate,
+                                IEReturnDate  = o.IEReturnDate
+
                             }
                 ).ToList();
 
@@ -1951,6 +2031,10 @@ namespace CKLINE.Controllers
 
                     jd.ContainerNo = jl.ContainerNo;
                     jd.DliveryDate = Convert.ToDateTime(jl.DliveryDate).Date;
+                    jd.PPackDate = Convert.ToDateTime(jl.PPackDate).Date;
+                    jd.IEPackDate = Convert.ToDateTime(jl.IEPackDate).Date;
+                    jd.IEReceiveDate = Convert.ToDateTime(jl.IEReceiveDate).Date;
+                    jd.IEReturnDate = Convert.ToDateTime(jl.IEReceiveDate).Date;
                     jd.JID = jl.JID;
                     jd.ODID = Convert.ToInt32(jl.ODID);
                     jd.OrderID = jl.OrderID;
@@ -2025,6 +2109,11 @@ namespace CKLINE.Controllers
                               ODID = od.ID,
                            ContainerNo = od.ContainerNo,
                            ContainerType = od.ContainerType,
+                           TPackDate = od.TPackDate,
+                            PPackDate = o.PPackDate,
+                           IEReceiveDate = o.IEReceiveDate,
+                           IEPackDate = o.IEPackDate,
+                           IEReturnDate = o.IEReturnDate,
                            Position = od.Position,
                            PackNo = od.PackNo,
                             CustomerName = c.Name,
@@ -2039,6 +2128,11 @@ namespace CKLINE.Controllers
 
                 joad.CustomerID = Convert.ToInt32(joal.CustomerID);
                 joad.DliveryDate = Convert.ToDateTime(joal.DliveryDate).Date;
+                joad.TPackDate = Convert.ToDateTime(joal.TPackDate).Date;
+                joad.PPackDate = Convert.ToDateTime(joal.PPackDate).Date;
+                joad.IEPackDate = Convert.ToDateTime(joal.IEPackDate).Date;
+                joad.IEReceiveDate = Convert.ToDateTime(joal.IEReceiveDate).Date;
+                joad.IEReturnDate = Convert.ToDateTime(joal.IEReturnDate).Date;
                 joad.OrderID = joal.OrderID;
                 joad.OrderType = Convert.ToInt32(joal.OrderType);
                 joad.ReceiveDate = Convert.ToDateTime(joal.ReceiveDate).Date;

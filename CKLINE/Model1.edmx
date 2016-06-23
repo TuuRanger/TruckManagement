@@ -235,17 +235,24 @@
           <Property Name="ReceiveDate" Type="date" />
           <Property Name="DliveryDate" Type="date" />
           <Property Name="RoutID" Type="int" />
+          <Property Name="RoutID2" Type="int" />
+          <Property Name="RoutID3" Type="int" />
+          <Property Name="RoutID4" Type="int" />
           <Property Name="NumberOrder" Type="int" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="255" />
+          <Property Name="Remark" Type="nvarchar(max)" />
           <Property Name="PPackDate" Type="date" />
           <Property Name="TPackDate1" Type="date" />
           <Property Name="TNumberOrder1" Type="int" />
+          <Property Name="ContainerType1" Type="nvarchar" MaxLength="10" />
           <Property Name="TPackDate2" Type="date" />
           <Property Name="TNumberOrder2" Type="int" />
+          <Property Name="ContainerType2" Type="nvarchar" MaxLength="10" />
           <Property Name="TPackDate3" Type="date" />
           <Property Name="TNumberOrder3" Type="int" />
+          <Property Name="ContainerType3" Type="nvarchar" MaxLength="10" />
           <Property Name="TPackDate4" Type="date" />
           <Property Name="TNumberOrder4" Type="int" />
+          <Property Name="ContainerType4" Type="nvarchar" MaxLength="10" />
           <Property Name="IEType" Type="int" />
           <Property Name="IEShipper" Type="nvarchar" MaxLength="100" />
           <Property Name="IEQuantity" Type="nvarchar" MaxLength="100" />
@@ -265,7 +272,7 @@
           <Property Name="IELocationReceive" Type="nvarchar" MaxLength="100" />
           <Property Name="IEShipping" Type="nvarchar" MaxLength="100" />
           <Property Name="IETelephone" Type="nvarchar" MaxLength="50" />
-          <Property Name="IEBill" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEBill" Type="nvarchar(max)" />
           <Property Name="IEPortPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IELanPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IELiftPrice" Type="decimal" Precision="18" Scale="0" />
@@ -1068,7 +1075,7 @@
           <Property Name="DliveryDate" Type="DateTime" Precision="0" />
           <Property Name="RoutID" Type="Int32" />
           <Property Name="NumberOrder" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PPackDate" Type="DateTime" Precision="0" />
           <Property Name="TPackDate1" Type="DateTime" Precision="0" />
           <Property Name="TNumberOrder1" Type="Int32" />
@@ -1097,7 +1104,7 @@
           <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEBill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
@@ -1106,6 +1113,13 @@
           <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" />
+          <Property Name="RoutID2" Type="Int32" />
+          <Property Name="RoutID3" Type="Int32" />
+          <Property Name="RoutID4" Type="Int32" />
+          <Property Name="ContainerType1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContainerType2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContainerType3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContainerType4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1609,6 +1623,13 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="TMSModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ContainerType4" ColumnName="ContainerType4" />
+                <ScalarProperty Name="ContainerType3" ColumnName="ContainerType3" />
+                <ScalarProperty Name="ContainerType2" ColumnName="ContainerType2" />
+                <ScalarProperty Name="ContainerType1" ColumnName="ContainerType1" />
+                <ScalarProperty Name="RoutID4" ColumnName="RoutID4" />
+                <ScalarProperty Name="RoutID3" ColumnName="RoutID3" />
+                <ScalarProperty Name="RoutID2" ColumnName="RoutID2" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="IEMap" ColumnName="IEMap" />
                 <ScalarProperty Name="IEClosingTime" ColumnName="IEClosingTime" />

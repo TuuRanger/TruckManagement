@@ -35,6 +35,9 @@ namespace TMS.Models
         public DateTime ReceiveDate { get; set; }
         public DateTime DliveryDate { get; set; }
         public int RoutID { get; set; }
+        public int RoutID2 { get; set; }
+        public int RoutID3 { get; set; }
+        public int RoutID4 { get; set; }
         public int NumberOrder { get; set; }
         public string Remark { get; set; }
 
@@ -48,6 +51,11 @@ namespace TMS.Models
         public int TNumberOrder3 { get; set; }
         public DateTime TPackDate4 { get; set; }
         public int TNumberOrder4 { get; set; }
+
+        public string ContainerType1 { get; set; }
+        public string ContainerType2 { get; set; }
+        public string ContainerType3 { get; set; }
+        public string ContainerType4 { get; set; }
 
         public int IEType { get; set; }
         public string IEShipper { get; set; }
@@ -119,6 +127,9 @@ namespace TMS.Models
         public DateTime ReceiveDate { get; set; }
         public DateTime DliveryDate { get; set; }
         public int RoutID { get; set; }
+        public int RoutID2 { get; set; }
+        public int RoutID3 { get; set; }
+        public int RoutID4 { get; set; }
         public int NumberOrder { get; set; }
         public string Remark { get; set; }
 
@@ -126,12 +137,16 @@ namespace TMS.Models
 
         public DateTime TPackDate1 { get; set; }
         public int TNumberOrder1 { get; set; }
+        public string ContainerType1 { get; set; }
         public DateTime TPackDate2 { get; set; }
         public int TNumberOrder2 { get; set; }
+        public string ContainerType2 { get; set; }
         public DateTime TPackDate3 { get; set; }
         public int TNumberOrder3 { get; set; }
+        public string ContainerType3 { get; set; }
         public DateTime TPackDate4 { get; set; }
         public int TNumberOrder4 { get; set; }
+        public string ContainerType4 { get; set; }
 
         public int IEType { get; set; }
         public string IEShipper { get; set; }
@@ -177,6 +192,21 @@ namespace TMS.Models
         public string RFromProvince { get; set; }
         public string RToDetail { get; set; }
         public string RToProvince { get; set; }
+
+        public string RFromDetail2 { get; set; }
+        public string RFromProvince2 { get; set; }
+        public string RToDetail2 { get; set; }
+        public string RToProvince2 { get; set; }
+
+        public string RFromDetail3 { get; set; }
+        public string RFromProvince3 { get; set; }
+        public string RToDetail3 { get; set; }
+        public string RToProvince3 { get; set; }
+
+        public string RFromDetail4 { get; set; }
+        public string RFromProvince4 { get; set; }
+        public string RToDetail4 { get; set; }
+        public string RToProvince4 { get; set; }
       
 
     }
@@ -209,6 +239,7 @@ namespace TMS.Models
         public DateTime ReceiveDate { get; set; }
         public DateTime DliveryDate { get; set; }
         public DateTime TPackDate { get; set; }
+       
         public DateTime IEReceiveDate { get; set; }
         public int RoutID { get; set; }
         public int CustomerID { get; set; }
@@ -260,6 +291,14 @@ namespace TMS.Models
         public string ContainerType { get; set; }
         public DateTime ReceiveDate { get; set; }
         public DateTime DliveryDate { get; set; }
+        public DateTime PPackDate { get; set; }
+        public DateTime TPackDate1 { get; set; }
+        public DateTime TPackDate2 { get; set; }
+        public DateTime TPackDate3 { get; set; }
+        public DateTime TPackDate4 { get; set; }
+        public DateTime IEReceiveDate { get; set; }
+        public DateTime IEPackDate { get; set; }
+        public DateTime IEReturnDate { get; set; }
         public int Status { get; set; }
     }
 
@@ -269,6 +308,12 @@ namespace TMS.Models
         public string OrderID { get; set; } 
         public DateTime ReceiveDate { get; set; }
         public DateTime DliveryDate { get; set; }
+        public DateTime TPackDate { get; set; }
+        public DateTime PPackDate { get; set; }
+      
+        public DateTime IEReceiveDate { get; set; }
+        public DateTime IEPackDate { get; set; }
+        public DateTime IEReturnDate { get; set; }
         public int OrderType { get; set; }
         public int CustomerID { get; set; }
         public int RouteID { get; set; }

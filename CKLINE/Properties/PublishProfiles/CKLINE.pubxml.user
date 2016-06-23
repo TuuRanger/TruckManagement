@@ -19,7 +19,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:04</publishTime>
     </File>
     <File Include="bin/CKLINE.dll">
-      <publishTime>06/23/2016 20:41:33</publishTime>
+      <publishTime>06/24/2016 00:42:10</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/10/2016 19:23:09</publishTime>
@@ -3499,25 +3499,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/13/2016 13:53:24</publishTime>
     </File>
     <File Include="Views/TMS/Jobs.cshtml">
-      <publishTime>06/23/2016 20:08:17</publishTime>
+      <publishTime>06/24/2016 00:34:03</publishTime>
     </File>
     <File Include="Views/TMS/NewOrder.cshtml">
-      <publishTime>06/23/2016 20:36:03</publishTime>
+      <publishTime>06/23/2016 22:43:53</publishTime>
     </File>
     <File Include="Views/TMS/NewRoute.cshtml">
       <publishTime>05/31/2016 01:30:43</publishTime>
     </File>
     <File Include="Views/TMS/OpenJob.cshtml">
-      <publishTime>06/14/2016 20:41:54</publishTime>
+      <publishTime>06/24/2016 00:36:02</publishTime>
     </File>
     <File Include="Views/TMS/OpenJobDetail.cshtml">
-      <publishTime>05/11/2016 23:34:49</publishTime>
+      <publishTime>06/24/2016 00:40:55</publishTime>
     </File>
     <File Include="Views/TMS/OrderCommit.cshtml">
       <publishTime>06/08/2016 12:58:16</publishTime>
     </File>
     <File Include="Views/TMS/OrderInfo.cshtml">
-      <publishTime>06/23/2016 19:40:50</publishTime>
+      <publishTime>06/23/2016 23:45:50</publishTime>
     </File>
     <File Include="Views/TMS/OrderList.cshtml">
       <publishTime>06/23/2016 20:01:07</publishTime>

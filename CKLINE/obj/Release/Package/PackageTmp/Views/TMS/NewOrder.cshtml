@@ -532,7 +532,7 @@
                             </div>
                             &nbsp;
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label>Customer</label>
                                     <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" onchange="chk_ToOneWay();">
                                      @*   <option value="">-- Select Customer --</option>*@
@@ -542,21 +542,22 @@
                                         }
                                     </select>
                                 </div>
+                               
+                            </div>
+                            &nbsp;
+                     
+                            <div class="form-group">
                                 <div class="col-md-6">
-                                    <label>Route</label>
+                                    <label>Route (1)</label>
                                     <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
-                                       @* <option value="">-- Select Route --</option>*@
+                                        @* <option value="">-- Select Route --</option>*@
                                         @foreach (var iRoute in item.sRoute)
                                         {
                                             <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
                                         }
                                     </select>
                                 </div>
-                            </div>
-                            &nbsp;
-                     
-                            <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-2">
                                     <label>วันที่ลากตู้ (1)</label>
                                     <div class="input-group date">
                                         @*<div class="input-group-addon">
@@ -574,8 +575,9 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label>จำนวนตู้</label>
+                               
+                                <div class="col-md-2">
+                                    <label>จำนวนตู้ (1)</label>
                                     <select class="form-control" id="Num21" name="Num21" onchange="chk_Num21();">
 
                                         @* <option value=" ">
@@ -593,6 +595,25 @@
 
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                    <label>ประเภทตู้ (1)</label>
+                                    <select class="form-control" id="CType1" name="CType1">
+
+                                        @* <option value=" ">
+                -- Select No of luggage --</option>*@
+                                        <option value="20'DC">20'DC</option>
+                                        <option value="40'DC">40'DC</option>
+                                        <option value="20'RF">20'RF</option>
+                                        <option value="40'RF">40'RF</option>
+                                        <option value="20'OT">20'OT</option>
+                                        <option value="40'OT">40'OT</option>
+                                        <option value="20'FR">20'FR</option>
+                                        <option value="40'FR">40'FR</option>
+                                        <option value="20'HC">20'HC</option>
+                                        <option value="40'HC">40'HC</option>
+
+                                    </select>
+                                </div>
                             </div>
                           
                             &nbsp;
@@ -602,16 +623,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum11" name="tNum11" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType11" name="tType11">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
+                                        <option value=" ">
+                -- Select No of luggage --</option>
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -624,8 +646,8 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
-                                    &nbsp;
+                                    </div>*@
+                                   
                                 </div>
                             </div>
                             <div id="sNum212">
@@ -634,17 +656,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum12" name="tNum12" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType12" name="tType12">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
+                                        <option value=" ">
+                -- Select No of luggage --</option>
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -657,8 +679,8 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
-                                    &nbsp;
+                                    </div>*@
+                                 
                                 </div>
                             </div>
                             <div id="sNum213">
@@ -667,17 +689,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum13" name="tNum13" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType13" name="tType13">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
+                                           <option value=" ">
+                -- Select No of luggage --</option>
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -690,8 +712,8 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
-                                    &nbsp;
+                                    </div>*@
+                                  
                                 </div>
                             </div>
                             <div id="sNum214">
@@ -700,17 +722,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum14" name="tNum14" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType14" name="tType14">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
+                                             <option value=" ">
+                -- Select No of luggage --</option>
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -723,8 +745,8 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
-                                    &nbsp;
+                                    </div>*@
+                                   
                                 </div>
                             </div>
                             <div id="sNum215">
@@ -733,17 +755,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum15" name="tNum15" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType15" name="tType15">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
+                                            <option value=" ">
+                -- Select No of luggage --</option>
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -757,7 +779,7 @@
 
                                         </select>
                                     </div>
-                                    &nbsp;
+                                    &nbsp;*@
                                 </div>
                             </div>
                             <div id="sNum216">
@@ -766,17 +788,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum16" name="tNum16" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType16" name="tType16">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -790,7 +810,7 @@
 
                                         </select>
                                     </div>
-                                    &nbsp;
+                                    &nbsp;*@
                                 </div>
                             </div>
                             <div id="sNum217">
@@ -799,17 +819,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum17" name="tNum17" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType17" name="tType17">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -823,7 +841,7 @@
 
                                         </select>
                                     </div>
-                                    &nbsp;
+                                    &nbsp;*@
                                 </div>
                             </div>
                             <div id="sNum218">
@@ -832,18 +850,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum18" name="tNum18" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType18" name="tType18">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -857,7 +873,7 @@
 
                                         </select>
                                     </div>
-                                    &nbsp;
+                                    &nbsp;*@
                                 </div>
                             </div>
                             <div id="sNum219">
@@ -866,18 +882,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum19" name="tNum19" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
+                                    &nbsp;
 
-
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType19" name="tType19">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
+                            
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -891,7 +906,7 @@
 
                                         </select>
                                     </div>
-                                    &nbsp;
+                                    &nbsp;*@
                                 </div>
                             </div>
                             <div id="sNum2110">
@@ -900,17 +915,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum110" name="tNum110" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-
-                                    <div class="col-md-3">
+                                    &nbsp;
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType110" name="tType110">
 
-                                            @* <option value=" ">
-                -- Select No of luggage --</option>*@
+                           
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -924,13 +938,23 @@
 
                                         </select>
                                     </div>
-                                    &nbsp;
+                                    &nbsp;*@
                                 </div>
                             </div>
 
                           
                             <div class="form-group">
                                 <div class="col-md-6">
+                                    <label>Route (2)</label>
+                                    <select class="form-control" id="Route2" name="Route2" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
+                                        @* <option value="">-- Select Route --</option>*@
+                                        @foreach (var iRoute in item.sRoute)
+                                        {
+                                            <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
                                     <label>วันที่ลากตู้ (2)</label>
                                     <div class="input-group date">
                                         @*<div class="input-group-addon">
@@ -948,8 +972,9 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label>จำนวนตู้</label>
+                              
+                                <div class="col-md-2">
+                                    <label>จำนวนตู้ (2)</label>
                                     <select class="form-control" id="Num22" name="Num22" onchange="chk_Num22();">
 
                                         @* <option value=" ">
@@ -968,6 +993,25 @@
 
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                    <label>ประเภทตู้ (2)</label>
+                                    <select class="form-control" id="CType2" name="CType2">
+
+                                        @* <option value=" ">
+                -- Select No of luggage --</option>*@
+                                        <option value="20'DC">20'DC</option>
+                                        <option value="40'DC">40'DC</option>
+                                        <option value="20'RF">20'RF</option>
+                                        <option value="40'RF">40'RF</option>
+                                        <option value="20'OT">20'OT</option>
+                                        <option value="40'OT">40'OT</option>
+                                        <option value="20'FR">20'FR</option>
+                                        <option value="40'FR">40'FR</option>
+                                        <option value="20'HC">20'HC</option>
+                                        <option value="40'HC">40'HC</option>
+
+                                    </select>
+                                </div>
                             </div>
 
                             &nbsp;
@@ -977,16 +1021,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum21" name="tNum21" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-6">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType21" name="tType21">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                     
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -999,7 +1042,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1009,17 +1052,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum22" name="tNum22" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType22" name="tType22">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                              
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1032,7 +1074,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1042,17 +1084,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum23" name="tNum23" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType23" name="tType23">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                               
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1065,7 +1106,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1075,17 +1116,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum24" name="tNum24" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType24" name="tType24">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                           
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1098,7 +1138,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1108,17 +1148,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum25" name="tNum25" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType25" name="tType25">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                         
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1131,7 +1170,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1141,17 +1180,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum26" name="tNum26" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType26" name="tType26">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                   
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1164,7 +1202,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1174,17 +1212,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum27" name="tNum27" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType27" name="tType27">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                  
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1197,7 +1234,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1207,18 +1244,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum28" name="tNum28" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType28" name="tType28">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                      
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1231,7 +1267,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1241,18 +1277,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum29" name="tNum29" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType29" name="tType29">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1265,7 +1299,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1275,17 +1309,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum210" name="tNum210" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType210" name="tType210">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1298,13 +1330,23 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6">
+                                    <label>Route (3)</label>
+                                    <select class="form-control" id="Route3" name="Route3" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
+                                        @* <option value="">-- Select Route --</option>*@
+                                        @foreach (var iRoute in item.sRoute)
+                                        {
+                                            <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
                                     <label>วันที่ลากตู้ (3)</label>
                                     <div class="input-group date">
                                         @*<div class="input-group-addon">
@@ -1322,8 +1364,9 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label>จำนวนตู้</label>
+                              
+                                <div class="col-md-2">
+                                    <label>จำนวนตู้ (3)</label>
                                     <select class="form-control" id="Num23" name="Num23" onchange="chk_Num23();">
 
                                         @* <option value=" ">
@@ -1342,6 +1385,25 @@
 
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                    <label>ประเภทตู้ (3)</label>
+                                    <select class="form-control" id="CType3" name="CType3">
+
+                                        @* <option value=" ">
+                -- Select No of luggage --</option>*@
+                                        <option value="20'DC">20'DC</option>
+                                        <option value="40'DC">40'DC</option>
+                                        <option value="20'RF">20'RF</option>
+                                        <option value="40'RF">40'RF</option>
+                                        <option value="20'OT">20'OT</option>
+                                        <option value="40'OT">40'OT</option>
+                                        <option value="20'FR">20'FR</option>
+                                        <option value="40'FR">40'FR</option>
+                                        <option value="20'HC">20'HC</option>
+                                        <option value="40'HC">40'HC</option>
+
+                                    </select>
+                                </div>
                             </div>
 
                             &nbsp;
@@ -1351,16 +1413,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum31" name="tNum31" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType31" name="tType31">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                            
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1373,7 +1434,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1383,17 +1444,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum32" name="tNum32" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType32" name="tType32">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1406,7 +1465,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1416,17 +1475,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum33" name="tNum33" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType33" name="tType33">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1439,7 +1496,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1449,17 +1506,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum34" name="tNum34" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType34" name="tType34">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1472,7 +1527,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1482,17 +1537,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum35" name="tNum35" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType35" name="tType35">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                    
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1505,7 +1559,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1515,17 +1569,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum36" name="tNum36" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType36" name="tType36">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1538,7 +1590,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1548,17 +1600,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum37" name="tNum37" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType37" name="tType37">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1571,7 +1621,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1581,18 +1631,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum38" name="tNum38" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType38" name="tType38">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1605,7 +1653,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1615,18 +1663,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum39" name="tNum39" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType39" name="tType39">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1639,7 +1685,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1649,17 +1695,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum310" name="tNum310" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType310" name="tType310">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                                
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1672,13 +1717,23 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-6">
+                                    <label>Route (4)</label>
+                                    <select class="form-control" id="Route4" name="Route4" placeholder="-- Select Route --" onchange="chk_ToOneWay();">
+                                        @* <option value="">-- Select Route --</option>*@
+                                        @foreach (var iRoute in item.sRoute)
+                                        {
+                                            <option value="@iRoute.Id">@iRoute.From > @iRoute.TO</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
                                     <label>วันที่ลากตู้ (4)</label>
                                     <div class="input-group date">
                                         @*<div class="input-group-addon">
@@ -1696,8 +1751,9 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label>จำนวนตู้</label>
+                             
+                                <div class="col-md-2">
+                                    <label>จำนวนตู้ (4)</label>
                                     <select class="form-control" id="Num24" name="Num24" onchange="chk_Num24();">
 
                                         @* <option value=" ">
@@ -1716,6 +1772,25 @@
 
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                    <label>ประเภทตู้ (4)</label>
+                                    <select class="form-control" id="CType4" name="CType4">
+
+                                        @* <option value=" ">
+                -- Select No of luggage --</option>*@
+                                        <option value="20'DC">20'DC</option>
+                                        <option value="40'DC">40'DC</option>
+                                        <option value="20'RF">20'RF</option>
+                                        <option value="40'RF">40'RF</option>
+                                        <option value="20'OT">20'OT</option>
+                                        <option value="40'OT">40'OT</option>
+                                        <option value="20'FR">20'FR</option>
+                                        <option value="40'FR">40'FR</option>
+                                        <option value="20'HC">20'HC</option>
+                                        <option value="40'HC">40'HC</option>
+
+                                    </select>
+                                </div>
                             </div>
 
                             &nbsp;
@@ -1725,16 +1800,14 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum41" name="tNum41" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType41" name="tType41">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1747,7 +1820,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1757,17 +1830,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum42" name="tNum42" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType42" name="tType42">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                               
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1780,7 +1852,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1790,17 +1862,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum43" name="tNum43" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType43" name="tType43">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1813,7 +1883,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1823,17 +1893,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum44" name="tNum44" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType44" name="tType44">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1846,7 +1914,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1856,17 +1924,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum45" name="tNum45" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType45" name="tType45">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                         
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1879,7 +1946,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1889,17 +1956,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum46" name="tNum46" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType46" name="tType46">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1912,7 +1977,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1922,17 +1987,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum47" name="tNum47" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType47" name="tType47">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+                       
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1945,7 +2009,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1955,18 +2019,17 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum48" name="tNum48" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType48" name="tType48">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
+           
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -1979,7 +2042,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -1989,18 +2052,16 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum49" name="tNum49" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType49" name="tType49">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -2013,7 +2074,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>
@@ -2023,17 +2084,15 @@
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <label>เบอร์ตู้</label>
                                         <input id="tNum410" name="tNum410" type="text" class="form-control" placeholder="Enter ...">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    @*<div class="col-md-3">
                                         <label>ประเภทตู้</label>
                                         <select class="form-control" id="tType410" name="tType410">
 
-                                            @* <option value=" ">
-                        -- Select No of luggage --</option>*@
                                             <option value="20'DC">20'DC</option>
                                             <option value="40'DC">40'DC</option>
                                             <option value="20'RF">20'RF</option>
@@ -2046,7 +2105,7 @@
                                             <option value="40'HC">40'HC</option>
 
                                         </select>
-                                    </div>
+                                    </div>*@
                                     &nbsp;
                                 </div>
                             </div>

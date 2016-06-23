@@ -510,7 +510,7 @@
     <Property Name="DliveryDate" Type="DateTime" Precision="0" />
     <Property Name="RoutID" Type="Int32" />
     <Property Name="NumberOrder" Type="Int32" />
-    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="PPackDate" Type="DateTime" Precision="0" />
     <Property Name="TPackDate1" Type="DateTime" Precision="0" />
     <Property Name="TNumberOrder1" Type="Int32" />
@@ -539,7 +539,7 @@
     <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEBill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
@@ -548,5 +548,12 @@
     <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
     <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Int32" />
+    <Property Name="RoutID2" Type="Int32" />
+    <Property Name="RoutID3" Type="Int32" />
+    <Property Name="RoutID4" Type="Int32" />
+    <Property Name="ContainerType1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ContainerType2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ContainerType3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ContainerType4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

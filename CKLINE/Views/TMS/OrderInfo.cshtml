@@ -50,7 +50,7 @@
 
     <div class="row invoice-info">
         <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
+        <div class="col-sm-12 invoice-col">
             <b>Customer</b><br>
            
             <b>Name :</b>&nbsp; @item.CName<br>
@@ -58,24 +58,7 @@
             <b>Telephone :</b>&nbsp; @item.CTelephone
             <br>
         </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-            <b>From</b>
-            <address>
-                <strong>@item.RFromDetail</strong><br>
-               @item.RFromProvince<br>
-             
-            </address>
-        </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-            <b>To</b>
-            <address>
-                <strong>@item.RToDetail</strong><br>
-                @item.RToProvince<br>
-               
-            </address>
-        </div>
+     
        
     </div>
     <hr />
@@ -115,49 +98,115 @@
     {
         <div class="row invoice-info">
             <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
+         
 
                 @if (item.TNumberOrder1 > 0)
                 {
-                    <b>วันที่ลากตู้ (1) : </b> @item.TPackDate1.ToString("dd/MM/yyyy")<br>
+                    <div class="col-sm-4 invoice-col">
+                        <b>วันที่ลากตู้ (1)&nbsp;  : </b> &nbsp; @item.TPackDate1.ToString("dd/MM/yyyy")<br>
+                        <b>จำนวนตู้ (1)&nbsp; : </b> &nbsp; @item.TNumberOrder1<br>
+                        <b>ประเภทตู้ (1)&nbsp;  : </b>&nbsp;  @item.ContainerType1<br>
+                     
+                    </div>
+                    <div class="col-sm-4 invoice-col">
+                        <b>From</b>
+                        <address>
+                            <strong>@item.RFromDetail</strong>@item.RFromProvince<br>
+                            <br>
+
+                        </address>
+                    </div>
+                    <div class="col-sm-4 invoice-col">
+                        <b>To</b>
+                        <address>
+                            <strong>@item.RToDetail</strong>@item.RToProvince<br>
+                            <br>
+
+                        </address>
+                     
+                    </div>
+ 
                 }
-                @if (item.TNumberOrder2 > 0)
-                {
-                    <b>วันที่ลากตู้ (2) : </b> @item.TPackDate2.ToString("dd/MM/yyyy")<br>
-                }
-                @if (item.TNumberOrder3 > 0)
-                {
-                    <b>วันที่ลากตู้ (3) : </b> @item.TPackDate3.ToString("dd/MM/yyyy")<br>
-                }
-                @if (item.TNumberOrder4 > 0)
-                {
-                    <b>วันที่ลากตู้ (4) : </b> @item.TPackDate4.ToString("dd/MM/yyyy")<br>
-                }
-              
-                <br>
-            </div>
+                        @if (item.TNumberOrder2 > 0)
+                        {
+                            <div class="col-sm-4 invoice-col">
+                                <b>วันที่ลากตู้ (2) &nbsp;: </b>&nbsp; @item.TPackDate2.ToString("dd/MM/yyyy")<br>
+                                <b>จำนวนตู้ (2)&nbsp; : </b>&nbsp; @item.TNumberOrder2<br>
+                                <b>ประเภทตู้ (2) &nbsp;: </b>&nbsp; @item.ContainerType2<br>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <b>From</b>
+                                <address>
+                                    <strong>@item.RFromDetail2</strong>@item.RFromProvince2<br>
+                                    <br>
+
+                                </address>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <b>To</b>
+                                <address>
+                                    <strong>@item.RToDetail2</strong>@item.RToProvince2<br>
+                                    <br>
+
+                                </address>
+                            </div>
+  
+                        }
+                        @if (item.TNumberOrder3 > 0)
+                        {
+                            <div class="col-sm-4 invoice-col">
+                                <b>วันที่ลากตู้ (3) &nbsp; : </b>&nbsp; @item.TPackDate3.ToString("dd/MM/yyyy")<br>
+                                <b>จำนวนตู้ (3)&nbsp;: </b>&nbsp; @item.TNumberOrder3<br>
+                                <b>ประเภทตู้ (3) &nbsp;: </b>&nbsp; @item.ContainerType3<br>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <b>From</b>
+                                <address>
+                                    <strong>@item.RFromDetail3</strong>@item.RFromProvince3<br>
+                                    <br>
+
+                                </address>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <b>To</b>
+                                <address>
+                                    <strong>@item.RToDetail3</strong>@item.RToProvince3<br>
+                                    <br>
+
+                                </address>
+                            </div>
+    
+                        }
+                        @if (item.TNumberOrder4 > 0)
+                        {
+                            <div class="col-sm-4 invoice-col">
+                                <b>วันที่ลากตู้ (4) &nbsp; : </b>&nbsp; @item.TPackDate4.ToString("dd/MM/yyyy")<br>
+                                <b>จำนวนตู้ (4)&nbsp; : </b>&nbsp; @item.TNumberOrder4<br>
+                                <b>ประเภทตู้ (4)&nbsp; : </b>&nbsp; @item.ContainerType4<br>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <b>From</b>
+                                <address>
+                                    <strong>@item.RFromDetail4</strong>@item.RFromProvince4<br>
+                                    <br>
+
+                                </address>
+                            </div>
+                            <div class="col-sm-4 invoice-col">
+                                <b>To</b>
+                                <address>
+                                    <strong>@item.RToDetail4</strong>@item.RToProvince4<br>
+                                    <br>
+
+                                </address>
+                            </div>
+
+                        }
+
+                    
             <!-- /.col -->
-            <div class="col-sm-8 invoice-col">
-                @if (item.TNumberOrder1 > 0)
-                {
-                    <b>จำนวนตู้ : </b> @item.TNumberOrder1<br>
-                }
-                @if (item.TNumberOrder2 > 0)
-                {
-                    <b>จำนวนตู้ : </b> @item.TNumberOrder2<br>
-                }
-                @if (item.TNumberOrder3 > 0)
-                {
-                    <b>จำนวนตู้ : </b> @item.TNumberOrder3<br>
-                }
-                @if (item.TNumberOrder4 > 0)
-                {
-                    <b>จำนวนตู้ : </b> @item.TNumberOrder4<br>
-                }
-             
-                <br>
-            </div>
-            <!-- /.col -->
+           
+         
             <div class="col-sm-12 invoice-col">
 
                 <b>หมายเหตุ :</b>&nbsp; @item.Remark<br>

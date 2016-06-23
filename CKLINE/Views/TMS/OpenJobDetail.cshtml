@@ -62,7 +62,7 @@
                        
                         <div class="form-group">
                             <div class="col-md-4">
-                                <label>ชื่อตู้</label>
+                                <label>เบอร์ตู้</label>
                                 <input type="text" class="form-control" placeholder="BEAU22380837" disabled>
                             </div>
                             <div class="col-md-4">
@@ -93,15 +93,38 @@
                         </div>
                         &nbsp;
                         <div class="form-group">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label>วันที่ส่ง</label>
                                 <input type="text" class="form-control" placeholder="27/05/2559" disabled>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label>เวลาที่ส่ง</label>
                                 <input type="text" class="form-control" placeholder="12:00" disabled>
                             </div>
-                            <div class="col-md-4">
+                          
+                        </div>
+                      
+                        &nbsp;
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>วันที่รถออก</label>
+                                <div class="input-group date">
+                                    @*<div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+
+                <input class="form-control" data-val="true" data-val-required="Date is required"
+                       id="PPackDate" name="PPackDate" type="date" value="@dDate" />*@
+                                    <input type="text" class="form-control" name="PPackDate" id="PPackDate" data-select="datepicker"
+                                           data-val="true" data-val-required="Date is required">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <label>เวลารถออก</label>
                                 <select class="form-control" id="Time" name="Time">
 
@@ -206,34 +229,23 @@
                             </div>
 
                         </div>
-                      
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label>เลขไมล์</label>
-                                <input type="text" class="form-control" placeholder="" >
-                            </div>
-                            <div class="col-md-4">
-                                <label>เลขน้ำมัน (ลิตร)</label>
-                                <input type="text" class="form-control" placeholder="" >
-                            </div>
-                            <div class="col-md-4">
-                                <label>ระยะทาง (กม.)</label>
-                                <input type="text" class="form-control" placeholder="" >
-                            </div>
 
-                        </div>
                         &nbsp;
+                     
                         <div class="form-group">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <label>เลขไมล์</label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-md-3">
                                 <label>เงินสำรองค่าน้ำมัน (บาท)</label>
                                 <input type="text" class="form-control" placeholder="">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>เงินสำรองค่าทางด่วน (บาท)</label>
                                 <input type="text" class="form-control" placeholder="">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label>เงินสำรองค่าอื่นๆ (บาท)</label>
                                 <input type="text" class="form-control" placeholder="">
                             </div>

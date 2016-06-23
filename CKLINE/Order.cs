@@ -62,5 +62,12 @@ namespace CKLINE
         public string IEClosingTime { get; set; }
         public string IEMap { get; set; }
         public Nullable<int> Status { get; set; }
+        public Nullable<int> RoutID2 { get; set; }
+        public Nullable<int> RoutID3 { get; set; }
+        public Nullable<int> RoutID4 { get; set; }
+        public string ContainerType1 { get; set; }
+        public string ContainerType2 { get; set; }
+        public string ContainerType3 { get; set; }
+        public string ContainerType4 { get; set; }
     }
 }

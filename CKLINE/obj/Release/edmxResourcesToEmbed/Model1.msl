@@ -497,6 +497,13 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="TMSModel.Order">
         <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="ContainerType4" ColumnName="ContainerType4" />
+          <ScalarProperty Name="ContainerType3" ColumnName="ContainerType3" />
+          <ScalarProperty Name="ContainerType2" ColumnName="ContainerType2" />
+          <ScalarProperty Name="ContainerType1" ColumnName="ContainerType1" />
+          <ScalarProperty Name="RoutID4" ColumnName="RoutID4" />
+          <ScalarProperty Name="RoutID3" ColumnName="RoutID3" />
+          <ScalarProperty Name="RoutID2" ColumnName="RoutID2" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="IEMap" ColumnName="IEMap" />
           <ScalarProperty Name="IEClosingTime" ColumnName="IEClosingTime" />

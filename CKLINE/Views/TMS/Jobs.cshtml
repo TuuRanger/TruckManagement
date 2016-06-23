@@ -542,8 +542,8 @@
                                             else if (OAItem.OrderType == 2)
                                             {
                                                 <div class="col-md-6">
-                                                    <label>เบอร์ซีล</label>
-                                                    <input type="text" id="PackNo" name="PackNo" class="form-control" value="@OAItem.PackNo" readonly>
+                                                    <label>ประเภทตู้</label>
+                                                    <input type="text" id="nType" name="nType" class="form-control" value="@OAItem.ContainerType" readonly>
                                                 </div>
                                             }
                                             else if (OAItem.OrderType == 3)
@@ -551,6 +551,7 @@
                                                 <div class="col-md-3">
                                                     <label>ประเภทตู้</label>
                                                     <input type="text" id="nType" name="nType" class="form-control" value="@OAItem.ContainerType" readonly>
+                                                  
                                                 </div>
     <div class="col-md-3">
         <label>เบอร์ซีล</label>
@@ -561,42 +562,122 @@
 
                                         </div>
                                         &nbsp;
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <label>Customer</label>
-                                                <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" disabled>
-                                                    @*   <option value="">-- Select Customer --</option>*@
+                                      
+                                        @if (OAItem.OrderType == 1)
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label>Customer</label>
+                                                    <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" disabled>
+                                                        @*   <option value="">-- Select Customer --</option>*@
 
-                                                    <option value="@OAItem.CustomerID">@OAItem.CustomerName</option>
+                                                        <option value="@OAItem.CustomerID">@OAItem.CustomerName</option>
 
-                                                </select>
+                                                    </select>
 
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Route</label>
+                                                    <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" disabled>
+                                                        @*  <option value="">-- Select Route --</option>*@
+
+                                                        <option value="@OAItem.RouteID">@OAItem.FromDetail > @OAItem.ToDetail</option>
+
+                                                    </select>
+
+                                                </div>
+                                                &nbsp;
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>Route</label>
-                                                <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" disabled>
-                                                    @*  <option value="">-- Select Route --</option>*@
-
-                                                    <option value="@OAItem.RouteID">@OAItem.FromDetail > @OAItem.ToDetail</option>
-
-                                                </select>
-
+                                         
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label>วันที่ออกเดินทาง</label>
+                                                    <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@OAItem.ReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>วันที่บรรจุ</label>
+                                                    <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@OAItem.DliveryDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>วันที่ส่ง</label>
+                                                    <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@OAItem.DliveryDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
                                             </div>
+                                        }
+                                        else if (OAItem.OrderType == 2)
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>Customer</label>
+                                                    <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" disabled>
+                                                        @*   <option value="">-- Select Customer --</option>*@
 
-                                        </div>
-                                        &nbsp;
+                                                        <option value="@OAItem.CustomerID">@OAItem.CustomerName</option>
 
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <label>วันที่รับ</label>
-                                                <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@OAItem.ReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                                    </select>
+
+                                                </div>
+                                               
+                                                &nbsp;
                                             </div>
-                                            <div class="col-md-6">
-                                                <label>วันที่ส่ง</label>
-                                                <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@OAItem.DliveryDate.ToString("dd/MM/yyyy")" readonly>
-                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label>Route</label>
+                                                    <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" disabled>
+                                                        @*  <option value="">-- Select Route --</option>*@
 
-                                        </div>
+                                                        <option value="@OAItem.RouteID">@OAItem.FromDetail > @OAItem.ToDetail</option>
+
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>วันที่ลากตู้</label>
+                                                    <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@OAItem.TPackDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                              
+                                            </div>
+                                        }
+                                        else if (OAItem.OrderType == 3)
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <label>Customer</label>
+                                                    <select class="form-control" id="Customer" name="Customer" placeholder="-- Select Customer --" disabled>
+                                                        @*   <option value="">-- Select Customer --</option>*@
+
+                                                        <option value="@OAItem.CustomerID">@OAItem.CustomerName</option>
+
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label>Route</label>
+                                                    <select class="form-control" id="Route" name="Route" placeholder="-- Select Route --" disabled>
+                                                        @*  <option value="">-- Select Route --</option>*@
+
+                                                        <option value="@OAItem.RouteID">@OAItem.FromDetail > @OAItem.ToDetail</option>
+
+                                                    </select>
+
+                                                </div>
+                                                &nbsp;
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label>วันรับตู้</label>
+                                                    <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@OAItem.IEReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>วันที่บรรจุ</label>
+                                                    <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@OAItem.IEPackDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>วันที่คืนตู้</label>
+                                                    <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@OAItem.IEReturnDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                            </div>
+                                        }
                                         &nbsp;
                                     </div>
                                 }
