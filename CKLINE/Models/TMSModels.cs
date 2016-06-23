@@ -40,43 +40,49 @@ namespace TMS.Models
 
         public DateTime PPackDate { get; set; }
 
-        public DateTime TPackDate { get; set; }
+        public DateTime TPackDate1 { get; set; }
+        public int TNumberOrder1 { get; set; }
+        public DateTime TPackDate2 { get; set; }
+        public int TNumberOrder2 { get; set; }
+        public DateTime TPackDate3 { get; set; }
+        public int TNumberOrder3 { get; set; }
+        public DateTime TPackDate4 { get; set; }
+        public int TNumberOrder4 { get; set; }
 
         public int IEType { get; set; }
         public string IEShipper { get; set; }
-        public string IEAgent { get; set; }
-        public string IELoading { get; set; }
-        public string IEShipping { get; set; }
-        public string IETelephone { get; set; }
-        public string IELocationPack { get; set; }
-        public string IELocationReceive { get; set; }
-        public string IEMap { get; set; }
-        public string IELiner { get; set; }
-        public DateTime IEReceiveDate { get; set; }
-        public DateTime IEPackDate { get; set; }
-        public string IEPacklTime { get; set; }
+        public string IEQuantity { get; set; }
         public string IEFeeder { get; set; }
         public string IEMother { get; set; }
-        public DateTime IECYDate { get; set; }
-        public DateTime IEETDDate { get; set; }
-        public string IEContact { get; set; }
+        public string IELoading { get; set; }
         public DateTime IEETADate { get; set; }
+        public DateTime IEETDDate { get; set; }
+        public DateTime IEReceiveDate { get; set; }
         public string IEAT { get; set; }
+        public string IEContact { get; set; }
         public string IETel { get; set; }
+        public DateTime IEPackDate { get; set; }
+        public string IEPacklTime { get; set; }
+        public string IELocationPack { get; set; }
+        public DateTime IEReturnDate { get; set; }
+        public string IELocationReceive { get; set; }
+        public string IEShipping { get; set; }
+        public string IETelephone { get; set; }
         public string IEBill { get; set; }
         public decimal IEPortPrice { get; set; }
         public decimal IELanPrice { get; set; }
         public decimal IELiftPrice { get; set; }
+
+        public string IEAgent { get; set; }
+
+
         public DateTime IECLosingDate { get; set; }
         public string IEClosingTime { get; set; }
-        public string IEAgent2 { get; set; }
-
+       
+        public string IEMap { get; set; }
+  
+      
         public int Status { get; set; }
-
-        //public List<ContainerList> lContainer { get; set; }
-        //public List<PositionList> lPosition { get; set; }
-        //public List<PackNoList> lPackNo { get; set; }
-   
 
     }
 
@@ -85,6 +91,8 @@ namespace TMS.Models
         public string Container { get; set; }
         public string Position { get; set; }
         public string PackNo { get; set; }
+        public string ContainerType { get; set; }
+       
      
     }
   
@@ -94,8 +102,10 @@ namespace TMS.Models
         public int OID { get; set; }
         public string OrderID { get; set; }
         public string ContainerNo { get; set; }
+        public string ContainerType { get; set; }
         public string Position { get; set; }
         public string PackNo { get; set; }
+        public DateTime TPackDate { get; set; }
         public int Status { get; set; }
     }
     public class OrderInfo
@@ -114,36 +124,46 @@ namespace TMS.Models
 
         public DateTime PPackDate { get; set; }
 
-        public DateTime TPackDate { get; set; }
+        public DateTime TPackDate1 { get; set; }
+        public int TNumberOrder1 { get; set; }
+        public DateTime TPackDate2 { get; set; }
+        public int TNumberOrder2 { get; set; }
+        public DateTime TPackDate3 { get; set; }
+        public int TNumberOrder3 { get; set; }
+        public DateTime TPackDate4 { get; set; }
+        public int TNumberOrder4 { get; set; }
 
         public int IEType { get; set; }
         public string IEShipper { get; set; }
-        public string IEAgent { get; set; }
-        public string IELoading { get; set; }
-        public string IEShipping { get; set; }
-        public string IETelephone { get; set; }
-        public string IELocationPack { get; set; }
-        public string IELocationReceive { get; set; }
-        public string IEMap { get; set; }
-        public string IELiner { get; set; }
-        public DateTime IEReceiveDate { get; set; }
-        public DateTime IEPackDate { get; set; }
-        public string IEPacklTime { get; set; }
+        public string IEQuantity { get; set; }
         public string IEFeeder { get; set; }
         public string IEMother { get; set; }
-        public DateTime IECYDate { get; set; }
-        public DateTime IEETDDate { get; set; }
-        public string IEContact { get; set; }
+        public string IELoading { get; set; }
         public DateTime IEETADate { get; set; }
+        public DateTime IEETDDate { get; set; }
+        public DateTime IEReceiveDate { get; set; }
         public string IEAT { get; set; }
+        public string IEContact { get; set; }
         public string IETel { get; set; }
+        public DateTime IEPackDate { get; set; }
+        public string IEPacklTime { get; set; }
+        public string IELocationPack { get; set; }
+        public DateTime IEReturnDate { get; set; }
+        public string IELocationReceive { get; set; }
+        public string IEShipping { get; set; }
+        public string IETelephone { get; set; }
         public string IEBill { get; set; }
         public decimal IEPortPrice { get; set; }
         public decimal IELanPrice { get; set; }
         public decimal IELiftPrice { get; set; }
+
+        public string IEAgent { get; set; }
+
+
         public DateTime IECLosingDate { get; set; }
         public string IEClosingTime { get; set; }
-        public string IEAgent2 { get; set; }
+
+        public string IEMap { get; set; }
 
         public int Status { get; set; }
 
@@ -165,8 +185,10 @@ namespace TMS.Models
         public int OID { get; set; }
         public string OrderID { get; set; }
         public string ContainerNo { get; set; }
+        public string ContainerType { get; set; }
         public string Position { get; set; }
         public string PackNo { get; set; }
+        public DateTime TPackDate { get; set; }
         public int Status { get; set; }
     }
 
@@ -186,6 +208,8 @@ namespace TMS.Models
         public string OrderID { get; set; }
         public DateTime ReceiveDate { get; set; }
         public DateTime DliveryDate { get; set; }
+        public DateTime TPackDate { get; set; }
+        public DateTime IEReceiveDate { get; set; }
         public int RoutID { get; set; }
         public int CustomerID { get; set; }
         public int NumberOrder { get; set; }
@@ -197,9 +221,10 @@ namespace TMS.Models
     {
         public int ID { get; set; }
         public int OID { get; set; }
-     
+        public DateTime TPackDate { get; set; }
         public string OrderID { get; set; }
         public string ContainerNo { get; set; }
+        public string ContainerType { get; set; }
         public string Position { get; set; }
         public string PackNo { get; set; }
         public int Status { get; set; }
@@ -232,6 +257,7 @@ namespace TMS.Models
         public int ODID { get; set; }
         public string OrderID { get; set; }
         public string ContainerNo { get; set; }
+        public string ContainerType { get; set; }
         public DateTime ReceiveDate { get; set; }
         public DateTime DliveryDate { get; set; }
         public int Status { get; set; }
@@ -248,6 +274,7 @@ namespace TMS.Models
         public int RouteID { get; set; }
         public int ODID { get; set; }
         public string ContainerNo { get; set; }
+        public string ContainerType { get; set; }
         public string Position { get; set; }
         public string PackNo { get; set; }
         public string CustomerName { get; set; }
@@ -265,6 +292,7 @@ namespace TMS.Models
         public int JID { get; set; }
         public string OrderID { get; set; }
         public string ContainerNo { get; set; }
+        public string ContainerType { get; set; }
         public string FromDetail { get; set; }
         public string ToDetail { get; set; }
         public DateTime ReceiveDate { get; set; }
@@ -283,6 +311,7 @@ namespace TMS.Models
         public int JID { get; set; }
         public string OrderID { get; set; }
         public string ContainerNo { get; set; }
+        public string ContainerType { get; set; }
         public string FromDetail { get; set; }
         public string ToDetail { get; set; }
         public DateTime ReceiveDate { get; set; }

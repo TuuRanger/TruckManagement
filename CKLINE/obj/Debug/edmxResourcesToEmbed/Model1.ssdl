@@ -233,35 +233,41 @@
     <Property Name="NumberOrder" Type="int" />
     <Property Name="Remark" Type="nvarchar" MaxLength="255" />
     <Property Name="PPackDate" Type="date" />
-    <Property Name="TPackDate" Type="date" />
+    <Property Name="TPackDate1" Type="date" />
+    <Property Name="TNumberOrder1" Type="int" />
+    <Property Name="TPackDate2" Type="date" />
+    <Property Name="TNumberOrder2" Type="int" />
+    <Property Name="TPackDate3" Type="date" />
+    <Property Name="TNumberOrder3" Type="int" />
+    <Property Name="TPackDate4" Type="date" />
+    <Property Name="TNumberOrder4" Type="int" />
     <Property Name="IEType" Type="int" />
     <Property Name="IEShipper" Type="nvarchar" MaxLength="100" />
-    <Property Name="IEAgent" Type="nvarchar" MaxLength="100" />
-    <Property Name="IELoading" Type="nvarchar" MaxLength="100" />
-    <Property Name="IEShipping" Type="nvarchar" MaxLength="100" />
-    <Property Name="IETelephone" Type="nvarchar" MaxLength="50" />
-    <Property Name="IELocationPack" Type="nvarchar" MaxLength="100" />
-    <Property Name="IELocationReceive" Type="nvarchar" MaxLength="100" />
-    <Property Name="IEMap" Type="nvarchar" MaxLength="100" />
-    <Property Name="IELiner" Type="nvarchar" MaxLength="100" />
-    <Property Name="IEReceiveDate" Type="date" />
-    <Property Name="IEPackDate" Type="date" />
-    <Property Name="IEPacklTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="IEQuantity" Type="nvarchar" MaxLength="100" />
     <Property Name="IEFeeder" Type="nvarchar" MaxLength="100" />
     <Property Name="IEMother" Type="nvarchar" MaxLength="100" />
-    <Property Name="IECYDate" Type="date" />
-    <Property Name="IEETDDate" Type="date" />
-    <Property Name="IEContact" Type="nvarchar" MaxLength="100" />
+    <Property Name="IELoading" Type="nvarchar" MaxLength="100" />
     <Property Name="IEETADate" Type="date" />
+    <Property Name="IEETDDate" Type="date" />
+    <Property Name="IEReceiveDate" Type="date" />
     <Property Name="IEAT" Type="nvarchar" MaxLength="100" />
+    <Property Name="IEContact" Type="nvarchar" MaxLength="100" />
     <Property Name="IETel" Type="nvarchar" MaxLength="50" />
+    <Property Name="IEPackDate" Type="date" />
+    <Property Name="IEPacklTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="IELocationPack" Type="nvarchar" MaxLength="100" />
+    <Property Name="IEReturnDate" Type="date" />
+    <Property Name="IELocationReceive" Type="nvarchar" MaxLength="100" />
+    <Property Name="IEShipping" Type="nvarchar" MaxLength="100" />
+    <Property Name="IETelephone" Type="nvarchar" MaxLength="50" />
     <Property Name="IEBill" Type="nvarchar" MaxLength="100" />
     <Property Name="IEPortPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="IELanPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="IELiftPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="IEAgent" Type="nvarchar" MaxLength="100" />
     <Property Name="IECLosingDate" Type="date" />
     <Property Name="IEClosingTime" Type="nvarchar" MaxLength="5" />
-    <Property Name="IEAgent2" Type="nvarchar" MaxLength="100" />
+    <Property Name="IEMap" Type="nvarchar" MaxLength="100" />
     <Property Name="Status" Type="int" />
   </EntityType>
   <EntityType Name="OrderDetail">
@@ -271,9 +277,11 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OID" Type="int" />
     <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+    <Property Name="TPackDate" Type="date" />
     <Property Name="ContainerNo" Type="nvarchar" MaxLength="40" />
     <Property Name="Position" Type="nvarchar" MaxLength="1" />
     <Property Name="PackNo" Type="nvarchar" MaxLength="40" />
+    <Property Name="ContainerType" Type="nvarchar" MaxLength="10" />
     <Property Name="Status" Type="int" />
   </EntityType>
   <EntityType Name="OrderType">

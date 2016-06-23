@@ -40,8 +40,8 @@
                                             <th>From</th>
                                             <th>To</th>
                                             <th>Type</th>
-                                            <th>จำนวนตู้</th>
-                                            <th>วันที่ส่ง</th>
+                                            <th>จำนวน</th>
+                                            <th>วันที่</th>
                                             <th>Status</th>
                                           @*  <th>Driver</th>*@
                                         </tr>
@@ -77,17 +77,21 @@
         SClass = "label label-danger";
     }
     string OrderName = "";
+    string SDate = "";
    if (item.OrderType == 1)
     {
         OrderName = "Praxair";
+        SDate = item.ReceiveDate.ToString("dd/MM/yyyy");
     }
     else if (item.OrderType == 2)
     {
         OrderName = "Trucking";
+        SDate = item.TPackDate1.ToString("dd/MM/yyyy");
     }
     else if (item.OrderType == 3)
     {
         OrderName = "Import/Export";
+        SDate = item.IEReceiveDate.ToString("dd/MM/yyyy");
     }
 
                                 <tr>
@@ -97,7 +101,7 @@
                                             <td>@item.RToDetail</td>
                                             <td>@OrderName</td>
                                             <td>@item.NumberOrder</td>
-                                            <td>@item.DliveryDate.ToString("dd/MM/yyyy")</td>
+                                            <td>@SDate</td>
                                     <td><span class="@SClass">@Status</span></td>
                                             @*<td>
                                                 <div class="sparkbar" data-color="#00a65a" data-height="20">Mr.zzzzz xxxxxx</div>

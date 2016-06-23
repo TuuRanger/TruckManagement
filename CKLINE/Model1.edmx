@@ -238,35 +238,41 @@
           <Property Name="NumberOrder" Type="int" />
           <Property Name="Remark" Type="nvarchar" MaxLength="255" />
           <Property Name="PPackDate" Type="date" />
-          <Property Name="TPackDate" Type="date" />
+          <Property Name="TPackDate1" Type="date" />
+          <Property Name="TNumberOrder1" Type="int" />
+          <Property Name="TPackDate2" Type="date" />
+          <Property Name="TNumberOrder2" Type="int" />
+          <Property Name="TPackDate3" Type="date" />
+          <Property Name="TNumberOrder3" Type="int" />
+          <Property Name="TPackDate4" Type="date" />
+          <Property Name="TNumberOrder4" Type="int" />
           <Property Name="IEType" Type="int" />
           <Property Name="IEShipper" Type="nvarchar" MaxLength="100" />
-          <Property Name="IEAgent" Type="nvarchar" MaxLength="100" />
-          <Property Name="IELoading" Type="nvarchar" MaxLength="100" />
-          <Property Name="IEShipping" Type="nvarchar" MaxLength="100" />
-          <Property Name="IETelephone" Type="nvarchar" MaxLength="50" />
-          <Property Name="IELocationPack" Type="nvarchar" MaxLength="100" />
-          <Property Name="IELocationReceive" Type="nvarchar" MaxLength="100" />
-          <Property Name="IEMap" Type="nvarchar" MaxLength="100" />
-          <Property Name="IELiner" Type="nvarchar" MaxLength="100" />
-          <Property Name="IEReceiveDate" Type="date" />
-          <Property Name="IEPackDate" Type="date" />
-          <Property Name="IEPacklTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="IEQuantity" Type="nvarchar" MaxLength="100" />
           <Property Name="IEFeeder" Type="nvarchar" MaxLength="100" />
           <Property Name="IEMother" Type="nvarchar" MaxLength="100" />
-          <Property Name="IECYDate" Type="date" />
-          <Property Name="IEETDDate" Type="date" />
-          <Property Name="IEContact" Type="nvarchar" MaxLength="100" />
+          <Property Name="IELoading" Type="nvarchar" MaxLength="100" />
           <Property Name="IEETADate" Type="date" />
+          <Property Name="IEETDDate" Type="date" />
+          <Property Name="IEReceiveDate" Type="date" />
           <Property Name="IEAT" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEContact" Type="nvarchar" MaxLength="100" />
           <Property Name="IETel" Type="nvarchar" MaxLength="50" />
+          <Property Name="IEPackDate" Type="date" />
+          <Property Name="IEPacklTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="IELocationPack" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEReturnDate" Type="date" />
+          <Property Name="IELocationReceive" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEShipping" Type="nvarchar" MaxLength="100" />
+          <Property Name="IETelephone" Type="nvarchar" MaxLength="50" />
           <Property Name="IEBill" Type="nvarchar" MaxLength="100" />
           <Property Name="IEPortPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IELanPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="IELiftPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IEAgent" Type="nvarchar" MaxLength="100" />
           <Property Name="IECLosingDate" Type="date" />
           <Property Name="IEClosingTime" Type="nvarchar" MaxLength="5" />
-          <Property Name="IEAgent2" Type="nvarchar" MaxLength="100" />
+          <Property Name="IEMap" Type="nvarchar" MaxLength="100" />
           <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="OrderDetail">
@@ -276,9 +282,11 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OID" Type="int" />
           <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+          <Property Name="TPackDate" Type="date" />
           <Property Name="ContainerNo" Type="nvarchar" MaxLength="40" />
           <Property Name="Position" Type="nvarchar" MaxLength="1" />
           <Property Name="PackNo" Type="nvarchar" MaxLength="40" />
+          <Property Name="ContainerType" Type="nvarchar" MaxLength="10" />
           <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="OrderType">
@@ -750,53 +758,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderType" Type="Int32" />
-          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerID" Type="Int32" />
-          <Property Name="OrderDate" Type="DateTime" Precision="0" />
-          <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
-          <Property Name="DliveryDate" Type="DateTime" Precision="0" />
-          <Property Name="RoutID" Type="Int32" />
-          <Property Name="NumberOrder" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="PPackDate" Type="DateTime" Precision="0" />
-          <Property Name="TPackDate" Type="DateTime" Precision="0" />
-          <Property Name="IEType" Type="Int32" />
-          <Property Name="IEShipper" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IEAgent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IELoading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IELocationPack" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IELiner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IEReceiveDate" Type="DateTime" Precision="0" />
-          <Property Name="IEPackDate" Type="DateTime" Precision="0" />
-          <Property Name="IEPacklTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="IEFeeder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IEMother" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IECYDate" Type="DateTime" Precision="0" />
-          <Property Name="IEETDDate" Type="DateTime" Precision="0" />
-          <Property Name="IEContact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IEETADate" Type="DateTime" Precision="0" />
-          <Property Name="IEAT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IETel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="IECLosingDate" Type="DateTime" Precision="0" />
-          <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="IEAgent2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Int32" />
-        </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
             <PropertyRef Name="ID" />
@@ -808,6 +769,8 @@
           <Property Name="Position" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="PackNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" />
+          <Property Name="ContainerType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TPackDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="OrderType">
           <Key>
@@ -1060,7 +1023,6 @@
           <EntitySet Name="MaintenanceTypes" EntityType="Self.MaintenanceType" />
           <EntitySet Name="MarriageStatus" EntityType="Self.MarriageStatu" />
           <EntitySet Name="MilitaryStatus" EntityType="Self.MilitaryStatu" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
           <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
           <EntitySet Name="Provices" EntityType="Self.Provice" />
@@ -1073,6 +1035,7 @@
           <EntitySet Name="Trucks" EntityType="Self.Truck" />
           <EntitySet Name="WorkingHistories" EntityType="Self.WorkingHistory" />
           <EntitySet Name="Jobs" EntityType="TMSModel.Job" />
+          <EntitySet Name="Orders" EntityType="TMSModel.Order" />
         </EntityContainer>
         <EntityType Name="Job">
           <Key>
@@ -1090,6 +1053,59 @@
           <Property Name="ODID" Type="Int32" />
           <Property Name="ContainerNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="SID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderType" Type="Int32" />
+          <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
+          <Property Name="DliveryDate" Type="DateTime" Precision="0" />
+          <Property Name="RoutID" Type="Int32" />
+          <Property Name="NumberOrder" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PPackDate" Type="DateTime" Precision="0" />
+          <Property Name="TPackDate1" Type="DateTime" Precision="0" />
+          <Property Name="TNumberOrder1" Type="Int32" />
+          <Property Name="TPackDate2" Type="DateTime" Precision="0" />
+          <Property Name="TNumberOrder2" Type="Int32" />
+          <Property Name="TPackDate3" Type="DateTime" Precision="0" />
+          <Property Name="TNumberOrder3" Type="Int32" />
+          <Property Name="TPackDate4" Type="DateTime" Precision="0" />
+          <Property Name="TNumberOrder4" Type="Int32" />
+          <Property Name="IEType" Type="Int32" />
+          <Property Name="IEShipper" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEQuantity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEFeeder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEMother" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IELoading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEETADate" Type="DateTime" Precision="0" />
+          <Property Name="IEETDDate" Type="DateTime" Precision="0" />
+          <Property Name="IEReceiveDate" Type="DateTime" Precision="0" />
+          <Property Name="IEAT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEContact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IETel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IEPackDate" Type="DateTime" Precision="0" />
+          <Property Name="IEPacklTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IELocationPack" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEReturnDate" Type="DateTime" Precision="0" />
+          <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IEAgent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IECLosingDate" Type="DateTime" Precision="0" />
+          <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1312,57 +1328,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="TMSModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-                <ScalarProperty Name="DliveryDate" ColumnName="DliveryDate" />
-                <ScalarProperty Name="RoutID" ColumnName="RoutID" />
-                <ScalarProperty Name="NumberOrder" ColumnName="NumberOrder" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="PPackDate" ColumnName="PPackDate" />
-                <ScalarProperty Name="TPackDate" ColumnName="TPackDate" />
-                <ScalarProperty Name="IEType" ColumnName="IEType" />
-                <ScalarProperty Name="IEShipper" ColumnName="IEShipper" />
-                <ScalarProperty Name="IEAgent" ColumnName="IEAgent" />
-                <ScalarProperty Name="IELoading" ColumnName="IELoading" />
-                <ScalarProperty Name="IEShipping" ColumnName="IEShipping" />
-                <ScalarProperty Name="IETelephone" ColumnName="IETelephone" />
-                <ScalarProperty Name="IELocationPack" ColumnName="IELocationPack" />
-                <ScalarProperty Name="IELocationReceive" ColumnName="IELocationReceive" />
-                <ScalarProperty Name="IEMap" ColumnName="IEMap" />
-                <ScalarProperty Name="IELiner" ColumnName="IELiner" />
-                <ScalarProperty Name="IEReceiveDate" ColumnName="IEReceiveDate" />
-                <ScalarProperty Name="IEPackDate" ColumnName="IEPackDate" />
-                <ScalarProperty Name="IEPacklTime" ColumnName="IEPacklTime" />
-                <ScalarProperty Name="IEFeeder" ColumnName="IEFeeder" />
-                <ScalarProperty Name="IEMother" ColumnName="IEMother" />
-                <ScalarProperty Name="IECYDate" ColumnName="IECYDate" />
-                <ScalarProperty Name="IEETDDate" ColumnName="IEETDDate" />
-                <ScalarProperty Name="IEContact" ColumnName="IEContact" />
-                <ScalarProperty Name="IEETADate" ColumnName="IEETADate" />
-                <ScalarProperty Name="IEAT" ColumnName="IEAT" />
-                <ScalarProperty Name="IETel" ColumnName="IETel" />
-                <ScalarProperty Name="IEBill" ColumnName="IEBill" />
-                <ScalarProperty Name="IEPortPrice" ColumnName="IEPortPrice" />
-                <ScalarProperty Name="IELanPrice" ColumnName="IELanPrice" />
-                <ScalarProperty Name="IELiftPrice" ColumnName="IELiftPrice" />
-                <ScalarProperty Name="IECLosingDate" ColumnName="IECLosingDate" />
-                <ScalarProperty Name="IEClosingTime" ColumnName="IEClosingTime" />
-                <ScalarProperty Name="IEAgent2" ColumnName="IEAgent2" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="TMSModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="TPackDate" ColumnName="TPackDate" />
+                <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="OID" ColumnName="OID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -1632,6 +1602,60 @@
                 <ScalarProperty Name="HitchID" ColumnName="HitchID" />
                 <ScalarProperty Name="TruckID" ColumnName="TruckID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="TMSModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IEMap" ColumnName="IEMap" />
+                <ScalarProperty Name="IEClosingTime" ColumnName="IEClosingTime" />
+                <ScalarProperty Name="IECLosingDate" ColumnName="IECLosingDate" />
+                <ScalarProperty Name="IEAgent" ColumnName="IEAgent" />
+                <ScalarProperty Name="IELiftPrice" ColumnName="IELiftPrice" />
+                <ScalarProperty Name="IELanPrice" ColumnName="IELanPrice" />
+                <ScalarProperty Name="IEPortPrice" ColumnName="IEPortPrice" />
+                <ScalarProperty Name="IEBill" ColumnName="IEBill" />
+                <ScalarProperty Name="IETelephone" ColumnName="IETelephone" />
+                <ScalarProperty Name="IEShipping" ColumnName="IEShipping" />
+                <ScalarProperty Name="IELocationReceive" ColumnName="IELocationReceive" />
+                <ScalarProperty Name="IEReturnDate" ColumnName="IEReturnDate" />
+                <ScalarProperty Name="IELocationPack" ColumnName="IELocationPack" />
+                <ScalarProperty Name="IEPacklTime" ColumnName="IEPacklTime" />
+                <ScalarProperty Name="IEPackDate" ColumnName="IEPackDate" />
+                <ScalarProperty Name="IETel" ColumnName="IETel" />
+                <ScalarProperty Name="IEContact" ColumnName="IEContact" />
+                <ScalarProperty Name="IEAT" ColumnName="IEAT" />
+                <ScalarProperty Name="IEReceiveDate" ColumnName="IEReceiveDate" />
+                <ScalarProperty Name="IEETDDate" ColumnName="IEETDDate" />
+                <ScalarProperty Name="IEETADate" ColumnName="IEETADate" />
+                <ScalarProperty Name="IELoading" ColumnName="IELoading" />
+                <ScalarProperty Name="IEMother" ColumnName="IEMother" />
+                <ScalarProperty Name="IEFeeder" ColumnName="IEFeeder" />
+                <ScalarProperty Name="IEQuantity" ColumnName="IEQuantity" />
+                <ScalarProperty Name="IEShipper" ColumnName="IEShipper" />
+                <ScalarProperty Name="IEType" ColumnName="IEType" />
+                <ScalarProperty Name="TNumberOrder4" ColumnName="TNumberOrder4" />
+                <ScalarProperty Name="TPackDate4" ColumnName="TPackDate4" />
+                <ScalarProperty Name="TNumberOrder3" ColumnName="TNumberOrder3" />
+                <ScalarProperty Name="TPackDate3" ColumnName="TPackDate3" />
+                <ScalarProperty Name="TNumberOrder2" ColumnName="TNumberOrder2" />
+                <ScalarProperty Name="TPackDate2" ColumnName="TPackDate2" />
+                <ScalarProperty Name="TNumberOrder1" ColumnName="TNumberOrder1" />
+                <ScalarProperty Name="TPackDate1" ColumnName="TPackDate1" />
+                <ScalarProperty Name="PPackDate" ColumnName="PPackDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="NumberOrder" ColumnName="NumberOrder" />
+                <ScalarProperty Name="RoutID" ColumnName="RoutID" />
+                <ScalarProperty Name="DliveryDate" ColumnName="DliveryDate" />
+                <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

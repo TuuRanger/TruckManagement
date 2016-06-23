@@ -40,8 +40,8 @@
                                         <thead>
                                             <tr>
                                                 <th>Order ID</th>
-                                                <th>วันที่รับ</th>
-                                                <th>วันที่ส่ง</th>
+                                                <th>วันที่</th>
+                                              @*  <th>วันที่ส่ง</th>*@
                                                 <th>จำนวน</th>
                                                 <th>Status</th>
                                             </tr>
@@ -76,10 +76,26 @@
                                                 Status = "Cancel";
                                                 SClass = "label label-danger";
                                             }
+                                            string SDate = "";
+                                            if (OItem.OrderType == 1)
+                                            {
+
+                                                SDate = OItem.ReceiveDate.ToString("dd/MM/yyyy");
+                                            }
+                                            else if (OItem.OrderType == 2)
+                                            {
+
+                                                SDate = OItem.TPackDate.ToString("dd/MM/yyyy");
+                                            }
+                                            else if (OItem.OrderType == 3)
+                                            {
+
+                                                SDate = OItem.IEReceiveDate.ToString("dd/MM/yyyy");
+                                            }
                                             <tr>
                                                 <td><a href="~/TMS/Jobs?J=1&OID=@OItem.OrderID&OT=@OItem.OrderType">@OItem.OrderID</a></td> 
-                                                <td>@OItem.ReceiveDate.ToString("dd/MM/yyyy")</td>
-                                                <td>@OItem.DliveryDate.ToString("dd/MM/yyyy")</td>
+                                                <td>@SDate</td>
+                                               @* <td>@OItem.DliveryDate.ToString("dd/MM/yyyy")</td>*@
                                                 <td>@OItem.NumberOrder</td>
                                                 <td><span class="@SClass">@Status</span></td>
                                             </tr>
@@ -121,10 +137,20 @@
                                                     <th>Status</th>
                                                 </tr>
                                             }
-                                            else
+                                            else if (Request.QueryString["OT"] == "2")
                                             {
                                                 <tr>
                                                     <th>เบอร์ตู้</th>
+                                                    <th>ประเภทตู้</th>
+                                                    <th>วันที่ลากตู้</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            }
+                                            else if (Request.QueryString["OT"] == "3")
+                                            {
+                                                <tr>
+                                                    <th>เบอร์ตู้</th>
+                                                    <th>ประเภทตู้</th>
                                                     <th>เบอร์ซีล</th>
                                                     <th>Status</th>
                                                 </tr>
@@ -163,7 +189,16 @@
                                             <tr>
                                                 @if (ODItem.Status == 1)
                                                 {
-                                                    <td><a href="~/TMS/Jobs?J=2&OID=@Request.QueryString["OID"]&OT=@Request.QueryString["OT"]&ODID=@ODItem.ID">@ODItem.ContainerNo</a></td>
+                                                    string CText = "";
+                                                    if(ODItem.ContainerNo == "" || ODItem.ContainerNo == null)
+                                                    {
+                                                        CText = "NULL";
+                                                    }
+                                                    else
+                                                    {
+                                                        CText = ODItem.ContainerNo;
+                                                    }
+                                                    <td><a href="~/TMS/Jobs?J=2&OID=@Request.QueryString["OID"]&OT=@Request.QueryString["OT"]&ODID=@ODItem.ID">@CText</a></td>
                                                 }
                                                 else
                                                 {
@@ -177,16 +212,22 @@
                                                    {
                                                        sPosition = "ด้านซ้าย";
                                                    }
-                                                   else
+                                                   else 
                                                    {
                                                        sPosition = "ด้านขวา";
                                                    }
                                                 <td>@sPosition</td>
                                                }
-                                               else          
-                                            {
+                                               else if (Request.QueryString["OT"] == "2")
+                                               {
+                                                <td>@ODItem.ContainerType</td>
+                                                <td>@ODItem.TPackDate.ToString("dd/MM/yyyy")</td>
+                                               }
+                                               else if (Request.QueryString["OT"] == "3")
+                                               {
+                                                <td>@ODItem.ContainerType</td>
                                                 <td>@ODItem.PackNo</td>
-                                            }
+                                               }
                                                 
                                                 <td><span class="@SClassD">@StatusD</span></td>
                                             </tr>
@@ -498,12 +539,23 @@
                                                     <input type="text" id="Position" name="Position" class="form-control" value="@sPosition" readonly>
                                                 </div>
                                             }
-                                            else
+                                            else if (OAItem.OrderType == 2)
                                             {
                                                 <div class="col-md-6">
                                                     <label>เบอร์ซีล</label>
                                                     <input type="text" id="PackNo" name="PackNo" class="form-control" value="@OAItem.PackNo" readonly>
                                                 </div>
+                                            }
+                                            else if (OAItem.OrderType == 3)
+                                            {
+                                                <div class="col-md-3">
+                                                    <label>ประเภทตู้</label>
+                                                    <input type="text" id="nType" name="nType" class="form-control" value="@OAItem.ContainerType" readonly>
+                                                </div>
+    <div class="col-md-3">
+        <label>เบอร์ซีล</label>
+        <input type="text" id="PackNo" name="PackNo" class="form-control" value="@OAItem.PackNo" readonly>
+    </div>
                                             }
 
 

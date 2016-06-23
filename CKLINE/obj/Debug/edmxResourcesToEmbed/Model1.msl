@@ -216,57 +216,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="TMSModel.Order">
-        <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
-          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-          <ScalarProperty Name="DliveryDate" ColumnName="DliveryDate" />
-          <ScalarProperty Name="RoutID" ColumnName="RoutID" />
-          <ScalarProperty Name="NumberOrder" ColumnName="NumberOrder" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="PPackDate" ColumnName="PPackDate" />
-          <ScalarProperty Name="TPackDate" ColumnName="TPackDate" />
-          <ScalarProperty Name="IEType" ColumnName="IEType" />
-          <ScalarProperty Name="IEShipper" ColumnName="IEShipper" />
-          <ScalarProperty Name="IEAgent" ColumnName="IEAgent" />
-          <ScalarProperty Name="IELoading" ColumnName="IELoading" />
-          <ScalarProperty Name="IEShipping" ColumnName="IEShipping" />
-          <ScalarProperty Name="IETelephone" ColumnName="IETelephone" />
-          <ScalarProperty Name="IELocationPack" ColumnName="IELocationPack" />
-          <ScalarProperty Name="IELocationReceive" ColumnName="IELocationReceive" />
-          <ScalarProperty Name="IEMap" ColumnName="IEMap" />
-          <ScalarProperty Name="IELiner" ColumnName="IELiner" />
-          <ScalarProperty Name="IEReceiveDate" ColumnName="IEReceiveDate" />
-          <ScalarProperty Name="IEPackDate" ColumnName="IEPackDate" />
-          <ScalarProperty Name="IEPacklTime" ColumnName="IEPacklTime" />
-          <ScalarProperty Name="IEFeeder" ColumnName="IEFeeder" />
-          <ScalarProperty Name="IEMother" ColumnName="IEMother" />
-          <ScalarProperty Name="IECYDate" ColumnName="IECYDate" />
-          <ScalarProperty Name="IEETDDate" ColumnName="IEETDDate" />
-          <ScalarProperty Name="IEContact" ColumnName="IEContact" />
-          <ScalarProperty Name="IEETADate" ColumnName="IEETADate" />
-          <ScalarProperty Name="IEAT" ColumnName="IEAT" />
-          <ScalarProperty Name="IETel" ColumnName="IETel" />
-          <ScalarProperty Name="IEBill" ColumnName="IEBill" />
-          <ScalarProperty Name="IEPortPrice" ColumnName="IEPortPrice" />
-          <ScalarProperty Name="IELanPrice" ColumnName="IELanPrice" />
-          <ScalarProperty Name="IELiftPrice" ColumnName="IELiftPrice" />
-          <ScalarProperty Name="IECLosingDate" ColumnName="IECLosingDate" />
-          <ScalarProperty Name="IEClosingTime" ColumnName="IEClosingTime" />
-          <ScalarProperty Name="IEAgent2" ColumnName="IEAgent2" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="TMSModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="TPackDate" ColumnName="TPackDate" />
+          <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="OID" ColumnName="OID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -536,6 +490,60 @@
           <ScalarProperty Name="HitchID" ColumnName="HitchID" />
           <ScalarProperty Name="TruckID" ColumnName="TruckID" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="TMSModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IEMap" ColumnName="IEMap" />
+          <ScalarProperty Name="IEClosingTime" ColumnName="IEClosingTime" />
+          <ScalarProperty Name="IECLosingDate" ColumnName="IECLosingDate" />
+          <ScalarProperty Name="IEAgent" ColumnName="IEAgent" />
+          <ScalarProperty Name="IELiftPrice" ColumnName="IELiftPrice" />
+          <ScalarProperty Name="IELanPrice" ColumnName="IELanPrice" />
+          <ScalarProperty Name="IEPortPrice" ColumnName="IEPortPrice" />
+          <ScalarProperty Name="IEBill" ColumnName="IEBill" />
+          <ScalarProperty Name="IETelephone" ColumnName="IETelephone" />
+          <ScalarProperty Name="IEShipping" ColumnName="IEShipping" />
+          <ScalarProperty Name="IELocationReceive" ColumnName="IELocationReceive" />
+          <ScalarProperty Name="IEReturnDate" ColumnName="IEReturnDate" />
+          <ScalarProperty Name="IELocationPack" ColumnName="IELocationPack" />
+          <ScalarProperty Name="IEPacklTime" ColumnName="IEPacklTime" />
+          <ScalarProperty Name="IEPackDate" ColumnName="IEPackDate" />
+          <ScalarProperty Name="IETel" ColumnName="IETel" />
+          <ScalarProperty Name="IEContact" ColumnName="IEContact" />
+          <ScalarProperty Name="IEAT" ColumnName="IEAT" />
+          <ScalarProperty Name="IEReceiveDate" ColumnName="IEReceiveDate" />
+          <ScalarProperty Name="IEETDDate" ColumnName="IEETDDate" />
+          <ScalarProperty Name="IEETADate" ColumnName="IEETADate" />
+          <ScalarProperty Name="IELoading" ColumnName="IELoading" />
+          <ScalarProperty Name="IEMother" ColumnName="IEMother" />
+          <ScalarProperty Name="IEFeeder" ColumnName="IEFeeder" />
+          <ScalarProperty Name="IEQuantity" ColumnName="IEQuantity" />
+          <ScalarProperty Name="IEShipper" ColumnName="IEShipper" />
+          <ScalarProperty Name="IEType" ColumnName="IEType" />
+          <ScalarProperty Name="TNumberOrder4" ColumnName="TNumberOrder4" />
+          <ScalarProperty Name="TPackDate4" ColumnName="TPackDate4" />
+          <ScalarProperty Name="TNumberOrder3" ColumnName="TNumberOrder3" />
+          <ScalarProperty Name="TPackDate3" ColumnName="TPackDate3" />
+          <ScalarProperty Name="TNumberOrder2" ColumnName="TNumberOrder2" />
+          <ScalarProperty Name="TPackDate2" ColumnName="TPackDate2" />
+          <ScalarProperty Name="TNumberOrder1" ColumnName="TNumberOrder1" />
+          <ScalarProperty Name="TPackDate1" ColumnName="TPackDate1" />
+          <ScalarProperty Name="PPackDate" ColumnName="PPackDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="NumberOrder" ColumnName="NumberOrder" />
+          <ScalarProperty Name="RoutID" ColumnName="RoutID" />
+          <ScalarProperty Name="DliveryDate" ColumnName="DliveryDate" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -40,7 +40,6 @@ namespace CKLINE
         public virtual DbSet<MaintenanceType> MaintenanceTypes { get; set; }
         public virtual DbSet<MarriageStatu> MarriageStatus { get; set; }
         public virtual DbSet<MilitaryStatu> MilitaryStatus { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderType> OrderTypes { get; set; }
         public virtual DbSet<Provice> Provices { get; set; }
@@ -53,5 +52,6 @@ namespace CKLINE
         public virtual DbSet<Truck> Trucks { get; set; }
         public virtual DbSet<WorkingHistory> WorkingHistories { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

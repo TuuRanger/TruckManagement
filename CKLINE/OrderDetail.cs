@@ -21,5 +21,7 @@ namespace CKLINE
         public string Position { get; set; }
         public string PackNo { get; set; }
         public Nullable<int> Status { get; set; }
+        public string ContainerType { get; set; }
+        public Nullable<System.DateTime> TPackDate { get; set; }
     }
 }

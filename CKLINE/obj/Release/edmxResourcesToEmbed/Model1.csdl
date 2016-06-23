@@ -200,53 +200,6 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Description" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderType" Type="Int32" />
-    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CustomerID" Type="Int32" />
-    <Property Name="OrderDate" Type="DateTime" Precision="0" />
-    <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
-    <Property Name="DliveryDate" Type="DateTime" Precision="0" />
-    <Property Name="RoutID" Type="Int32" />
-    <Property Name="NumberOrder" Type="Int32" />
-    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="PPackDate" Type="DateTime" Precision="0" />
-    <Property Name="TPackDate" Type="DateTime" Precision="0" />
-    <Property Name="IEType" Type="Int32" />
-    <Property Name="IEShipper" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IEAgent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IELoading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IELocationPack" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IELiner" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IEReceiveDate" Type="DateTime" Precision="0" />
-    <Property Name="IEPackDate" Type="DateTime" Precision="0" />
-    <Property Name="IEPacklTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="IEFeeder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IEMother" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IECYDate" Type="DateTime" Precision="0" />
-    <Property Name="IEETDDate" Type="DateTime" Precision="0" />
-    <Property Name="IEContact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IEETADate" Type="DateTime" Precision="0" />
-    <Property Name="IEAT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IETel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="IECLosingDate" Type="DateTime" Precision="0" />
-    <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="IEAgent2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Status" Type="Int32" />
-  </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
       <PropertyRef Name="ID" />
@@ -258,6 +211,8 @@
     <Property Name="Position" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
     <Property Name="PackNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="Int32" />
+    <Property Name="ContainerType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TPackDate" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="OrderType">
     <Key>
@@ -510,7 +465,6 @@
     <EntitySet Name="MaintenanceTypes" EntityType="Self.MaintenanceType" />
     <EntitySet Name="MarriageStatus" EntityType="Self.MarriageStatu" />
     <EntitySet Name="MilitaryStatus" EntityType="Self.MilitaryStatu" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
     <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
     <EntitySet Name="Provices" EntityType="Self.Provice" />
@@ -523,6 +477,7 @@
     <EntitySet Name="Trucks" EntityType="Self.Truck" />
     <EntitySet Name="WorkingHistories" EntityType="Self.WorkingHistory" />
     <EntitySet Name="Jobs" EntityType="TMSModel.Job" />
+    <EntitySet Name="Orders" EntityType="TMSModel.Order" />
   </EntityContainer>
   <EntityType Name="Job">
     <Key>
@@ -540,5 +495,58 @@
     <Property Name="ODID" Type="Int32" />
     <Property Name="ContainerNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="SID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderType" Type="Int32" />
+    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BookingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
+    <Property Name="DliveryDate" Type="DateTime" Precision="0" />
+    <Property Name="RoutID" Type="Int32" />
+    <Property Name="NumberOrder" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PPackDate" Type="DateTime" Precision="0" />
+    <Property Name="TPackDate1" Type="DateTime" Precision="0" />
+    <Property Name="TNumberOrder1" Type="Int32" />
+    <Property Name="TPackDate2" Type="DateTime" Precision="0" />
+    <Property Name="TNumberOrder2" Type="Int32" />
+    <Property Name="TPackDate3" Type="DateTime" Precision="0" />
+    <Property Name="TNumberOrder3" Type="Int32" />
+    <Property Name="TPackDate4" Type="DateTime" Precision="0" />
+    <Property Name="TNumberOrder4" Type="Int32" />
+    <Property Name="IEType" Type="Int32" />
+    <Property Name="IEShipper" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEQuantity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEFeeder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEMother" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IELoading" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEETADate" Type="DateTime" Precision="0" />
+    <Property Name="IEETDDate" Type="DateTime" Precision="0" />
+    <Property Name="IEReceiveDate" Type="DateTime" Precision="0" />
+    <Property Name="IEAT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEContact" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IETel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IEPackDate" Type="DateTime" Precision="0" />
+    <Property Name="IEPacklTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="IELocationPack" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEReturnDate" Type="DateTime" Precision="0" />
+    <Property Name="IELocationReceive" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEShipping" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IETelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IEBill" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IEPortPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IELanPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IELiftPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IEAgent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IECLosingDate" Type="DateTime" Precision="0" />
+    <Property Name="IEClosingTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="IEMap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
   </EntityType>
 </Schema>

@@ -41,7 +41,14 @@ namespace CKLINE.Controllers
                                   NumberOrder = o.NumberOrder,
                                   Remark = o.Remark,
                                   PPackDate = o.PPackDate,
-                                  TPackDate = o.TPackDate,
+                                  TPackDate1 = o.TPackDate1,
+                                  TPackDate2 = o.TPackDate2,
+                                  TPackDate3 = o.TPackDate3,
+                                  TPackDate4 = o.TPackDate4,
+                                  TNumberOrder1 = o.TNumberOrder1,
+                                  TNumberOrder2 = o.TNumberOrder2,
+                                  TNumberOrder3 = o.TNumberOrder3,
+                                  TNumberOrder4 = o.TNumberOrder4,
                                   IEType = o.IEType,
                                   IEShipper = o.IEShipper,
                                   IEAgent = o.IEAgent,
@@ -51,13 +58,13 @@ namespace CKLINE.Controllers
                                   IELocationPack = o.IELocationPack,
                                   IELocationReceive = o.IELocationReceive,
                                   IEMap = o.IEMap,
-                                  IELiner = o.IELiner,
+                               //   IELiner = o.IELiner,
                                   IEReceiveDate = o.IEReceiveDate,
                                   IEPackDate = o.IEPackDate,
                                   IEPacklTime = o.IEPacklTime,
                                   IEFeeder = o.IEFeeder,
                                   IEMother = o.IEMother,
-                                  IECYDate = o.IECYDate,
+                                //  IECYDate = o.IECYDate,
                                   IEETDDate = o.IEETDDate,
                                   IEContact = o.IEContact,
                                   IEETADate = o.IEETADate,
@@ -69,7 +76,8 @@ namespace CKLINE.Controllers
                                   IELiftPrice = o.IELiftPrice,
                                   IECLosingDate = o.IECLosingDate,
                                   IEClosingTime = o.IEClosingTime,
-                                  IEAgent2 = o.IEAgent2,
+                                  IEQuantity = o.IEQuantity,
+                                  IEReturnDate = o.IEReturnDate,
                                   Status = o.Status,
 
                                   CName = c.Name,
@@ -102,7 +110,7 @@ namespace CKLINE.Controllers
                 }
 
                 a.IEAgent = ol.IEAgent;
-                a.IEAgent2 = ol.IEAgent2;
+                a.IEQuantity = ol.IEQuantity;
                 a.IEAT = ol.IEAT;
                 a.IEBill = ol.IEBill;
 
@@ -119,13 +127,13 @@ namespace CKLINE.Controllers
                 a.IEClosingTime = ol.IEClosingTime;
                 a.IEContact = ol.IEContact;
 
-                if (ol.IECYDate == null)
+                if (ol.IEReturnDate == null)
                 {
-                    a.IECYDate = DateTime.Now.Date;
+                    a.IEReturnDate = DateTime.Now.Date;
                 }
                 else
                 {
-                    a.IECYDate = Convert.ToDateTime(ol.IECYDate);
+                    a.IEReturnDate = Convert.ToDateTime(ol.IEReturnDate);
                 }
 
 
@@ -153,7 +161,7 @@ namespace CKLINE.Controllers
                 a.IEFeeder = ol.IEFeeder;
                 a.IELanPrice = Convert.ToDecimal(ol.IELanPrice);
                 a.IELiftPrice = Convert.ToDecimal(ol.IELiftPrice);
-                a.IELiner = ol.IELiner;
+              //  a.IELiner = ol.IELiner;
                 a.IELoading = ol.IELoading;
                 a.IELocationPack = ol.IELocationPack;
                 a.IELocationReceive = ol.IELocationReceive;
@@ -223,16 +231,46 @@ namespace CKLINE.Controllers
                 a.RoutID = Convert.ToInt32(ol.RoutID);
                 a.Status = Convert.ToInt32(ol.Status);
 
-                if (ol.TPackDate == null)
+                if (ol.TPackDate1 == null)
                 {
-                    a.TPackDate = DateTime.Now.Date;
+                    a.TPackDate1 = DateTime.Now.Date;
                 }
                 else
                 {
-                    a.TPackDate = Convert.ToDateTime(ol.TPackDate);
+                    a.TPackDate1 = Convert.ToDateTime(ol.TPackDate1);
                 }
 
+                if (ol.TPackDate2 == null)
+                {
+                    a.TPackDate2 = DateTime.Now.Date;
+                }
+                else
+                {
+                    a.TPackDate2 = Convert.ToDateTime(ol.TPackDate2);
+                }
 
+                if (ol.TPackDate3 == null)
+                {
+                    a.TPackDate3 = DateTime.Now.Date;
+                }
+                else
+                {
+                    a.TPackDate3 = Convert.ToDateTime(ol.TPackDate3);
+                }
+
+                if (ol.TPackDate4 == null)
+                {
+                    a.TPackDate4 = DateTime.Now.Date;
+                }
+                else
+                {
+                    a.TPackDate4 = Convert.ToDateTime(ol.TPackDate4);
+                }
+
+                a.TNumberOrder1 = Convert.ToInt32(ol.TNumberOrder1);
+                a.TNumberOrder2 = Convert.ToInt32(ol.TNumberOrder2);
+                a.TNumberOrder3 = Convert.ToInt32(ol.TNumberOrder3);
+                a.TNumberOrder4 = Convert.ToInt32(ol.TNumberOrder4);
                 a.CAddress = ol.CAddress;
                 a.CProvince = ol.CProvince;
                 a.CName = ol.CName;
@@ -417,11 +455,14 @@ namespace CKLINE.Controllers
 
             string PPackDate = Request.Form["PPackDate"];
 
-            string TPackDate = Request.Form["TPackDate"];
+            string TPackDate1 = Request.Form["TPackDate1"];
+            string TPackDate2 = Request.Form["TPackDate2"];
+            string TPackDate3 = Request.Form["TPackDate3"];
+            string TPackDate4 = Request.Form["TPackDate4"];
 
             string IEReceiveDate = Request.Form["IEReceiveDate"];
             string IEPackDate = Request.Form["IEPackDate"];
-            string IECYDate = Request.Form["IECYDate"];
+            string IEReturnDate = Request.Form["IEReturnDate"];
             string IEETDDate = Request.Form["IEETDDate"];
             string IEETADate = Request.Form["IEETADate"];
             string IECLosingDate = Request.Form["IECLosingDate"];
@@ -489,20 +530,67 @@ namespace CKLINE.Controllers
              //   dOrder.PPackDate = Convert.ToDateTime(Request.Form["PPackDate"]).Date;
             }
 
-            if (TPackDate == null || TPackDate == "")
+            if (TPackDate1 == null || TPackDate1 == "")
             {
-                dOrder.TPackDate = DateTime.Now.Date;
+                dOrder.TPackDate1 = DateTime.Now.Date;
             }
             else
             {
-                string d1 = TPackDate.Substring(0, 2);
-                string d2 = TPackDate.Substring(3, 2);
-                string d3 = TPackDate.Substring(6, 4);
+                string d1 = TPackDate1.Substring(0, 2);
+                string d2 = TPackDate1.Substring(3, 2);
+                string d3 = TPackDate1.Substring(6, 4);
               //  string d4 = d1 + "/" + d2 + "/" + d3;
                     string d4 = d2 + "/" + d1 + "/" + d3;
-                dOrder.TPackDate = DateTime.Parse(d4);
+                dOrder.TPackDate1 = DateTime.Parse(d4);
                // dOrder.TPackDate = DateTime.Parse(TPackDate);
               //  dOrder.TPackDate = Convert.ToDateTime(Request.Form["TPackDate"]).Date;
+            }
+            if (TPackDate2 == null || TPackDate2 == "")
+            {
+                dOrder.TPackDate2 = DateTime.Now.Date;
+            }
+            else
+            {
+                string d1 = TPackDate2.Substring(0, 2);
+                string d2 = TPackDate2.Substring(3, 2);
+                string d3 = TPackDate2.Substring(6, 4);
+                //  string d4 = d1 + "/" + d2 + "/" + d3;
+                string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.TPackDate2 = DateTime.Parse(d4);
+                // dOrder.TPackDate = DateTime.Parse(TPackDate);
+                //  dOrder.TPackDate = Convert.ToDateTime(Request.Form["TPackDate"]).Date;
+            }
+
+            if (TPackDate3 == null || TPackDate3 == "")
+            {
+                dOrder.TPackDate3 = DateTime.Now.Date;
+            }
+            else
+            {
+                string d1 = TPackDate3.Substring(0, 2);
+                string d2 = TPackDate3.Substring(3, 2);
+                string d3 = TPackDate3.Substring(6, 4);
+                //  string d4 = d1 + "/" + d2 + "/" + d3;
+                string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.TPackDate3 = DateTime.Parse(d4);
+                // dOrder.TPackDate = DateTime.Parse(TPackDate);
+                //  dOrder.TPackDate = Convert.ToDateTime(Request.Form["TPackDate"]).Date;
+            }
+
+            if (TPackDate4 == null || TPackDate4 == "")
+            {
+                dOrder.TPackDate4 = DateTime.Now.Date;
+            }
+            else
+            {
+                string d1 = TPackDate4.Substring(0, 2);
+                string d2 = TPackDate4.Substring(3, 2);
+                string d3 = TPackDate4.Substring(6, 4);
+                //  string d4 = d1 + "/" + d2 + "/" + d3;
+                string d4 = d2 + "/" + d1 + "/" + d3;
+                dOrder.TPackDate4 = DateTime.Parse(d4);
+                // dOrder.TPackDate = DateTime.Parse(TPackDate);
+                //  dOrder.TPackDate = Convert.ToDateTime(Request.Form["TPackDate"]).Date;
             }
 
             if (IEReceiveDate == null || IEReceiveDate == "")
@@ -537,18 +625,18 @@ namespace CKLINE.Controllers
              //   dOrder.IEPackDate = Convert.ToDateTime(Request.Form["IEPackDate"]).Date;
             }
 
-            if (IECYDate == null || IECYDate == "")
+            if (IEReturnDate == null || IEReturnDate == "")
             {
-                dOrder.IECYDate = DateTime.Now.Date;
+                dOrder.IEReturnDate = DateTime.Now.Date;
             }
             else
             {
-                string d1 = IECYDate.Substring(0, 2);
-                string d2 = IECYDate.Substring(3, 2);
-                string d3 = IECYDate.Substring(6, 4);
+                string d1 = IEReturnDate.Substring(0, 2);
+                string d2 = IEReturnDate.Substring(3, 2);
+                string d3 = IEReturnDate.Substring(6, 4);
            //     string d4 = d1 + "/" + d2 + "/" + d3;
                     string d4 = d2 + "/" + d1 + "/" + d3;
-                dOrder.IECYDate = DateTime.Parse(d4);
+                    dOrder.IEReturnDate = DateTime.Parse(d4);
              //   dOrder.IECYDate = DateTime.Parse(IECYDate);
               //  dOrder.IECYDate = Convert.ToDateTime(Request.Form["IECYDate"]).Date;
             }
@@ -606,11 +694,20 @@ namespace CKLINE.Controllers
             {
                 dOrder.NumberOrder = Convert.ToInt32(Request.Form["Num"]);
                 nOID = "PA";
-                dOrder.TPackDate = null;
+
+                dOrder.TPackDate1 = null;
+                dOrder.TPackDate2 = null;
+                dOrder.TPackDate3 = null;
+                dOrder.TPackDate4 = null;
+
+                dOrder.TNumberOrder1 = 0;
+                dOrder.TNumberOrder2 = 0;
+                dOrder.TNumberOrder3 = 0;
+                dOrder.TNumberOrder4 = 0;
 
                 dOrder.IEReceiveDate = null;
                 dOrder.IEPackDate = null;
-                dOrder.IECYDate = null;
+                dOrder.IEReturnDate = null;
                 dOrder.IEETDDate = null;
                 dOrder.IEETADate = null;
                 dOrder.IECLosingDate = null;
@@ -619,13 +716,35 @@ namespace CKLINE.Controllers
             }
             else if (dOrder.OrderType == 2)
             {
-                dOrder.NumberOrder = Convert.ToInt32(Request.Form["Num2"]);
+                dOrder.TNumberOrder1 = Convert.ToInt32(Request.Form["Num21"]);
+                dOrder.TNumberOrder2 = Convert.ToInt32(Request.Form["Num22"]);
+                dOrder.TNumberOrder3 = Convert.ToInt32(Request.Form["Num23"]);
+                dOrder.TNumberOrder4 = Convert.ToInt32(Request.Form["Num24"]);
+
+                dOrder.NumberOrder = dOrder.TNumberOrder1 + dOrder.TNumberOrder2 + dOrder.TNumberOrder3 + dOrder.TNumberOrder4;
+
+                if (dOrder.TNumberOrder2 == 0)
+                {
+                    dOrder.TPackDate2 = null;
+                 
+                }
+                if (dOrder.TNumberOrder3 == 0)
+                {
+                    dOrder.TPackDate3 = null;
+
+                }
+                if (dOrder.TNumberOrder4 == 0)
+                {
+                    dOrder.TPackDate4 = null;
+
+                }
                 nOID = "CK";
+
                 dOrder.PPackDate = null;
 
                 dOrder.IEReceiveDate = null;
                 dOrder.IEPackDate = null;
-                dOrder.IECYDate = null;
+                dOrder.IEReturnDate = null;
                 dOrder.IEETDDate = null;
                 dOrder.IEETADate = null;
                 dOrder.IECLosingDate = null;
@@ -637,7 +756,15 @@ namespace CKLINE.Controllers
                 nOID = "GL";
                 dOrder.PPackDate = null;
 
-                dOrder.TPackDate = null;
+                dOrder.TPackDate1 = null;
+                dOrder.TPackDate2 = null;
+                dOrder.TPackDate3 = null;
+                dOrder.TPackDate4 = null;
+
+                dOrder.TNumberOrder1 = 0;
+                dOrder.TNumberOrder2 = 0;
+                dOrder.TNumberOrder3 = 0;
+                dOrder.TNumberOrder4 = 0;
               
             
             }
@@ -658,7 +785,7 @@ namespace CKLINE.Controllers
             {
                 dOrder.IEMap = file.FileName;
             }
-            dOrder.IELiner = Request.Form["IELiner"];
+          //  dOrder.IELiner = Request.Form["IELiner"];
             dOrder.IEPacklTime = Request.Form["IEPacklTime"];
             dOrder.IEFeeder = Request.Form["IEFeeder"];
             dOrder.IEMother = Request.Form["IEMother"];
@@ -698,9 +825,12 @@ namespace CKLINE.Controllers
             }
 
             dOrder.IEClosingTime = Request.Form["IEClosingTime"];
-            dOrder.IEAgent2 = Request.Form["IEAgent2"];
+            dOrder.IEQuantity = Request.Form["IEQuantity"];
 
             string nNum = "";
+            string nType = "";
+            string tNum = "";
+            string tType = "";
             string pNum = "";
             string pnNum = "";
 
@@ -739,35 +869,41 @@ namespace CKLINE.Controllers
             AddOrder.NumberOrder = dOrder.NumberOrder;
             AddOrder.Remark = dOrder.Remark;
             AddOrder.PPackDate = dOrder.PPackDate;
-            AddOrder.TPackDate = dOrder.TPackDate;
+            AddOrder.TPackDate1 = dOrder.TPackDate1;
+            AddOrder.TNumberOrder1 = dOrder.TNumberOrder1;
+            AddOrder.TPackDate2 = dOrder.TPackDate2;
+            AddOrder.TNumberOrder2 = dOrder.TNumberOrder2;
+            AddOrder.TPackDate3 = dOrder.TPackDate3;
+            AddOrder.TNumberOrder3 = dOrder.TNumberOrder3;
+            AddOrder.TPackDate4 = dOrder.TPackDate4;
+            AddOrder.TNumberOrder4 = dOrder.TNumberOrder4;
             AddOrder.IEType = dOrder.IEType;
             AddOrder.IEShipper = dOrder.IEShipper;
-            AddOrder.IEAgent = dOrder.IEAgent;
-            AddOrder.IELoading = dOrder.IELoading;
-            AddOrder.IEShipping = dOrder.IEShipping;
-            AddOrder.IETelephone = dOrder.IETelephone;
-            AddOrder.IELocationPack = dOrder.IELocationPack;
-            AddOrder.IELocationReceive = dOrder.IELocationReceive;
-            AddOrder.IEMap = dOrder.IEMap;
-            AddOrder.IELiner = dOrder.IELiner;
-            AddOrder.IEReceiveDate = dOrder.IEReceiveDate;
-            AddOrder.IEPackDate = dOrder.IEPackDate;
-            AddOrder.IEPacklTime = dOrder.IEPacklTime;
+            AddOrder.IEQuantity = dOrder.IEQuantity;
             AddOrder.IEFeeder = dOrder.IEFeeder;
             AddOrder.IEMother = dOrder.IEMother;
-            AddOrder.IECYDate = dOrder.IECYDate;
-            AddOrder.IEETDDate = dOrder.IEETDDate;
-            AddOrder.IEContact = dOrder.IEContact;
+            AddOrder.IELoading = dOrder.IELoading;
             AddOrder.IEETADate = dOrder.IEETADate;
+            AddOrder.IEETDDate = dOrder.IEETDDate;
+            AddOrder.IEReceiveDate = dOrder.IEReceiveDate;
             AddOrder.IEAT = dOrder.IEAT;
+            AddOrder.IEContact = dOrder.IEContact;
             AddOrder.IETel = dOrder.IETel;
+            AddOrder.IEPackDate = dOrder.IEPackDate;
+            AddOrder.IEPacklTime = dOrder.IEPacklTime;
+            AddOrder.IELocationPack = dOrder.IELocationPack;
+            AddOrder.IEReturnDate = dOrder.IEReturnDate;
+            AddOrder.IELocationReceive = dOrder.IELocationReceive;
+            AddOrder.IEShipping = dOrder.IEShipping;
+            AddOrder.IETelephone = dOrder.IETelephone;
             AddOrder.IEBill = dOrder.IEBill;
             AddOrder.IEPortPrice = dOrder.IEPortPrice;
             AddOrder.IELanPrice = dOrder.IELanPrice;
             AddOrder.IELiftPrice = dOrder.IELiftPrice;
+            AddOrder.IEAgent = dOrder.IEAgent;
             AddOrder.IECLosingDate = dOrder.IECLosingDate;
             AddOrder.IEClosingTime = dOrder.IEClosingTime;
-            AddOrder.IEAgent2 = dOrder.IEAgent2;
+            AddOrder.IEMap = dOrder.IEMap;
             AddOrder.Status = 1;
 
             db.Orders.Add(AddOrder);
@@ -796,32 +932,155 @@ namespace CKLINE.Controllers
             }
             List<ContainerList> ContainerList = new List<ContainerList>();
 
-
-            for (var i = 1; i <= dOrder.NumberOrder; i++)
+            if (dOrder.OrderType == 1 || dOrder.OrderType == 3)
             {
-                ContainerList cl = new ContainerList();
+                for (var i = 1; i <= dOrder.NumberOrder; i++)
+                {
+                    ContainerList cl = new ContainerList();
 
-                 nNum = "nNum" + i;
-                 pNum = "pNum" + i;
-                 pnNum = "pnNum" + i;
+                    nNum = "nNum" + i;
+                    nType = "nType" + i;
+                    pNum = "pNum" + i;
+                    pnNum = "pnNum" + i;
 
-                 cl.Container = Request.Form[nNum];
-                 cl.Position = Request.Form[pNum];
-                 cl.PackNo = Request.Form[pnNum];
+                    cl.Container = Request.Form[nNum];
+                    cl.Position = Request.Form[pNum];
+                    cl.PackNo = Request.Form[pnNum];
+                    cl.ContainerType = Request.Form[nType];
 
-                 OrderDetail AddOrderDetail = new OrderDetail();
-                 AddOrderDetail.OrderID = OID;
-                 AddOrderDetail.ContainerNo = cl.Container;
-                 AddOrderDetail.Position = cl.Position;
-                 AddOrderDetail.PackNo = cl.PackNo;
-                 AddOrderDetail.Status = 1;
+                    OrderDetail AddOrderDetail = new OrderDetail();
+                    AddOrderDetail.OrderID = OID;
+                    AddOrderDetail.ContainerNo = cl.Container;
+                    AddOrderDetail.Position = cl.Position;
+                    AddOrderDetail.PackNo = cl.PackNo;
+                    AddOrderDetail.ContainerType = cl.ContainerType;
+                    AddOrderDetail.Status = 1;
 
-                 db.OrderDetails.Add(AddOrderDetail);
-                 db.SaveChanges();
+                    db.OrderDetails.Add(AddOrderDetail);
+                    db.SaveChanges();
 
-                 ContainerList.Add(cl);
+                    ContainerList.Add(cl);
+                }
+
             }
+            else if (dOrder.OrderType == 2)
+            {
+                if(dOrder.TNumberOrder1 > 0)
+                {
+                    for (var i = 1; i <= dOrder.TNumberOrder1; i++)
+                    {
+                        ContainerList cl = new ContainerList();
 
+                        tNum = "tNum1" + i;
+                        tType = "tType1" + i;
+
+
+                        cl.Container = Request.Form[tNum];
+                        cl.ContainerType = Request.Form[tType];
+
+
+                        OrderDetail AddOrderDetail = new OrderDetail();
+                        AddOrderDetail.OrderID = OID;
+                        AddOrderDetail.ContainerNo = cl.Container;
+                        AddOrderDetail.ContainerType = cl.ContainerType;
+                        AddOrderDetail.TPackDate = dOrder.TPackDate1;
+                        AddOrderDetail.Status = 1;
+
+                        db.OrderDetails.Add(AddOrderDetail);
+                        db.SaveChanges();
+
+                        ContainerList.Add(cl);
+                    }
+
+                }
+
+                if (dOrder.TNumberOrder2 > 0)
+                {
+                    for (var i = 1; i <= dOrder.TNumberOrder2; i++)
+                    {
+                        ContainerList cl = new ContainerList();
+
+                        tNum = "tNum2" + i;
+                        tType = "tType2" + i;
+
+
+                        cl.Container = Request.Form[tNum];
+                        cl.ContainerType = Request.Form[tType];
+
+
+                        OrderDetail AddOrderDetail = new OrderDetail();
+                        AddOrderDetail.OrderID = OID;
+                        AddOrderDetail.ContainerNo = cl.Container;
+                        AddOrderDetail.ContainerType = cl.ContainerType;
+                        AddOrderDetail.TPackDate = dOrder.TPackDate2;
+                        AddOrderDetail.Status = 1;
+
+                        db.OrderDetails.Add(AddOrderDetail);
+                        db.SaveChanges();
+
+                        ContainerList.Add(cl);
+                    }
+
+                }
+
+                if (dOrder.TNumberOrder3 > 0)
+                {
+                    for (var i = 1; i <= dOrder.TNumberOrder3; i++)
+                    {
+                        ContainerList cl = new ContainerList();
+
+                        tNum = "tNum3" + i;
+                        tType = "tType3" + i;
+
+
+                        cl.Container = Request.Form[tNum];
+                        cl.ContainerType = Request.Form[tType];
+
+
+                        OrderDetail AddOrderDetail = new OrderDetail();
+                        AddOrderDetail.OrderID = OID;
+                        AddOrderDetail.ContainerNo = cl.Container;
+                        AddOrderDetail.ContainerType = cl.ContainerType;
+                        AddOrderDetail.TPackDate = dOrder.TPackDate3;
+                        AddOrderDetail.Status = 1;
+
+                        db.OrderDetails.Add(AddOrderDetail);
+                        db.SaveChanges();
+
+                        ContainerList.Add(cl);
+                    }
+
+                }
+                if (dOrder.TNumberOrder4 > 0)
+                {
+                    for (var i = 1; i <= dOrder.TNumberOrder4; i++)
+                    {
+                        ContainerList cl = new ContainerList();
+
+                        tNum = "tNum1" + i;
+                        tType = "tType1" + i;
+
+
+                        cl.Container = Request.Form[tNum];
+                        cl.ContainerType = Request.Form[tType];
+
+
+                        OrderDetail AddOrderDetail = new OrderDetail();
+                        AddOrderDetail.OrderID = OID;
+                        AddOrderDetail.ContainerNo = cl.Container;
+                        AddOrderDetail.ContainerType = cl.ContainerType;
+                        AddOrderDetail.TPackDate = dOrder.TPackDate4;
+                        AddOrderDetail.Status = 1;
+
+                        db.OrderDetails.Add(AddOrderDetail);
+                        db.SaveChanges();
+
+                        ContainerList.Add(cl);
+                    }
+
+                }
+            }
+           
 
             Session["OrderID"] = OID;
             return RedirectToAction("OrderInfo", "TMS");
@@ -875,7 +1134,15 @@ namespace CKLINE.Controllers
            NumberOrder = o.NumberOrder,
             Remark = o.Remark,
            PPackDate = o.PPackDate,
-           TPackDate = o.TPackDate,
+           TPackDate1 = o.TPackDate1,
+                                      TPackDate2 = o.TPackDate2,
+                                      TPackDate3 = o.TPackDate3,
+                                      TPackDate4 = o.TPackDate4,
+                                      TNumberOrder1 = o.TNumberOrder1,
+                                      TNumberOrder2 = o.TNumberOrder2,
+                                      TNumberOrder3 = o.TNumberOrder3,
+                                      TNumberOrder4 = o.TNumberOrder4,
+
            IEType = o.IEType,
           IEShipper = o.IEShipper,
            IEAgent = o.IEAgent,
@@ -885,13 +1152,13 @@ namespace CKLINE.Controllers
            IELocationPack = o.IELocationPack,
         IELocationReceive = o.IELocationReceive,
           IEMap = o.IEMap,
-           IELiner = o.IELiner,
+         //  IELiner = o.IELiner,
            IEReceiveDate = o.IEReceiveDate,
            IEPackDate = o.IEPackDate,
        IEPacklTime = o.IEPacklTime,
             IEFeeder = o.IEFeeder,
           IEMother = o.IEMother,
-           IECYDate = o.IECYDate,
+                                      IEReturnDate = o.IEReturnDate,
           IEETDDate = o.IEETDDate,
      IEContact = o.IEContact,
             IEETADate = o.IEETADate,
@@ -903,7 +1170,7 @@ namespace CKLINE.Controllers
             IELiftPrice = o.IELiftPrice,
             IECLosingDate = o.IECLosingDate,
             IEClosingTime = o.IEClosingTime,
-            IEAgent2 = o.IEAgent2,
+                                      IEQuantity = o.IEQuantity,
                                     Status = o.Status,
 
                                     CName = c.Name,
@@ -936,7 +1203,7 @@ namespace CKLINE.Controllers
                 }
              
                 a.IEAgent = ol.IEAgent;
-                a.IEAgent2 = ol.IEAgent2;
+                a.IEQuantity = ol.IEQuantity;
                 a.IEAT = ol.IEAT;
                 a.IEBill = ol.IEBill;
 
@@ -953,13 +1220,13 @@ namespace CKLINE.Controllers
                 a.IEClosingTime = ol.IEClosingTime;
                 a.IEContact = ol.IEContact;
 
-                if (ol.IECYDate == null)
+                if (ol.IEReturnDate == null)
                 {
-                    a.IECYDate = DateTime.Now.Date;
+                    a.IEReturnDate = DateTime.Now.Date;
                 }
                 else
                 {
-                    a.IECYDate = Convert.ToDateTime(ol.IECYDate);
+                    a.IEReturnDate = Convert.ToDateTime(ol.IEReturnDate);
                 }
               
                
@@ -987,7 +1254,7 @@ namespace CKLINE.Controllers
                 a.IEFeeder = ol.IEFeeder;
                 a.IELanPrice = Convert.ToDecimal(ol.IELanPrice);
                 a.IELiftPrice = Convert.ToDecimal(ol.IELiftPrice);
-                a.IELiner = ol.IELiner;
+            //    a.IELiner = ol.IELiner;
                 a.IELoading = ol.IELoading;
                 a.IELocationPack = ol.IELocationPack;
                 a.IELocationReceive = ol.IELocationReceive;
@@ -1057,16 +1324,45 @@ namespace CKLINE.Controllers
                 a.RoutID = Convert.ToInt32(ol.RoutID);
                 a.Status = Convert.ToInt32(ol.Status);
 
-                  if (ol.TPackDate == null)
+                  if (ol.TPackDate1 == null)
                   {
-                      a.TPackDate = DateTime.Now.Date;
+                      a.TPackDate1 = DateTime.Now.Date;
                   }
                   else
                   {
-                      a.TPackDate = Convert.ToDateTime(ol.TPackDate);
+                      a.TPackDate1 = Convert.ToDateTime(ol.TPackDate1);
                   }
-              
+                  if (ol.TPackDate2 == null)
+                  {
+                      a.TPackDate2 = DateTime.Now.Date;
+                  }
+                  else
+                  {
+                      a.TPackDate2 = Convert.ToDateTime(ol.TPackDate2);
+                  }
 
+                  if (ol.TPackDate3 == null)
+                  {
+                      a.TPackDate3 = DateTime.Now.Date;
+                  }
+                  else
+                  {
+                      a.TPackDate3 = Convert.ToDateTime(ol.TPackDate3);
+                  }
+
+                  if (ol.TPackDate4 == null)
+                  {
+                      a.TPackDate4 = DateTime.Now.Date;
+                  }
+                  else
+                  {
+                      a.TPackDate4 = Convert.ToDateTime(ol.TPackDate4);
+                  }
+
+                  a.TNumberOrder1 = Convert.ToInt32(ol.TNumberOrder1);
+                  a.TNumberOrder2 = Convert.ToInt32(ol.TNumberOrder2);
+                  a.TNumberOrder3 = Convert.ToInt32(ol.TNumberOrder3);
+                  a.TNumberOrder4 = Convert.ToInt32(ol.TNumberOrder4);
                 a.CAddress = ol.CAddress;
                 a.CProvince = ol.CProvince;
                   a.CName = ol.CName;
@@ -1090,8 +1386,10 @@ namespace CKLINE.Controllers
                                   select new
                                   {
                                       ContainerNo = od.ContainerNo,
+                                      ContainerType = od.ContainerType,
                                       Position = od.Position,
                                       PackNo = od.PackNo,
+                                      TPackDate = od.TPackDate,
                                       Status = od.Status
                                   }
 ).ToList();
@@ -1101,8 +1399,20 @@ namespace CKLINE.Controllers
                 OrderDetailInfo b = new OrderDetailInfo();
 
                 b.ContainerNo = odl.ContainerNo;
+                b.ContainerType = odl.ContainerType;
                 b.PackNo = odl.PackNo;
                 b.Position = odl.Position;
+              
+
+                if (odl.TPackDate == null)
+                {
+                    b.TPackDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    b.TPackDate = Convert.ToDateTime(odl.TPackDate);
+                }
+
                 b.Status = Convert.ToInt32(odl.Status);
                 modelD.Add(b);
 
@@ -1136,7 +1446,14 @@ namespace CKLINE.Controllers
                                   NumberOrder = o.NumberOrder,
                                   Remark = o.Remark,
                                   PPackDate = o.PPackDate,
-                                  TPackDate = o.TPackDate,
+                                  TPackDate1 = o.TPackDate1,
+                                  TPackDate2 = o.TPackDate2,
+                                  TPackDate3 = o.TPackDate3,
+                                  TPackDate4 = o.TPackDate4,
+                                  TNumberOrder1 = o.TNumberOrder1,
+                                  TNumberOrder2 = o.TNumberOrder2,
+                                  TNumberOrder3 = o.TNumberOrder3,
+                                  TNumberOrder4 = o.TNumberOrder4,
                                   IEType = o.IEType,
                                   IEShipper = o.IEShipper,
                                   IEAgent = o.IEAgent,
@@ -1146,13 +1463,13 @@ namespace CKLINE.Controllers
                                   IELocationPack = o.IELocationPack,
                                   IELocationReceive = o.IELocationReceive,
                                   IEMap = o.IEMap,
-                                  IELiner = o.IELiner,
+                                //  IELiner = o.IELiner,
                                   IEReceiveDate = o.IEReceiveDate,
                                   IEPackDate = o.IEPackDate,
                                   IEPacklTime = o.IEPacklTime,
                                   IEFeeder = o.IEFeeder,
                                   IEMother = o.IEMother,
-                                  IECYDate = o.IECYDate,
+                                  IEReturnDate = o.IEReturnDate,
                                   IEETDDate = o.IEETDDate,
                                   IEContact = o.IEContact,
                                   IEETADate = o.IEETADate,
@@ -1164,7 +1481,7 @@ namespace CKLINE.Controllers
                                   IELiftPrice = o.IELiftPrice,
                                   IECLosingDate = o.IECLosingDate,
                                   IEClosingTime = o.IEClosingTime,
-                                  IEAgent2 = o.IEAgent2,
+                                  IEQuantity = o.IEQuantity,
                                   Status = o.Status,
 
                                   CName = c.Name,
@@ -1197,7 +1514,7 @@ namespace CKLINE.Controllers
                 }
 
                 a.IEAgent = ol.IEAgent;
-                a.IEAgent2 = ol.IEAgent2;
+                a.IEQuantity = ol.IEQuantity;
                 a.IEAT = ol.IEAT;
                 a.IEBill = ol.IEBill;
 
@@ -1214,13 +1531,13 @@ namespace CKLINE.Controllers
                 a.IEClosingTime = ol.IEClosingTime;
                 a.IEContact = ol.IEContact;
 
-                if (ol.IECYDate == null)
+                if (ol.IEReturnDate == null)
                 {
-                    a.IECYDate = DateTime.Now.Date;
+                    a.IEReturnDate = DateTime.Now.Date;
                 }
                 else
                 {
-                    a.IECYDate = Convert.ToDateTime(ol.IECYDate);
+                    a.IEReturnDate = Convert.ToDateTime(ol.IEReturnDate);
                 }
 
 
@@ -1248,7 +1565,7 @@ namespace CKLINE.Controllers
                 a.IEFeeder = ol.IEFeeder;
                 a.IELanPrice = Convert.ToDecimal(ol.IELanPrice);
                 a.IELiftPrice = Convert.ToDecimal(ol.IELiftPrice);
-                a.IELiner = ol.IELiner;
+              //  a.IELiner = ol.IELiner;
                 a.IELoading = ol.IELoading;
                 a.IELocationPack = ol.IELocationPack;
                 a.IELocationReceive = ol.IELocationReceive;
@@ -1318,13 +1635,13 @@ namespace CKLINE.Controllers
                 a.RoutID = Convert.ToInt32(ol.RoutID);
                 a.Status = Convert.ToInt32(ol.Status);
 
-                if (ol.TPackDate == null)
+                if (ol.TPackDate1 == null)
                 {
-                    a.TPackDate = DateTime.Now.Date;
+                    a.TPackDate1 = DateTime.Now.Date;
                 }
                 else
                 {
-                    a.TPackDate = Convert.ToDateTime(ol.TPackDate);
+                    a.TPackDate1 = Convert.ToDateTime(ol.TPackDate1);
                 }
 
 
@@ -1384,7 +1701,14 @@ namespace CKLINE.Controllers
                                   NumberOrder = o.NumberOrder,
                                   Remark = o.Remark,
                                   PPackDate = o.PPackDate,
-                                  TPackDate = o.TPackDate,
+                                  TPackDate1 = o.TPackDate1,
+                                  TPackDate2 = o.TPackDate2,
+                                  TPackDate3 = o.TPackDate3,
+                                  TPackDate4 = o.TPackDate4,
+                                  TNumberOrder1 = o.TNumberOrder1,
+                                  TNumberOrder2 = o.TNumberOrder2,
+                                  TNumberOrder3 = o.TNumberOrder3,
+                                  TNumberOrder4 = o.TNumberOrder4,
                                   IEType = o.IEType,
                                   IEShipper = o.IEShipper,
                                   IEAgent = o.IEAgent,
@@ -1394,13 +1718,13 @@ namespace CKLINE.Controllers
                                   IELocationPack = o.IELocationPack,
                                   IELocationReceive = o.IELocationReceive,
                                   IEMap = o.IEMap,
-                                  IELiner = o.IELiner,
+                                //  IELiner = o.IELiner,
                                   IEReceiveDate = o.IEReceiveDate,
                                   IEPackDate = o.IEPackDate,
                                   IEPacklTime = o.IEPacklTime,
                                   IEFeeder = o.IEFeeder,
                                   IEMother = o.IEMother,
-                                  IECYDate = o.IECYDate,
+                               //   IECYDate = o.IECYDate,
                                   IEETDDate = o.IEETDDate,
                                   IEContact = o.IEContact,
                                   IEETADate = o.IEETADate,
@@ -1412,7 +1736,8 @@ namespace CKLINE.Controllers
                                   IELiftPrice = o.IELiftPrice,
                                   IECLosingDate = o.IECLosingDate,
                                   IEClosingTime = o.IEClosingTime,
-                                  IEAgent2 = o.IEAgent2,
+                                  IEQuantity = o.IEQuantity,
+                                  IEReturnDate = o.IEReturnDate,
                                   Status = o.Status,
 
                                   CName = c.Name,
@@ -1460,6 +1785,23 @@ namespace CKLINE.Controllers
                     jol.ReceiveDate = Convert.ToDateTime(ol.ReceiveDate);
                 }
 
+                if (ol.TPackDate1 == null)
+                {
+                    jol.TPackDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    jol.TPackDate = Convert.ToDateTime(ol.TPackDate1);
+                }
+
+                if (ol.IEReceiveDate == null)
+                {
+                    jol.IEReceiveDate = DateTime.Now.Date;
+                }
+                else
+                {
+                    jol.IEReceiveDate = Convert.ToDateTime(ol.IEReceiveDate);
+                }
 
                 jol.RoutID = Convert.ToInt32(ol.RoutID);
                 jol.Status = Convert.ToInt32(ol.Status);
@@ -1475,6 +1817,8 @@ namespace CKLINE.Controllers
                                {
                                    ODID = od.ID,
                                    ContainerNo = od.ContainerNo,
+                                   ContainerType = od.ContainerType,
+                                   TPackDate = od.TPackDate,
                                    Position = od.Position,
                                    PackNo = od.PackNo,
                                    Status = od.Status
@@ -1487,8 +1831,10 @@ namespace CKLINE.Controllers
 
                     jd.ID = odl.ODID;
                     jd.ContainerNo = odl.ContainerNo;
+                    jd.ContainerType = odl.ContainerType;
                     jd.PackNo = odl.PackNo;
                     jd.Position = odl.Position;
+                    jd.TPackDate = Convert.ToDateTime(odl.TPackDate);
                     jd.Status = Convert.ToInt32(odl.Status);
 
                     JOrderDList.Add(jd);
@@ -1678,6 +2024,7 @@ namespace CKLINE.Controllers
 
                               ODID = od.ID,
                            ContainerNo = od.ContainerNo,
+                           ContainerType = od.ContainerType,
                            Position = od.Position,
                            PackNo = od.PackNo,
                             CustomerName = c.Name,
@@ -1697,6 +2044,7 @@ namespace CKLINE.Controllers
                 joad.ReceiveDate = Convert.ToDateTime(joal.ReceiveDate).Date;
                 joad.RouteID = Convert.ToInt32(joal.RouteID);
                 joad.ContainerNo = joal.ContainerNo;
+                joad.ContainerType = joal.ContainerType;
                 joad.ODID = joal.ODID;
                 joad.PackNo = joal.PackNo;
                 joad.Position = joal.Position;

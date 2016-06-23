@@ -117,61 +117,67 @@
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
 
-                <b>วันที่ออกเดินทาง :</b>&nbsp; @item.ReceiveDate.ToString("dd/MM/yyyy")<br>
-                <b>วันที่ส่ง :</b>&nbsp; @item.DliveryDate.ToString("dd/MM/yyyy")<br>
+                @if (item.TNumberOrder1 > 0)
+                {
+                    <b>วันที่ลากตู้ (1) : </b> @item.TPackDate1.ToString("dd/MM/yyyy")<br>
+                }
+                @if (item.TNumberOrder2 > 0)
+                {
+                    <b>วันที่ลากตู้ (2) : </b> @item.TPackDate2.ToString("dd/MM/yyyy")<br>
+                }
+                @if (item.TNumberOrder3 > 0)
+                {
+                    <b>วันที่ลากตู้ (3) : </b> @item.TPackDate3.ToString("dd/MM/yyyy")<br>
+                }
+                @if (item.TNumberOrder4 > 0)
+                {
+                    <b>วันที่ลากตู้ (4) : </b> @item.TPackDate4.ToString("dd/MM/yyyy")<br>
+                }
+              
                 <br>
             </div>
             <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-
-                <b>จำนวนตู้ :</b>&nbsp; @item.NumberOrder<br>
-                <b>สถานะ :</b>&nbsp; @StatusName<br>
+            <div class="col-sm-8 invoice-col">
+                @if (item.TNumberOrder1 > 0)
+                {
+                    <b>จำนวนตู้ : </b> @item.TNumberOrder1<br>
+                }
+                @if (item.TNumberOrder2 > 0)
+                {
+                    <b>จำนวนตู้ : </b> @item.TNumberOrder2<br>
+                }
+                @if (item.TNumberOrder3 > 0)
+                {
+                    <b>จำนวนตู้ : </b> @item.TNumberOrder3<br>
+                }
+                @if (item.TNumberOrder4 > 0)
+                {
+                    <b>จำนวนตู้ : </b> @item.TNumberOrder4<br>
+                }
+             
                 <br>
             </div>
             <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
+            <div class="col-sm-12 invoice-col">
 
                 <b>หมายเหตุ :</b>&nbsp; @item.Remark<br>
-
-                <br>
+              
             </div>
             <!-- /.col -->
+            <div class="col-sm-12 invoice-col">
 
+              
+                <b>สถานะ :</b>&nbsp; @StatusName<br>
+              
+            </div>
+            <!-- /.col -->
         </div>
         <hr />
     }
     else if (item.OrderType == 3)
     {
-        <div class="row invoice-info">
-            <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-
-                <b>วันที่รับ :</b>&nbsp; @item.ReceiveDate.ToString("dd/MM/yyyy")<br>
-                <b>วันที่ส่ง :</b>&nbsp; @item.DliveryDate.ToString("dd/MM/yyyy")<br>
-                <br>
-            </div>
-            <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-
-                <b>จำนวนตู้ :</b>&nbsp; @item.NumberOrder<br>
-                <b>สถานะ :</b>&nbsp; @StatusName<br>
-                <br>
-            </div>
-            <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-
-                <b>หมายเหตุ :</b>&nbsp; @item.Remark<br>
-
-                <br>
-            </div>
-            <!-- /.col -->
-
-        </div>
-        <hr />
-    <div class="row invoice-info">
-        <!-- /.col -->
-        @{string ieType = "";}
-        @if(item.IEType == 1)
+        string ieType = "";
+        if (item.IEType == 1)
         {
             ieType = "Import";
         }
@@ -179,52 +185,106 @@
         {
             ieType = "Export";
         }
+        <div class="row invoice-info">
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+
+                <b>Type :</b>&nbsp; @ieType<br>
+                <br>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+
+                <b>จำนวนตู้ :</b>&nbsp; @item.NumberOrder<br>
+             
+                <br>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                <b>สถานะ :</b>&nbsp; @StatusName<br>
+            
+                <br>
+            </div>
+            <!-- /.col -->
+
+        </div>
+        <hr />
+  
+    <div class="row invoice-info">
+        <!-- /.col -->
+      
         <div class="col-sm-4 invoice-col">
 
-            <b>Type :</b>&nbsp; @ieType<br>
+        
             <b>Shipper/Consignee :</b>&nbsp; @item.IEShipper<br>
-            <b>Agent :</b>&nbsp; @item.IEAgent<br>
+            <b>Quantity :</b>&nbsp; @item.IEQuantity<br>
+            <b>Feeder Vessel :</b>&nbsp; @item.IEFeeder<br>
+            <b>Mother Vessel :</b>&nbsp; @item.IEMother<br>
             <b>Port of Discharge/Loading :</b>&nbsp; @item.IELoading<br>
-            <b>Shipping :</b>&nbsp; @item.IEShipping<br>
-            <b>เบอร์ติดต่อ:</b>&nbsp; @item.IETelephone<br>
-            <b>สถานที่เปิดตู้/บรรจุตู้ :</b>&nbsp; @item.IELocationPack<br>
-            <b>สถานที่รับตู้/คืนตู้ :</b>&nbsp; @item.IELocationReceive<br>
-            <b>ไฟล์แผนที่ :</b>&nbsp;<a href="~/MapFile/@item.IEMap" target="_blank">@item.IEMap</a><br>
-            <b>Liner :</b>&nbsp; @item.IELiner<br>
+            <b>ETA :</b>&nbsp;@item.IEETADate.ToString("dd/MM/yyyy")<br>
+            <b>ETD :</b>&nbsp; @item.IEETDDate.ToString("dd/MM/yyyy")<br>
+
+
+            <b>ใบเสร็จค่าใช้จ่ายออกในนาม :</b>&nbsp; @item.IEBill<br>
+            <b>ค่าผ่านท่า :</b>&nbsp; @item.IEPortPrice<br>
+            <b>ค่าผ่านลาน :</b>&nbsp; @item.IELanPrice<br>
+            <b>ค่า Lift on/Lift off :</b>&nbsp; @item.IELiftPrice<br>
+
+
             <br>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
 
             <b>วันที่รับตู้หนัก/เปล่า :</b>&nbsp; @item.IEReceiveDate.ToString("dd/MM/yyyy")<br>
-            <b>วันที่บรรจุ/เปิดตู้ :</b>&nbsp; @item.IEPackDate.ToString("dd/MM/yyyy")<br>
-            <b>เวลาบรรจุ/เปิดตู้ :</b>&nbsp; @item.IEPacklTime<br>
-            <b>Feeder Vessel :</b>&nbsp; @item.IEFeeder<br>
-            <b>Mother Vessel :</b>&nbsp; @item.IEMother<br>
-            <b>CY Date :</b>&nbsp; @item.IECYDate.ToString("dd/MM/yyyy")<br>
-            <b>ETD :</b>&nbsp; @item.IEETDDate.ToString("dd/MM/yyyy")<br>
+            <b>AT :</b>&nbsp; @item.IEAT<br>
             <b>Contact :</b>&nbsp; @item.IEContact<br>
-            <b>ETA :</b>&nbsp;@item.IEETADate.ToString("dd/MM/yyyy")<br>
-          
+            <b>Tel :</b>&nbsp; @item.IETel<br>
+         
+        
             <br>
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
+            <b>วันที่บรรจุ/เปิดตู้ :</b>&nbsp; @item.IEPackDate.ToString("dd/MM/yyyy")<br>
+            <b>เวลาบรรจุ/เปิดตู้ :</b>&nbsp; @item.IEPacklTime<br>
+            <b>สถานที่ :</b>&nbsp; @item.IELocationPack<br>
 
-            <b>AT :</b>&nbsp; @item.IEAT<br>
-            <b>Tel :</b>&nbsp; @item.IETel<br>
-            <b>ใบเสร็จค่าใช้จ่ายออกในนาม :</b>&nbsp; @item.IEBill<br>
-            <b>ค่าผ่านท่า :</b>&nbsp; @item.IEPortPrice<br>
-            <b>ค่าผ่านลาน :</b>&nbsp; @item.IELanPrice<br>
-            <b>ค่า Lift on/Lift off :</b>&nbsp; @item.IELiftPrice<br>
-            <b>Closing Date :</b>&nbsp; @item.IECLosingDate.ToString("dd/MM/yyyy")<br>
-            <b>Closing Time :</b>&nbsp; @item.IEClosingTime<br>
-            <b>Agent :</b>&nbsp;@item.IEAgent2<br>
+
+            <b>วันที่คืนตู้เปล่า/หนัก :</b>&nbsp; @item.IEReturnDate.ToString("dd/MM/yyyy")<br>
+            <b>AT :</b>&nbsp; @item.IELocationReceive<br>
+            <b>Contact :</b>&nbsp; @item.IEShipping<br>
+            <b>Tel:</b>&nbsp; @item.IETelephone<br>
+
 
             <br>
         </div>
         <!-- /.col -->
 
+    </div>
+    <hr />
+    <div class="row invoice-info">
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+            <b>Agent :</b>&nbsp; @item.IEAgent<br>
+
+        </div>
+        <div class="col-sm-4 invoice-col">
+
+            <b>Closing Date :</b>&nbsp; @item.IECLosingDate.ToString("dd/MM/yyyy")<br>
+
+        </div>
+        <div class="col-sm-4 invoice-col">
+
+            <b>Closing Time :</b>&nbsp; @item.IEClosingTime<br>
+
+        </div>
+
+        <div class="col-sm-12 invoice-col">
+            <b>หมายเหตุ :</b>&nbsp; @item.Remark<br>
+
+            <b>ไฟล์แผนที่ :</b>&nbsp;<a href="~/MapFile/@item.IEMap" target="_blank">@item.IEMap</a><br>
+        </div>
     </div>
     <hr />
     }
@@ -283,7 +343,7 @@
 
 
     }
-    else if (item.OrderType == 2 || item.OrderType == 3) 
+    else if (item.OrderType == 2 ) 
         {
             <div class="row">
                 <div class="col-xs-12 table-responsive">
@@ -291,8 +351,9 @@
                         <thead>
                             <tr>
                                 @*   <th>ลำดับ</th>*@
+                                <th>วันที่ลากตู้</th>
                                 <th>เบอร์ตู้</th>
-                                <th>เบอร์ซีล</th>
+                                <th>ประเภทตู้</th>
                                 <th>สถานะ</th>
 
                             </tr>
@@ -321,8 +382,9 @@
 
                                 <tr>
                                     @*<td>@Model.Item2.</td>*@
+                                    <td>@itemD.TPackDate.ToString("dd/MM/yyyy")</td>
                                     <td>@itemD.ContainerNo</td>
-                                    <td>@itemD.PackNo</td>
+                                    <td>@itemD.ContainerType</td>
                                     <td>@DStatusName</td>
 
                                 </tr>
@@ -335,6 +397,60 @@
 
 
         }
+    else if (item.OrderType == 3)
+    {
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            @*   <th>ลำดับ</th>*@
+                            <th>เบอร์ตู้</th>
+                            <th>ประเภทตู้</th>
+                            <th>เบอร์ซีล</th>
+                            <th>สถานะ</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var itemD in Model.Item2)
+                        {
+
+                            string DStatusName = "";
+                            if (itemD.Status == 1)
+                            {
+                                DStatusName = "New";
+                            }
+
+                            string sPosition = "";
+                            if (itemD.Position == "L")
+                            {
+                                sPosition = "ด้านซ้าย";
+
+                            }
+                            else
+                            {
+                                sPosition = "ด้านขวา";
+
+                            }
+
+                            <tr>
+                                @*<td>@Model.Item2.</td>*@
+                                <td>@itemD.ContainerNo</td>
+                                <td>@itemD.ContainerType</td>
+                                <td>@itemD.PackNo</td>
+                                <td>@DStatusName</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+    }
     <!-- /.row -->
     @*<div class="row">
         <!-- accepted payments column -->
