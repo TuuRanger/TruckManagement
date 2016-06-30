@@ -53,5 +53,7 @@ namespace CKLINE
         public virtual DbSet<WorkingHistory> WorkingHistories { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Repair> Repairs { get; set; }
+        public virtual DbSet<RepairDetail> RepairDetails { get; set; }
     }
 }

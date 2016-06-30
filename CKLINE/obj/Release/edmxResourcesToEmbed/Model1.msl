@@ -555,5 +555,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Repairs">
+      <EntityTypeMapping TypeName="TMSModel.Repair">
+        <MappingFragment StoreEntitySet="Repair">
+          <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Operator" ColumnName="Operator" />
+          <ScalarProperty Name="GID" ColumnName="GID" />
+          <ScalarProperty Name="SumPrice" ColumnName="SumPrice" />
+          <ScalarProperty Name="SumNum" ColumnName="SumNum" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="optRepair" ColumnName="optRepair" />
+          <ScalarProperty Name="optEdit" ColumnName="optEdit" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+          <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="InformTime" ColumnName="InformTime" />
+          <ScalarProperty Name="InformDate" ColumnName="InformDate" />
+          <ScalarProperty Name="Mile" ColumnName="Mile" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="RepairNo" ColumnName="RepairNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepairDetails">
+      <EntityTypeMapping TypeName="TMSModel.RepairDetail">
+        <MappingFragment StoreEntitySet="RepairDetail">
+          <ScalarProperty Name="SumPrice" ColumnName="SumPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="RepairNo" ColumnName="RepairNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

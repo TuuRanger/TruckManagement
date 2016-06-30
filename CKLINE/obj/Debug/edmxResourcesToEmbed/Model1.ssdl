@@ -305,6 +305,43 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="40" />
   </EntityType>
+  <EntityType Name="Repair">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RepairNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="TID" Type="int" />
+    <Property Name="DriverID" Type="int" />
+    <Property Name="Mile" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="InformDate" Type="date" />
+    <Property Name="InformTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="SendDate" Type="date" />
+    <Property Name="SendTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="FinishDate" Type="date" />
+    <Property Name="FinishTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="Detail" Type="nvarchar(max)" />
+    <Property Name="optEdit" Type="int" />
+    <Property Name="optRepair" Type="int" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="SumNum" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SumPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="GID" Type="int" />
+    <Property Name="Operator" Type="nvarchar" MaxLength="100" />
+    <Property Name="Status" Type="int" />
+    <Property Name="SaveDate" Type="date" />
+  </EntityType>
+  <EntityType Name="RepairDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RepairNo" Type="nvarchar" MaxLength="15" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="255" />
+    <Property Name="Num" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SumPrice" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
   <EntityType Name="Route">
     <Key>
       <PropertyRef Name="ID" />
@@ -547,6 +584,8 @@
     <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Provice" EntityType="Self.Provice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RepairDetail" EntityType="Self.RepairDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubContact" EntityType="Self.SubContact" Schema="dbo" store:Type="Tables" />

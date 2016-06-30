@@ -33,6 +33,8 @@
         <EntityTypeShape EntityType="TMSModel.WorkingHistory" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.Job" Width="1.5" PointX="15.375" PointY="16.75" />
         <EntityTypeShape EntityType="TMSModel.Order" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="TMSModel.Repair" Width="1.5" PointX="9.375" PointY="14.75" />
+        <EntityTypeShape EntityType="TMSModel.RepairDetail" Width="1.5" PointX="17.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

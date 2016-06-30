@@ -1,0 +1,217 @@
+﻿@*@model List<TMS.Models.OrderInfo>*@
+@model Tuple<List<TMS.Models.DataRepair>, List<TMS.Models.DataRepairDetail>>
+@{
+    ViewBag.Title = "Order Info";
+}
+
+<section class="content-header">
+   
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+
+@foreach (var item in Model.Item1)
+{
+    <section class="invoice">
+        <!-- title row -->
+        @{string OrderName = "";
+        string StatusName = "";}
+       
+
+        @if (item.Status == 1)
+        {
+            StatusName = "แจ้งซ่อม";
+        }
+        else if (item.Status == 2)
+        {
+            StatusName = "กำลังซ่อม";
+        }
+        else if (item.Status == 3)
+        {
+            StatusName = "ซ่อมเสร็จแล้ว";
+        }
+        else if (item.Status == 4)
+        {
+            StatusName = "ยกเลิก";
+        }
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-globe"></i>&nbsp; เลขที่ใบแจ้งซ่อม : &nbsp; @item.RepairNo 
+                    <small class="pull-right">วันที่บันทึก : &nbsp; @item.SaveDate.ToString("dd/MM/yyyy")</small>
+                </h2>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- info row -->
+
+        <div class="row invoice-info">
+            <!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+                <b>ข้อมูลรถ</b><br>
+                <br />
+                <b>ทะเบียนรถ :</b>&nbsp; @item.License<br>
+                <br>
+            </div>
+            <div class="col-sm-4 invoice-col">
+                <b>&nbsp;</b><br>
+                <br />
+                <b>ยี่ห้อรถ :</b>&nbsp; @item.Brand<br>
+                <br>
+            </div>
+            <div class="col-sm-4 invoice-col">
+                <b>&nbsp;</b><br>
+                <br />
+                <b>ประเภทรถ :</b>&nbsp; @item.RegisterDate.ToString("dd/MM/yyyy")<br>
+                <br>
+            </div>
+        </div>
+        <hr />
+        <div class="row invoice-info">
+            
+            <div class="col-sm-6 invoice-col">
+                <b>ข้อมูลการแจ้งซ่อม</b><br>
+                <br>
+                <b>พขร ผู้เเจ้งซ่อม :</b>&nbsp; @item.Title &nbsp; @item.FirstName &nbsp; @item.LastName<br>
+                <b>วันที่แจ้งซ่อม :</b>&nbsp; @item.InformDate.ToString("dd/MM/yyyy") <br>
+                <b>วันที่ส่งซ่อม :</b>&nbsp; @item.SendDate.ToString("dd/MM/yyyy") <br>
+                <b>วันที่ซ่อมเสร็จ :</b>&nbsp; @item.FinishDate.ToString("dd/MM/yyyy")<br>
+                <br>
+              
+            </div>
+            <div class="col-sm-6 invoice-col">
+                <b>&nbsp;</b><br>
+                <br>
+                <b>เลขไมล์แจ้งซ่อม :</b>&nbsp; @item.Mile.ToString("#,###")<br>
+                <b>เวลาที่แจ้งซ่อม :</b>&nbsp; @item.InformTime<br>
+                <b>เวลาที่ส่งซ่อม :</b>&nbsp; @item.SendTime<br>
+                <b>เวลาที่ซ่อมเสร็จ :</b>&nbsp; @item.FinishTime<br>
+                <br>
+             
+            </div>
+            <div class="col-sm-12 invoice-col">
+               
+                <b>อาการเสียที่แจ้ง :</b>&nbsp; @item.Detail<br>
+               
+            </div>
+            <div class="col-sm-6 invoice-col">
+                
+                <b>แนวทางแก้ไข :</b>&nbsp; @item.SEdit<br>
+                <br>
+              
+            </div>
+            <div class="col-sm-6 invoice-col">
+               
+                <b>ประเภทงานซ่อม :</b>&nbsp; @item.SRepair<br>
+                <br>
+           
+            </div>
+            <div class="col-sm-12 invoice-col">
+                <b>หมายเหตุ :</b>&nbsp; @item.Remark<br>
+                <br>
+            </div>
+            <div class="col-sm-6 invoice-col">
+
+                <b>อู่ซ่อมรถ :</b>&nbsp; @item.GName<br>
+             
+            </div>
+            <div class="col-sm-6 invoice-col">
+
+                <b>ผู้ดำเนินการ :</b>&nbsp; @item.Operator<br>
+            </div>
+        </div>
+        <hr />
+        
+            <div class="row">
+                <div class="col-sm-12 invoice-col">
+                    <b>รายการซ่อม</b><br>
+                    </div>
+                  
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    @*   <th>ลำดับ</th>*@
+                                    <th align="center" width="60%">รายการ</th>
+                                    <th align="center" width="10%">จำนวน</th>
+                                    <th align="center" width="15%">ราคาต่อหน่วย</th>
+                                    <th align="center" width="15%">ราคารวม (บาท)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var itemD in Model.Item2)
+                                {
+
+
+
+                                    <tr>
+                                        @*<td>@Model.Item2.</td>*@
+                                        <td width="60%">@itemD.Detail</td>
+                                        <td align="center" width="10%">@itemD.Num.ToString("#,###")</td>
+                                        <td align="center" width="15%">@itemD.Price.ToString("#,###.##")</td>
+                                        <td align="center" width="15%">@itemD.SumPrice.ToString("#,###.##")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                            </table>
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+        <!-- /.row -->
+        @*<div class="row">
+                <!-- accepted payments column -->
+                <div class="col-xs-6">
+                    <p class="lead">Payment Methods:</p>
+                    <img src="../../dist/img/credit/visa.png" alt="Visa">
+                    <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
+                    <img src="../../dist/img/credit/american-express.png" alt="American Express">
+                    <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
+                    <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
+                        dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                    </p>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-6">
+                    <p class="lead">Amount Due 2/22/2014</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th style="width:50%">Subtotal:</th>
+                                <td>$250.30</td>
+                            </tr>
+                            <tr>
+                                <th>Tax (9.3%)</th>
+                                <td>$10.34</td>
+                            </tr>
+                            <tr>
+                                <th>Shipping:</th>
+                                <td>$5.80</td>
+                            </tr>
+                            <tr>
+                                <th>Total:</th>
+                                <td>$265.24</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+                <div class="col-xs-12">
+                    <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                    <button type="button" class="btn btn-success pull-right">
+                        <i class="fa fa-credit-card"></i> Submit Payment
+                    </button>
+                    <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                        <i class="fa fa-download"></i> Generate PDF
+                    </button>
+                </div>
+            </div>*@
+    </section>
+}

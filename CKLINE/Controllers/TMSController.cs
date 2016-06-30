@@ -447,6 +447,7 @@ namespace CKLINE.Controllers
 
             return RedirectToAction("Jobs", "TMS", new { J = 1,OID = form["OrderID"],OT=form["OT"]});
         }
+     
         public ActionResult OrderCommit(FormCollection form, HttpPostedFileBase file)
         {
             string ReceiveDate = form["ReceiveDate"];
@@ -1116,7 +1117,6 @@ namespace CKLINE.Controllers
 
           
         }
-
         public ActionResult OrderInfo()
         {
             string OID = "PA16060001";
@@ -1144,32 +1144,35 @@ namespace CKLINE.Controllers
             List<OrderInfo> model = new List<OrderInfo>();
             List<OrderDetailInfo> modelD = new List<OrderDetailInfo>();
 
+          
+            if (OID.Substring(0,2) == "PA" || OID.Substring(0,2) == "GL")
+            {
                 var sOrderInfo = (from o in db.Orders
-                                   join c in db.Customers on o.CustomerID equals c.ID
-                                   join r in db.Routes on o.RoutID equals r.ID
-                                  join r2 in db.Routes on o.RoutID2 equals r2.ID
-                                  join r3 in db.Routes on o.RoutID3 equals r3.ID
-                                  join r4 in db.Routes on o.RoutID4 equals r4.ID
-                                   //join a in db.LMS_SubAgent on b.AgentID equals a.ID
-                                 //  join d in db.LMS_Driver on b.DriverID equals d.ID
-                                where o.OrderID == OID
-                                select new
-                                {
+                                  join c in db.Customers on o.CustomerID equals c.ID
+                                  join r in db.Routes on o.RoutID equals r.ID
+                                  //join r2 in db.Routes on o.RoutID2 equals r2.ID
+                                  //join r3 in db.Routes on o.RoutID3 equals r3.ID
+                                  //join r4 in db.Routes on o.RoutID4 equals r4.ID
+                                  //join a in db.LMS_SubAgent on b.AgentID equals a.ID
+                                  //  join d in db.LMS_Driver on b.DriverID equals d.ID
+                                  where o.OrderID == OID
+                                  select new
+                                  {
                                       OrderType = o.OrderType,
-            OrderID = o.OrderID,
-           BookingNo = o.BookingNo,
-            CustomerID = o.CustomerID,
-           OrderDate = o.OrderDate,
-            ReceiveDate = o.ReceiveDate,
-           DliveryDate = o.DliveryDate,
-            RoutID = o.RoutID,
+                                      OrderID = o.OrderID,
+                                      BookingNo = o.BookingNo,
+                                      CustomerID = o.CustomerID,
+                                      OrderDate = o.OrderDate,
+                                      ReceiveDate = o.ReceiveDate,
+                                      DliveryDate = o.DliveryDate,
+                                      RoutID = o.RoutID,
                                       RoutID2 = o.RoutID2,
                                       RoutID3 = o.RoutID3,
                                       RoutID4 = o.RoutID4,
-           NumberOrder = o.NumberOrder,
-            Remark = o.Remark,
-           PPackDate = o.PPackDate,
-           TPackDate1 = o.TPackDate1,
+                                      NumberOrder = o.NumberOrder,
+                                      Remark = o.Remark,
+                                      PPackDate = o.PPackDate,
+                                      TPackDate1 = o.TPackDate1,
                                       TPackDate2 = o.TPackDate2,
                                       TPackDate3 = o.TPackDate3,
                                       TPackDate4 = o.TPackDate4,
@@ -1178,45 +1181,355 @@ namespace CKLINE.Controllers
                                       TNumberOrder3 = o.TNumberOrder3,
                                       TNumberOrder4 = o.TNumberOrder4,
                                       ContainerType1 = o.ContainerType1,
-                                      ContainerType2  = o.ContainerType2,
-                                      ContainerType3  = o.ContainerType3,
+                                      ContainerType2 = o.ContainerType2,
+                                      ContainerType3 = o.ContainerType3,
                                       ContainerType4 = o.ContainerType4,
 
-           IEType = o.IEType,
-          IEShipper = o.IEShipper,
-           IEAgent = o.IEAgent,
-           IELoading = o.IELoading,
-           IEShipping = o.IEShipping,
-           IETelephone = o.IETelephone,
-           IELocationPack = o.IELocationPack,
-        IELocationReceive = o.IELocationReceive,
-          IEMap = o.IEMap,
-         //  IELiner = o.IELiner,
-           IEReceiveDate = o.IEReceiveDate,
-           IEPackDate = o.IEPackDate,
-       IEPacklTime = o.IEPacklTime,
-            IEFeeder = o.IEFeeder,
-          IEMother = o.IEMother,
+                                      IEType = o.IEType,
+                                      IEShipper = o.IEShipper,
+                                      IEAgent = o.IEAgent,
+                                      IELoading = o.IELoading,
+                                      IEShipping = o.IEShipping,
+                                      IETelephone = o.IETelephone,
+                                      IELocationPack = o.IELocationPack,
+                                      IELocationReceive = o.IELocationReceive,
+                                      IEMap = o.IEMap,
+                                      //  IELiner = o.IELiner,
+                                      IEReceiveDate = o.IEReceiveDate,
+                                      IEPackDate = o.IEPackDate,
+                                      IEPacklTime = o.IEPacklTime,
+                                      IEFeeder = o.IEFeeder,
+                                      IEMother = o.IEMother,
                                       IEReturnDate = o.IEReturnDate,
-          IEETDDate = o.IEETDDate,
-     IEContact = o.IEContact,
-            IEETADate = o.IEETADate,
-           IEAT = o.IEAT,
-            IETel = o.IETel,
-            IEBill = o.IEBill,
-            IEPortPrice = o.IEPortPrice,
-            IELanPrice = o.IELanPrice,
-            IELiftPrice = o.IELiftPrice,
-            IECLosingDate = o.IECLosingDate,
-            IEClosingTime = o.IEClosingTime,
+                                      IEETDDate = o.IEETDDate,
+                                      IEContact = o.IEContact,
+                                      IEETADate = o.IEETADate,
+                                      IEAT = o.IEAT,
+                                      IETel = o.IETel,
+                                      IEBill = o.IEBill,
+                                      IEPortPrice = o.IEPortPrice,
+                                      IELanPrice = o.IELanPrice,
+                                      IELiftPrice = o.IELiftPrice,
+                                      IECLosingDate = o.IECLosingDate,
+                                      IEClosingTime = o.IEClosingTime,
                                       IEQuantity = o.IEQuantity,
-                                    Status = o.Status,
+                                      Status = o.Status,
 
-                                    CName = c.Name,
-                                    CAddress = c.Address,
-                                    CProvince = c.Province,
-                                    CZipCode = c.ZipCode,
-                                    CTelephone = c.Telephone,
+                                      CName = c.Name,
+                                      CAddress = c.Address,
+                                      CProvince = c.Province,
+                                      CZipCode = c.ZipCode,
+                                      CTelephone = c.Telephone,
+
+                                      RFromDetail = r.FromDetail,
+                                      RFromProvince = r.FromProvince,
+                                      RToDetail = r.ToDetail,
+                                      RToProvince = r.ToProvince
+
+                                      //RFromDetail2 = r2.FromDetail,
+                                      //RFromProvince2 = r2.FromProvince,
+                                      //RToDetail2 = r2.ToDetail,
+                                      //RToProvince2 = r2.ToProvince,
+
+                                      //RFromDetail3 = r3.FromDetail,
+                                      //RFromProvince3 = r3.FromProvince,
+                                      //RToDetail3 = r3.ToDetail,
+                                      //RToProvince3 = r3.ToProvince,
+
+                                      //RFromDetail4 = r4.FromDetail,
+                                      //RFromProvince4 = r4.FromProvince,
+                                      //RToDetail4 = r4.ToDetail,
+                                      //RToProvince4 = r4.ToProvince
+                                  }
+                ).ToList();
+                foreach (var ol in sOrderInfo)
+                {
+                    OrderInfo a = new OrderInfo();
+
+                    a.BookingNo = ol.BookingNo;
+                    a.CustomerID = Convert.ToInt32(ol.CustomerID);
+
+                    if (ol.DliveryDate == null)
+                    {
+                        a.DliveryDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.DliveryDate = Convert.ToDateTime(ol.DliveryDate);
+                    }
+
+                    a.IEAgent = ol.IEAgent;
+                    a.IEQuantity = ol.IEQuantity;
+                    a.IEAT = ol.IEAT;
+                    a.IEBill = ol.IEBill;
+
+                    if (ol.IECLosingDate == null)
+                    {
+                        a.IECLosingDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IECLosingDate = Convert.ToDateTime(ol.IECLosingDate);
+                    }
+
+
+                    a.IEClosingTime = ol.IEClosingTime;
+                    a.IEContact = ol.IEContact;
+
+                    if (ol.IEReturnDate == null)
+                    {
+                        a.IEReturnDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEReturnDate = Convert.ToDateTime(ol.IEReturnDate);
+                    }
+
+
+
+                    if (ol.IEETADate == null)
+                    {
+                        a.IEETADate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEETADate = Convert.ToDateTime(ol.IEETADate);
+                    }
+
+
+                    if (ol.IEETDDate == null)
+                    {
+                        a.IEETDDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEETDDate = Convert.ToDateTime(ol.IEETDDate);
+                    }
+
+
+                    a.IEFeeder = ol.IEFeeder;
+                    a.IELanPrice = Convert.ToDecimal(ol.IELanPrice);
+                    a.IELiftPrice = Convert.ToDecimal(ol.IELiftPrice);
+                    //    a.IELiner = ol.IELiner;
+                    a.IELoading = ol.IELoading;
+                    a.IELocationPack = ol.IELocationPack;
+                    a.IELocationReceive = ol.IELocationReceive;
+                    a.IEMap = ol.IEMap;
+                    a.IEMother = ol.IEMother;
+
+                    if (ol.IEPackDate == null)
+                    {
+                        a.IEPackDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEPackDate = Convert.ToDateTime(ol.IEPackDate);
+                    }
+
+                    a.IEPacklTime = ol.IEPacklTime;
+                    a.IEPortPrice = Convert.ToDecimal(ol.IEPortPrice);
+
+                    if (ol.IEReceiveDate == null)
+                    {
+                        a.IEReceiveDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEReceiveDate = Convert.ToDateTime(ol.IEReceiveDate);
+                    }
+
+                    a.IEShipper = ol.IEShipper;
+                    a.IEShipping = ol.IEShipping;
+                    a.IETel = ol.IETel;
+                    a.IETelephone = ol.IETelephone;
+                    a.IEType = Convert.ToInt32(ol.IEType);
+                    a.NumberOrder = Convert.ToInt32(ol.NumberOrder);
+
+                    if (ol.OrderDate == null)
+                    {
+                        a.OrderDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.OrderDate = Convert.ToDateTime(ol.OrderDate);
+                    }
+
+                    a.OrderID = ol.OrderID;
+                    a.OrderType = Convert.ToInt32(ol.OrderType);
+
+                    if (ol.PPackDate == null)
+                    {
+                        a.PPackDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.PPackDate = Convert.ToDateTime(ol.PPackDate);
+                    }
+
+                    if (ol.ReceiveDate == null)
+                    {
+                        a.ReceiveDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.ReceiveDate = Convert.ToDateTime(ol.ReceiveDate);
+                    }
+
+
+                    a.Remark = ol.Remark;
+                    a.RoutID = Convert.ToInt32(ol.RoutID);
+                    a.RoutID2 = Convert.ToInt32(ol.RoutID2);
+                    a.RoutID3 = Convert.ToInt32(ol.RoutID3);
+                    a.RoutID4 = Convert.ToInt32(ol.RoutID4);
+                    a.Status = Convert.ToInt32(ol.Status);
+
+                    if (ol.TPackDate1 == null)
+                    {
+                        a.TPackDate1 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate1 = Convert.ToDateTime(ol.TPackDate1);
+                    }
+                    if (ol.TPackDate2 == null)
+                    {
+                        a.TPackDate2 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate2 = Convert.ToDateTime(ol.TPackDate2);
+                    }
+
+                    if (ol.TPackDate3 == null)
+                    {
+                        a.TPackDate3 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate3 = Convert.ToDateTime(ol.TPackDate3);
+                    }
+
+                    if (ol.TPackDate4 == null)
+                    {
+                        a.TPackDate4 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate4 = Convert.ToDateTime(ol.TPackDate4);
+                    }
+
+                    a.TNumberOrder1 = Convert.ToInt32(ol.TNumberOrder1);
+                    a.TNumberOrder2 = Convert.ToInt32(ol.TNumberOrder2);
+                    a.TNumberOrder3 = Convert.ToInt32(ol.TNumberOrder3);
+                    a.TNumberOrder4 = Convert.ToInt32(ol.TNumberOrder4);
+                    a.ContainerType1 = ol.ContainerType1;
+                    a.ContainerType2 = ol.ContainerType2;
+                    a.ContainerType3 = ol.ContainerType3;
+                    a.ContainerType4 = ol.ContainerType4;
+                    a.CAddress = ol.CAddress;
+                    a.CProvince = ol.CProvince;
+                    a.CName = ol.CName;
+                    a.CTelephone = ol.CTelephone;
+                    a.CZipCode = ol.CZipCode;
+
+                    a.RFromDetail = ol.RFromDetail;
+                    a.RFromProvince = ol.RFromProvince;
+                    a.RToDetail = ol.RToDetail;
+                    a.RToProvince = ol.RToProvince;
+
+                    //a.RFromDetail2 = ol.RFromDetail2;
+                    //a.RFromProvince2 = ol.RFromProvince2;
+                    //a.RToDetail2 = ol.RToDetail2;
+                    //a.RToProvince2 = ol.RToProvince2;
+
+                    //a.RFromDetail3 = ol.RFromDetail3;
+                    //a.RFromProvince3 = ol.RFromProvince3;
+                    //a.RToDetail3 = ol.RToDetail3;
+                    //a.RToProvince3 = ol.RToProvince3;
+
+                    //a.RFromDetail4 = ol.RFromDetail4;
+                    //a.RFromProvince4 = ol.RFromProvince4;
+                    //a.RToDetail4 = ol.RToDetail4;
+                    //a.RToProvince4 = ol.RToProvince4;
+                    model.Add(a);
+
+                }
+            }
+            else
+            {
+                var sOrderInfo = (from o in db.Orders
+                                  join c in db.Customers on o.CustomerID equals c.ID
+                                  join r in db.Routes on o.RoutID equals r.ID
+                                  join r2 in db.Routes on o.RoutID2 equals r2.ID
+                                  join r3 in db.Routes on o.RoutID3 equals r3.ID
+                                  join r4 in db.Routes on o.RoutID4 equals r4.ID
+                                  //join a in db.LMS_SubAgent on b.AgentID equals a.ID
+                                  //  join d in db.LMS_Driver on b.DriverID equals d.ID
+                                  where o.OrderID == OID
+                                  select new
+                                  {
+                                      OrderType = o.OrderType,
+                                      OrderID = o.OrderID,
+                                      BookingNo = o.BookingNo,
+                                      CustomerID = o.CustomerID,
+                                      OrderDate = o.OrderDate,
+                                      ReceiveDate = o.ReceiveDate,
+                                      DliveryDate = o.DliveryDate,
+                                      RoutID = o.RoutID,
+                                      RoutID2 = o.RoutID2,
+                                      RoutID3 = o.RoutID3,
+                                      RoutID4 = o.RoutID4,
+                                      NumberOrder = o.NumberOrder,
+                                      Remark = o.Remark,
+                                      PPackDate = o.PPackDate,
+                                      TPackDate1 = o.TPackDate1,
+                                      TPackDate2 = o.TPackDate2,
+                                      TPackDate3 = o.TPackDate3,
+                                      TPackDate4 = o.TPackDate4,
+                                      TNumberOrder1 = o.TNumberOrder1,
+                                      TNumberOrder2 = o.TNumberOrder2,
+                                      TNumberOrder3 = o.TNumberOrder3,
+                                      TNumberOrder4 = o.TNumberOrder4,
+                                      ContainerType1 = o.ContainerType1,
+                                      ContainerType2 = o.ContainerType2,
+                                      ContainerType3 = o.ContainerType3,
+                                      ContainerType4 = o.ContainerType4,
+
+                                      IEType = o.IEType,
+                                      IEShipper = o.IEShipper,
+                                      IEAgent = o.IEAgent,
+                                      IELoading = o.IELoading,
+                                      IEShipping = o.IEShipping,
+                                      IETelephone = o.IETelephone,
+                                      IELocationPack = o.IELocationPack,
+                                      IELocationReceive = o.IELocationReceive,
+                                      IEMap = o.IEMap,
+                                      //  IELiner = o.IELiner,
+                                      IEReceiveDate = o.IEReceiveDate,
+                                      IEPackDate = o.IEPackDate,
+                                      IEPacklTime = o.IEPacklTime,
+                                      IEFeeder = o.IEFeeder,
+                                      IEMother = o.IEMother,
+                                      IEReturnDate = o.IEReturnDate,
+                                      IEETDDate = o.IEETDDate,
+                                      IEContact = o.IEContact,
+                                      IEETADate = o.IEETADate,
+                                      IEAT = o.IEAT,
+                                      IETel = o.IETel,
+                                      IEBill = o.IEBill,
+                                      IEPortPrice = o.IEPortPrice,
+                                      IELanPrice = o.IELanPrice,
+                                      IELiftPrice = o.IELiftPrice,
+                                      IECLosingDate = o.IECLosingDate,
+                                      IEClosingTime = o.IEClosingTime,
+                                      IEQuantity = o.IEQuantity,
+                                      Status = o.Status,
+
+                                      CName = c.Name,
+                                      CAddress = c.Address,
+                                      CProvince = c.Province,
+                                      CZipCode = c.ZipCode,
+                                      CTelephone = c.Telephone,
 
                                       RFromDetail = r.FromDetail,
                                       RFromProvince = r.FromProvince,
@@ -1237,221 +1550,224 @@ namespace CKLINE.Controllers
                                       RFromProvince4 = r4.FromProvince,
                                       RToDetail4 = r4.ToDetail,
                                       RToProvince4 = r4.ToProvince
-                                }
-                 ).ToList();
-
-              foreach (var ol in sOrderInfo)
-            {
-                OrderInfo a = new OrderInfo();
-              
-                a.BookingNo = ol.BookingNo;
-                a.CustomerID = Convert.ToInt32(ol.CustomerID);
-
-                if (ol.DliveryDate == null)
+                                  }
+              ).ToList();
+                foreach (var ol in sOrderInfo)
                 {
-                    a.DliveryDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.DliveryDate = Convert.ToDateTime(ol.DliveryDate);
-                }
-             
-                a.IEAgent = ol.IEAgent;
-                a.IEQuantity = ol.IEQuantity;
-                a.IEAT = ol.IEAT;
-                a.IEBill = ol.IEBill;
+                    OrderInfo a = new OrderInfo();
 
-                if (ol.IECLosingDate == null)
-                {
-                    a.IECLosingDate = DateTime.Now.Date;
+                    a.BookingNo = ol.BookingNo;
+                    a.CustomerID = Convert.ToInt32(ol.CustomerID);
+
+                    if (ol.DliveryDate == null)
+                    {
+                        a.DliveryDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.DliveryDate = Convert.ToDateTime(ol.DliveryDate);
+                    }
+
+                    a.IEAgent = ol.IEAgent;
+                    a.IEQuantity = ol.IEQuantity;
+                    a.IEAT = ol.IEAT;
+                    a.IEBill = ol.IEBill;
+
+                    if (ol.IECLosingDate == null)
+                    {
+                        a.IECLosingDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IECLosingDate = Convert.ToDateTime(ol.IECLosingDate);
+                    }
+
+
+                    a.IEClosingTime = ol.IEClosingTime;
+                    a.IEContact = ol.IEContact;
+
+                    if (ol.IEReturnDate == null)
+                    {
+                        a.IEReturnDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEReturnDate = Convert.ToDateTime(ol.IEReturnDate);
+                    }
+
+
+
+                    if (ol.IEETADate == null)
+                    {
+                        a.IEETADate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEETADate = Convert.ToDateTime(ol.IEETADate);
+                    }
+
+
+                    if (ol.IEETDDate == null)
+                    {
+                        a.IEETDDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEETDDate = Convert.ToDateTime(ol.IEETDDate);
+                    }
+
+
+                    a.IEFeeder = ol.IEFeeder;
+                    a.IELanPrice = Convert.ToDecimal(ol.IELanPrice);
+                    a.IELiftPrice = Convert.ToDecimal(ol.IELiftPrice);
+                    //    a.IELiner = ol.IELiner;
+                    a.IELoading = ol.IELoading;
+                    a.IELocationPack = ol.IELocationPack;
+                    a.IELocationReceive = ol.IELocationReceive;
+                    a.IEMap = ol.IEMap;
+                    a.IEMother = ol.IEMother;
+
+                    if (ol.IEPackDate == null)
+                    {
+                        a.IEPackDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEPackDate = Convert.ToDateTime(ol.IEPackDate);
+                    }
+
+                    a.IEPacklTime = ol.IEPacklTime;
+                    a.IEPortPrice = Convert.ToDecimal(ol.IEPortPrice);
+
+                    if (ol.IEReceiveDate == null)
+                    {
+                        a.IEReceiveDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.IEReceiveDate = Convert.ToDateTime(ol.IEReceiveDate);
+                    }
+
+                    a.IEShipper = ol.IEShipper;
+                    a.IEShipping = ol.IEShipping;
+                    a.IETel = ol.IETel;
+                    a.IETelephone = ol.IETelephone;
+                    a.IEType = Convert.ToInt32(ol.IEType);
+                    a.NumberOrder = Convert.ToInt32(ol.NumberOrder);
+
+                    if (ol.OrderDate == null)
+                    {
+                        a.OrderDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.OrderDate = Convert.ToDateTime(ol.OrderDate);
+                    }
+
+                    a.OrderID = ol.OrderID;
+                    a.OrderType = Convert.ToInt32(ol.OrderType);
+
+                    if (ol.PPackDate == null)
+                    {
+                        a.PPackDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.PPackDate = Convert.ToDateTime(ol.PPackDate);
+                    }
+
+                    if (ol.ReceiveDate == null)
+                    {
+                        a.ReceiveDate = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.ReceiveDate = Convert.ToDateTime(ol.ReceiveDate);
+                    }
+
+
+                    a.Remark = ol.Remark;
+                    a.RoutID = Convert.ToInt32(ol.RoutID);
+                    a.RoutID2 = Convert.ToInt32(ol.RoutID2);
+                    a.RoutID3 = Convert.ToInt32(ol.RoutID3);
+                    a.RoutID4 = Convert.ToInt32(ol.RoutID4);
+                    a.Status = Convert.ToInt32(ol.Status);
+
+                    if (ol.TPackDate1 == null)
+                    {
+                        a.TPackDate1 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate1 = Convert.ToDateTime(ol.TPackDate1);
+                    }
+                    if (ol.TPackDate2 == null)
+                    {
+                        a.TPackDate2 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate2 = Convert.ToDateTime(ol.TPackDate2);
+                    }
+
+                    if (ol.TPackDate3 == null)
+                    {
+                        a.TPackDate3 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate3 = Convert.ToDateTime(ol.TPackDate3);
+                    }
+
+                    if (ol.TPackDate4 == null)
+                    {
+                        a.TPackDate4 = DateTime.Now.Date;
+                    }
+                    else
+                    {
+                        a.TPackDate4 = Convert.ToDateTime(ol.TPackDate4);
+                    }
+
+                    a.TNumberOrder1 = Convert.ToInt32(ol.TNumberOrder1);
+                    a.TNumberOrder2 = Convert.ToInt32(ol.TNumberOrder2);
+                    a.TNumberOrder3 = Convert.ToInt32(ol.TNumberOrder3);
+                    a.TNumberOrder4 = Convert.ToInt32(ol.TNumberOrder4);
+                    a.ContainerType1 = ol.ContainerType1;
+                    a.ContainerType2 = ol.ContainerType2;
+                    a.ContainerType3 = ol.ContainerType3;
+                    a.ContainerType4 = ol.ContainerType4;
+                    a.CAddress = ol.CAddress;
+                    a.CProvince = ol.CProvince;
+                    a.CName = ol.CName;
+                    a.CTelephone = ol.CTelephone;
+                    a.CZipCode = ol.CZipCode;
+
+                    a.RFromDetail = ol.RFromDetail;
+                    a.RFromProvince = ol.RFromProvince;
+                    a.RToDetail = ol.RToDetail;
+                    a.RToProvince = ol.RToProvince;
+
+                    a.RFromDetail2 = ol.RFromDetail2;
+                    a.RFromProvince2 = ol.RFromProvince2;
+                    a.RToDetail2 = ol.RToDetail2;
+                    a.RToProvince2 = ol.RToProvince2;
+
+                    a.RFromDetail3 = ol.RFromDetail3;
+                    a.RFromProvince3 = ol.RFromProvince3;
+                    a.RToDetail3 = ol.RToDetail3;
+                    a.RToProvince3 = ol.RToProvince3;
+
+                    a.RFromDetail4 = ol.RFromDetail4;
+                    a.RFromProvince4 = ol.RFromProvince4;
+                    a.RToDetail4 = ol.RToDetail4;
+                    a.RToProvince4 = ol.RToProvince4;
+                    model.Add(a);
+
                 }
-                else
-                {
-                    a.IECLosingDate = Convert.ToDateTime(ol.IECLosingDate);
-                }
-
-               
-                a.IEClosingTime = ol.IEClosingTime;
-                a.IEContact = ol.IEContact;
-
-                if (ol.IEReturnDate == null)
-                {
-                    a.IEReturnDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.IEReturnDate = Convert.ToDateTime(ol.IEReturnDate);
-                }
-              
-               
-
-                if (ol.IEETADate == null)
-                {
-                    a.IEETADate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.IEETADate = Convert.ToDateTime(ol.IEETADate);
-                }
-              
-
-                if (ol.IEETDDate == null)
-                {
-                    a.IEETDDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.IEETDDate = Convert.ToDateTime(ol.IEETDDate);
-                }
-              
-              
-                a.IEFeeder = ol.IEFeeder;
-                a.IELanPrice = Convert.ToDecimal(ol.IELanPrice);
-                a.IELiftPrice = Convert.ToDecimal(ol.IELiftPrice);
-            //    a.IELiner = ol.IELiner;
-                a.IELoading = ol.IELoading;
-                a.IELocationPack = ol.IELocationPack;
-                a.IELocationReceive = ol.IELocationReceive;
-                a.IEMap = ol.IEMap;
-                a.IEMother = ol.IEMother;
-
-                if (ol.IEPackDate == null)
-                {
-                    a.IEPackDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.IEPackDate = Convert.ToDateTime(ol.IEPackDate);
-                }
-              
-                a.IEPacklTime = ol.IEPacklTime;
-                a.IEPortPrice = Convert.ToDecimal(ol.IEPortPrice);
-
-                if (ol.IEReceiveDate == null)
-                {
-                    a.IEReceiveDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.IEReceiveDate = Convert.ToDateTime(ol.IEReceiveDate);
-                }
-               
-                a.IEShipper = ol.IEShipper;
-                a.IEShipping = ol.IEShipping;
-                a.IETel = ol.IETel;
-                a.IETelephone = ol.IETelephone;
-                a.IEType = Convert.ToInt32(ol.IEType);
-                a.NumberOrder = Convert.ToInt32(ol.NumberOrder);
-
-                if (ol.OrderDate == null)
-                {
-                    a.OrderDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.OrderDate = Convert.ToDateTime(ol.OrderDate);
-                }
-             
-                a.OrderID = ol.OrderID;
-                a.OrderType = Convert.ToInt32(ol.OrderType);
-
-                if (ol.PPackDate == null)
-                {
-                    a.PPackDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.PPackDate = Convert.ToDateTime(ol.PPackDate);
-                }
-
-                if (ol.ReceiveDate == null)
-                {
-                    a.ReceiveDate = DateTime.Now.Date;
-                }
-                else
-                {
-                    a.ReceiveDate = Convert.ToDateTime(ol.ReceiveDate);
-                }
-
-          
-                a.Remark = ol.Remark;
-                a.RoutID = Convert.ToInt32(ol.RoutID);
-                a.RoutID2 = Convert.ToInt32(ol.RoutID2);
-                a.RoutID3 = Convert.ToInt32(ol.RoutID3);
-                a.RoutID4 = Convert.ToInt32(ol.RoutID4);
-                a.Status = Convert.ToInt32(ol.Status);
-
-                  if (ol.TPackDate1 == null)
-                  {
-                      a.TPackDate1 = DateTime.Now.Date;
-                  }
-                  else
-                  {
-                      a.TPackDate1 = Convert.ToDateTime(ol.TPackDate1);
-                  }
-                  if (ol.TPackDate2 == null)
-                  {
-                      a.TPackDate2 = DateTime.Now.Date;
-                  }
-                  else
-                  {
-                      a.TPackDate2 = Convert.ToDateTime(ol.TPackDate2);
-                  }
-
-                  if (ol.TPackDate3 == null)
-                  {
-                      a.TPackDate3 = DateTime.Now.Date;
-                  }
-                  else
-                  {
-                      a.TPackDate3 = Convert.ToDateTime(ol.TPackDate3);
-                  }
-
-                  if (ol.TPackDate4 == null)
-                  {
-                      a.TPackDate4 = DateTime.Now.Date;
-                  }
-                  else
-                  {
-                      a.TPackDate4 = Convert.ToDateTime(ol.TPackDate4);
-                  }
-
-                  a.TNumberOrder1 = Convert.ToInt32(ol.TNumberOrder1);
-                  a.TNumberOrder2 = Convert.ToInt32(ol.TNumberOrder2);
-                  a.TNumberOrder3 = Convert.ToInt32(ol.TNumberOrder3);
-                  a.TNumberOrder4 = Convert.ToInt32(ol.TNumberOrder4);
-                  a.ContainerType1 = ol.ContainerType1;
-                  a.ContainerType2 = ol.ContainerType2;
-                  a.ContainerType3 = ol.ContainerType3;
-                  a.ContainerType4 = ol.ContainerType4;
-                a.CAddress = ol.CAddress;
-                a.CProvince = ol.CProvince;
-                  a.CName = ol.CName;
-                  a.CTelephone = ol.CTelephone;
-                  a.CZipCode = ol.CZipCode;
-
-                  a.RFromDetail = ol.RFromDetail;
-                  a.RFromProvince = ol.RFromProvince;
-                  a.RToDetail = ol.RToDetail;
-                  a.RToProvince = ol.RToProvince;
-
-                  a.RFromDetail2 = ol.RFromDetail2;
-                  a.RFromProvince2 = ol.RFromProvince2;
-                  a.RToDetail2 = ol.RToDetail2;
-                  a.RToProvince2 = ol.RToProvince2;
-
-                  a.RFromDetail3 = ol.RFromDetail3;
-                  a.RFromProvince3 = ol.RFromProvince3;
-                  a.RToDetail3 = ol.RToDetail3;
-                  a.RToProvince3 = ol.RToProvince3;
-
-                  a.RFromDetail4 = ol.RFromDetail4;
-                  a.RFromProvince4 = ol.RFromProvince4;
-                  a.RToDetail4 = ol.RToDetail4;
-                  a.RToProvince4 = ol.RToProvince4;
-                model.Add(a);
-
             }
+               
+
+             
                 var sOrderDetailInfo = (from od in db.OrderDetails
                                   //join c in db.Customers on o.CustomerID equals c.ID
                                   //join r in db.Routes on o.RoutID equals r.ID
@@ -1495,7 +1811,6 @@ namespace CKLINE.Controllers
         
               return View(Tuple.Create(model, modelD)); 
         }
-
         public ActionResult OrderList()
         {
             List<OrderInfo> model = new List<OrderInfo>();
@@ -2343,11 +2658,559 @@ namespace CKLINE.Controllers
         }
         public ActionResult Repair()
         {
-            return View();
+            List<DataRepair> model = new List<DataRepair>();
+        
+
+            var sRepairInfo = (from r in db.Repairs
+                               join t in db.Trucks on r.TID equals t.ID
+                           orderby r.RepairNo descending
+                              select new
+                              {
+                                  RepairNo = r.RepairNo,
+                                  License = t.License,
+                                  TruckType = t.TruckType,
+                                  InformDate = r.InformDate,
+                                  SendDate = r.SendDate,
+                                  FinishDate = r.FinishDate,
+                                  Detail = r.Detail,
+                                  Status = r.Status
+                              }
+             ).ToList();
+
+            foreach (var rl in sRepairInfo)
+            {
+                DataRepair r = new DataRepair();
+
+                r.RepairNo = rl.RepairNo;
+                r.License = rl.License;
+                r.TruckType = Convert.ToInt32(rl.TruckType);
+
+                if (r.TruckType == 1)
+                {
+                    r.STType = "หัวลาก";
+                }
+                else if (r.TruckType == 2)
+                {
+                    r.STType = "หางลาก";
+                }
+
+                r.InformDate = Convert.ToDateTime(rl.InformDate);
+                r.SendDate = Convert.ToDateTime(rl.SendDate);
+                r.FinishDate = Convert.ToDateTime(rl.FinishDate);
+                r.Detail = rl.Detail;
+                r.Status = Convert.ToInt32(rl.Status);
+             
+                model.Add(r);
+            }
+
+            return View(model);
         }
         public ActionResult RepairDetail()
         {
-            return View();
+            var dTruck = (from t in db.Trucks
+                        
+                             select new
+                             {
+                                 TID = t.ID,
+                                 TLicense = t.License
+                             }
+                 ).ToList();
+
+            var dDriver = (from d in db.Drivers
+
+                          select new
+                          {
+                              DriverID = d.ID,
+                              Title = d.Title,
+                              FirstName = d.FirstName,
+                              LastName = d.LastName
+                             
+                          }
+               ).ToList();
+
+            var dGarage = (from g in db.Garages
+
+                           select new
+                           {
+                               GID = g.ID,
+                               GName = g.Name
+                              
+                           }
+              ).ToList();
+
+        
+
+            List<RepairList> model = new List<RepairList>();
+            List<DriverList> lDriver = new List<DriverList>();
+            List<TruckList> lTruck = new List<TruckList>();
+            List<GarageList> lGarage = new List<GarageList>();
+
+            foreach (var tr in dTruck)
+            {
+                TruckList t = new TruckList();
+                t.TID = tr.TID;
+                t.License = tr.TLicense;
+                lTruck.Add(t);
+               
+            }
+
+            foreach (var dr in dDriver)
+            {
+                DriverList d = new DriverList();
+                d.DriverID = dr.DriverID;
+                d.Title = dr.Title;
+                d.FirstName = dr.FirstName;
+                d.LastName = dr.LastName;
+              
+                 lDriver.Add(d);
+
+            }
+
+            foreach (var gr in dGarage)
+            {
+                GarageList g = new GarageList();
+                g.GID = gr.GID;
+                g.Name = gr.GName;
+
+                lGarage.Add(g);
+
+            }
+
+            RepairList RL = new RepairList();
+            RL.rTruck = lTruck.ToList();
+            RL.rDriver = lDriver.ToList();
+            RL.rGarage = lGarage.ToList();
+           
+            model.Add(RL);
+
+
+            return View(model);
+        }
+        public ActionResult RepairCommit(FormCollection form)
+        {
+            int TID = 0;
+            int DriverID = 0;
+            int optEdit = 0;
+            int optRepair = 0;
+            int GID = 0;
+            int Status = 1;
+
+            if (form["Truck"] != "")
+            {
+                TID = Convert.ToInt32(form["Truck"]);
+            }
+
+            if (form["Driver"] != "")
+            {
+                DriverID = Convert.ToInt32(form["Driver"]);
+            }
+
+            if (form["optEdit"] != "")
+            {
+                optEdit = Convert.ToInt32(form["optEdit"]);
+            }
+
+            if (form["optRepair"] != "")
+            {
+                optRepair = Convert.ToInt32(form["optRepair"]);
+            }
+
+            if (form["Garage"] != "")
+            {
+                GID = Convert.ToInt32(form["Garage"]);
+            }
+
+             string InformDate = form["InformDate"];
+             string SendDate = form["SendDate"];
+             string FinishDate = form["FinishDate"];
+
+            DateTime dInformDate = DateTime.Now.Date;
+            DateTime dSendDate = DateTime.Now.Date;
+            DateTime dFinishDate = DateTime.Now.Date;
+         
+            if (InformDate == null || InformDate == "")
+            {
+                dInformDate = DateTime.Now.Date;
+            }
+            else
+            {
+                string d1 = InformDate.Substring(0, 2);
+                string d2 = InformDate.Substring(3, 2);
+                string d3 = InformDate.Substring(6, 4);
+               // string d4 = d1 + "/" + d2 + "/" + d3;
+                string d4 = d2 + "/" + d1 + "/" + d3;
+                dInformDate = DateTime.Parse(d4);
+            }
+
+            if (SendDate == null || SendDate == "")
+            {
+                dSendDate = DateTime.Now.Date;
+            }
+            else
+            {
+                string d1 = SendDate.Substring(0, 2);
+                string d2 = SendDate.Substring(3, 2);
+                string d3 = SendDate.Substring(6, 4);
+               // string d4 = d1 + "/" + d2 + "/" + d3;
+                string d4 = d2 + "/" + d1 + "/" + d3;
+                dSendDate = DateTime.Parse(d4);
+            }
+
+             if (FinishDate == null || FinishDate == "")
+            {
+                dFinishDate = DateTime.Now.Date;
+            }
+            else
+            {
+                string d1 = FinishDate.Substring(0, 2);
+                string d2 = FinishDate.Substring(3, 2);
+                string d3 = FinishDate.Substring(6, 4);
+               // string d4 = d1 + "/" + d2 + "/" + d3;
+                string d4 = d2 + "/" + d1 + "/" + d3;
+                dFinishDate = DateTime.Parse(d4);
+            }
+
+
+             string bYM = DateTime.Today.Year.ToString().Substring(2, 2) + DateTime.Today.Month.ToString("00");
+
+
+            var RepairNo = (from r in db.Repairs
+                             where r.RepairNo.Substring(0, 4) == bYM
+                             orderby r.RepairNo descending
+                             select r.RepairNo
+                  ).FirstOrDefault();
+
+            string OID = "";
+            string ROID = "";
+            if (RepairNo == null)
+            {
+                OID = bYM + "0001";
+            }
+            else
+            {
+                ROID = RepairNo.Substring(4, 4);
+                OID =  bYM + (Convert.ToInt32(ROID) + 1).ToString("0000");
+            }
+
+            decimal Mile = 0;
+            if (form["Mile"] != "")
+            {
+                Mile = Convert.ToDecimal(form["Mile"]);
+            }
+
+            decimal SumNum = 0;
+            if (form["SumNum"] != "")
+            {
+                SumNum = Convert.ToDecimal(form["SumNum"]);
+            }
+
+            decimal SumPrice = 0;
+            if (form["SumPrice"] != "")
+            {
+                SumNum = Convert.ToDecimal(form["SumPrice"]);
+            }
+
+            int Counter = 0;
+            Counter = Convert.ToInt32(form["Counter"]);
+
+            if (Counter > 0)
+            {
+               
+
+                for (var i = 1; i <= Counter; i++)
+                {
+                    string MyDetail = "MyDetail" + i;
+                    string MyNum = "MyNum" + i;
+                    string MyPrice = "MyPrice" + i;
+                    string MySumPrice = "MySumPrice" + i;
+
+                    SumNum += Convert.ToDecimal(form[MyNum]);
+                    SumPrice += Convert.ToDecimal(form[MySumPrice]);
+
+                    RepairDetail AddRD = new RepairDetail();
+                    AddRD.RepairNo = OID;
+                    AddRD.Detail = form[MyDetail];
+                    AddRD.Num = Convert.ToDecimal(form[MyNum]);
+                    AddRD.Price = Convert.ToDecimal(form[MyPrice]);
+                    AddRD.SumPrice = Convert.ToDecimal(form[MySumPrice]);
+
+                    db.RepairDetails.Add(AddRD);
+                    db.SaveChanges();
+
+                }
+            }
+
+
+            Repair AddRepair = new Repair();
+            AddRepair.RepairNo = OID;
+            AddRepair.TID = TID;
+            AddRepair.DriverID = DriverID;
+            AddRepair.Mile = Mile;
+            AddRepair.InformDate = dInformDate;
+            AddRepair.InformTime = form["InformTime"];
+            AddRepair.SendDate =  dSendDate;
+            AddRepair.SendTime = form["SendTime"];
+            AddRepair.FinishDate = dFinishDate;
+            AddRepair.FinishTime = form["FinishTime"];
+            AddRepair.Detail = form["Detail"];
+            AddRepair.optEdit = optEdit;
+            AddRepair.optRepair = optRepair;
+            AddRepair.Remark = form["Remark"];
+            AddRepair.SumNum = SumNum;
+            AddRepair.SumPrice = SumPrice;
+            AddRepair.GID = GID;
+            AddRepair.Operator = form["Operator"];
+            AddRepair.Status = Status;
+            AddRepair.SaveDate = DateTime.Now.Date;
+
+            db.Repairs.Add(AddRepair);
+            db.SaveChanges();
+
+            Session["RepairNo"] = OID;
+            return RedirectToAction("RepairInfo", "TMS", new { RepairNo = OID });
+        }
+        public ActionResult RepairInfo()
+        {
+
+            string RepairNo = "16060001";
+
+            if (Request.QueryString["RepairNo"] != null)
+            {
+                RepairNo = Request.QueryString["RepairNo"];
+            }
+            else
+            {
+                if (Session["RepairNo"] != null)
+                {
+                    RepairNo = Session["RepairNo"].ToString();
+                }
+                else
+                {
+                    RepairNo = "";
+                    return RedirectToAction("Repair", "TMS");
+
+                }
+            }
+
+            List<DataRepair> model = new List<DataRepair>();
+            List<DataRepairDetail> modelD = new List<DataRepairDetail>();
+
+            var sRepairInfo = (from r in db.Repairs
+                               join t in db.Trucks on r.TID equals t.ID
+                               join d in db.Drivers on r.DriverID equals d.ID
+                               join g in db.Garages on r.GID equals g.ID
+                               where r.RepairNo == RepairNo
+                               orderby r.RepairNo descending
+                               select new
+                               {
+                                   RepairNo = r.RepairNo,
+                                   License = t.License,
+                                   TruckType = t.TruckType,
+                                   Brand = t.Brand,
+                                   RegisterDate = t.RegisterDate,
+                                   DriverID = d.ID,
+                                   Title = d.Title,
+                                   FirstName = d.FirstName,
+                                   LastName = d.LastName,
+                                   Mile = r.Mile,
+                                   InformDate = r.InformDate,
+                                   InformTime = r.InformTime,
+                                   SendDate = r.SendDate,
+                                   SendTime = r.SendTime,
+                                   FinishDate = r.FinishDate,
+                                   FinishTime = r.FinishTime,
+                                   Detail = r.Detail,
+                                   optEdit = r.optEdit,
+                                   optRepair = r.optRepair,
+                                   Remark = r.Remark,
+                                   SumNum = r.SumNum,
+                                   SumPrice = r.SumPrice,
+                                   GID = r.GID,
+                                   GName = g.Name,
+                                   Operator = r.Operator,
+                                   SaveDate = r.SaveDate,
+                                   Status = r.Status
+                               }
+       ).ToList();
+
+            foreach (var rl in sRepairInfo)
+            {
+                DataRepair r = new DataRepair();
+
+                r.RepairNo = rl.RepairNo;
+                r.License = rl.License;
+                r.TruckType = Convert.ToInt32(rl.TruckType);
+
+                if (r.TruckType == 1)
+                {
+                    r.STType = "หัวลาก";
+                }
+                else if (r.TruckType == 2)
+                {
+                    r.STType = "หางลาก";
+                }
+                r.Brand = rl.Brand;
+                r.RegisterDate = Convert.ToDateTime(rl.RegisterDate);
+                r.DriverID = rl.DriverID;
+                r.Title = rl.Title;
+                r.FirstName = rl.FirstName;
+                r.LastName = rl.LastName;
+                r.Mile = Convert.ToDecimal(rl.Mile);
+                r.InformDate = Convert.ToDateTime(rl.InformDate);
+                r.InformTime = rl.InformTime;
+                r.SendDate = Convert.ToDateTime(rl.SendDate);
+                r.SendTime = rl.SendTime;
+                r.FinishDate = Convert.ToDateTime(rl.FinishDate);
+                r.FinishTime = rl.FinishTime;
+                r.Detail = rl.Detail;
+                r.optEdit = Convert.ToInt32(rl.optEdit);
+
+                if (r.optEdit == 1)
+                {
+                    r.SEdit = "ซื้ออะไหล่เปลี่ยนเอง";
+                }
+                else if (r.optEdit == 2)
+                {
+                    r.SEdit = "ส่งซ่อมอู่ภายนอก";
+                }
+
+                r.optRepair = Convert.ToInt32(rl.optRepair);
+
+                if (r.optRepair == 1)
+                {
+                    r.SRepair = "BD ในสถานที่";
+                }
+                else if (r.optRepair == 2)
+                {
+                    r.SRepair = "BD นอกสถานที่";
+                }
+                else if (r.optRepair == 3)
+                {
+                    r.SRepair = "PM ระยะ";
+                }
+                r.Remark = rl.Remark;
+                r.SumNum = Convert.ToDecimal(rl.SumNum);
+                r.SumPrice = Convert.ToDecimal(rl.SumPrice);
+                r.GID = Convert.ToInt32(rl.GID);
+                r.GName = rl.GName;
+                r.Operator = rl.Operator;
+                r.SaveDate = Convert.ToDateTime(rl.SaveDate);
+                r.Status = Convert.ToInt32(rl.Status);
+
+                model.Add(r);
+            }
+
+            var sRepairD = (from rd in db.RepairDetails
+                            where rd.RepairNo == RepairNo
+                            orderby rd.RepairNo descending
+                            select new
+                            {
+                                ID = rd.ID,
+                                RepairNo = rd.RepairNo,
+                                Detail = rd.Detail,
+                                Num = rd.Num,
+                                Price = rd.Price,
+                                SumPrice = rd.SumPrice
+                            }
+      ).ToList();
+
+            foreach (var rl in sRepairD)
+            {
+                DataRepairDetail r = new DataRepairDetail();
+
+                r.ID = rl.ID;
+                r.RepairNo = rl.RepairNo;
+                r.Detail = rl.Detail;
+                r.Num = Convert.ToDecimal(rl.Num);
+                r.Price = Convert.ToDecimal(rl.Price);
+                r.SumPrice = Convert.ToDecimal(rl.SumPrice);
+
+                modelD.Add(r);
+            }
+
+            return View(Tuple.Create(model, modelD));
+
+
+        }
+        public JsonResult searchTruck(string dFrom)
+        {
+            int dS = 1;
+            dS = Convert.ToInt32(dFrom);
+            var dTruck = (from t in db.Trucks         
+                       where t.ID == dS
+                       select new
+                       {
+                           Brand = t.Brand,
+                           RegisterDate = t.RegisterDate,
+                           TruckType = t.TruckType
+                       }
+                 ).ToList();
+            List<TruckList> data = new List<TruckList>();
+            foreach (var bt in dTruck)
+            {
+                TruckList b = new TruckList();
+                b.Brand = bt.Brand;
+                b.RegisterDate = Convert.ToDateTime(bt.RegisterDate).ToString("dd/MM/yyyy");
+                b.TruckType = Convert.ToInt32(bt.TruckType);
+
+                if (b.TruckType == 1)
+                {
+                    b.STType = "หัวลาก";
+                }
+                else if (b.TruckType == 2)
+                {
+                    b.STType = "หางลาก";
+                }
+
+                data.Add(b);
+            }
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult searchOldRepair(string dFrom)
+        {
+            int dS = 1;
+            dS = Convert.ToInt32(dFrom);
+            var OldRepair = (from r in db.Repairs
+                             join g in db.Garages on r.GID equals g.ID
+                             where r.TID == dS
+                             orderby r.RepairNo descending
+                             select new
+                             {
+                                 InformDate = r.InformDate,
+                                 GID = r.GID,
+                                 GName = g.Name,
+                                 Mile = r.Mile,
+                                 SumPrice = r.SumPrice
+
+                             }
+                 ).FirstOrDefault();
+
+            List<OldRepair> data = new List<OldRepair>();
+           
+                OldRepair b = new OldRepair();
+
+            if (OldRepair != null)
+            {
+                if (OldRepair.GID == null)
+                {
+                    b.GID = 0;
+                }
+                else
+                {
+                    b.GID = Convert.ToInt32(OldRepair.GID);
+                }
+
+                b.GName = OldRepair.GName;
+                b.InformDate = Convert.ToDateTime(OldRepair.InformDate).ToString("dd/MM/yyyy");
+                b.Mile = Convert.ToDecimal(OldRepair.Mile);
+                b.SumPrice = Convert.ToDecimal(OldRepair.SumPrice);
+
+            }
+           
+                data.Add(b);
+         
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Car()
         {

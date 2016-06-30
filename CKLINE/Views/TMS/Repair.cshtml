@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TMS.Models.DataRepair>
+@{
     ViewBag.Title = "Repair";
 }
 
@@ -34,38 +35,57 @@
                             <thead>
                                 <tr>
                                     <th>เลขที่</th>
-                                    <th>วันที่แจ้งซ่อม</th>
-                                    <th>วันที่ซ่อมเสร็จ</th>
                                     <th>ทะเบียนรถ</th>
-                                    <th>รายละเอียด</th>
+                                    <th>ประเภทรถ</th>
+                                    <th>วันที่แจ้งซ่อม</th>
+                                    <th>วันที่ส่งซ่อม</th>
+                                    <th>วันที่ส่งซ่อม</th>
+                                    <th>อาการเสียที่แจ้ง</th>
                                     <th>สถานะ</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><a href="~/TMS/RepairDetail">0001</a></td>
-                                    <td>27/04/2559</td>
-                                    <td>27/05/2559</td>
-                                    <td>กท1000</td>
-                                    <td>พวงมาลัยไม่ตรง</td>
-                                    <td><span class="label label-danger">แจ้งซ่อม</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/RepairDetail">0002</a></td>
-                                    <td>27/04/2559</td>
-                                    <td>27/05/2559</td>
-                                    <td>กท1000</td>
-                                    <td>ยางหลังปลิ</td>
-                                    <td><span class="label label-warning">กำล้งซ่อม</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/RepairDetail">0003</a></td>
-                                    <td>27/04/2559</td>
-                                    <td>27/05/2559</td>
-                                    <td>กท1000</td>
-                                    <td>ไฟหน้าเสีย</td>
-                                    <td><span class="label label-success">ซ่อมเสร็จเเล้ว</span></td>
-                                </tr>
+
+@foreach (var item in Model)
+{
+    String Status = "";
+    String SClass = "";
+    if (item.Status == 1)
+    {
+        Status = "แจ้งซ่อม";
+        SClass = "label label-danger";
+    }
+
+    else if (item.Status == 2)
+    {
+        Status = "กำลังซ่อม";
+        SClass = "label label-warning";
+    }
+    else if (item.Status == 3)
+    {
+        Status = "ซ่อมเสร็จแล้ว";
+        SClass = "label label-primary";
+    }
+    else if (item.Status == 4)
+    {
+        Status = "ยกเลิก";
+        SClass = "label label-info";
+    }
+
+    <tr>
+        <td><a href="~/TMS/RepairInfo?RepairNo=@item.RepairNo">@item.RepairNo</a></td>
+        <td>@item.License</td>
+        <td>@item.STType</td>
+        <td>@item.InformDate.ToString("dd/MM/yyyy")</td>
+        <td>@item.SendDate.ToString("dd/MM/yyyy")</td>
+        <td>@item.FinishDate.ToString("dd/MM/yyyy")</td>
+        <td>@item.Detail</td>
+        <td><span class="@SClass">@Status</span></td>
+    </tr>
+}
+                               
+                              
+                              
                             </tbody>
                         </table>
                     </div>

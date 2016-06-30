@@ -478,6 +478,8 @@
     <EntitySet Name="WorkingHistories" EntityType="Self.WorkingHistory" />
     <EntitySet Name="Jobs" EntityType="TMSModel.Job" />
     <EntitySet Name="Orders" EntityType="TMSModel.Order" />
+    <EntitySet Name="Repairs" EntityType="TMSModel.Repair" />
+    <EntitySet Name="RepairDetails" EntityType="TMSModel.RepairDetail" />
   </EntityContainer>
   <EntityType Name="Job">
     <Key>
@@ -555,5 +557,42 @@
     <Property Name="ContainerType2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="ContainerType3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="ContainerType4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Repair">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RepairNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="TID" Type="Int32" />
+    <Property Name="DriverID" Type="Int32" />
+    <Property Name="Mile" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="InformDate" Type="DateTime" Precision="0" />
+    <Property Name="InformTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="SendDate" Type="DateTime" Precision="0" />
+    <Property Name="SendTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="FinishDate" Type="DateTime" Precision="0" />
+    <Property Name="FinishTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="optEdit" Type="Int32" />
+    <Property Name="optRepair" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SumNum" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SumPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GID" Type="Int32" />
+    <Property Name="Operator" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="SaveDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="RepairDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RepairNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Num" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SumPrice" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
 </Schema>

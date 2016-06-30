@@ -371,6 +371,109 @@ namespace TMS.Models
         public string SName { get; set; }
     }
 
-  
+    public class TruckList
+    {
+        public int TID { get; set; }
+        public int HID { get; set; }
+        public int TruckType { get; set; }
+        public string STType { get; set; }
+        public string Brand { get; set; }
+        public string License { get; set; }
+        public string RegisterDate { get; set; }
+        public string HitchLicense { get; set; }
+        public string DTitle { get; set; }
+        public string DFirstName { get; set; }
+        public string DLastName { get; set; }
+        public int TStatus { get; set; }
+    }
 
+    public class DriverList
+    {
+        public int DriverID { get; set; }
+        public string Title { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+    }
+    public class GarageList
+    {
+        public int GID { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class RepairList
+    {
+
+        public List<TruckList> rTruck { get; set; }
+        public List<DriverList> rDriver { get; set; }
+        public List<GarageList> rGarage { get; set; }
+        public List<RepairDetail> rRepair { get; set; }
+        public List<OldRepair> rOldRepair { get; set; }
+    }
+
+    public class OldRepair
+    {
+        public string InformDate { get; set; }
+        public int GID { get; set; }
+        public string GName { get; set; }
+        public decimal Mile { get; set; }
+        public decimal SumPrice { get; set; }
+    }
+
+    public class RepairDetail
+    {
+        public string Detail { get; set; }
+        public string Num { get; set; }
+        public string Price { get; set; }
+    }
+
+    public class DataRepair
+    {
+        public string RepairNo { get; set; }
+        public int TID { get; set; }
+        public decimal Mile { get; set; }
+        public DateTime InformDate { get; set; }
+        public string InformTime { get; set; }
+        public DateTime SendDate { get; set; }
+        public string SendTime { get; set; }
+        public DateTime FinishDate { get; set; }
+        public string FinishTime { get; set; }
+        public string Detail { get; set; }
+        public int optEdit { get; set; }
+        public int optRepair { get; set; }
+        public string Remark { get; set; }
+        public decimal SumNum { get; set; }
+        public decimal SumPrice { get; set; }
+        public int GID { get; set; }
+        public string Operator { get; set; }
+        public int Status { get; set; }
+        public DateTime SaveDate { get; set; }
+
+        public int TruckType { get; set; }
+        public string STType { get; set; }
+        public string License { get; set; }
+        public string Brand { get; set; }
+        public DateTime RegisterDate { get; set; }
+
+        public int DriverID { get; set; }
+        public string Title { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public string GName { get; set; }
+
+        public string SEdit { get; set; }
+        public string SRepair { get; set; }
+
+    }
+
+    public class DataRepairDetail
+    {
+        public int ID { get; set; }
+        public string RepairNo { get; set; }
+        public string Detail { get; set; }
+        public decimal Num { get; set; }
+        public decimal Price { get; set; }
+        public decimal SumPrice { get; set; }
+    }
 }
