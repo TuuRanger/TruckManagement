@@ -1,0 +1,177 @@
+﻿@model IEnumerable<CKLINE.Models.GPSStation>
+
+@{
+    ViewBag.Title = "GasStationList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        รายงานการเข้าสถานี
+
+    </h1>
+
+</section>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">ค้นหา</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="date" class="col-sm-2 control-label">วันที่</label>
+                        <div class="col-sm-10">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                <input type='text' class="form-control" id="uxdatetimepicker" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">ทะเบียนรถ</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="ทะเบียนรถ">
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+                </div><!-- /.box-footer -->
+            </form>
+        </div><!-- /.box-body -->
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายละเอียด</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Head)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.From)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TO)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BeginDateTime)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EndDateTime)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Distance)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TotalTime)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TotalPark)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TotalSpeedDown)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TotalDriveway)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Head)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.From)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TO)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BeginDateTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EndDateTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Distance)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TotalTime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TotalPark)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TotalSpeedDown)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TotalDriveway)
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="#" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
+                    <a href="@Url.Action("GPSStationReport", "Report")" class="btn btn-sm btn-default btn-flat pull-left">View</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('#uxdatetimepicker').daterangepicker({
+            "locale": {
+                "format": "DD/MM/YYYY"
+            },
+            "startDate": moment().format("DD/MM/YYYY"),
+            "endDate": moment().add(30, "days").calendar()
+        });
+    });
+</script>
+

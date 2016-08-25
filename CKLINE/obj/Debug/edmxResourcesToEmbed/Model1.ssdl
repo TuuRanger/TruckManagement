@@ -59,6 +59,7 @@
     <Property Name="Contact5" Type="nvarchar" MaxLength="40" />
     <Property Name="Email5" Type="nvarchar" MaxLength="40" />
     <Property Name="Position5" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderType" Type="int" />
   </EntityType>
   <EntityType Name="DeliveryPrice">
     <Key>
@@ -75,12 +76,14 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="EmpID" Type="nvarchar" MaxLength="10" />
-    <Property Name="Title" Type="nvarchar" MaxLength="5" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Title" Type="nvarchar" MaxLength="10" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="255" />
     <Property Name="NickName" Type="nvarchar" MaxLength="50" />
     <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
-    <Property Name="DriverLicence" Type="nvarchar" MaxLength="10" />
+    <Property Name="EmergencyContact" Type="nvarchar" MaxLength="250" />
+    <Property Name="EmergencyTelephone" Type="nvarchar" MaxLength="50" />
+    <Property Name="DriverLicence" Type="nvarchar" MaxLength="20" />
     <Property Name="Type" Type="nvarchar" MaxLength="40" />
     <Property Name="DIssueDate" Type="date" />
     <Property Name="DExpireDate" Type="date" />
@@ -91,26 +94,37 @@
     <Property Name="IDCard" Type="nvarchar" MaxLength="13" />
     <Property Name="IssuseDate" Type="date" />
     <Property Name="ExpireDate" Type="date" />
-    <Property Name="Weight" Type="float" />
-    <Property Name="Height" Type="float" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Height" Type="decimal" Precision="18" Scale="0" />
     <Property Name="MarriageStatusID" Type="int" />
     <Property Name="MilitaryStatusID" Type="int" />
-    <Property Name="Education" Type="nvarchar" MaxLength="100" />
-    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Education" Type="nvarchar" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar(max)" />
     <Property Name="Province" Type="nvarchar" MaxLength="100" />
-    <Property Name="ZipCode" Type="char" MaxLength="5" />
-    <Property Name="FatherFullName" Type="nvarchar" MaxLength="40" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="FatherFullName" Type="nvarchar" MaxLength="255" />
     <Property Name="DOBFather" Type="date" />
-    <Property Name="MotherFullName" Type="varchar" MaxLength="40" />
+    <Property Name="FDetail" Type="nvarchar" MaxLength="255" />
+    <Property Name="MotherFullName" Type="nvarchar" MaxLength="255" />
     <Property Name="DOBMother" Type="date" />
-    <Property Name="WifeFullName" Type="nvarchar" MaxLength="40" />
-    <Property Name="Workplace" Type="nvarchar" MaxLength="40" />
-    <Property Name="WPosition" Type="nvarchar" MaxLength="50" />
+    <Property Name="MDetail" Type="nvarchar" MaxLength="255" />
+    <Property Name="WifeFullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Workplace" Type="nvarchar" MaxLength="255" />
+    <Property Name="WPosition" Type="nvarchar" MaxLength="255" />
     <Property Name="Child" Type="int" />
-    <Property Name="FileDriver" Type="nvarchar" MaxLength="50" />
-    <Property Name="FileIDCard" Type="nvarchar" MaxLength="50" />
-    <Property Name="FileRegistration" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImgDriver" Type="nvarchar" MaxLength="100" />
+    <Property Name="FileDriver" Type="nvarchar" MaxLength="100" />
+    <Property Name="FileIDCard" Type="nvarchar" MaxLength="100" />
+    <Property Name="FileRegistration" Type="nvarchar" MaxLength="100" />
     <Property Name="TruckID" Type="int" />
+    <Property Name="Status" Type="nvarchar" MaxLength="1" />
+    <Property Name="InsertBy" Type="int" />
+    <Property Name="InsertDate" Type="date" />
+    <Property Name="EdittBy" Type="int" />
+    <Property Name="EditDate" Type="date" />
+    <Property Name="DeleteBy" Type="int" />
+    <Property Name="DeleteDate" Type="date" />
+    <Property Name="Remark" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="FuelType">
     <Key>
@@ -169,9 +183,12 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
-    <Property Name="ODID" Type="int" />
-    <Property Name="ContainerNo" Type="nvarchar" MaxLength="40" />
+    <Property Name="JobID" Type="nvarchar" MaxLength="20" />
+    <Property Name="JobType" Type="int" />
+    <Property Name="SOID" Type="nvarchar" MaxLength="20" />
+    <Property Name="SNum" Type="int" />
+    <Property Name="ROID" Type="nvarchar" MaxLength="20" />
+    <Property Name="RNum" Type="int" />
     <Property Name="TruckID" Type="int" />
     <Property Name="HitchID" Type="int" />
     <Property Name="DriverID" Type="int" />
@@ -180,6 +197,18 @@
     <Property Name="JDate" Type="date" />
     <Property Name="Remark" Type="nvarchar" MaxLength="255" />
     <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="JobDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="nvarchar" MaxLength="20" />
+    <Property Name="JobType" Type="int" />
+    <Property Name="OID" Type="nvarchar" MaxLength="20" />
+    <Property Name="ODID" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ReceiveDate" Type="date" />
   </EntityType>
   <EntityType Name="Maintenance">
     <Key>
@@ -226,6 +255,7 @@
     <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
     <Property Name="BookingNo" Type="nvarchar" MaxLength="50" />
     <Property Name="CustomerID" Type="int" />
+    <Property Name="ShipperID" Type="int" />
     <Property Name="OrderDate" Type="date" />
     <Property Name="ReceiveDate" Type="date" />
     <Property Name="DliveryDate" Type="date" />
@@ -248,6 +278,10 @@
     <Property Name="TPackDate4" Type="date" />
     <Property Name="TNumberOrder4" Type="int" />
     <Property Name="ContainerType4" Type="nvarchar" MaxLength="10" />
+    <Property Name="TRound1" Type="int" />
+    <Property Name="TRound2" Type="int" />
+    <Property Name="TRound3" Type="int" />
+    <Property Name="TRound4" Type="int" />
     <Property Name="IEType" Type="int" />
     <Property Name="IEShipper" Type="nvarchar" MaxLength="100" />
     <Property Name="IEQuantity" Type="nvarchar" MaxLength="100" />
@@ -257,6 +291,7 @@
     <Property Name="IEETADate" Type="date" />
     <Property Name="IEETDDate" Type="date" />
     <Property Name="IEReceiveDate" Type="date" />
+    <Property Name="IEReceiveTime" Type="nvarchar" MaxLength="5" />
     <Property Name="IEAT" Type="nvarchar" MaxLength="100" />
     <Property Name="IEContact" Type="nvarchar" MaxLength="100" />
     <Property Name="IETel" Type="nvarchar" MaxLength="50" />
@@ -271,6 +306,8 @@
     <Property Name="IEPortPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="IELanPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="IELiftPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="IESCost" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="IESDistance" Type="decimal" Precision="18" Scale="0" />
     <Property Name="IEAgent" Type="nvarchar" MaxLength="100" />
     <Property Name="IECLosingDate" Type="date" />
     <Property Name="IEClosingTime" Type="nvarchar" MaxLength="5" />
@@ -284,11 +321,13 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OID" Type="int" />
     <Property Name="OrderID" Type="nvarchar" MaxLength="20" />
+    <Property Name="RoutID" Type="int" />
     <Property Name="TPackDate" Type="date" />
     <Property Name="ContainerNo" Type="nvarchar" MaxLength="40" />
     <Property Name="Position" Type="nvarchar" MaxLength="1" />
     <Property Name="PackNo" Type="nvarchar" MaxLength="40" />
     <Property Name="ContainerType" Type="nvarchar" MaxLength="10" />
+    <Property Name="TareWeight" Type="decimal" Precision="18" Scale="0" />
     <Property Name="Status" Type="int" />
   </EntityType>
   <EntityType Name="OrderType">
@@ -355,6 +394,7 @@
     <Property Name="OilVolume" Type="decimal" Precision="18" Scale="0" />
     <Property Name="Toll" Type="decimal" Precision="18" Scale="0" />
     <Property Name="DeliveryCost" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DriverCost" Type="decimal" Precision="18" Scale="0" />
     <Property Name="OTPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="OTPriceMonth" Type="decimal" Precision="18" Scale="0" />
     <Property Name="OTDetail" Type="nvarchar" MaxLength="100" />
@@ -433,6 +473,38 @@
     <Property Name="NDay" Type="int" />
     <Property Name="NPerDay" Type="int" />
     <Property Name="NMonth" Type="int" />
+    <Property Name="ShipperID" Type="int" />
+  </EntityType>
+  <EntityType Name="Shipper">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="10" />
+    <Property Name="Name" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Province" Type="nvarchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="char" MaxLength="5" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="40" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Payment" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact1" Type="nvarchar" MaxLength="40" />
+    <Property Name="Email1" Type="nvarchar" MaxLength="40" />
+    <Property Name="Position1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact2" Type="nvarchar" MaxLength="40" />
+    <Property Name="Email2" Type="nvarchar" MaxLength="40" />
+    <Property Name="Position2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact3" Type="nvarchar" MaxLength="40" />
+    <Property Name="Email3" Type="nvarchar" MaxLength="40" />
+    <Property Name="Position3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact4" Type="nvarchar" MaxLength="40" />
+    <Property Name="Email4" Type="nvarchar" MaxLength="40" />
+    <Property Name="Position4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contact5" Type="nvarchar" MaxLength="40" />
+    <Property Name="Email5" Type="nvarchar" MaxLength="40" />
+    <Property Name="Position5" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="OrderType" Type="int" />
   </EntityType>
   <EntityType Name="Stock">
     <Key>
@@ -513,6 +585,88 @@
     <Property Name="Date" Type="date" />
     <Property Name="Detail" Type="varchar" MaxLength="40" />
   </EntityType>
+  <EntityType Name="Transfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="nvarchar" MaxLength="20" />
+    <Property Name="OpenJobDate" Type="date" />
+    <Property Name="TransferDate" Type="date" />
+    <Property Name="TransferTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="OMile" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OOli" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OWay" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OOther" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ORemark" Type="nvarchar(max)" />
+    <Property Name="CloseJobDate" Type="date" />
+    <Property Name="ArriveDate" Type="date" />
+    <Property Name="ArriveTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="ReturnDate" Type="date" />
+    <Property Name="ReturnTime" Type="nvarchar" MaxLength="5" />
+    <Property Name="ROli" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="RDistance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CMile" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="COli" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CWay" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="COther" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WcarB" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WGas" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WcarW" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="CRemark" Type="nvarchar(max)" />
+    <Property Name="DeliveryCost" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="DriverCost" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SIncome" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="RIncome" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="AllIncome" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="TransferOli">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="nvarchar" MaxLength="20" />
+    <Property Name="SaveDate" Type="datetime" />
+    <Property Name="EditDate" Type="datetime" />
+    <Property Name="CancelDate" Type="datetime" />
+    <Property Name="GasID" Type="int" />
+    <Property Name="OliDetail" Type="nvarchar(max)" />
+    <Property Name="OliNum" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OliPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OliSumPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="TransferOTH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="nvarchar" MaxLength="20" />
+    <Property Name="SaveDate" Type="datetime" />
+    <Property Name="EditDate" Type="datetime" />
+    <Property Name="CancelDate" Type="datetime" />
+    <Property Name="OTHDetail" Type="nvarchar(max)" />
+    <Property Name="OTHNum" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OTHPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="OTHSumPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="TransferWay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="nvarchar" MaxLength="20" />
+    <Property Name="SaveDate" Type="datetime" />
+    <Property Name="EditDate" Type="datetime" />
+    <Property Name="CancelDate" Type="datetime" />
+    <Property Name="WayDetail" Type="nvarchar(max)" />
+    <Property Name="WayNum" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WayPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WaySumPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
   <EntityType Name="Truck">
     <Key>
       <PropertyRef Name="ID" />
@@ -520,7 +674,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="License" Type="nvarchar" MaxLength="40" />
     <Property Name="Brand" Type="nvarchar" MaxLength="100" />
-    <Property Name="TruckType" Type="nvarchar" MaxLength="40" />
+    <Property Name="TruckType" Type="int" />
     <Property Name="Detail" Type="nvarchar" MaxLength="255" />
     <Property Name="HitchID" Type="int" />
     <Property Name="HitchLicense" Type="nvarchar" MaxLength="40" />
@@ -576,6 +730,7 @@
     <EntitySet Name="GasStation" EntityType="Self.GasStation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GPSViolationHistory" EntityType="Self.GPSViolationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobDetail" EntityType="Self.JobDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MaintenanceType" EntityType="Self.MaintenanceType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MarriageStatus" EntityType="Self.MarriageStatus" Schema="dbo" store:Type="Tables" />
@@ -587,11 +742,16 @@
     <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RepairDetail" EntityType="Self.RepairDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shipper" EntityType="Self.Shipper" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubContact" EntityType="Self.SubContact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tire" EntityType="Self.Tire" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TireChange" EntityType="Self.TireChange" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TrainingHistory" EntityType="Self.TrainingHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transfer" EntityType="Self.Transfer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransferOli" EntityType="Self.TransferOli" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransferOTH" EntityType="Self.TransferOTH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransferWay" EntityType="Self.TransferWay" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WorkingHistory" EntityType="Self.WorkingHistory" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

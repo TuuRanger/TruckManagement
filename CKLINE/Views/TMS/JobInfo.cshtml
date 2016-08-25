@@ -1,0 +1,1111 @@
+﻿@model List<TMS.Models.Transferlist>
+
+@{
+    ViewBag.Title = "Job Info";
+}
+
+<section class="content-header">
+    <h1>
+        Job Info
+    </h1>
+   
+</section>
+
+@foreach (var item in Model)
+{
+   
+    <section class="invoice">
+        @foreach (var JItem in item.TJob)
+        {
+            
+       
+        <!-- title row -->
+        string OrderName = "";
+        string StatusName = "";
+        string SText = "";
+        
+        
+        if (JItem.JobType == 1)
+        {
+            SText = "เที่ยวเดียว";
+        }
+       else
+        {
+            SText = "ไป-กลับ";
+        }
+        if (JItem.OrderType == 1)
+        {
+            OrderName = "Praxair";
+        }
+        else if (JItem.OrderType == 2)
+        {
+            OrderName = "Trucking";
+        }
+        else if (JItem.OrderType == 3)
+        {
+            OrderName = "Import/Export";
+        }
+
+        if (JItem.Status == 1)
+        {
+            StatusName = "New";
+        }
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-globe"></i>&nbsp; JOB NO. : &nbsp; @JItem.JobID &nbsp; (@SText)
+                    <small class="pull-right">Job Date : &nbsp; @JItem.JDate.ToString("dd/MM/yyyy")</small>
+                </h2>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- info row -->
+
+        <div class="row invoice-info">
+            <!-- /.col -->
+
+            <div class="col-sm-12 invoice-col">
+                <b>Customer</b><br>
+
+                <b>Name :</b>&nbsp; @JItem.CName<br>
+                <b>Address :</b>&nbsp; @JItem.CAddress &nbsp; @JItem.CProvince &nbsp; @JItem.CZipCode<br>
+                <b>Telephone :</b>&nbsp; @JItem.CTelephone
+                <br>
+            </div>
+            @if (JItem.OrderType == 1 || JItem.OrderType == 3)
+            {
+                <div class="col-sm-12 invoice-col">
+                    <br />
+                    <b>Shipper</b><br>
+
+                    <b>Name :</b>&nbsp; @JItem.SName<br>
+                    <b>Address :</b>&nbsp; @JItem.SAddress &nbsp; @JItem.SProvince &nbsp; @JItem.SZipCode<br>
+                    <b>Telephone :</b>&nbsp; @JItem.STelephone
+                    <br>
+                </div>
+            }
+
+        </div>
+        <hr />
+    <div class="row invoice-info">
+        <div class="col-sm-12 invoice-col">
+            @if (@JItem.SType == 1)
+            {
+                <b>เวลารถออก : &nbsp; @JItem.DTitle @JItem.DFirstName &nbsp; @JItem.DLastName</b><br />
+    <b>หัวลาก : &nbsp; @JItem.License</b><br />
+    <b>หางลาก : &nbsp; @JItem.HitchLicense</b>
+
+
+            }
+            else
+            {
+                <b>รหัส Sub : &nbsp; @JItem.SCCode</b><br />
+                 <b>ชื่อบริษัท : &nbsp; @JItem.SCName</b>
+            
+            } 
+            <br>
+            <hr />
+           
+        </div>
+        
+    </div>
+            <div class="row invoice-info">
+                <!-- /.col -->
+                @foreach (var TItem in item.TTransfer)
+        {
+
+if (@JItem.SType == 1)
+{
+                    <div class="col-sm-6 invoice-col">
+
+                        <b>รายละเอียดการปล่อยรถ</b><br>
+
+                        <b>วันที่รถออก :&nbsp;</b> @TItem.TransferDate.ToString("dd/MM/yyyy")<br>
+                        <b>เวลารถออก :&nbsp;</b> @TItem.TransferTime<br>
+
+                        <b>เลขไมล์ :&nbsp;</b> @TItem.OMile.ToString("#,###.##")<br>
+                        <b>เงินสำรองค่าน้ำมัน (บาท) :&nbsp; </b>@TItem.OOli.ToString("#,###.##")<br>
+                        <b>เงินสำรองค่าทางด่วน (บาท):&nbsp;</b> @TItem.OWay.ToString("#,###.##")<br>
+                        <b>เงินสำรองค่าอื่นๆ (บาท) :&nbsp;</b> @TItem.OOther.ToString("#,###.##")<br>
+                        <b>หมายเหตุ :&nbsp; </b>@TItem.ORemark<br>
+
+                        <br>
+                    </div>
+
+            if (JItem.JStatus == 4)
+            {
+
+                <div class="col-sm-6 invoice-col">
+                    <b>รายละเอียดการขนส่ง</b><br>
+
+                   
+
+    <b>วันที่ถึง :&nbsp; </b>@TItem.ArriveDate.ToString("dd/MM/yyyy")<br>
+    <b>เวลาที่ถึง :&nbsp;</b> @TItem.ArriveTime<br>
+                    <b>เลขไมล์ขากลับ :&nbsp; </b>@TItem.CMile.ToString("#,###.##")<br>
+                    <b>ระยะทางจริง (กม.) :&nbsp; </b>@TItem.RDistance.ToString("#,###.##")<br>
+                    <b>น้ำหนักรถเปล่า :&nbsp;</b> @TItem.WCarB.ToString("#,###.##")<br>
+                    <b>น้ำหนักก๊าซ :&nbsp; </b>@TItem.WGas.ToString("#,###.##")<br>
+                    <b>น้ำหนักรถหนัก :&nbsp;</b> @TItem.WCarW.ToString("#,###.##")<br>
+                    <b>เงินค่าน้ำมันคงเหลือ (บาท) :&nbsp;</b> @TItem.COli.ToString("#,###.##")<br>
+                    <b>เงินค่าทางด่วนคงเหลือ (บาท):&nbsp;</b> @TItem.CWay.ToString("#,###.##")<br>
+                    <b>เงินค่าอื่นๆคงเหลือ (บาท) :&nbsp; </b>@TItem.COther.ToString("#,###.##")<br>
+                    <b>หมายเหตุ :&nbsp; </b>@TItem.CRemark<br>
+
+
+                    <br>
+                </div>
+}       
+            }
+        }
+            </div>
+            <hr />
+            if (@JItem.SType == 1)
+            {
+            if (JItem.JStatus == 4)
+            {
+                if (item.OTransfer != null)
+                {
+                    decimal SumAllNum = 0;
+                    decimal SumAllPrice = 0;
+                    <div class="row">
+                        <div class="col-sm-12 invoice-col">
+                            <b>รายการการเติมน้ำมัน</b><br>
+                        </div>
+
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        @*   <th>ลำดับ</th>*@
+                                        <th align="center" width="55%">สถานีบริการ</th>
+                                        <th align="center" width="15%">ราคาต่อลิตร</th>
+                                        <th align="center" width="15%">จำนวน (ลิตร)</th>
+                                        <th align="center" width="15%">ราคารวม (บาท)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var OItem in item.OTransfer)
+                                    {
+                                        SumAllNum = SumAllNum + @OItem.OliNum;
+                                        SumAllPrice = SumAllPrice + @OItem.OliSumPrice;
+                                        <tr>
+                                            @*<td>@Model.Item2.</td>*@
+                                            <td width="55%">@OItem.GName &nbsp; @OItem.GBranch</td>
+                                            <td width="15%">@OItem.OliPrice.ToString("#,###.##")</td>
+                                            <td width="15%">@OItem.OliNum.ToString("#,###")</td>
+                                            <td width="15%">@OItem.OliSumPrice.ToString("#,###.##")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        @*   <th>ลำดับ</th>*@
+                                        <th width="55%">รวม</th>
+                                        <th  width="15%">&nbsp;</th>
+                                        <th  width="15%">@SumAllNum.ToString("#,###.##")</th>
+                                        <th width="15%">@SumAllPrice.ToString("#,###.##")</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+    <hr />
+                }
+
+if(item.WTransfer != null)
+{
+    decimal SumAllPrice = 0;
+
+            <div class="row">
+                <div class="col-sm-12 invoice-col">
+                    <b>รายการค่าทางด่วน</b><br>
+                </div>
+
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                
+                                
+                                <th align="center" width="85%">ชื่อด่านเก็บเงิน</th>
+                                <th align="center" width="15%">จำนวนเงิน (บาท)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var WItem in item.WTransfer)
+                                {
+
+                                    SumAllPrice = SumAllPrice + @WItem.WaySumPrice;
+
+                                <tr>
+                                    @*<td>@Model.Item2.</td>*@
+                                    <td width="85%">@WItem.WayDetail</td>
+
+                                    <td  width="15%">@WItem.WaySumPrice.ToString("#,###.##")</td>
+                                </tr>
+                                }
+                        </tbody>
+                        <thead>
+                            <tr>
+                                @*   <th>ลำดับ</th>*@
+                                <th  width="85%">รวม</th>
+                                <th  width="15%">@SumAllPrice.ToString("#,###.##")</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <hr />
+}
+if(item.OTHTransfer != null)
+{
+    decimal SumAllPrice = 0;
+    
+            <div class="row">
+                <div class="col-sm-12 invoice-col">
+                    <b>รายการค่าใช้จ่ายอื่นๆ</b><br>
+                </div>
+
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @*   <th>ลำดับ</th>*@
+                                <th  width="85%">รายละเอียด</th>
+
+                                <th  width="15%">จำนวนเงิน (บาท)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var OTHItem in item.OTHTransfer)
+                                {
+
+                                    SumAllPrice = SumAllPrice + @OTHItem.OTHSumPrice;
+
+                                <tr>
+                                    @*<td>@Model.Item2.</td>*@
+                                    <td width="85%">@OTHItem.OTHDetail</td>
+
+                                    <td width="15%">@OTHItem.OTHSumPrice.ToString("#,###.##")</td>
+                                </tr>
+                                }
+                        </tbody>
+                        <thead>
+                            <tr>
+                                @*   <th>ลำดับ</th>*@
+                                <th  width="85%">รวม</th>
+
+                                <th width="15%">@SumAllPrice.ToString("#,###.##")</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <hr />
+}
+            
+            }
+            }
+
+
+            if (JItem.JobType == 1)
+            {
+            <div class="col-sm-12 invoice-col">
+                <b>เที่ยวไป </b> &nbsp; (Order ID : @JItem.SOID)<br>
+                <hr />
+            </div>
+            if (JItem.OrderType == 1)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                              @if (@JItem.SType == 2)
+                              {
+                                <th>วันที่ส่งจริง</th>
+                              }
+                                <th>เบอร์ตู้</th>
+                                <th>ตำแหน่งวาวล์</th>
+                                <th>สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SITem in item.JOrderDS)
+                        {
+
+                            string DStatusName = "";
+                            string SClass = "";
+                            if (SITem.Status == 1)
+                            {
+                                DStatusName = "New";
+                                SClass = "label label-success";
+                            }
+                            else if (SITem.Status == 2)
+                            {
+                                DStatusName = "Queue";
+                                SClass = "label label-warning";
+                            }
+                            else if (SITem.Status == 3)
+                            {
+                                DStatusName = "Delivered";
+                                SClass = "label label-primary";
+                            }
+                            else if (SITem.Status == 4)
+                            {
+                                DStatusName = "Finish";
+                                SClass = "label label-info";
+                            }
+                            else if (SITem.Status == 5)
+                            {
+                                DStatusName = "Cancel";
+                                SClass = "label label-danger";
+                            }
+
+                            string sPosition = "";
+                            if (SITem.Position == "L")
+                            {
+                                sPosition = "ด้านซ้าย";
+
+                            }
+                            else
+                            {
+                                sPosition = "ด้านขวา";
+
+                            }
+
+
+                                <tr>
+                                @if (@JItem.SType == 2)
+                              {
+                                    if (@SITem.JStatus == 3)
+                                    {
+                                        <td></td>
+                                    }
+                                    else if (SITem.JStatus == 4)
+                                    {
+                                        <td>@SITem.JReceiveDate.ToString("dd/MM/yyyy")</td>
+                                    }
+                              }
+                                    <td>@SITem.ContainerNo</td>
+                                    <td>@sPosition</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            else if (JItem.OrderType == 2)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @if (@JItem.SType == 2)
+                                {
+                                    <th>วันที่ส่งจริง</th>
+                                }
+                                <th>วันที่ลากตู้</th>
+                                <th>เบอร์ตู้</th>
+                                <th>ประเภทตู้</th>
+                                <th>สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SItem in item.JOrderDS)
+                        {
+
+                            string DStatusName = "";
+                            string SClass = "";
+                            if (SItem.Status == 1)
+                            {
+                                DStatusName = "New";
+                                SClass = "label label-success";
+                            }
+                            else if (SItem.Status == 2)
+                            {
+                                DStatusName = "Queue";
+                                SClass = "label label-warning";
+                            }
+                            else if (SItem.Status == 3)
+                            {
+                                DStatusName = "Delivered";
+                                SClass = "label label-primary";
+                            }
+                            else if (SItem.Status == 4)
+                            {
+                                DStatusName = "Finish";
+                                SClass = "label label-info";
+                            }
+                            else if (SItem.Status == 5)
+                            {
+                                DStatusName = "Cancel";
+                                SClass = "label label-danger";
+                            }
+
+                            string sPosition = "";
+                            if (SItem.Position == "L")
+                            {
+                                sPosition = "ด้านซ้าย";
+
+                            }
+                            else
+                            {
+                                sPosition = "ด้านขวา";
+
+                            }
+
+
+                                <tr>
+                                    @if (@JItem.SType == 2)
+                                    {
+                                        if (@SItem.JStatus == 3)
+                                        {
+                                            <td></td>
+                                        }
+                                        else if (SItem.JStatus == 4)
+                                        {
+                                            <td>@SItem.JReceiveDate.ToString("dd/MM/yyyy")</td>
+                                        }
+                                    }
+                                    <td>@SItem.TPackDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@SItem.ContainerNo</td>
+                                    <td>@SItem.ContainerType</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            else if (JItem.OrderType == 3)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @if (@JItem.SType == 2)
+                                {
+                                    <th>วันที่ส่งจริง</th>
+                                }
+                                <th align="center">เบอร์ตู้</th>
+                                <th align="center">น้ำหนักตู้เปล่า</th>
+                                <th align="center">ประเภทตู้</th>
+                                <th align="center">เบอร์ซีล</th>
+                                <th align="center">สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SITem in item.JOrderDS)
+                        {
+
+                            string DStatusName = "";
+                            string SClass = "";
+                            if (SITem.Status == 1)
+                            {
+                                DStatusName = "New";
+                                SClass = "label label-success";
+                            }
+                            else if (SITem.Status == 2)
+                            {
+                                DStatusName = "Queue";
+                                SClass = "label label-warning";
+                            }
+                            else if (SITem.Status == 3)
+                            {
+                                DStatusName = "Delivered";
+                                SClass = "label label-primary";
+                            }
+                            else if (SITem.Status == 4)
+                            {
+                                DStatusName = "Finish";
+                                SClass = "label label-info";
+                            }
+                            else if (SITem.Status == 5)
+                            {
+                                DStatusName = "Cancel";
+                                SClass = "label label-danger";
+                            }
+
+                            string sPosition = "";
+                            if (SITem.Position == "L")
+                            {
+                                sPosition = "ด้านซ้าย";
+
+                            }
+                            else
+                            {
+                                sPosition = "ด้านขวา";
+
+                            }
+
+                                <tr>
+                                    @if (@JItem.SType == 2)
+                                    {
+                                        if (@SITem.JStatus == 3)
+                                        {
+                                            <td></td>
+                                        }
+                                        else if (SITem.JStatus == 4)
+                                        {
+                                            <td>@SITem.JReceiveDate.ToString("dd/MM/yyyy")</td>
+                                        }
+                                    }
+                                    <td>@SITem.ContainerNo</td>
+                                    <td align="center">@SITem.TareWeight.ToString("#,###.##")</td>
+                                    <td>@SITem.ContainerType</td>
+                                    <td>@SITem.PackNo</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            }
+            else
+            {
+            <div class="col-sm-12 invoice-col">
+                <b>เที่ยวไป </b> &nbsp; (Order ID : @JItem.SOID)<br>
+                <hr />
+            </div>
+            if (JItem.OrderType == 1)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @if (@JItem.SType == 2)
+                                {
+                                    <th>วันที่ส่งจริง</th>
+                                }
+                                <th>เบอร์ตู้</th>
+                                <th>ตำแหน่งวาวล์</th>
+                                <th>สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SITem in item.JOrderDS)
+                                {
+
+                                    string DStatusName = "";
+                                    string SClass = "";
+                                    if (SITem.Status == 1)
+                                    {
+                                        DStatusName = "New";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (SITem.Status == 2)
+                                    {
+                                        DStatusName = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (SITem.Status == 3)
+                                    {
+                                        DStatusName = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (SITem.Status == 4)
+                                    {
+                                        DStatusName = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (SITem.Status == 5)
+                                    {
+                                        DStatusName = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
+
+                                    string sPosition = "";
+                                    if (SITem.Position == "L")
+                                    {
+                                        sPosition = "ด้านซ้าย";
+
+                                    }
+                                    else
+                                    {
+                                        sPosition = "ด้านขวา";
+
+                                    }
+
+
+                                <tr>
+                                    @if (@JItem.SType == 2)
+                                    {
+                                        if (@SITem.JStatus == 3)
+                                        {
+                                            <td></td>
+                                        }
+                                        else if (SITem.JStatus == 4)
+                                        {
+                                            <td>@SITem.JReceiveDate.ToString("dd/MM/yyyy")</td>
+                                        }
+                                    }
+                                    <td>@SITem.ContainerNo</td>
+                                    <td>@sPosition</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+                                }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            else if (JItem.OrderType == 2)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @if (@JItem.SType == 2)
+                                {
+                                    <th>วันที่ส่งจริง</th>
+                                }
+                                <th>วันที่ลากตู้</th>
+                                <th>เบอร์ตู้</th>
+                                <th>ประเภทตู้</th>
+                                <th>สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SItem in item.JOrderDS)
+                                {
+
+                                    string DStatusName = "";
+                                    string SClass = "";
+                                    if (SItem.Status == 1)
+                                    {
+                                        DStatusName = "New";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (SItem.Status == 2)
+                                    {
+                                        DStatusName = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (SItem.Status == 3)
+                                    {
+                                        DStatusName = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (SItem.Status == 4)
+                                    {
+                                        DStatusName = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (SItem.Status == 5)
+                                    {
+                                        DStatusName = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
+
+                                    string sPosition = "";
+                                    if (SItem.Position == "L")
+                                    {
+                                        sPosition = "ด้านซ้าย";
+
+                                    }
+                                    else
+                                    {
+                                        sPosition = "ด้านขวา";
+
+                                    }
+
+
+                                <tr>
+                                    @if (@JItem.SType == 2)
+                                    {
+                                        if (@SItem.JStatus == 3)
+                                        {
+                                            <td></td>
+                                        }
+                                        else if (SItem.JStatus == 4)
+                                        {
+                                            <td>@SItem.JReceiveDate.ToString("dd/MM/yyyy")</td>
+                                        }
+                                    }
+                                    <td>@SItem.TPackDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@SItem.ContainerNo</td>
+                                    <td>@SItem.ContainerType</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+
+                                }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            else if (JItem.OrderType == 3)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @if (@JItem.SType == 2)
+                                {
+                                    <th>วันที่ส่งจริง</th>
+                                }
+                                <th align="center">เบอร์ตู้</th>
+                                <th align="center">น้ำหนักตู้เปล่า</th>
+                                <th align="center">ประเภทตู้</th>
+                                <th align="center">เบอร์ซีล</th>
+                                <th align="center">สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SITem in item.JOrderDS)
+                                {
+
+                                    string DStatusName = "";
+                                    string SClass = "";
+                                    if (SITem.Status == 1)
+                                    {
+                                        DStatusName = "New";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (SITem.Status == 2)
+                                    {
+                                        DStatusName = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (SITem.Status == 3)
+                                    {
+                                        DStatusName = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (SITem.Status == 4)
+                                    {
+                                        DStatusName = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (SITem.Status == 5)
+                                    {
+                                        DStatusName = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
+
+                                    string sPosition = "";
+                                    if (SITem.Position == "L")
+                                    {
+                                        sPosition = "ด้านซ้าย";
+
+                                    }
+                                    else
+                                    {
+                                        sPosition = "ด้านขวา";
+
+                                    }
+
+                                <tr>
+                                    @if (@JItem.SType == 2)
+                                    {
+                                        if (@SITem.JStatus == 3)
+                                        {
+                                            <td></td>
+                                        }
+                                        else if (SITem.JStatus == 4)
+                                        {
+                                            <td>@SITem.JReceiveDate.ToString("dd/MM/yyyy")</td>
+                                        }
+                                    }                           
+                                    <td>@SITem.ContainerNo</td>
+                                    <td align="center">@SITem.TareWeight.ToString("#,###.##")</td>
+                                    <td>@SITem.ContainerType</td>
+                                    <td>@SITem.PackNo</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+
+                                }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            <br />
+            <div class="col-sm-12 invoice-col">
+                <b>เที่ยวกลับ </b> &nbsp; (Order ID : @JItem.ROID)<br>
+                <hr />
+            </div>
+            if (JItem.OrderType == 1)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @*   <th>ลำดับ</th>*@
+                                <th>เบอร์ตู้</th>
+                                <th>ตำแหน่งวาวล์</th>
+                                <th>สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SITem in item.JOrderDR)
+                                {
+
+                                    string DStatusName = "";
+                                    string SClass = "";
+                                    if (SITem.Status == 1)
+                                    {
+                                        DStatusName = "New";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (SITem.Status == 2)
+                                    {
+                                        DStatusName = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (SITem.Status == 3)
+                                    {
+                                        DStatusName = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (SITem.Status == 4)
+                                    {
+                                        DStatusName = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (SITem.Status == 5)
+                                    {
+                                        DStatusName = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
+
+                                    string sPosition = "";
+                                    if (SITem.Position == "L")
+                                    {
+                                        sPosition = "ด้านซ้าย";
+
+                                    }
+                                    else
+                                    {
+                                        sPosition = "ด้านขวา";
+
+                                    }
+
+
+                                <tr>
+                                    @*<td>@Model.Item2.</td>*@
+                                    <td>@SITem.ContainerNo</td>
+                                    <td>@sPosition</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+                                }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            else if (JItem.OrderType == 2)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @*   <th>ลำดับ</th>*@
+                                <th>วันที่ลากตู้</th>
+                                <th>เบอร์ตู้</th>
+                                <th>ประเภทตู้</th>
+                                <th>สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SItem in item.JOrderDR)
+                                {
+
+                                    string DStatusName = "";
+                                    string SClass = "";
+                                    if (SItem.Status == 1)
+                                    {
+                                        DStatusName = "New";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (SItem.Status == 2)
+                                    {
+                                        DStatusName = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (SItem.Status == 3)
+                                    {
+                                        DStatusName = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (SItem.Status == 4)
+                                    {
+                                        DStatusName = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (SItem.Status == 5)
+                                    {
+                                        DStatusName = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
+
+                                    string sPosition = "";
+                                    if (SItem.Position == "L")
+                                    {
+                                        sPosition = "ด้านซ้าย";
+
+                                    }
+                                    else
+                                    {
+                                        sPosition = "ด้านขวา";
+
+                                    }
+
+
+                                <tr>
+                                    @*<td>@Model.Item2.</td>*@
+                                    <td>@SItem.TPackDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@SItem.ContainerNo</td>
+                                    <td>@SItem.ContainerType</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+
+                                }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            else if (JItem.OrderType == 3)
+            {
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                @*   <th>ลำดับ</th>*@
+                                <th align="center">เบอร์ตู้</th>
+                                <th align="center">น้ำหนักตู้เปล่า</th>
+                                <th align="center">ประเภทตู้</th>
+                                <th align="center">เบอร์ซีล</th>
+                                <th align="center">สถานะ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var SITem in item.JOrderDR)
+                                {
+
+                                    string DStatusName = "";
+                                    string SClass = "";
+                                    if (SITem.Status == 1)
+                                    {
+                                        DStatusName = "New";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (SITem.Status == 2)
+                                    {
+                                        DStatusName = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (SITem.Status == 3)
+                                    {
+                                        DStatusName = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (SITem.Status == 4)
+                                    {
+                                        DStatusName = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (SITem.Status == 5)
+                                    {
+                                        DStatusName = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
+
+                                    string sPosition = "";
+                                    if (SITem.Position == "L")
+                                    {
+                                        sPosition = "ด้านซ้าย";
+
+                                    }
+                                    else
+                                    {
+                                        sPosition = "ด้านขวา";
+
+                                    }
+
+                                <tr>
+                                    @*<td>@Model.Item2.</td>*@
+                                    <td>@SITem.ContainerNo</td>
+                                    <td align="center">@SITem.TareWeight.ToString("#,###.##")</td>
+                                    <td>@SITem.ContainerType</td>
+                                    <td>@SITem.PackNo</td>
+                                    <td>@DStatusName</td>
+
+                                </tr>
+
+                                }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+
+
+            }
+            }
+            }
+
+</section>
+}

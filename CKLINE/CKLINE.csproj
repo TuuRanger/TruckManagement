@@ -39,6 +39,62 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.Prompting.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared">
+      <HintPath>..\..\..\Users\TuuRanger\Downloads\TruckManagement\CKLINE\bin\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -204,6 +260,9 @@
     <Compile Include="Job.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="JobDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Maintenance.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -233,19 +292,26 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CarDriversPayPeriod.cs" />
+    <Compile Include="Models\Container.cs" />
     <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\DriverHistory.cs" />
     <Compile Include="Models\Expenses.cs" />
     <Compile Include="Models\GasRefill.cs" />
+    <Compile Include="Models\GPSBehavior.cs" />
+    <Compile Include="Models\GPSDailyBehavior.cs" />
+    <Compile Include="Models\GPSStation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Maintenance.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MonthlyAccident.cs" />
     <Compile Include="Models\MonthlyTransporting.cs" />
     <Compile Include="Models\ProfitAndLoss.cs" />
+    <Compile Include="Models\TimeAttendance.cs" />
     <Compile Include="Models\TiresChanging.cs" />
     <Compile Include="Models\TMSModels.cs" />
     <Compile Include="Models\TransportationCosts.cs" />
     <Compile Include="Models\Transporting.cs" />
+    <Compile Include="Models\TransportQueue.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -268,6 +334,9 @@
     <Compile Include="Route.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Shipper.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Stock.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -284,17 +353,46 @@
     <Compile Include="TrainingHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Transfer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOli.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOTH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransferWay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Truck.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\CarDriversPayPeriod.cs" />
+    <Compile Include="Views\Report\CarDriversPayPeriod.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\Report\CarDriversPayPeriod1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\Container.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\Driver.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\DriverHistory.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\Report\GasRefill.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\Report\GasRefill1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\GPSBehavior.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\GPSStation.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Views\Report\Maintenance.cs">
@@ -321,6 +419,9 @@
     <Compile Include="Views\Report\ProfitAndLoss1.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Views\Report\TimeAttendance.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\Report\TiresChanging.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -333,8 +434,16 @@
     <Compile Include="Views\Report\TransportationCosts1.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Views\Report\Transporting.cs" />
+    <Compile Include="Views\Report\Transporting.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Views\Report\Transporting1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\TransportQueue.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Views\Report\VariableProfitCost.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WorkingHistory.cs">
@@ -431,6 +540,23 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Gruntfile.js" />
+    <Content Include="Images\Driver\Driver1.jpg" />
+    <Content Include="Images\Driver\Driver3.jpg" />
+    <Content Include="Images\Driver\Driver4.jpg" />
+    <Content Include="Images\Driver\Driver6.jpg" />
+    <Content Include="Images\Driver\Driver7.jpg" />
+    <Content Include="Images\Driver\img050.jpg" />
+    <Content Include="Images\Driver\img051.jpg" />
+    <Content Include="Images\Driver\img053.jpg" />
+    <Content Include="Images\Driver\img057.jpg" />
+    <Content Include="Images\Driver\img058.jpg" />
+    <Content Include="Images\Driver\img059.jpg" />
+    <Content Include="Images\Driver\img065.jpg" />
+    <Content Include="Images\Driver\img069.jpg" />
+    <Content Include="Images\Driver\img070.jpg" />
+    <Content Include="Images\Driver\img076.jpg" />
+    <Content Include="Images\Driver\img077.jpg" />
+    <Content Include="Images\Driver\img078.jpg" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -1528,6 +1654,36 @@
     <Content Include="Views\TMS\JobCancel.cshtml" />
     <Content Include="Views\TMS\RepairCommit.cshtml" />
     <Content Include="Views\TMS\RepairInfo.cshtml" />
+    <Content Include="Views\TMS\CRepairDetail.cshtml" />
+    <Content Include="Views\TMS\CRepairCommit.cshtml" />
+    <Content Include="Views\TMS\RepairPrint.cshtml" />
+    <Content Include="Views\TMS\NewJob.cshtml" />
+    <Content Include="Views\TMS\JobList.cshtml" />
+    <Content Include="Views\TMS\JobInfo.cshtml" />
+    <Content Include="Views\TMS\OpenJobList.cshtml" />
+    <Content Include="Views\TMS\CloseJobList.cshtml" />
+    <Content Include="Views\TMS\OpenJobCommit.cshtml" />
+    <Content Include="Views\TMS\SCloseJobDetail.cshtml" />
+    <Content Include="Views\TMS\SCloseJobCommit.cshtml" />
+    <Content Include="Views\TMS\DriverNew.cshtml" />
+    <Content Include="Views\Report\Container.cshtml" />
+    <Content Include="Views\Report\Container.rpt" />
+    <Content Include="Views\Report\Driver.rpt" />
+    <Content Include="Views\Report\DriverHistory.cshtml" />
+    <Content Include="Views\Report\DriverHistory.rpt" />
+    <Content Include="Views\Report\DriverProfile.cshtml" />
+    <Content Include="Views\Report\GPSBehavior.cshtml" />
+    <Content Include="Views\Report\GPSBehavior.rpt" />
+    <Content Include="Views\Report\GPSStation.cshtml" />
+    <Content Include="Views\Report\GPSStation.rpt" />
+    <Content Include="Views\Report\Maintenance.cshtml" />
+    <Content Include="Views\Report\TimeAttendance.cshtml" />
+    <Content Include="Views\Report\TimeAttendance.rpt" />
+    <Content Include="Views\Report\TransportQueue.cshtml" />
+    <Content Include="Views\Report\TransportQueue.rpt" />
+    <Content Include="Views\Report\VariableProfitCost.cshtml" />
+    <Content Include="Views\Report\VariableProfitCost.rpt" />
+    <Content Include="Views\TMS\DriverNewCommit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

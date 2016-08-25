@@ -17,8 +17,9 @@ namespace CKLINE
         public int ID { get; set; }
         public string License { get; set; }
         public string Brand { get; set; }
-        public string TruckType { get; set; }
+        public Nullable<int> TruckType { get; set; }
         public string Detail { get; set; }
+        public Nullable<int> HitchID { get; set; }
         public string HitchLicense { get; set; }
         public Nullable<decimal> Weight { get; set; }
         public Nullable<decimal> weightTruck { get; set; }
@@ -49,7 +50,6 @@ namespace CKLINE
         public string ANumber { get; set; }
         public Nullable<System.DateTime> AExprieDate { get; set; }
         public Nullable<decimal> APremium { get; set; }
-        public Nullable<int> HitchID { get; set; }
         public Nullable<int> Status { get; set; }
     }
 }

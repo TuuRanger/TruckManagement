@@ -36,14 +36,5 @@ namespace CKLINE.Models
         public decimal TransportCost { get; set; }
 
         public decimal ProfitLoss { get; set; }
-
-        public string BeginDate { get; set; }
-        public string TankNO { get; set; }
-        public string Mobile { get; set; }
-        public string Source { get; set; }
-        public string Destination { get; set; }
-        public string Distance { get; set; }
-        public string WorkTime { get; set; }
-        public string NumberOfDriver { get; set; }
     }
 }

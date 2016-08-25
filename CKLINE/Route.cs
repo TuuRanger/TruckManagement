@@ -101,5 +101,7 @@ namespace CKLINE
         public Nullable<int> NDay { get; set; }
         public Nullable<int> NPerDay { get; set; }
         public Nullable<int> NMonth { get; set; }
+        public Nullable<int> ShipperID { get; set; }
+        public Nullable<decimal> DriverCost { get; set; }
     }
 }

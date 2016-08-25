@@ -19,7 +19,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:04</publishTime>
     </File>
     <File Include="bin/CKLINE.dll">
-      <publishTime>06/30/2016 02:46:20</publishTime>
+      <publishTime>08/25/2016 03:13:31</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.CrystalReports.Engine.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.DataSetConversion.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportSource.dll">
+      <publishTime>01/24/2016 06:25:42</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.Shared.dll">
+      <publishTime>01/24/2016 06:25:42</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/10/2016 19:23:09</publishTime>
@@ -97,7 +109,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:04</publishTime>
     </File>
     <File Include="bootstrap/css/bootstrap.css">
-      <publishTime>04/10/2016 20:05:00</publishTime>
+      <publishTime>08/15/2016 03:18:58</publishTime>
     </File>
     <File Include="bootstrap/css/bootstrap.css.map">
       <publishTime>04/10/2016 20:05:00</publishTime>
@@ -409,7 +421,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:22:48</publishTime>
     </File>
     <File Include="dist/css/AdminLTE.css">
-      <publishTime>04/10/2016 20:11:35</publishTime>
+      <publishTime>08/15/2016 03:23:21</publishTime>
     </File>
     <File Include="dist/css/AdminLTE.min.css">
       <publishTime>04/10/2016 20:11:35</publishTime>
@@ -663,11 +675,62 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Gruntfile.js">
       <publishTime>04/10/2016 20:11:50</publishTime>
     </File>
+    <File Include="Images/Driver/Driver1.jpg">
+      <publishTime>08/23/2016 00:17:28</publishTime>
+    </File>
+    <File Include="Images/Driver/Driver3.jpg">
+      <publishTime>08/23/2016 00:17:28</publishTime>
+    </File>
+    <File Include="Images/Driver/Driver4.jpg">
+      <publishTime>08/23/2016 00:17:28</publishTime>
+    </File>
+    <File Include="Images/Driver/Driver6.jpg">
+      <publishTime>08/23/2016 00:17:28</publishTime>
+    </File>
+    <File Include="Images/Driver/Driver7.jpg">
+      <publishTime>08/23/2016 00:17:28</publishTime>
+    </File>
+    <File Include="Images/Driver/img050.jpg">
+      <publishTime>08/23/2016 01:28:13</publishTime>
+    </File>
+    <File Include="Images/Driver/img051.jpg">
+      <publishTime>08/23/2016 01:28:13</publishTime>
+    </File>
+    <File Include="Images/Driver/img053.jpg">
+      <publishTime>08/23/2016 01:28:13</publishTime>
+    </File>
+    <File Include="Images/Driver/img057.jpg">
+      <publishTime>08/23/2016 02:21:56</publishTime>
+    </File>
+    <File Include="Images/Driver/img058.jpg">
+      <publishTime>08/23/2016 02:21:56</publishTime>
+    </File>
+    <File Include="Images/Driver/img059.jpg">
+      <publishTime>08/23/2016 02:21:56</publishTime>
+    </File>
+    <File Include="Images/Driver/img065.jpg">
+      <publishTime>08/23/2016 01:52:48</publishTime>
+    </File>
+    <File Include="Images/Driver/img069.jpg">
+      <publishTime>08/23/2016 01:52:48</publishTime>
+    </File>
+    <File Include="Images/Driver/img070.jpg">
+      <publishTime>08/23/2016 01:52:48</publishTime>
+    </File>
+    <File Include="Images/Driver/img076.jpg">
+      <publishTime>08/23/2016 02:17:26</publishTime>
+    </File>
+    <File Include="Images/Driver/img077.jpg">
+      <publishTime>08/23/2016 02:17:26</publishTime>
+    </File>
+    <File Include="Images/Driver/img078.jpg">
+      <publishTime>08/23/2016 02:17:26</publishTime>
+    </File>
     <File Include="LICENSE">
       <publishTime>04/10/2016 20:11:50</publishTime>
     </File>
     <File Include="Model1.edmx.diagram">
-      <publishTime>06/29/2016 19:10:19</publishTime>
+      <publishTime>08/25/2016 02:19:29</publishTime>
     </File>
     <File Include="package.json">
       <publishTime>04/10/2016 20:11:50</publishTime>
@@ -1000,7 +1063,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 20:11:38</publishTime>
     </File>
     <File Include="plugins/ckeditor/lang/tr.js">
-      <publishTime>04/10/2016 20:11:39</publishTime>
+      <publishTime>10/04/2016 20:11:39</publishTime>
     </File>
     <File Include="plugins/ckeditor/lang/tt.js">
       <publishTime>04/10/2016 20:11:39</publishTime>
@@ -2383,7 +2446,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 20:11:45</publishTime>
     </File>
     <File Include="plugins/datepicker/locales/bootstrap-datepicker.el.js">
-      <publishTime>04/10/2016 20:11:46</publishTime>
+      <publishTime>10/04/2016 20:11:46</publishTime>
     </File>
     <File Include="plugins/datepicker/locales/bootstrap-datepicker.es.js">
       <publishTime>04/10/2016 20:11:46</publishTime>
@@ -3175,7 +3238,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 20:11:49</publishTime>
     </File>
     <File Include="plugins/select2/i18n/nb.js">
-      <publishTime>04/10/2016 20:11:50</publishTime>
+      <publishTime>10/04/2016 20:11:50</publishTime>
     </File>
     <File Include="plugins/select2/i18n/nl.js">
       <publishTime>04/10/2016 20:11:50</publishTime>
@@ -3388,58 +3451,109 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:08</publishTime>
     </File>
     <File Include="Views/Report/CarDriversPayPeriod.rpt">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/CarDriversPayPeriodList.cshtml">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/Container.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/Container.rpt">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/Driver.rpt">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/DriverHistory.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/DriverHistory.rpt">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/DriverProfile.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/GasRefill.rpt">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/GasRefillList.cshtml">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/GPSBehavior.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/GPSBehavior.rpt">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/GPSStation.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/GPSStation.rpt">
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/Index.cshtml">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/Maintenance.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/Maintenance.rpt">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:12</publishTime>
     </File>
     <File Include="Views/Report/MaintenanceList.cshtml">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:12</publishTime>
     </File>
     <File Include="Views/Report/MonthlyAccident.rpt">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:12</publishTime>
     </File>
     <File Include="Views/Report/MonthlyAccidentList.cshtml">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:12</publishTime>
     </File>
     <File Include="Views/Report/MonthlyTransporting.rpt">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:12</publishTime>
     </File>
     <File Include="Views/Report/MonthlyTransportingList.cshtml">
-      <publishTime>05/31/2016 02:14:22</publishTime>
+      <publishTime>08/25/2016 00:04:12</publishTime>
     </File>
     <File Include="Views/Report/ProfitAndLoss.rpt">
-      <publishTime>05/31/2016 02:14:23</publishTime>
+      <publishTime>08/25/2016 00:04:12</publishTime>
+    </File>
+    <File Include="Views/Report/TimeAttendance.cshtml">
+      <publishTime>08/25/2016 00:04:12</publishTime>
+    </File>
+    <File Include="Views/Report/TimeAttendance.rpt">
+      <publishTime>08/25/2016 00:04:12</publishTime>
     </File>
     <File Include="Views/Report/TiresChanging.rpt">
-      <publishTime>05/31/2016 02:14:23</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/TiresChangingList.cshtml">
-      <publishTime>05/31/2016 02:14:23</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/TransportationCosts.rpt">
-      <publishTime>05/31/2016 02:14:23</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/TransportationCostsList.cshtml">
-      <publishTime>05/31/2016 02:14:23</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/Transporting.rpt">
-      <publishTime>05/31/2016 02:14:23</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Report/TransportingList.cshtml">
-      <publishTime>05/31/2016 02:14:23</publishTime>
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/TransportQueue.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/TransportQueue.rpt">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/VariableProfitCost.cshtml">
+      <publishTime>08/25/2016 00:04:13</publishTime>
+    </File>
+    <File Include="Views/Report/VariableProfitCost.rpt">
+      <publishTime>08/25/2016 00:04:13</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>04/10/2016 19:23:08</publishTime>
@@ -3448,7 +3562,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/10/2016 19:23:08</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/30/2016 01:51:11</publishTime>
+      <publishTime>08/25/2016 00:57:17</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>04/10/2016 19:23:08</publishTime>
@@ -3463,19 +3577,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/11/2016 23:04:41</publishTime>
     </File>
     <File Include="Views/TMS/CloseJobDetail.cshtml">
-      <publishTime>05/12/2016 00:09:53</publishTime>
+      <publishTime>08/16/2016 23:10:07</publishTime>
+    </File>
+    <File Include="Views/TMS/CloseJobList.cshtml">
+      <publishTime>08/08/2016 11:47:56</publishTime>
+    </File>
+    <File Include="Views/TMS/CRepairCommit.cshtml">
+      <publishTime>07/11/2016 14:10:38</publishTime>
+    </File>
+    <File Include="Views/TMS/CRepairDetail.cshtml">
+      <publishTime>08/16/2016 23:14:46</publishTime>
     </File>
     <File Include="Views/TMS/Customer.cshtml">
       <publishTime>05/23/2016 03:34:23</publishTime>
     </File>
     <File Include="Views/TMS/CustomerDetail.cshtml">
-      <publishTime>06/03/2016 11:35:09</publishTime>
+      <publishTime>03/06/2016 11:35:09</publishTime>
     </File>
     <File Include="Views/TMS/DriverDetails.cshtml">
-      <publishTime>06/23/2016 20:40:05</publishTime>
+      <publishTime>08/25/2016 01:18:07</publishTime>
+    </File>
+    <File Include="Views/TMS/DriverNew.cshtml">
+      <publishTime>08/25/2016 01:39:50</publishTime>
+    </File>
+    <File Include="Views/TMS/DriverNewCommit.cshtml">
+      <publishTime>08/25/2016 01:27:52</publishTime>
     </File>
     <File Include="Views/TMS/Drivers.cshtml">
-      <publishTime>05/23/2016 03:34:44</publishTime>
+      <publishTime>08/25/2016 02:35:21</publishTime>
     </File>
     <File Include="Views/TMS/Garage.cshtml">
       <publishTime>05/23/2016 03:36:39</publishTime>
@@ -3490,7 +3619,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/16/2016 23:38:09</publishTime>
     </File>
     <File Include="Views/TMS/Index.cshtml">
-      <publishTime>06/23/2016 19:59:31</publishTime>
+      <publishTime>07/23/2016 00:27:06</publishTime>
     </File>
     <File Include="Views/TMS/JobCancel.cshtml">
       <publishTime>06/14/2016 18:23:59</publishTime>
@@ -3498,11 +3627,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/TMS/JobCommit.cshtml">
       <publishTime>06/13/2016 13:53:24</publishTime>
     </File>
+    <File Include="Views/TMS/JobInfo.cshtml">
+      <publishTime>08/15/2016 06:38:20</publishTime>
+    </File>
+    <File Include="Views/TMS/JobList.cshtml">
+      <publishTime>07/23/2016 00:26:50</publishTime>
+    </File>
     <File Include="Views/TMS/Jobs.cshtml">
-      <publishTime>06/24/2016 00:34:03</publishTime>
+      <publishTime>07/20/2016 02:56:08</publishTime>
+    </File>
+    <File Include="Views/TMS/NewJob.cshtml">
+      <publishTime>08/15/2016 02:31:42</publishTime>
     </File>
     <File Include="Views/TMS/NewOrder.cshtml">
-      <publishTime>06/29/2016 00:07:51</publishTime>
+      <publishTime>08/25/2016 01:26:03</publishTime>
     </File>
     <File Include="Views/TMS/NewRoute.cshtml">
       <publishTime>05/31/2016 01:30:43</publishTime>
@@ -3510,50 +3648,65 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/TMS/OpenJob.cshtml">
       <publishTime>06/24/2016 00:36:02</publishTime>
     </File>
+    <File Include="Views/TMS/OpenJobCommit.cshtml">
+      <publishTime>07/22/2016 02:34:24</publishTime>
+    </File>
     <File Include="Views/TMS/OpenJobDetail.cshtml">
-      <publishTime>06/24/2016 00:40:55</publishTime>
+      <publishTime>08/15/2016 05:26:17</publishTime>
+    </File>
+    <File Include="Views/TMS/OpenJobList.cshtml">
+      <publishTime>08/05/2016 14:49:19</publishTime>
     </File>
     <File Include="Views/TMS/OrderCommit.cshtml">
       <publishTime>06/08/2016 12:58:16</publishTime>
     </File>
     <File Include="Views/TMS/OrderInfo.cshtml">
-      <publishTime>06/23/2016 23:45:50</publishTime>
+      <publishTime>08/16/2016 14:44:46</publishTime>
     </File>
     <File Include="Views/TMS/OrderList.cshtml">
-      <publishTime>06/23/2016 20:01:07</publishTime>
+      <publishTime>07/23/2016 00:26:26</publishTime>
     </File>
     <File Include="Views/TMS/Repair.cshtml">
-      <publishTime>06/29/2016 23:03:55</publishTime>
+      <publishTime>07/23/2016 02:43:05</publishTime>
     </File>
     <File Include="Views/TMS/RepairCommit.cshtml">
       <publishTime>06/29/2016 20:45:21</publishTime>
     </File>
     <File Include="Views/TMS/RepairDetail.cshtml">
-      <publishTime>06/30/2016 02:42:20</publishTime>
+      <publishTime>07/11/2016 14:48:42</publishTime>
     </File>
     <File Include="Views/TMS/RepairInfo.cshtml">
-      <publishTime>06/30/2016 01:50:29</publishTime>
+      <publishTime>08/16/2016 23:20:52</publishTime>
+    </File>
+    <File Include="Views/TMS/RepairPrint.cshtml">
+      <publishTime>08/16/2016 23:21:50</publishTime>
     </File>
     <File Include="Views/TMS/Route.cshtml">
       <publishTime>05/31/2016 01:28:44</publishTime>
     </File>
     <File Include="Views/TMS/RouteDetail.cshtml">
-      <publishTime>06/03/2016 11:36:15</publishTime>
+      <publishTime>03/06/2016 11:36:15</publishTime>
     </File>
     <File Include="Views/TMS/rTest.cshtml">
       <publishTime>04/19/2016 00:27:06</publishTime>
     </File>
+    <File Include="Views/TMS/SCloseJobCommit.cshtml">
+      <publishTime>08/08/2016 11:42:04</publishTime>
+    </File>
+    <File Include="Views/TMS/SCloseJobDetail.cshtml">
+      <publishTime>08/15/2016 02:02:11</publishTime>
+    </File>
     <File Include="Views/TMS/Stock.cshtml">
-      <publishTime>06/03/2016 11:52:24</publishTime>
+      <publishTime>03/06/2016 11:52:24</publishTime>
     </File>
     <File Include="Views/TMS/StockDetail.cshtml">
-      <publishTime>06/03/2016 12:18:33</publishTime>
+      <publishTime>03/06/2016 12:18:33</publishTime>
     </File>
     <File Include="Views/TMS/Sub.cshtml">
       <publishTime>05/23/2016 03:34:10</publishTime>
     </File>
     <File Include="Views/TMS/SubDetail.cshtml">
-      <publishTime>06/03/2016 11:40:30</publishTime>
+      <publishTime>03/06/2016 11:40:30</publishTime>
     </File>
     <File Include="Views/TMS/test.cshtml">
       <publishTime>06/09/2016 22:11:59</publishTime>

@@ -4,15 +4,15 @@
   
 }
 
-<section class="content-header">
+@*<section class="content-header">
     <h1>
-        บันทึกการแจ้งซ่อม
+      
     </h1>
     @*<ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Dashboard</li>
-        </ol>*@
-</section>
+        </ol>
+</section>*@
 <section class="content">
 @foreach (var item in Model)
 {
@@ -27,7 +27,7 @@
                     @{DateTime dDate = DateTime.Now;}
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">&nbsp;</h3>
+                            <h3 class="box-title">บันทึกการแจ้งซ่อม</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
@@ -372,7 +372,7 @@
                                                 <option data-ng-value="23:45">23:45</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-3">
+                                        @*<div class="col-md-3">
                                             <label>วันที่ซ่อมเสร็จ</label>
                                             <div class="input-group date">
 
@@ -487,7 +487,7 @@
                                                 <option data-ng-value="23:30">23:30</option>
                                                 <option data-ng-value="23:45">23:45</option>
                                             </select>
-                                        </div>
+                                        </div>*@
                                     </div>
                                     &nbsp;
                                     <div class="form-group">
@@ -555,7 +555,7 @@
 
                                 <!-- /.box-body -->
                             </div>
-                            <div class="box box-success">
+                            @*<div class="box box-success">
 
                                 <div class="box-body">
 
@@ -586,7 +586,7 @@
                                                     <input id="SumNum" name="SumNum" type="hidden" class="form-control" value="0" onkeypress="return isNumberKey(event)">
                                                     <input id="SumPrice" name="SumPrice" type="hidden" class="form-control" value="0" onkeypress="return isNumberKey(event)">
                                                     <input type="button" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;" value="Add" onclick="addInput('dynamicInput');">
-                                                    @*    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">Add</button>*@
+                                                
                                                 </div>
 
 
@@ -615,23 +615,7 @@
                                                             &nbsp;
                                                         </div>
                                                     </div>
-                                                    <div id="dynamicInput">
-
-                                                        @*<div class="col-md-6">
-                                                            <input type="text" name="myDetail[]" class="form-control">
-                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <input type="text" name="myNum[]" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input type="text" name="myPrice[]" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input type="text" name="mySumPrice[]" class="form-control">
-                                                            &nbsp;
-                                                        </div>*@
-
-                                                    </div>
+                                                   
                                                     <div class="form-group">
                                                         <div class="col-md-4">
                                                             &nbsp;
@@ -658,7 +642,7 @@
                                 </div>
 
                                 <!-- /.box-body -->
-                            </div>
+                            </div>*@
                             <div class="box box-success">
 
                                 <div class="box-body">

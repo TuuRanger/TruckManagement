@@ -1,0 +1,162 @@
+﻿@model List<TMS.Models.JobInfo>
+@{
+    ViewBag.Title = "JobList";
+}
+
+<section class="content-header">
+    <h1>
+        บันทึกการปล่อยรถ
+
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+
+    <!-- Info boxes -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Job List</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr style="background-color:#00acd6">
+                                    <th align="center"><font color="#fff">No.</font></th>
+                                    <th align="center"><font color="#fff">Customer</font></th>
+                                    <th align="center"><font color="#fff">ประเภท</font></th>
+                                    <th align="center"><font color="#fff">เที่ยวไป</font></th>
+                                    <th align="center"><font color="#fff">จำนวน</font></th>
+                                    <th align="center"><font color="#fff">เที่ยวกลับ</font></th>
+                                    <th align="center"><font color="#fff">จำนวน</font></th>
+                                    <th align="center"><font color="#fff">วันที่</font></th>
+                                    <th align="center"><font color="#fff">รายละเอียด</font></th>
+                                    <th align="center"><font color="#fff">Status</font></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    String Status = "";
+                                    String SClass = "";
+                                    if (item.JStatus == 1)
+                                    {
+                                        Status = "New";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (item.JStatus == 2)
+                                    {
+                                        Status = "Queue";
+                                        SClass = "label label-warning";
+                                    }
+                                    else if (item.JStatus == 3)
+                                    {
+                                        Status = "Delivered";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (item.JStatus == 4)
+                                    {
+                                        Status = "Finish";
+                                        SClass = "label label-info";
+                                    }
+                                    else if (item.JStatus == 5)
+                                    {
+                                        Status = "Cancel";
+                                        SClass = "label label-danger";
+                                    }
+                                    string OrderName = "";
+                                    string SDate = "";
+                                    if (item.OrderType == 1)
+                                    {
+                                        OrderName = "Praxair";
+                                        SDate = item.ReceiveDate.ToString("dd/MM/yyyy");
+                                    }
+                                    else if (item.OrderType == 2)
+                                    {
+                                        OrderName = "Trucking";
+                                        SDate = item.TPackDate1.ToString("dd/MM/yyyy");
+                                    }
+                                    else if (item.OrderType == 3)
+                                    {
+                                        OrderName = "Import/Export";
+                                        SDate = item.IEReceiveDate.ToString("dd/MM/yyyy");
+                                    }
+
+                                    string SText = "";
+                                    if (item.JobType == 1)
+                                    {
+                                        SText = "เที่ยวเดียว";
+                                    }
+                                    else
+                                    {
+                                        SText = "ไปกลับ";
+                                    }
+
+                                    <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+                                        <td><a href="~/TMS/OpenJobDetail?JobID=@item.JobID">@item.JobID</a></td>
+                                        <td>@item.CName</td>
+                                        <td>@SText</td>
+                                        <td>@item.SOID</td>
+                                        <td>@item.SNum</td>
+                                        <td>@item.ROID</td>
+                                        <td>@item.RNum</td>
+                                        <td>@SDate</td>
+                                        @if (@item.SType == 1)
+                                        {
+                                            <td>พขร.: @item.DTitle @item.DFirstName &nbsp; @item.DLastName<br />หัวลาก : @item.License <br />หางลาก : @item.HitchLicense</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.SCName</td>
+                                        }
+                                        <td><span class="@SClass">@Status</span></td>
+                                        @*<td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">Mr.zzzzz xxxxxx</div>
+                                            </td>*@
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                @*<div class="box-footer clearfix">
+                    <a href="~/TMS/NewJob" class="btn btn-sm btn-info btn-flat pull-right">Place New Job</a>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">View All JObs</a>
+                </div>*@
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+</section>
+<script type="text/javascript">
+
+    var TableBackgroundNormalColor = "#ffffff";
+    var TableBackgroundMouseoverColor = "#F3FCFE";
+
+    // These two functions need no customization.
+    function ChangeBackgroundColor(row) {
+        TableBackgroundNormalColor = row.style.backgroundColor;
+        row.style.backgroundColor = TableBackgroundMouseoverColor;
+    }
+    function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
+</script>

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TMS.Models.MDriver>
+@{
     ViewBag.Title = "Drivers";
 }
 
@@ -15,32 +16,105 @@
     <section class="content">
 
         <div class="row">
+@foreach (var item in Model)
+{
+    String Status = "";
+    String SClass = "";
+    String MStatus = "";
+    String TStatus = "";
+    if (item.Status == "y")
+    {
+        Status = "พนักงานปัจจุบัน";
+        SClass = "label label-success";
+    }
+    else if (item.Status == "n")
+    {
+        Status = "ลาออก";
+        SClass = "label label-danger";
+    }
+    
+    if(item.MarriageStatusID == 1)
+    {
+        MStatus = "โสด";
+    }
+    else if (item.MarriageStatusID == 2)
+    {
+        MStatus = "สมรม จดทะเบียน";
+    }
+    else if (item.MarriageStatusID == 3)
+    {
+        MStatus = "สมรส ไม่ได้จดทะเบียน";
+    }
+    else if (item.MarriageStatusID == 4)
+    {
+        MStatus = "แยกกันอยู่";
+    }
+    else if (item.MarriageStatusID == 5)
+    {
+        MStatus = "หย่า";
+    }
+    else if (item.MarriageStatusID == 6)
+    {
+        MStatus = "หม้าย";
+    }
+
+    if (item.MilitaryStatusID == 1)
+    {
+        TStatus = "ยังไม่ได้เกณ์";
+        
+    }
+    else if (item.MilitaryStatusID == 2)
+    {
+        TStatus = "ได้รับการยกเว้น";
+    }
+    else if (item.MilitaryStatusID == 3)
+    {
+        TStatus = "ผ่านการเกณฑ์แล้ว";
+    }
+    int Age = (
+     Int32.Parse(DateTime.Today.ToString("yyyyMMdd")) -
+     Int32.Parse(@item.DOB.ToString("yyyyMMdd"))) / 10000;
+
+    int FAge = (
+    Int32.Parse(DateTime.Today.ToString("yyyyMMdd")) -
+    Int32.Parse(@item.DOBFather.ToString("yyyyMMdd"))) / 10000;
+
+    int MAge = (
+    Int32.Parse(DateTime.Today.ToString("yyyyMMdd")) -
+    Int32.Parse(@item.DOBMother.ToString("yyyyMMdd"))) / 10000;
+    
             <div class="col-md-4">
 
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+                        <img class="profile-user-img img-responsive img-circle" src="~/Images/Driver/@item.ImgDriver" alt="User profile picture">
 
-                        <h3 class="profile-username text-center">สมชาย สุวรรณพงษ์</h3>
+                        <h3 class="profile-username text-center">@item.Title @item.FirstName &nbsp; @item.LastName (@item.NickName)</h3>
 
-                        <p class="text-muted text-center">087-6115341</p>
+                        <p class="text-muted text-center">@item.Mobile</p>
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>รหัสพนักงาน</b> <a class="pull-right">001</a>
+                                <b>สถานะ</b> <a class="pull-right"><span class="@SClass">@Status</span></a>
                             </li>
                             <li class="list-group-item">
-                                <b>เลขที่ใบขับขี่</b> <a class="pull-right">รย.00115/51</a>
+                                <b>รหัสพนักงาน</b> <a class="pull-right">@item.EmpID</a>
                             </li>
                             <li class="list-group-item">
-                                <b>ประเภทใบขับขี่</b> <a class="pull-right">ท.4</a>
+                                <b>เลขที่ใบขับขี่</b> <a class="pull-right">@item.DriverLicence</a>
                             </li>
                             <li class="list-group-item">
-                                <b>วันอนุญาต</b> <a class="pull-right">7/5/2557</a>
+                                <b>ประเภทใบขับขี่</b> <a class="pull-right">@item.Type</a>
                             </li>
                             <li class="list-group-item">
-                                <b>วันหมดอายุ</b> <a class="pull-right">7/4/2560</a>
+                                <b>วันอนุญาต</b> <a class="pull-right">@item.DIssueDate.ToString("dd/MM/yyyy")</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>วันหมดอายุ</b> <a class="pull-right">@item.DExpireDate.ToString("dd/MM/yyyy")</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>รถหัวลาก</b> <a class="pull-right">@item.TruckLicense</a>
                             </li>
                         </ul>
 
@@ -63,53 +137,53 @@
                     <div class="box-body">
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>วันเกิด</b> <a class="pull-right">1/1/2511</a>
+                                <b>วันเกิด</b> <a class="pull-right">@item.DOB.ToString("dd/MM/yyyy")</a>
                             </li>
                             <li class="list-group-item">
-                                <b>อายุ (ปี)</b> <a class="pull-right">47</a>
+                                <b>อายุ (ปี)</b> <a class="pull-right">@Age</a>
                             </li>
                             <li class="list-group-item">
-                                <b>เชื้อชาติ</b> <a class="pull-right">ไทย</a>
+                                <b>เชื้อชาติ</b> <a class="pull-right">@item.Race</a>
                             </li>
                             <li class="list-group-item">
-                                <b>สัญชาติ</b> <a class="pull-right">ไทย</a>
+                                <b>สัญชาติ</b> <a class="pull-right">@item.Nationality</a>
                             </li>
                             <li class="list-group-item">
-                                <b>ศาสนา</b> <a class="pull-right">พุทธ</a>
+                                <b>ศาสนา</b> <a class="pull-right">@item.Religion</a>
                             </li>
                             <li class="list-group-item">
-                                <b>บัตรประชาชน</b> <a class="pull-right">3210200266031</a>
+                                <b>บัตรประชาชน</b> <a class="pull-right">@item.IDCard</a>
                             </li>
                             <li class="list-group-item">
-                                <b>วันออกบัตร</b> <a class="pull-right">8/13/2556</a>
+                                <b>วันออกบัตร</b> <a class="pull-right">@item.IssuseDate.ToString("dd/MM/yyyy")</a>
                             </li>
                             <li class="list-group-item">
-                                <b>วันหมดอายุ</b> <a class="pull-right">12/31/2564</a>
+                                <b>วันหมดอายุ</b> <a class="pull-right">@item.ExpireDate.ToString("dd/MM/yyyy")</a>
                             </li>
                             <li class="list-group-item">
-                                <b>ส่วนสูง</b> <a class="pull-right">169</a>
+                                <b>ส่วนสูง</b> <a class="pull-right">@item.Height</a>
                             </li>
                             <li class="list-group-item">
-                                <b>น้ำหนัก</b> <a class="pull-right">65</a>
+                                <b>น้ำหนัก</b> <a class="pull-right">@item.Weight</a>
                             </li>
                             <li class="list-group-item">
-                                <b>สถานภาพสมรส</b> <a class="pull-right">แต่งงาน</a>
+                                <b>สถานภาพสมรส</b> <a class="pull-right">@MStatus</a>
                             </li>
                             <li class="list-group-item">
-                                <b>สถานภาพทางทหาร</b> <a class="pull-right">ปลดเป็นกองหนุน</a>
+                                <b>สถานภาพทางทหาร</b> <a class="pull-right">@TStatus</a>
                             </li>
                         </ul>
-                        <strong><i class="fa fa-book margin-r-5"></i>ระดับการศึกษา</strong>
+                        <strong><i class="fa fa-book margin-r-5"></i>การศึกษา</strong>
 
                         <p class="text-muted">
-                          
+                          @item.Education
                         </p>
 
                         <hr>
 
                         <strong><i class="fa fa-map-marker margin-r-5"></i>ที่อยู่</strong>
 
-                        <p class="text-muted">44 หมู่ 5 ตำบลสำนักท้อน อำเภอบ้านฉาง จังหวัดระยอง</p>
+                        <p class="text-muted">@item.Address <br /> @item.Province &nbsp; @item.ZipCode</p>
 
                        
                     </div>
@@ -128,24 +202,51 @@
                     <!-- /.box-header -->
                     <div class="box-body">                      
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>บิดา</strong>
-                        <p class="text-muted">นายชาย สุวรรณพงษ์</p>
-                        <p class="text-muted">อายุ - ปี</p>
-                        <p class="text-muted">อาชีพ เสียชีวิต</p>
+                        <p class="text-muted">@item.FatherFullName</p>
+                        <p class="text-muted">อาชีพ &nbsp; @item.FDetail</p>
                         <hr>
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>มารดา</strong>
-                        <p class="text-muted">นางโกสุม สุวรรณพงษ์</p>
-                        <p class="text-muted">อายุ - ปี</p>
-                        <p class="text-muted">อาชีพ เสียชีวิต</p>
+                        <p class="text-muted">@item.MotherFullName</p>
+                        <p class="text-muted">อายุ &nbsp; @item.MDetail</p>
                         <hr>
                         <strong><i class="fa fa-file-text-o margin-r-5"></i>ภรรยา</strong>
-                        <p class="text-muted">นางหาลีม๊ะ สุวรรณพงษ์</p>
-                        <p class="text-muted">สถานที่ทำงาน -</p>
-                        <p class="text-muted">ตำแหน่ง</p>
-                        <p class="text-muted">จำนวนบุตร 2 คน</p>
+                        <p class="text-muted">@item.WifeFullName</p>
+                        <p class="text-muted">สถานที่ทำงาน &nbsp; @item.Workplace</p>
+                        <p class="text-muted">ตำแหน่ง &nbsp; @item.WPosition</p>
+                        <p class="text-muted">จำนวนบุตร &nbsp; @item.Child &nbsp; คน</p>
           
                     </div>
                     <!-- /.box-body -->
                 </div>
+
+                @if(item.Status == "n")
+                { 
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">สาเหตุการลาออก</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <strong><i class="fa fa-file-text-o margin-r-5"></i>วันที่</strong>
+                        <p class="text-muted">@item.DeleteDate.ToString("dd/MM/yyyy")</p>
+                        
+                        <hr>
+                        <strong><i class="fa fa-book margin-r-5"></i>รายละเอียด</strong>
+
+                        <p class="text-muted">
+                            @item.Remark
+                        </p>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                }
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">ใบขับขี่</h3>
@@ -160,17 +261,13 @@
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label>ไฟล์ใบขับขี่</label>
-                                <input type="file" id="exampleInputFile">
+                             
+                                <a href="~/Images/Driver/@item.FileDriver" target="_blank"><img class="profile-user-img img-responsive img-bordered" src="~/Images/Driver/@item.FileDriver" alt="User profile picture"></a>
                             </div>
 
                         </div>
                     </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-primary btn-flat pull-right">Add</a>
-                        @*    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
-                    </div>
+                  
                 </div>
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -186,17 +283,14 @@
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label>ไฟล์บัตรประชาชน</label>
-                                <input type="file" id="exampleInputFile">
+                              
+                                <a href="~/Images/Driver/@item.FileIDCard" target="_blank"><img class="profile-user-img img-responsive img-bordered" src="~/Images/Driver/@item.FileIDCard" alt="User profile picture"></a>
                             </div>
 
                         </div>
                     </div>
                     <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-primary btn-flat pull-right">Add</a>
-                        @*    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
-                    </div>
+                 
                 </div>
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -212,20 +306,18 @@
                     <div class="box-body">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label>ไฟล์ทะเบียนบ้าน</label>
-                                <input type="file" id="exampleInputFile">
+                             
+                                <a href="~/Images/Driver/@item.FileRegistration" target="_blank"><img class="profile-user-img img-responsive img-bordered" src="~/Images/Driver/@item.FileRegistration" alt="User profile picture"></a>
                             </div>
 
                         </div>
                     </div>
                     <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-primary btn-flat pull-right">Add</a>
-                        @*    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
-                    </div>
+                 
                 </div>
                 <!-- /.box -->
             </div>
+}
             <div class="col-md-8">
                 <div class="box box-info">
                     <div class="box-header with-border">

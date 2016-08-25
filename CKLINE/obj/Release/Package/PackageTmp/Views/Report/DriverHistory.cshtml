@@ -1,0 +1,159 @@
+﻿@model IEnumerable<CKLINE.Models.DriverHistory>
+
+@{
+    ViewBag.Title = "DriverHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <%= ViewData["ReportNaem"]  %>
+
+    </h1>
+
+</section>
+<section class="content">
+    <div class="box">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">ค้นหา</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="date" class="col-sm-2 control-label">วันที่</label>
+                            <div class="col-sm-10">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    <input type='text' class="form-control" id="uxdatetimepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Type" class="col-sm-2 control-label">ประเภท</label>
+                            <div class="col-sm-10">
+                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <option selected="selected">Praxair</option>
+                                    <option>Praxair</option>
+                                    <option>Trucking</option>
+                                    <option>Import/Export</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">พนักงานขับรถ</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="พนักงานขับรถ">
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div><!-- /.box-footer -->
+                </form>
+            </div><!-- /.box-body -->
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายละเอียด</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EmpID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Date)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Detail)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+
+
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmpID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LastName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Detail)
+                                            </td>
+                                        </tr> 
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="#" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
+                    <a href="@Url.Action("DriverHistoryReport", "Report",new { reportName= "@ViewBag.Data1" })" class="btn btn-sm btn-default btn-flat pull-left">View</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('#uxdatetimepicker').daterangepicker({
+            "locale": {
+                "format": "DD/MM/YYYY"
+            },
+            "startDate": moment().format("DD/MM/YYYY"),
+            "endDate": moment().add(30, "days").calendar()
+        });
+    });
+</script>

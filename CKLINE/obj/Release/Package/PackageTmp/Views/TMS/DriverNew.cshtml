@@ -1,0 +1,372 @@
+﻿@model List<TMS.Models.TruckList>
+@{
+    ViewBag.Title = "DriverNew";
+}
+<section class="content-header">
+    <h1>
+        เพิ่มข้อมูลพนักงานขับรถใหม่
+    </h1>
+    @*<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>*@
+</section>
+<section class="content">
+    <form action="~/TMS/DriverNewCommit" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12">
+                @{
+                    DateTime dDate = DateTime.Now;
+                }
+
+
+                <!-- general form elements disabled -->
+                <div id="Type1">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">&nbsp;</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                            <!-- text input -->
+
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label>รหัสพนักงาน</label>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-md-10">
+                                    <label>รูปถ่ายพนักงาน</label>
+                                    <input type="file" id="ImgDriver" name="ImgDriver">
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label>คำนำหน้า</label>
+                                    <select class="form-control" id="Title" name="Title">
+
+                                        <option value="นาย">นาย</option>
+                                        <option value="นาง">นาง</option>
+                                        <option value="นางสาว">นางสาว</option>
+
+
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>ชื่อ</label>
+                                    <input type="text" id="FirstName" name="FirstName" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>นามสกุล</label>
+                                    <input type="text" id="LastName" name="LastName" class="form-control">
+                                </div>
+                                <div class="col-md-2">
+                                    <label>ชื่อเล่น</label>
+                                    <input type="text" id="NickName" name="NickName" class="form-control">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+
+
+                                <div class="col-md-3">
+                                    <label>เลขที่ใบขับขี่</label>
+                                    <input type="text" id="DriverLicence" name="DriverLicence" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>ประเภทใบขับขี่</label>
+                                    <input type="text" id="Type" name="Type" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>สำเนาใบขับขี่</label>
+                                    <input type="file" id="FileDriver" name="FileDriver">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+
+                                <div class="col-md-3">
+                                    <label>วันอนุญาติ</label>
+                                    <div class="input-group date">
+
+                                        <input type="text" class="form-control" name="DIssueDate" id="DIssueDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>วันหมดอายุ</label>
+                                    <div class="input-group date">
+
+                                        <input type="text" class="form-control" name="DExpireDate" id="DExpireDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>รถหัวลากที่ขับ</label>
+                                    <select class="form-control" id="Truck" name="Truck">
+                                        <option value="">-- Select Truck --</option>
+                                        @foreach (var iTruck in Model)
+                                        {
+                                            if (@iTruck.DFirstName == null)
+                                            {
+                                                <option value="@iTruck.TID">@iTruck.License &nbsp; @iTruck.Brand</option>
+                                            }
+                                        }
+                                    </select>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <hr />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-md-3">
+                                    <label>วันเดือนปีเกิด</label>
+                                    <div class="input-group date">
+
+                                        <input type="text" class="form-control" name="DOB" id="DOB" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>เชื้อชาติ</label>
+                                    <input type="text" id="Race" name="Race" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>สัญชาติ</label>
+                                    <input type="text" id="Nationality" name="Nationality" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>ศาสนา</label>
+                                    <input type="text" id="Religion" name="Religion" class="form-control">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+
+
+                                <div class="col-md-3">
+                                    <label>เลขบัตรประชาชน</label>
+                                    <input type="text" id="IDCard" name="IDCard" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>วันออกบัตร</label>
+                                    <div class="input-group date">
+
+                                        <input type="text" class="form-control" name="IssuseDate" id="IssuseDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>วันหมดอายุ</label>
+                                    <div class="input-group date">
+
+                                        <input type="text" class="form-control" name="ExpireDate" id="ExpireDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>สำเนาบัตรประชาชน</label>
+                                    <input type="file" id="FileIDCard" name="FileIDCard">
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+
+
+                                <div class="col-md-3">
+                                    <label>ส่วนสูง (ซม.)</label>
+                                    <input type="text" id="Height" name="Height" class="form-control" onkeypress="return isNumberKey(event)">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>น้ำหนัก (กก.)</label>
+                                    <input type="text" id="Weight" name="Weight" class="form-control" onkeypress="return isNumberKey(event)">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>สถานะภาพสมรส</label>
+                                    <select class="form-control" id="MarriageStatusID" name="MarriageStatusID">
+
+                                        <option value="1">โสด</option>
+                                        <option value="2">สมรม จดทะเบียน</option>
+                                        <option value="3">สมรส ไม่ได้จดทะเบียน</option>
+                                        <option value="4">แยกกันอยู่</option>
+                                        <option value="5">หย่า</option>
+                                        <option value="6">หม้าย</option>
+
+
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>สถานะภาพทางทหาร</label>
+                                    <select class="form-control" id="MilitaryStatusID" name="MilitaryStatusID">
+
+                                        <option value="1">ยังไม่ได้เกณ์</option>
+                                        <option value="2">ได้รับการยกเว้น</option>
+                                        <option value="3">ผ่านการเกณฑ์แล้ว</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label>การศึกษา</label>
+                                    <input type="text" id="Education" name="Education" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>สำเนาทะเบียนบ้าน</label>
+                                    <input type="file" id="FileRegistration" name="FileRegistration">
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label>ที่อยู่</label>
+                                    <input type="text" id="Address" name="Address" class="form-control">
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+
+
+                                <div class="col-md-3">
+                                    <label>เบอร์มือถือ</label>
+                                    <input type="text" id="Mobile" name="Mobile" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>ผู้ติดต่อกรณีฉุกเฉิน</label>
+                                    <input type="text" id="EmergencyContact" name="EmergencyContact" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>โทรศัพท์</label>
+                                    <input type="text" id="EmergencyTelephone" name="EmergencyTelephone" class="form-control">
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <hr />
+                                </div>
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+
+
+                                <div class="col-md-3">
+                                    <label>ชื่อบิดา</label>
+                                    <input type="text" id="FatherFullName" name="FatherFullName" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>อาชีพ</label>
+                                    <input type="text" id="FDetail" name="FDetail" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>ชื่อมารดา</label>
+                                    <input type="text" id="MotherFullName" name="MotherFullName" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>อาชีพ</label>
+                                    <input type="text" id="MDetail" name="MDetail" class="form-control">
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+
+
+                                <div class="col-md-3">
+                                    <label>ชื่อภรรยา</label>
+                                    <input type="text" id="WifeFullName" name="WifeFullName" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>สถานที่ทำงาน</label>
+                                    <input type="text" id="Workplace" name="Workplace" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>ตำแหน่ง</label>
+                                    <input type="text" id="WPosition" name="WPosition" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label>จำนวนบุตร</label>
+                                    <input type="text" id="Child" name="Child" class="form-control" onkeypress="return isNumberKey(event)">
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="box-footer clearfix">
+
+                                        <button type="submit" name="Save" id="Save" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;" onclick="return confirm('Are you sure you want to Insert?');">SAVE</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        </form>
+</section>
+<script language="JavaScript" type="text/javascript">
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+    $(function () {
+        $('button [name=Save]').click(function(){
+        return confirm('Are you sure');
+});
+    });
+ </script>

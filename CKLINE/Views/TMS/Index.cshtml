@@ -31,84 +31,84 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div class="table-responsive">
-                                <table class="table no-margin">
+                            <div class="col-xs-12 table-responsive">
+                                <table class="table table-striped">
                                     <thead>
-                                        <tr>
-                                            <th>Order ID</th>
-                                            <th>Customer</th>
-                                            <th>From</th>
-                                            <th>To</th>
-                                            <th>Type</th>
-                                            <th>จำนวน</th>
-                                            <th>วันที่</th>
-                                            <th>Status</th>
-                                          @*  <th>Driver</th>*@
+                                        <tr style="background-color:#00acd6">
+                                            <th align="center"><font color="#fff">Order ID</font></th>
+                                            <th align="center"><font color="#fff">Customer</font></th>
+                                            <th align="center"><font color="#fff">From</font></th>
+                                            <th align="center"><font color="#fff">To</font></th>
+                                            <th align="center"><font color="#fff">Type</font></th>
+                                            <th align="center"><font color="#fff">จำนวน</font></th>
+                                            <th align="center"><font color="#fff">วันที่</font></th>
+                                            <th align="center"><font color="#fff">Status</font></th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-@foreach (var item in Model)
-{
-    String Status = "";
-    String SClass = "";
-    if (item.Status == 1)
-    {
-        Status = "New";
-        SClass = "label label-success";
-    }
-    else if (item.Status == 2)
-    {
-        Status = "Queue";
-        SClass = "label label-warning";
-    }
-    else if (item.Status == 3)
-    {
-        Status = "Delivered";
-        SClass = "label label-primary";
-    }
-    else if (item.Status == 4)
-    {
-        Status = "Finish";
-        SClass = "label label-info";
-    }
-    else if (item.Status == 5)
-    {
-        Status = "Cancel";
-        SClass = "label label-danger";
-    }
-    string OrderName = "";
-    string SDate = "";
-   if (item.OrderType == 1)
-    {
-        OrderName = "Praxair";
-        SDate = item.ReceiveDate.ToString("dd/MM/yyyy");
-    }
-    else if (item.OrderType == 2)
-    {
-        OrderName = "Trucking";
-        SDate = item.TPackDate1.ToString("dd/MM/yyyy");
-    }
-    else if (item.OrderType == 3)
-    {
-        OrderName = "Import/Export";
-        SDate = item.IEReceiveDate.ToString("dd/MM/yyyy");
-    }
+                                        @foreach (var item in Model)
+                                        {
+                                            String Status = "";
+                                            String SClass = "";
+                                            if (item.Status == 1)
+                                            {
+                                                Status = "New";
+                                                SClass = "label label-success";
+                                            }
+                                            else if (item.Status == 2)
+                                            {
+                                                Status = "Queue";
+                                                SClass = "label label-warning";
+                                            }
+                                            else if (item.Status == 3)
+                                            {
+                                                Status = "Delivered";
+                                                SClass = "label label-primary";
+                                            }
+                                            else if (item.Status == 4)
+                                            {
+                                                Status = "Finish";
+                                                SClass = "label label-info";
+                                            }
+                                            else if (item.Status == 5)
+                                            {
+                                                Status = "Cancel";
+                                                SClass = "label label-danger";
+                                            }
+                                            string OrderName = "";
+                                            string SDate = "";
+                                            if (item.OrderType == 1)
+                                            {
+                                                OrderName = "Praxair";
+                                                SDate = item.ReceiveDate.ToString("dd/MM/yyyy");
+                                            }
+                                            else if (item.OrderType == 2)
+                                            {
+                                                OrderName = "Trucking";
+                                                SDate = item.TPackDate1.ToString("dd/MM/yyyy");
+                                            }
+                                            else if (item.OrderType == 3)
+                                            {
+                                                OrderName = "Import/Export";
+                                                SDate = item.IEReceiveDate.ToString("dd/MM/yyyy");
+                                            }
 
-                                <tr>
-                                            <td><a href="~/TMS/OrderInfo?OID=@item.OrderID">@item.OrderID</a></td> 
-                                            <td>@item.CName</td>
-                                            <td>@item.RFromDetail</td>
-                                            <td>@item.RToDetail</td>
-                                            <td>@OrderName</td>
-                                            <td>@item.NumberOrder</td>
-                                            <td>@SDate</td>
-                                    <td><span class="@SClass">@Status</span></td>
-                                            @*<td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">Mr.zzzzz xxxxxx</div>
-                                            </td>*@
-                                        </tr>
-}
-        
+                                            <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+                                                <td><a href="~/TMS/OrderInfo?OID=@item.OrderID">@item.OrderID</a></td>
+                                                <td>@item.CName</td>
+                                                <td>@item.RFromDetail</td>
+                                                <td>@item.RToDetail</td>
+                                                <td>@OrderName</td>
+                                                <td>@item.NumberOrder</td>
+                                                <td>@SDate</td>
+                                                <td><span class="@SClass">@Status</span></td>
+                                                @*<td>
+                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">Mr.zzzzz xxxxxx</div>
+                                                    </td>*@
+                                            </tr>
+                                        }
+
                                     </tbody>
                                 </table>
                             </div>
@@ -359,3 +359,15 @@
             <!-- /.col -->
         @*</div>*@
         </section>
+<script type="text/javascript">
+
+    var TableBackgroundNormalColor = "#ffffff";
+    var TableBackgroundMouseoverColor = "#F3FCFE";
+
+    // These two functions need no customization.
+    function ChangeBackgroundColor(row) {
+        TableBackgroundNormalColor = row.style.backgroundColor;
+        row.style.backgroundColor = TableBackgroundMouseoverColor;
+    }
+    function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
+</script>

@@ -30,7 +30,6 @@ namespace CKLINE
         public virtual DbSet<Agent> Agents { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<DeliveryPrice> DeliveryPrices { get; set; }
-        public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<FuelType> FuelTypes { get; set; }
         public virtual DbSet<Garage> Garages { get; set; }
         public virtual DbSet<GasRefill> GasRefills { get; set; }
@@ -49,11 +48,18 @@ namespace CKLINE
         public virtual DbSet<Tire> Tires { get; set; }
         public virtual DbSet<TireChange> TireChanges { get; set; }
         public virtual DbSet<TrainingHistory> TrainingHistories { get; set; }
-        public virtual DbSet<Truck> Trucks { get; set; }
         public virtual DbSet<WorkingHistory> WorkingHistories { get; set; }
-        public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Repair> Repairs { get; set; }
         public virtual DbSet<RepairDetail> RepairDetails { get; set; }
+        public virtual DbSet<Shipper> Shippers { get; set; }
+        public virtual DbSet<Job> Jobs { get; set; }
+        public virtual DbSet<JobDetail> JobDetails { get; set; }
+        public virtual DbSet<Transfer> Transfers { get; set; }
+        public virtual DbSet<TransferOli> TransferOlis { get; set; }
+        public virtual DbSet<TransferOTH> TransferOTHs { get; set; }
+        public virtual DbSet<TransferWay> TransferWays { get; set; }
+        public virtual DbSet<Truck> Trucks { get; set; }
+        public virtual DbSet<Driver> Drivers { get; set; }
     }
 }

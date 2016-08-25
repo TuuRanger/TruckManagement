@@ -38,6 +38,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="TMSModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -72,50 +73,6 @@
           <ScalarProperty Name="RoutID" ColumnName="RoutID" />
           <ScalarProperty Name="AgentID" ColumnName="AgentID" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Drivers">
-      <EntityTypeMapping TypeName="TMSModel.Driver">
-        <MappingFragment StoreEntitySet="Driver">
-          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
-          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-          <ScalarProperty Name="NickName" ColumnName="NickName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
-          <ScalarProperty Name="DriverLicence" ColumnName="DriverLicence" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="DIssueDate" ColumnName="DIssueDate" />
-          <ScalarProperty Name="DExpireDate" ColumnName="DExpireDate" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="Race" ColumnName="Race" />
-          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
-          <ScalarProperty Name="Religion" ColumnName="Religion" />
-          <ScalarProperty Name="IDCard" ColumnName="IDCard" />
-          <ScalarProperty Name="IssuseDate" ColumnName="IssuseDate" />
-          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="Height" ColumnName="Height" />
-          <ScalarProperty Name="MarriageStatusID" ColumnName="MarriageStatusID" />
-          <ScalarProperty Name="MilitaryStatusID" ColumnName="MilitaryStatusID" />
-          <ScalarProperty Name="Education" ColumnName="Education" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Province" ColumnName="Province" />
-          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-          <ScalarProperty Name="FatherFullName" ColumnName="FatherFullName" />
-          <ScalarProperty Name="DOBFather" ColumnName="DOBFather" />
-          <ScalarProperty Name="MotherFullName" ColumnName="MotherFullName" />
-          <ScalarProperty Name="DOBMother" ColumnName="DOBMother" />
-          <ScalarProperty Name="WifeFullName" ColumnName="WifeFullName" />
-          <ScalarProperty Name="Workplace" ColumnName="Workplace" />
-          <ScalarProperty Name="WPosition" ColumnName="WPosition" />
-          <ScalarProperty Name="Child" ColumnName="Child" />
-          <ScalarProperty Name="FileDriver" ColumnName="FileDriver" />
-          <ScalarProperty Name="FileIDCard" ColumnName="FileIDCard" />
-          <ScalarProperty Name="FileRegistration" ColumnName="FileRegistration" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -219,6 +176,8 @@
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="TMSModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
+          <ScalarProperty Name="RoutID" ColumnName="RoutID" />
           <ScalarProperty Name="TPackDate" ColumnName="TPackDate" />
           <ScalarProperty Name="ContainerType" ColumnName="ContainerType" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -250,6 +209,8 @@
     <EntitySetMapping Name="Routes">
       <EntityTypeMapping TypeName="TMSModel.Route">
         <MappingFragment StoreEntitySet="Route">
+          <ScalarProperty Name="DriverCost" ColumnName="DriverCost" />
+          <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FromDetail" ColumnName="FromDetail" />
           <ScalarProperty Name="FromProvince" ColumnName="FromProvince" />
@@ -424,49 +385,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Trucks">
-      <EntityTypeMapping TypeName="TMSModel.Truck">
-        <MappingFragment StoreEntitySet="Truck">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="HitchID" ColumnName="HitchID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="License" ColumnName="License" />
-          <ScalarProperty Name="Brand" ColumnName="Brand" />
-          <ScalarProperty Name="TruckType" ColumnName="TruckType" />
-          <ScalarProperty Name="Detail" ColumnName="Detail" />
-          <ScalarProperty Name="HitchLicense" ColumnName="HitchLicense" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="weightTruck" ColumnName="weightTruck" />
-          <ScalarProperty Name="WeightSum" ColumnName="WeightSum" />
-          <ScalarProperty Name="BrandEngine" ColumnName="BrandEngine" />
-          <ScalarProperty Name="NumberEngine" ColumnName="NumberEngine" />
-          <ScalarProperty Name="Position" ColumnName="Position" />
-          <ScalarProperty Name="NumberPresure" ColumnName="NumberPresure" />
-          <ScalarProperty Name="HosePower" ColumnName="HosePower" />
-          <ScalarProperty Name="NumWheel" ColumnName="NumWheel" />
-          <ScalarProperty Name="SizeWheel" ColumnName="SizeWheel" />
-          <ScalarProperty Name="TypeFuel" ColumnName="TypeFuel" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
-          <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
-          <ScalarProperty Name="RWeight" ColumnName="RWeight" />
-          <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
-          <ScalarProperty Name="RTax" ColumnName="RTax" />
-          <ScalarProperty Name="ICompany" ColumnName="ICompany" />
-          <ScalarProperty Name="INumber" ColumnName="INumber" />
-          <ScalarProperty Name="IExprieDate" ColumnName="IExprieDate" />
-          <ScalarProperty Name="IType" ColumnName="IType" />
-          <ScalarProperty Name="IPremium" ColumnName="IPremium" />
-          <ScalarProperty Name="IBroker" ColumnName="IBroker" />
-          <ScalarProperty Name="IContact" ColumnName="IContact" />
-          <ScalarProperty Name="IMobile" ColumnName="IMobile" />
-          <ScalarProperty Name="ACompany" ColumnName="ACompany" />
-          <ScalarProperty Name="ANumber" ColumnName="ANumber" />
-          <ScalarProperty Name="AExprieDate" ColumnName="AExprieDate" />
-          <ScalarProperty Name="APremium" ColumnName="APremium" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="WorkingHistories">
       <EntityTypeMapping TypeName="TMSModel.WorkingHistory">
         <MappingFragment StoreEntitySet="WorkingHistory">
@@ -476,27 +394,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Jobs">
-      <EntityTypeMapping TypeName="TMSModel.Job">
-        <MappingFragment StoreEntitySet="Job">
-          <ScalarProperty Name="SID" ColumnName="SID" />
-          <ScalarProperty Name="ContainerNo" ColumnName="ContainerNo" />
-          <ScalarProperty Name="ODID" ColumnName="ODID" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="JDate" ColumnName="JDate" />
-          <ScalarProperty Name="SType" ColumnName="SType" />
-          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
-          <ScalarProperty Name="HitchID" ColumnName="HitchID" />
-          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="TMSModel.Order">
         <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="IEReceiveTime" ColumnName="IEReceiveTime" />
+          <ScalarProperty Name="IESDistance" ColumnName="IESDistance" />
+          <ScalarProperty Name="IESCost" ColumnName="IESCost" />
+          <ScalarProperty Name="TRound4" ColumnName="TRound4" />
+          <ScalarProperty Name="TRound3" ColumnName="TRound3" />
+          <ScalarProperty Name="TRound2" ColumnName="TRound2" />
+          <ScalarProperty Name="TRound1" ColumnName="TRound1" />
+          <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
           <ScalarProperty Name="ContainerType4" ColumnName="ContainerType4" />
           <ScalarProperty Name="ContainerType3" ColumnName="ContainerType3" />
           <ScalarProperty Name="ContainerType2" ColumnName="ContainerType2" />
@@ -590,6 +498,258 @@
           <ScalarProperty Name="Num" ColumnName="Num" />
           <ScalarProperty Name="Detail" ColumnName="Detail" />
           <ScalarProperty Name="RepairNo" ColumnName="RepairNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shippers">
+      <EntityTypeMapping TypeName="TMSModel.Shipper">
+        <MappingFragment StoreEntitySet="Shipper">
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Position5" ColumnName="Position5" />
+          <ScalarProperty Name="Email5" ColumnName="Email5" />
+          <ScalarProperty Name="Contact5" ColumnName="Contact5" />
+          <ScalarProperty Name="Position4" ColumnName="Position4" />
+          <ScalarProperty Name="Email4" ColumnName="Email4" />
+          <ScalarProperty Name="Contact4" ColumnName="Contact4" />
+          <ScalarProperty Name="Position3" ColumnName="Position3" />
+          <ScalarProperty Name="Email3" ColumnName="Email3" />
+          <ScalarProperty Name="Contact3" ColumnName="Contact3" />
+          <ScalarProperty Name="Position2" ColumnName="Position2" />
+          <ScalarProperty Name="Email2" ColumnName="Email2" />
+          <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+          <ScalarProperty Name="Position1" ColumnName="Position1" />
+          <ScalarProperty Name="Email1" ColumnName="Email1" />
+          <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="TMSModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="RNum" ColumnName="RNum" />
+          <ScalarProperty Name="SNum" ColumnName="SNum" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="JDate" ColumnName="JDate" />
+          <ScalarProperty Name="SType" ColumnName="SType" />
+          <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="HitchID" ColumnName="HitchID" />
+          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+          <ScalarProperty Name="ROID" ColumnName="ROID" />
+          <ScalarProperty Name="SOID" ColumnName="SOID" />
+          <ScalarProperty Name="JobType" ColumnName="JobType" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobDetails">
+      <EntityTypeMapping TypeName="TMSModel.JobDetail">
+        <MappingFragment StoreEntitySet="JobDetail">
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ODID" ColumnName="ODID" />
+          <ScalarProperty Name="OID" ColumnName="OID" />
+          <ScalarProperty Name="JobType" ColumnName="JobType" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transfers">
+      <EntityTypeMapping TypeName="TMSModel.Transfer">
+        <MappingFragment StoreEntitySet="Transfer">
+          <ScalarProperty Name="WcarW" ColumnName="WcarW" />
+          <ScalarProperty Name="WGas" ColumnName="WGas" />
+          <ScalarProperty Name="WcarB" ColumnName="WcarB" />
+          <ScalarProperty Name="OMile" ColumnName="OMile" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AllIncome" ColumnName="AllIncome" />
+          <ScalarProperty Name="RIncome" ColumnName="RIncome" />
+          <ScalarProperty Name="SIncome" ColumnName="SIncome" />
+          <ScalarProperty Name="DriverCost" ColumnName="DriverCost" />
+          <ScalarProperty Name="DeliveryCost" ColumnName="DeliveryCost" />
+          <ScalarProperty Name="CRemark" ColumnName="CRemark" />
+          <ScalarProperty Name="COther" ColumnName="COther" />
+          <ScalarProperty Name="CWay" ColumnName="CWay" />
+          <ScalarProperty Name="COli" ColumnName="COli" />
+          <ScalarProperty Name="CMile" ColumnName="CMile" />
+          <ScalarProperty Name="RDistance" ColumnName="RDistance" />
+          <ScalarProperty Name="ROli" ColumnName="ROli" />
+          <ScalarProperty Name="ReturnTime" ColumnName="ReturnTime" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="ArriveTime" ColumnName="ArriveTime" />
+          <ScalarProperty Name="ArriveDate" ColumnName="ArriveDate" />
+          <ScalarProperty Name="CloseJobDate" ColumnName="CloseJobDate" />
+          <ScalarProperty Name="ORemark" ColumnName="ORemark" />
+          <ScalarProperty Name="OOther" ColumnName="OOther" />
+          <ScalarProperty Name="OWay" ColumnName="OWay" />
+          <ScalarProperty Name="OOli" ColumnName="OOli" />
+          <ScalarProperty Name="TransferTime" ColumnName="TransferTime" />
+          <ScalarProperty Name="TransferDate" ColumnName="TransferDate" />
+          <ScalarProperty Name="OpenJobDate" ColumnName="OpenJobDate" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferOlis">
+      <EntityTypeMapping TypeName="TMSModel.TransferOli">
+        <MappingFragment StoreEntitySet="TransferOli">
+          <ScalarProperty Name="GasID" ColumnName="GasID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OliSumPrice" ColumnName="OliSumPrice" />
+          <ScalarProperty Name="OliPrice" ColumnName="OliPrice" />
+          <ScalarProperty Name="OliNum" ColumnName="OliNum" />
+          <ScalarProperty Name="OliDetail" ColumnName="OliDetail" />
+          <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+          <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+          <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferOTHs">
+      <EntityTypeMapping TypeName="TMSModel.TransferOTH">
+        <MappingFragment StoreEntitySet="TransferOTH">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OTHSumPrice" ColumnName="OTHSumPrice" />
+          <ScalarProperty Name="OTHPrice" ColumnName="OTHPrice" />
+          <ScalarProperty Name="OTHNum" ColumnName="OTHNum" />
+          <ScalarProperty Name="OTHDetail" ColumnName="OTHDetail" />
+          <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+          <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+          <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransferWays">
+      <EntityTypeMapping TypeName="TMSModel.TransferWay">
+        <MappingFragment StoreEntitySet="TransferWay">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="WaySumPrice" ColumnName="WaySumPrice" />
+          <ScalarProperty Name="WayPrice" ColumnName="WayPrice" />
+          <ScalarProperty Name="WayNum" ColumnName="WayNum" />
+          <ScalarProperty Name="WayDetail" ColumnName="WayDetail" />
+          <ScalarProperty Name="CancelDate" ColumnName="CancelDate" />
+          <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+          <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trucks">
+      <EntityTypeMapping TypeName="TMSModel.Truck">
+        <MappingFragment StoreEntitySet="Truck">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="APremium" ColumnName="APremium" />
+          <ScalarProperty Name="AExprieDate" ColumnName="AExprieDate" />
+          <ScalarProperty Name="ANumber" ColumnName="ANumber" />
+          <ScalarProperty Name="ACompany" ColumnName="ACompany" />
+          <ScalarProperty Name="IMobile" ColumnName="IMobile" />
+          <ScalarProperty Name="IContact" ColumnName="IContact" />
+          <ScalarProperty Name="IBroker" ColumnName="IBroker" />
+          <ScalarProperty Name="IPremium" ColumnName="IPremium" />
+          <ScalarProperty Name="IType" ColumnName="IType" />
+          <ScalarProperty Name="IExprieDate" ColumnName="IExprieDate" />
+          <ScalarProperty Name="INumber" ColumnName="INumber" />
+          <ScalarProperty Name="ICompany" ColumnName="ICompany" />
+          <ScalarProperty Name="RTax" ColumnName="RTax" />
+          <ScalarProperty Name="ExprieDate" ColumnName="ExprieDate" />
+          <ScalarProperty Name="RWeight" ColumnName="RWeight" />
+          <ScalarProperty Name="ChassisNumber" ColumnName="ChassisNumber" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="TypeFuel" ColumnName="TypeFuel" />
+          <ScalarProperty Name="SizeWheel" ColumnName="SizeWheel" />
+          <ScalarProperty Name="NumWheel" ColumnName="NumWheel" />
+          <ScalarProperty Name="HosePower" ColumnName="HosePower" />
+          <ScalarProperty Name="NumberPresure" ColumnName="NumberPresure" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="NumberEngine" ColumnName="NumberEngine" />
+          <ScalarProperty Name="BrandEngine" ColumnName="BrandEngine" />
+          <ScalarProperty Name="WeightSum" ColumnName="WeightSum" />
+          <ScalarProperty Name="weightTruck" ColumnName="weightTruck" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="HitchLicense" ColumnName="HitchLicense" />
+          <ScalarProperty Name="HitchID" ColumnName="HitchID" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="TruckType" ColumnName="TruckType" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="License" ColumnName="License" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="TMSModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="DeleteDate" ColumnName="DeleteDate" />
+          <ScalarProperty Name="DeleteBy" ColumnName="DeleteBy" />
+          <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+          <ScalarProperty Name="EdittBy" ColumnName="EdittBy" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="InsertBy" ColumnName="InsertBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+          <ScalarProperty Name="FileRegistration" ColumnName="FileRegistration" />
+          <ScalarProperty Name="FileIDCard" ColumnName="FileIDCard" />
+          <ScalarProperty Name="FileDriver" ColumnName="FileDriver" />
+          <ScalarProperty Name="ImgDriver" ColumnName="ImgDriver" />
+          <ScalarProperty Name="Child" ColumnName="Child" />
+          <ScalarProperty Name="WPosition" ColumnName="WPosition" />
+          <ScalarProperty Name="Workplace" ColumnName="Workplace" />
+          <ScalarProperty Name="WifeFullName" ColumnName="WifeFullName" />
+          <ScalarProperty Name="MDetail" ColumnName="MDetail" />
+          <ScalarProperty Name="DOBMother" ColumnName="DOBMother" />
+          <ScalarProperty Name="MotherFullName" ColumnName="MotherFullName" />
+          <ScalarProperty Name="FDetail" ColumnName="FDetail" />
+          <ScalarProperty Name="DOBFather" ColumnName="DOBFather" />
+          <ScalarProperty Name="FatherFullName" ColumnName="FatherFullName" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="MilitaryStatusID" ColumnName="MilitaryStatusID" />
+          <ScalarProperty Name="MarriageStatusID" ColumnName="MarriageStatusID" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+          <ScalarProperty Name="IssuseDate" ColumnName="IssuseDate" />
+          <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Race" ColumnName="Race" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="DExpireDate" ColumnName="DExpireDate" />
+          <ScalarProperty Name="DIssueDate" ColumnName="DIssueDate" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DriverLicence" ColumnName="DriverLicence" />
+          <ScalarProperty Name="EmergencyTelephone" ColumnName="EmergencyTelephone" />
+          <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

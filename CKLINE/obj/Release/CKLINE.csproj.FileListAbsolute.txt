@@ -53,3 +53,7 @@ C:\Project\CKLINE\CKLINE\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Project\CKLINE\CKLINE\obj\Release\CKLINE.csprojResolveAssemblyReference.cache
 C:\Project\CKLINE\CKLINE\obj\Release\CKLINE.dll
 C:\Project\CKLINE\CKLINE\obj\Release\CKLINE.pdb
+C:\Project\CKLINE\CKLINE\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Project\CKLINE\CKLINE\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Project\CKLINE\CKLINE\bin\CrystalDecisions.ReportSource.dll
+C:\Project\CKLINE\CKLINE\bin\CrystalDecisions.Shared.dll

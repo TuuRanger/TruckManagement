@@ -23,5 +23,7 @@ namespace CKLINE
         public Nullable<int> Status { get; set; }
         public string ContainerType { get; set; }
         public Nullable<System.DateTime> TPackDate { get; set; }
+        public Nullable<int> RoutID { get; set; }
+        public Nullable<decimal> TareWeight { get; set; }
     }
 }

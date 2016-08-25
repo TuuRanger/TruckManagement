@@ -16,6 +16,13 @@ namespace CKLINE
     {
         public int ID { get; set; }
         public string EmpID { get; set; }
+        public string Title { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string NickName { get; set; }
+        public string Mobile { get; set; }
+        public string EmergencyContact { get; set; }
+        public string EmergencyTelephone { get; set; }
         public string DriverLicence { get; set; }
         public string Type { get; set; }
         public Nullable<System.DateTime> DIssueDate { get; set; }
@@ -27,8 +34,8 @@ namespace CKLINE
         public string IDCard { get; set; }
         public Nullable<System.DateTime> IssuseDate { get; set; }
         public Nullable<System.DateTime> ExpireDate { get; set; }
-        public Nullable<double> Weight { get; set; }
-        public Nullable<double> Height { get; set; }
+        public Nullable<decimal> Weight { get; set; }
+        public Nullable<decimal> Height { get; set; }
         public Nullable<int> MarriageStatusID { get; set; }
         public Nullable<int> MilitaryStatusID { get; set; }
         public string Education { get; set; }
@@ -37,20 +44,26 @@ namespace CKLINE
         public string ZipCode { get; set; }
         public string FatherFullName { get; set; }
         public Nullable<System.DateTime> DOBFather { get; set; }
+        public string FDetail { get; set; }
         public string MotherFullName { get; set; }
         public Nullable<System.DateTime> DOBMother { get; set; }
+        public string MDetail { get; set; }
         public string WifeFullName { get; set; }
         public string Workplace { get; set; }
         public string WPosition { get; set; }
         public Nullable<int> Child { get; set; }
+        public string ImgDriver { get; set; }
         public string FileDriver { get; set; }
         public string FileIDCard { get; set; }
         public string FileRegistration { get; set; }
-        public string Title { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string NickName { get; set; }
-        public string Mobile { get; set; }
         public Nullable<int> TruckID { get; set; }
+        public string Status { get; set; }
+        public Nullable<int> InsertBy { get; set; }
+        public Nullable<System.DateTime> InsertDate { get; set; }
+        public Nullable<int> EdittBy { get; set; }
+        public Nullable<System.DateTime> EditDate { get; set; }
+        public Nullable<int> DeleteBy { get; set; }
+        public Nullable<System.DateTime> DeleteDate { get; set; }
+        public string Remark { get; set; }
     }
 }

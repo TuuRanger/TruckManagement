@@ -1,0 +1,1036 @@
+﻿@model List<TMS.Models.RepairList>
+@{
+    ViewBag.Title = "RepairDetail";
+
+}
+
+@*<section class="content-header">
+    <h1>
+        บันทึกการแจ้งซ่อม
+    </h1>
+
+</section>*@
+<section class="content">
+    @foreach (var item in Model)
+    {
+        <form action="~/TMS/CRepairCommit" method="post" enctype="multipart/form-data" onsubmit="return chk_form()">
+            <div class="row">
+                <div class="col-md-12">
+
+                    @{DateTime dDate = DateTime.Now;}
+
+                    <!-- general form elements disabled -->
+                    <div id="Type1">
+
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">ประวัติการเเจ้งซ่อม</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div>
+
+                                    <div class="box-body">
+
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <label>เลขที่แจ้งซ่อม</label>
+                                                @foreach (var iRepair in item.rDataRepair)
+                                                {
+                                                    <input type="text" class="form-control" value="@iRepair.RepairNo" readonly>
+                                                }
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>ทะเบียนรถ</label>
+                                                <select class="form-control" id="Truck" name="Truck" placeholder="-- Select Customer --" disabled>
+                                                    @*<option value="">-- Select Truck --</option>*@
+                                                    @foreach (var iTruck in item.rTruck)
+                                                    {
+                                                        <option value="@iTruck.TID">@iTruck.License</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                        &nbsp;
+                                        @foreach (var iTruck in item.rTruck)
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-md-4">
+                                                    <label>ยี่ห้อรถ</label>
+                                                    <input type="text" class="form-control" id="Brand" name="Brand" value="@iTruck.Brand" readonly>
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>ประเภทรถ</label>
+                                                    <input type="text" class="form-control" id="STType" name="STType" value="@iTruck.STType" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>วันที่จดทะเบียน</label>
+                                                    <div class="input-group date">
+
+                                                        <input type="text" class="form-control" name="RegisterDate" id="RegisterDate" data-select="datepicker"
+                                                               data-val="true" data-val-required="Date is required" value="@iTruck.RegisterDate" readonly>
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default" data-toggle="datepicker" disabled>
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        &nbsp;
+                                        @foreach (var iOld in item.rOldRepair)
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-md-3">
+                                                    <label>วันที่ซ่อมครั้งล่าสุด</label>
+                                                    <div class="input-group date">
+
+                                                        <input type="text" class="form-control" name="OldDate" id="OldDate" data-select="datepicker"
+                                                               data-val="true" data-val-required="Date is required" value="@iOld.InformDate" readonly>
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default" data-toggle="datepicker" disabled>
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>อู่ซ่อมครั้งล่าสุด</label>
+                                                    <input type="text" id="OldGName" name="OldGName" class="form-control" value="@iOld.GName" readonly>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>เลขไมล์ครั้งล่าสุด</label>
+                                                    <input type="text" style="text-align: right" id="OldMile" name="OldMile" class="form-control" value="@iOld.Mile" readonly>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <label>จำนวนเงิน</label>
+                                                    <input type="text" style="text-align: right" id="OldSum" name="OldSum" class="form-control" value="@iOld.SumPrice.ToString("#,###.##")" readonly>
+                                                </div>
+                                            </div>
+                                        }
+                                        &nbsp;
+
+                                    </div>
+
+                                    <!-- /.box-body -->
+                                </div>
+
+                                <div class="box box-success">
+
+                                    <div class="box-body">
+                                        &nbsp;
+
+                                        <div class="form-group">
+
+                                            <div class="col-md-3">
+                                                <label>พขร ผู้แจ้งซ่อม</label>
+                                                <select class="form-control" id="Driver" name="Driver" placeholder="-- Select Customer --" disabled>
+                                                    @*     <option value="">-- Select Truck --</option>*@
+                                                    @foreach (var iDriver in item.rDriver)
+                                                    {
+                                                        <option value="@iDriver.DriverID">@iDriver.Title @iDriver.FirstName &nbsp; @iDriver.LastName</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            @foreach (var dRepair in item.rDataRepair)
+                                            {
+                                                <div class="col-md-3">
+                                                    <label>เลขไมล์แจ้งซ่อม</label>
+                                                    <input type="text" class="form-control" id="Mile" name="Mile" value="@dRepair.Mile.ToString("#,###.##")" readonly>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>วันที่แจ้งซ่อม</label>
+                                                    <div class="input-group date">
+                                                        @{DateTime dR = Convert.ToDateTime(dRepair.InformDate);}
+                                                        <input type="text" class="form-control" name="InformDate" id="InformDate" data-select="datepicker"
+                                                               data-val="true" data-val-required="Date is required" value="@dR.ToString("dd/MM/yyyy")" readonly>
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default" data-toggle="datepicker" disabled>
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>เวลาที่แจ้งซ่อม</label>
+                                                    <select class="form-control" id="InformTime" name="InformTime" disabled>
+                                                        <option data-ng-value="@dRepair.InformTime">@dRepair.InformTime</option>
+                                                        @*<option data-ng-value="00:00">00:00</option>
+                                            <option data-ng-value="00:15">00:15</option>
+                                            <option data-ng-value="00:30">00:30</option>
+                                            <option data-ng-value="00:45">00:45</option>
+                                            <option data-ng-value="01:00">01:00</option>
+                                            <option data-ng-value="01:15">01:15</option>
+                                            <option data-ng-value="01:30">01:30</option>
+                                            <option data-ng-value="01:45">01:45</option>
+                                            <option data-ng-value="02:00">02:00</option>
+                                            <option data-ng-value="02:15">02:15</option>
+                                            <option data-ng-value="02:30">02:30</option>
+                                            <option data-ng-value="02:45">02:45</option>
+                                            <option data-ng-value="03:00">03:00</option>
+                                            <option data-ng-value="03:15">03:15</option>
+                                            <option data-ng-value="03:30">03:30</option>
+                                            <option data-ng-value="03:45">03:45</option>
+                                            <option data-ng-value="04:00">04:00</option>
+                                            <option data-ng-value="04:15">04:15</option>
+                                            <option data-ng-value="04:30">04:30</option>
+                                            <option data-ng-value="04:45">04:45</option>
+                                            <option data-ng-value="05:00">05:00</option>
+                                            <option data-ng-value="05:15">05:15</option>
+                                            <option data-ng-value="05:30">05:30</option>
+                                            <option data-ng-value="05:45">05:45</option>
+                                            <option data-ng-value="06:00">06:00</option>
+                                            <option data-ng-value="06:15">06:15</option>
+                                            <option data-ng-value="06:30">06:30</option>
+                                            <option data-ng-value="06:45">06:45</option>
+                                            <option data-ng-value="07:00">07:00</option>
+                                            <option data-ng-value="07:15">07:15</option>
+                                            <option data-ng-value="07:30">07:30</option>
+                                            <option data-ng-value="07:45">07:45</option>
+                                            <option data-ng-value="08:00">08:00</option>
+                                            <option data-ng-value="08:15">08:15</option>
+                                            <option data-ng-value="08:30">08:30</option>
+                                            <option data-ng-value="08:45">08:45</option>
+                                            <option selected data-ng-value="09:00">09:00</option>
+                                            <option data-ng-value="09:15">09:15</option>
+                                            <option data-ng-value="09:30">09:30</option>
+                                            <option data-ng-value="09:45">09:45</option>
+                                            <option data-ng-value="10:00">10:00</option>
+                                            <option data-ng-value="10:15">10:15</option>
+                                            <option data-ng-value="10:30">10:30</option>
+                                            <option data-ng-value="10:45">10:45</option>
+                                            <option data-ng-value="11:00">11:00</option>
+                                            <option data-ng-value="11:15">11:15</option>
+                                            <option data-ng-value="11:30">11:30</option>
+                                            <option data-ng-value="11:45">11:45</option>
+                                            <option data-ng-value="12:00">12:00</option>
+                                            <option data-ng-value="12:15">12:15</option>
+                                            <option data-ng-value="12:30">12:30</option>
+                                            <option data-ng-value="12:45">12:45</option>
+                                            <option data-ng-value="13:00">13:00</option>
+                                            <option data-ng-value="13:15">13:15</option>
+                                            <option data-ng-value="13:30">13:30</option>
+                                            <option data-ng-value="13:45">13:45</option>
+                                            <option data-ng-value="14:00">14:00</option>
+                                            <option data-ng-value="14:15">14:15</option>
+                                            <option data-ng-value="14:30">14:30</option>
+                                            <option data-ng-value="14:45">14:45</option>
+                                            <option data-ng-value="15:00">15:00</option>
+                                            <option data-ng-value="15:15">15:15</option>
+                                            <option data-ng-value="15:30">15:30</option>
+                                            <option data-ng-value="15:45">15:45</option>
+                                            <option data-ng-value="16:00">16:00</option>
+                                            <option data-ng-value="16:15">16:15</option>
+                                            <option data-ng-value="16:30">16:30</option>
+                                            <option data-ng-value="16:45">16:45</option>
+                                            <option data-ng-value="17:00">17:00</option>
+                                            <option data-ng-value="17:15">17:15</option>
+                                            <option data-ng-value="17:30">17:30</option>
+                                            <option data-ng-value="17:45">17:45</option>
+                                            <option data-ng-value="18:00">18:00</option>
+                                            <option data-ng-value="18:15">18:15</option>
+                                            <option data-ng-value="18:30">18:30</option>
+                                            <option data-ng-value="18:45">18:45</option>
+                                            <option data-ng-value="19:00">19:00</option>
+                                            <option data-ng-value="19:15">19:15</option>
+                                            <option data-ng-value="19:30">19:30</option>
+                                            <option data-ng-value="19:45">19:45</option>
+                                            <option data-ng-value="20:00">20:00</option>
+                                            <option data-ng-value="20:15">20:15</option>
+                                            <option data-ng-value="20:30">20:30</option>
+                                            <option data-ng-value="20:45">20:45</option>
+                                            <option data-ng-value="21:00">21:00</option>
+                                            <option data-ng-value="21:15">21:15</option>
+                                            <option data-ng-value="21:30">21:30</option>
+                                            <option data-ng-value="21:45">21:45</option>
+                                            <option data-ng-value="22:00">22:00</option>
+                                            <option data-ng-value="22:15">22:15</option>
+                                            <option data-ng-value="22:30">22:30</option>
+                                            <option data-ng-value="22:45">22:45</option>
+                                            <option data-ng-value="23:00">23:00</option>
+                                            <option data-ng-value="23:15">23:15</option>
+                                            <option data-ng-value="23:30">23:30</option>
+                                            <option data-ng-value="23:45">23:45</option>*@
+                                                    </select>
+                                                </div>
+                                            }
+                                        </div>
+                                        &nbsp;
+                                        @foreach (var dRepair in item.rDataRepair)
+                                        {
+                                            <div class="form-group">
+
+                                                <div class="col-md-3">
+                                                    <label>วันที่ส่งซ่อม</label>
+                                                    <div class="input-group date">
+                                                        @{DateTime dS = Convert.ToDateTime(dRepair.SendDate);}
+                                                        <input type="text" class="form-control" name="SendDate" id="SendDate" data-select="datepicker"
+                                                               data-val="true" data-val-required="Date is required" value="@dS.ToString("dd/MM/yyyy")" readonly>
+                                                        <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default" data-toggle="datepicker" disabled>
+                                                                <i class="fa fa-calendar"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>เวลาที่ส่งซ่อม</label>
+                                                    <select class="form-control" id="SendTime" name="SendTime" disabled>
+                                                        <option data-ng-value="@dRepair.SendTime">@dRepair.SendTime</option>
+                                                        @*<option value="">-- Select Pick up Time --</option>
+                                            <option data-ng-value="00:00">00:00</option>
+                                            <option data-ng-value="00:15">00:15</option>
+                                            <option data-ng-value="00:30">00:30</option>
+                                            <option data-ng-value="00:45">00:45</option>
+                                            <option data-ng-value="01:00">01:00</option>
+                                            <option data-ng-value="01:15">01:15</option>
+                                            <option data-ng-value="01:30">01:30</option>
+                                            <option data-ng-value="01:45">01:45</option>
+                                            <option data-ng-value="02:00">02:00</option>
+                                            <option data-ng-value="02:15">02:15</option>
+                                            <option data-ng-value="02:30">02:30</option>
+                                            <option data-ng-value="02:45">02:45</option>
+                                            <option data-ng-value="03:00">03:00</option>
+                                            <option data-ng-value="03:15">03:15</option>
+                                            <option data-ng-value="03:30">03:30</option>
+                                            <option data-ng-value="03:45">03:45</option>
+                                            <option data-ng-value="04:00">04:00</option>
+                                            <option data-ng-value="04:15">04:15</option>
+                                            <option data-ng-value="04:30">04:30</option>
+                                            <option data-ng-value="04:45">04:45</option>
+                                            <option data-ng-value="05:00">05:00</option>
+                                            <option data-ng-value="05:15">05:15</option>
+                                            <option data-ng-value="05:30">05:30</option>
+                                            <option data-ng-value="05:45">05:45</option>
+                                            <option data-ng-value="06:00">06:00</option>
+                                            <option data-ng-value="06:15">06:15</option>
+                                            <option data-ng-value="06:30">06:30</option>
+                                            <option data-ng-value="06:45">06:45</option>
+                                            <option data-ng-value="07:00">07:00</option>
+                                            <option data-ng-value="07:15">07:15</option>
+                                            <option data-ng-value="07:30">07:30</option>
+                                            <option data-ng-value="07:45">07:45</option>
+                                            <option data-ng-value="08:00">08:00</option>
+                                            <option data-ng-value="08:15">08:15</option>
+                                            <option data-ng-value="08:30">08:30</option>
+                                            <option data-ng-value="08:45">08:45</option>
+                                            <option selected data-ng-value="09:00">09:00</option>
+                                            <option data-ng-value="09:15">09:15</option>
+                                            <option data-ng-value="09:30">09:30</option>
+                                            <option data-ng-value="09:45">09:45</option>
+                                            <option data-ng-value="10:00">10:00</option>
+                                            <option data-ng-value="10:15">10:15</option>
+                                            <option data-ng-value="10:30">10:30</option>
+                                            <option data-ng-value="10:45">10:45</option>
+                                            <option data-ng-value="11:00">11:00</option>
+                                            <option data-ng-value="11:15">11:15</option>
+                                            <option data-ng-value="11:30">11:30</option>
+                                            <option data-ng-value="11:45">11:45</option>
+                                            <option data-ng-value="12:00">12:00</option>
+                                            <option data-ng-value="12:15">12:15</option>
+                                            <option data-ng-value="12:30">12:30</option>
+                                            <option data-ng-value="12:45">12:45</option>
+                                            <option data-ng-value="13:00">13:00</option>
+                                            <option data-ng-value="13:15">13:15</option>
+                                            <option data-ng-value="13:30">13:30</option>
+                                            <option data-ng-value="13:45">13:45</option>
+                                            <option data-ng-value="14:00">14:00</option>
+                                            <option data-ng-value="14:15">14:15</option>
+                                            <option data-ng-value="14:30">14:30</option>
+                                            <option data-ng-value="14:45">14:45</option>
+                                            <option data-ng-value="15:00">15:00</option>
+                                            <option data-ng-value="15:15">15:15</option>
+                                            <option data-ng-value="15:30">15:30</option>
+                                            <option data-ng-value="15:45">15:45</option>
+                                            <option data-ng-value="16:00">16:00</option>
+                                            <option data-ng-value="16:15">16:15</option>
+                                            <option data-ng-value="16:30">16:30</option>
+                                            <option data-ng-value="16:45">16:45</option>
+                                            <option data-ng-value="17:00">17:00</option>
+                                            <option data-ng-value="17:15">17:15</option>
+                                            <option data-ng-value="17:30">17:30</option>
+                                            <option data-ng-value="17:45">17:45</option>
+                                            <option data-ng-value="18:00">18:00</option>
+                                            <option data-ng-value="18:15">18:15</option>
+                                            <option data-ng-value="18:30">18:30</option>
+                                            <option data-ng-value="18:45">18:45</option>
+                                            <option data-ng-value="19:00">19:00</option>
+                                            <option data-ng-value="19:15">19:15</option>
+                                            <option data-ng-value="19:30">19:30</option>
+                                            <option data-ng-value="19:45">19:45</option>
+                                            <option data-ng-value="20:00">20:00</option>
+                                            <option data-ng-value="20:15">20:15</option>
+                                            <option data-ng-value="20:30">20:30</option>
+                                            <option data-ng-value="20:45">20:45</option>
+                                            <option data-ng-value="21:00">21:00</option>
+                                            <option data-ng-value="21:15">21:15</option>
+                                            <option data-ng-value="21:30">21:30</option>
+                                            <option data-ng-value="21:45">21:45</option>
+                                            <option data-ng-value="22:00">22:00</option>
+                                            <option data-ng-value="22:15">22:15</option>
+                                            <option data-ng-value="22:30">22:30</option>
+                                            <option data-ng-value="22:45">22:45</option>
+                                            <option data-ng-value="23:00">23:00</option>
+                                            <option data-ng-value="23:15">23:15</option>
+                                            <option data-ng-value="23:30">23:30</option>
+                                            <option data-ng-value="23:45">23:45</option>*@
+                                                    </select>
+                                                </div>
+                                                <br />
+                                                <br />
+
+
+                                            </div>
+                                        }
+                                        &nbsp;
+@foreach (var dRepair in item.rDataRepair)
+                                        {
+                                        <div class="form-group">
+
+                                            <div class="col-md-12">
+                                                <label>อาการเสียที่แจ้ง</label>
+                                                <textarea id="Detail" name="Detail" class="form-control" rows="3"  readonly>@dRepair.Detail</textarea>
+                                            </div>
+                                            &nbsp;
+                                        </div>
+                                       
+                                        
+                                        <div class="form-group">
+
+                                            <div class="col-md-6">
+                                                <label>แนวทางแก้ไข</label>
+                                                <div class="radio">
+                                                    @if (dRepair.optEdit == 1)
+                                                    {
+                                                        <label>
+                                                            <input type="radio" name="optEdit" id="optEdit1" value="1" checked="checked" readonly>
+                                                            ซื้ออะไหล่เปลี่ยนเอง &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optEdit" id="optEdit2" value="2" readonly>
+                                                            ส่งซ่อมอู่ภายนอก &nbsp;&nbsp;
+                                                        </label>
+                                                    }
+                                                    else
+                                                    {
+                                                        <label>
+                                                            <input type="radio" name="optEdit" id="optEdit1" value="1" readonly>
+                                                            ซื้ออะไหล่เปลี่ยนเอง &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optEdit" id="optEdit2" value="2" checked="checked" readonly>
+                                                            ส่งซ่อมอู่ภายนอก &nbsp;&nbsp;
+                                                        </label>
+                                                    }
+                                                   
+
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>ประเภทงานซ่อม</label>
+                                                <div class="radio">
+                                                    @if (dRepair.optRepair == 1)
+                                                    {
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair1" value="1" checked="checked" readonly>
+                                                            BD ในสถานที่ &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair2" value="2" readonly>
+                                                            BD นอกสถานที่ &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair3" value="3" readonly>
+                                                            PM ระยะ &nbsp;&nbsp;
+                                                        </label>
+                                                    }
+                                                    else if (dRepair.optRepair == 2)
+                                                    {
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair1" value="1" readonly>
+                                                            BD ในสถานที่ &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair2" value="2" checked="checked" readonly>
+                                                            BD นอกสถานที่ &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair3" value="3" readonly>
+                                                            PM ระยะ &nbsp;&nbsp;
+                                                        </label>
+                                                    }
+                                                    else if (dRepair.optRepair == 3)
+                                                    {
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair1" value="1" readonly>
+                                                            BD ในสถานที่ &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair2" value="2" readonly>
+                                                            BD นอกสถานที่ &nbsp;&nbsp;
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="optRepair" id="optRepair3" value="3" checked="checked" readonly>
+                                                            PM ระยะ &nbsp;&nbsp;
+                                                        </label>
+                                                    }
+                                                   
+
+                                                </div>
+
+
+                                            </div>
+                                            &nbsp;
+                                        </div>
+                                   
+
+                                        <div class="form-group">
+
+                                            <div class="col-md-12">
+                                                <label>หมายเหตุ</label>
+                                                <textarea id="Remark" name="Remark" class="form-control" rows="3" readonly>@dRepair.Remark</textarea>
+                                            </div>
+                                            &nbsp;
+                                        </div>
+                                      
+                                       
+                                        <div class="form-group">
+
+                                            <div class="col-md-6">
+                                                <label>อู่ซ่อมรถ</label>
+                                                <select class="form-control" id="Garage" name="Garage" placeholder="-- Select Customer --" disabled>
+                                                    @* <option value="0">-- Select Garage --</option> *@
+                                                    @foreach (var iGarage in item.rGarage)
+                                                    {
+                                                        <option value="@iGarage.GID">@iGarage.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>ผู้ดำเนินการ</label>
+                                                <input id="Operator" name="Operator" type="text" class="form-control" placeholder="@dRepair.Operator" readonly>
+                                            </div>
+                                        </div>
+ }
+                                        &nbsp;
+
+                                    </div>
+
+                                    <!-- /.box-body -->
+                                </div>
+                               
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                    <div id="Type1">
+                      
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"> บันทึกการซ่อม</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                                </div>
+                            </div>
+                        
+                                    <div class="box-body">
+
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label>วันที่ซ่อมเสร็จ</label>
+                                                <div class="input-group date">
+
+                                                    <input type="text" class="form-control" name="FinishDate" id="FinishDate" data-select="datepicker"
+                                                           data-val="true" data-val-required="Date is required" value="@dDate.ToString("dd/MM/yyyy")">
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-success" data-toggle="datepicker">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>เวลาที่ซ่อมเสร็จ</label>
+                                                <select class="form-control" id="FinishTime" name="FinishTime">
+
+                                                    <option value="">-- Select Pick up Time --</option>
+                                                    <option data-ng-value="00:00">00:00</option>
+                                                    <option data-ng-value="00:15">00:15</option>
+                                                    <option data-ng-value="00:30">00:30</option>
+                                                    <option data-ng-value="00:45">00:45</option>
+                                                    <option data-ng-value="01:00">01:00</option>
+                                                    <option data-ng-value="01:15">01:15</option>
+                                                    <option data-ng-value="01:30">01:30</option>
+                                                    <option data-ng-value="01:45">01:45</option>
+                                                    <option data-ng-value="02:00">02:00</option>
+                                                    <option data-ng-value="02:15">02:15</option>
+                                                    <option data-ng-value="02:30">02:30</option>
+                                                    <option data-ng-value="02:45">02:45</option>
+                                                    <option data-ng-value="03:00">03:00</option>
+                                                    <option data-ng-value="03:15">03:15</option>
+                                                    <option data-ng-value="03:30">03:30</option>
+                                                    <option data-ng-value="03:45">03:45</option>
+                                                    <option data-ng-value="04:00">04:00</option>
+                                                    <option data-ng-value="04:15">04:15</option>
+                                                    <option data-ng-value="04:30">04:30</option>
+                                                    <option data-ng-value="04:45">04:45</option>
+                                                    <option data-ng-value="05:00">05:00</option>
+                                                    <option data-ng-value="05:15">05:15</option>
+                                                    <option data-ng-value="05:30">05:30</option>
+                                                    <option data-ng-value="05:45">05:45</option>
+                                                    <option data-ng-value="06:00">06:00</option>
+                                                    <option data-ng-value="06:15">06:15</option>
+                                                    <option data-ng-value="06:30">06:30</option>
+                                                    <option data-ng-value="06:45">06:45</option>
+                                                    <option data-ng-value="07:00">07:00</option>
+                                                    <option data-ng-value="07:15">07:15</option>
+                                                    <option data-ng-value="07:30">07:30</option>
+                                                    <option data-ng-value="07:45">07:45</option>
+                                                    <option data-ng-value="08:00">08:00</option>
+                                                    <option data-ng-value="08:15">08:15</option>
+                                                    <option data-ng-value="08:30">08:30</option>
+                                                    <option data-ng-value="08:45">08:45</option>
+                                                    <option selected data-ng-value="09:00">09:00</option>
+                                                    <option data-ng-value="09:15">09:15</option>
+                                                    <option data-ng-value="09:30">09:30</option>
+                                                    <option data-ng-value="09:45">09:45</option>
+                                                    <option data-ng-value="10:00">10:00</option>
+                                                    <option data-ng-value="10:15">10:15</option>
+                                                    <option data-ng-value="10:30">10:30</option>
+                                                    <option data-ng-value="10:45">10:45</option>
+                                                    <option data-ng-value="11:00">11:00</option>
+                                                    <option data-ng-value="11:15">11:15</option>
+                                                    <option data-ng-value="11:30">11:30</option>
+                                                    <option data-ng-value="11:45">11:45</option>
+                                                    <option data-ng-value="12:00">12:00</option>
+                                                    <option data-ng-value="12:15">12:15</option>
+                                                    <option data-ng-value="12:30">12:30</option>
+                                                    <option data-ng-value="12:45">12:45</option>
+                                                    <option data-ng-value="13:00">13:00</option>
+                                                    <option data-ng-value="13:15">13:15</option>
+                                                    <option data-ng-value="13:30">13:30</option>
+                                                    <option data-ng-value="13:45">13:45</option>
+                                                    <option data-ng-value="14:00">14:00</option>
+                                                    <option data-ng-value="14:15">14:15</option>
+                                                    <option data-ng-value="14:30">14:30</option>
+                                                    <option data-ng-value="14:45">14:45</option>
+                                                    <option data-ng-value="15:00">15:00</option>
+                                                    <option data-ng-value="15:15">15:15</option>
+                                                    <option data-ng-value="15:30">15:30</option>
+                                                    <option data-ng-value="15:45">15:45</option>
+                                                    <option data-ng-value="16:00">16:00</option>
+                                                    <option data-ng-value="16:15">16:15</option>
+                                                    <option data-ng-value="16:30">16:30</option>
+                                                    <option data-ng-value="16:45">16:45</option>
+                                                    <option data-ng-value="17:00">17:00</option>
+                                                    <option data-ng-value="17:15">17:15</option>
+                                                    <option data-ng-value="17:30">17:30</option>
+                                                    <option data-ng-value="17:45">17:45</option>
+                                                    <option data-ng-value="18:00">18:00</option>
+                                                    <option data-ng-value="18:15">18:15</option>
+                                                    <option data-ng-value="18:30">18:30</option>
+                                                    <option data-ng-value="18:45">18:45</option>
+                                                    <option data-ng-value="19:00">19:00</option>
+                                                    <option data-ng-value="19:15">19:15</option>
+                                                    <option data-ng-value="19:30">19:30</option>
+                                                    <option data-ng-value="19:45">19:45</option>
+                                                    <option data-ng-value="20:00">20:00</option>
+                                                    <option data-ng-value="20:15">20:15</option>
+                                                    <option data-ng-value="20:30">20:30</option>
+                                                    <option data-ng-value="20:45">20:45</option>
+                                                    <option data-ng-value="21:00">21:00</option>
+                                                    <option data-ng-value="21:15">21:15</option>
+                                                    <option data-ng-value="21:30">21:30</option>
+                                                    <option data-ng-value="21:45">21:45</option>
+                                                    <option data-ng-value="22:00">22:00</option>
+                                                    <option data-ng-value="22:15">22:15</option>
+                                                    <option data-ng-value="22:30">22:30</option>
+                                                    <option data-ng-value="22:45">22:45</option>
+                                                    <option data-ng-value="23:00">23:00</option>
+                                                    <option data-ng-value="23:15">23:15</option>
+                                                    <option data-ng-value="23:30">23:30</option>
+                                                    <option data-ng-value="23:45">23:45</option>
+                                                </select>
+                                            </div>
+                                        
+                                            </div>
+                                        <div class="col-md-4">
+                                            <label>&nbsp;</label>
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-md-1">
+                                            <label>&nbsp;</label>
+                                            <input id="counter" name="counter" type="hidden" class="form-control" value="0" onkeypress="return isNumberKey(event)">
+                                            <input id="RepairNo" name="RepairNo" type="hidden" class="form-control" value="@Request.QueryString["RepairNo"]">
+                                            <input id="limit" name="limit" type="hidden" class="form-control" value="1" onkeypress="return isNumberKey(event)">
+                                            <input id="SumNum" name="SumNum" type="hidden" class="form-control" value="0" onkeypress="return isNumberKey(event)">
+                                            <input id="SumPrice" name="SumPrice" type="hidden" class="form-control" value="0" onkeypress="return isNumberKey(event)">
+                                            <input type="button" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;" value="+" onclick="addInput('dynamicInput');">
+                                            @*    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">Add</button>*@
+                                        </div>
+                                        <div class="col-md-1">
+                                            <label>&nbsp;</label>
+                                            <input type="button" class="btn btn-danger btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;" value="-" onclick="removeItem(this)" />
+                                        </div>
+                                        &nbsp;
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>รายการซ่อม</label>
+                                              
+                                                <hr />
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <div class="table-responsive">
+                                                        <div class="form-group">
+                                                            <div class="col-md-6">
+                                                                <b><u>รายการ</u></b>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <b><u>ราคาต่อหน่วย</u></b>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <b><u>จำนวน</u></b>
+                                                            </div>
+                                                        
+                                                            <div class="col-md-2">
+                                                                <b><u>ราคารวม (บาท)</u></b>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-12">
+                                                                &nbsp;
+                                                            </div>
+                                                        </div>
+                                                        <div id="dynamicInput">
+
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-8">
+                                                                <br /><b><u>รวม</u></b>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <br /><input id="AllNum" name="AllNum" type="text" class="form-control" value="0" style="text-align:right" readonly />
+
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <br /><input id="AllSum" name="AllSum" type="text" class="form-control" value="0" style="text-align:right" readonly />
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-4">
+                                                                &nbsp;
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                &nbsp;
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                &nbsp;
+                                                            
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <!-- /.table-responsive -->
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <!-- /.box-footer -->
+                                            </div>
+                                        </div>
+                                     
+                                    <div class="box-body">
+                                        &nbsp;
+
+                                       
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="box-footer clearfix">
+
+                                                    <button type="submit" class="btn btn-info btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- /.box-body -->
+                              
+                            </div>
+
+                            <!-- /.box-body -->
+                        </div>
+
+                    </div>
+                
+
+
+                </div>
+
+            </div>
+        </form>
+
+    }
+</section>
+<script language="JavaScript" type="text/javascript">
+
+    function chk_Truck() {
+
+        var dFrom = $("#Truck").val();
+
+        //  alert(dFrom);
+        $.ajax({
+            url: '@Url.Action("searchTruck", "TMS")',  // to get the right path to controller from TableRoutes of Asp.Net MVC
+            dataType: "json", //to work with json format
+            type: "POST", //to do a post request
+            cache: false, //avoid caching results
+            data: { dFrom: dFrom }, // here you can pass arguments to your request if you need
+            success: function (data) {
+
+                if (data) {
+
+                    var Brand = '';
+                    var STType = '';
+                    var RegisterDate = '';
+
+                    $.each(data, function (i, state) {
+                        Brand = data[i].Brand;
+                        STType = data[i].STType;
+                        RegisterDate = data[i].RegisterDate;
+                    });
+                    document.getElementById("Brand").value = Brand;
+                    document.getElementById("STType").value = STType;
+                    document.getElementById("RegisterDate").value = RegisterDate;
+                }
+                else {
+                    document.getElementById("Brand").value = "";
+                    document.getElementById("STType").value = "";
+
+                }
+
+            },
+            error: function (xhr) {
+                alert('error');
+            }
+        });
+
+        $.ajax({
+            url: '@Url.Action("searchOldRepair", "TMS")',  // to get the right path to controller from TableRoutes of Asp.Net MVC
+            dataType: "json", //to work with json format
+            type: "POST", //to do a post request
+            cache: false, //avoid caching results
+            data: { dFrom: dFrom }, // here you can pass arguments to your request if you need
+            success: function (data) {
+
+                if (data) {
+
+                    var InformDate = '';
+                    var GID = '';
+                    var GName = '';
+                    var Mile = '';
+                    var SumPrice = '';
+
+                    $.each(data, function (i, state) {
+                        InformDate = data[i].InformDate;
+                        GID = data[i].GID;
+                        GName = data[i].GName;
+                        Mile = data[i].Mile;
+                        SumPrice = data[i].SumPrice;
+                    });
+                    document.getElementById("OldDate").value = InformDate;
+                    document.getElementById("OldGName").value = GName;
+                    document.getElementById("OldMile").value = parseFloat(Mile, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()
+                    document.getElementById("OldSum").value = parseFloat(SumPrice, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()
+                }
+                else {
+
+                    document.getElementById("OldGName").value = "";
+                    document.getElementById("OldMile").value = "";
+                    document.getElementById("OldSum").value = "";
+                }
+
+            },
+            error: function (xhr) {
+                alert('error');
+            }
+        });
+        return false;
+    }
+    var counter = document.getElementById("counter").value;
+    var limit = 51;
+    function addInput(divName) {
+
+        if (counter == limit) {
+            alert("You have reached the limit of adding " + counter -1 + " inputs");
+        }
+        else {
+
+            counter = document.getElementById("limit").value;
+        
+
+            var MyDetail = 'MyDetail' + counter;
+            var MyNum = 'MyNum' + counter;
+            var MyPrice = 'MyPrice' + counter;
+            var MySumPrice = 'MySumPrice' + counter;
+            var dDetail = 'dDetail' + counter;
+            var MyRemove =  counter;
+
+
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = "<div class='form-group' id=" + dDetail + " name=" + dDetail + ">";
+            newdiv.innerHTML += "<div class='col-md-6'><input type='text' id=" + MyDetail + " name=" + MyDetail + " class='form-control'></div>";    
+            newdiv.innerHTML += "<div class='col-md-2'><input type='text'  style='text-align: right' id=" + MyPrice + " name=" + MyPrice + " class='form-control' onkeyup='sumRepair();' onkeypress='return isNumberKey(event)' ></div>";
+            newdiv.innerHTML += "<div class='col-md-2'><input type='text'  style='text-align: right' id=" + MyNum + " name=" + MyNum + " class='form-control' onkeyup='sumRepair();' onkeypress='return isNumberKey(event)' ></div>";
+            newdiv.innerHTML += "<div class='col-md-2'><input type='text' id=" + MySumPrice + " name=" + MySumPrice + "  class='form-control' style='text-align: right' readonly></div> ";
+            newdiv.innerHTML += "</div>";
+          //  document.getElementById(divName).appendChild(newdiv2);
+            document.getElementById(divName).appendChild(newdiv);
+
+            //var newdiv2 = document.createElement('div');
+            //newdiv2.innerHTML = "<div class='col-md-2' id=" + dDetail + " name=" + dDetail + "><input type='text' id=" + MyNum + " name=" + MyNum + " class='form-control' value=" + AddNum + "></div>";
+            //document.getElementById(divName).appendChild(newdiv2);
+
+            //var newdiv3 = document.createElement('div');
+            //newdiv3.innerHTML = "<div class='col-md-2' id=" + dDetail + " name=" + dDetail + "><input type='text' id=" + MyPrice + " name=" + MyPrice + " class='form-control' value=" + AddPrice + "></div>";
+            //document.getElementById(divName).appendChild(newdiv3);
+
+            //var newdiv4 = document.createElement('div');
+            //newdiv4.innerHTML = "<div class='col-md-2' id=" + dDetail + " name=" + dDetail + "><input type='text' id=" + MySumPrice + " name=" + MySumPrice + " class='form-control' value=" + AddNum * AddPrice + "></div> ";
+            //document.getElementById(divName).appendChild(newdiv4);
+
+            counter++;
+            document.getElementById("counter").value = counter -1;
+            document.getElementById("limit").value = counter;
+         
+            document.getElementById(MyDetail).focus();
+
+
+        }
+    }
+
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+    function removeItem(element) {
+        // get the parent element with class "item-container" and remove it from the DOM
+        var mD = 'MyDetail' + document.getElementById("counter").value;
+        var mN = 'MyNum' + document.getElementById("counter").value;
+        var mP = 'MyPrice' + document.getElementById("counter").value;
+        var mS = 'MySumPrice' + document.getElementById("counter").value;
+        var dD = 'dDetail' + document.getElementById("counter").value;
+
+        var counter = document.getElementById("counter").value;
+
+        MyNum = 'MyNum' + counter;
+
+        if (document.getElementById(MyNum).value == '') {
+            MyNum = 0;
+        }
+        else {
+            MyNum = parseFloat(document.getElementById(MyNum).value);
+        }
+
+
+
+        MySumPrice = 'MySumPrice' + counter;
+
+        if (document.getElementById(MySumPrice).value == '') {
+            MySumPrice = 0;
+        }
+        else {
+            MySumPrice = parseFloat(document.getElementById(MySumPrice).value);
+        }
+
+        document.getElementById('AllNum').value = document.getElementById('AllNum').value - MyNum;
+        document.getElementById('AllSum').value = document.getElementById('AllSum').value - MySumPrice;
+
+
+        document.getElementById(mD).remove();
+        document.getElementById(mN).remove();
+        document.getElementById(mP).remove();
+        document.getElementById(mS).remove();
+        document.getElementById(dD).remove();
+        document.getElementById("counter").value = document.getElementById("counter").value - 1;
+        document.getElementById("limit").value = document.getElementById("limit").value - 1;
+
+    }
+
+    function sumRepair() {
+
+        var counter = document.getElementById("counter").value;
+        var MyNum = '';
+        var MyPrice = '';
+        var MySumPrice = '';
+        var AllNum = 0;
+        var AllSum = 0;
+        for (var i = 1 ; i <= counter; i++) {
+
+            MyNum = 'MyNum' + i;
+            MyPrice = 'MyPrice' + i;
+            MySumPrice = 'MySumPrice' + i;
+
+            if (document.getElementById(MyNum).value == '') {
+                MyNum = 0;
+            }
+            else {
+                MyNum = parseFloat(document.getElementById(MyNum).value);
+            }
+
+            if (document.getElementById(MyPrice).value == '') {
+                MyPrice = 0;
+            }
+            else {
+                MyPrice = parseFloat(document.getElementById(MyPrice).value);
+            }
+
+            document.getElementById(MySumPrice).value = MyNum * MyPrice;
+            AllNum = AllNum + MyNum;
+            AllSum = AllSum + (MyNum * MyPrice);
+
+        }
+
+        document.getElementById('AllNum').value = AllNum;
+        document.getElementById('AllSum').value = AllSum;
+
+    }
+</script>
+<script type="text/javascript">
+
+    var TableBackgroundNormalColor = "#ffffff";
+    var TableBackgroundMouseoverColor = "#F3FCFE";
+
+    // These two functions need no customization.
+    function ChangeBackgroundColor(row) {
+        TableBackgroundNormalColor = row.style.backgroundColor;
+        row.style.backgroundColor = TableBackgroundMouseoverColor;
+    }
+    function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
+
+  
+</script>

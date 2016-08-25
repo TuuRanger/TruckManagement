@@ -38,5 +38,6 @@ namespace CKLINE
         public string Contact5 { get; set; }
         public string Email5 { get; set; }
         public string Position5 { get; set; }
+        public Nullable<int> OrderType { get; set; }
     }
 }

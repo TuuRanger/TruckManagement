@@ -37,6 +37,5 @@ namespace CKLINE.Models
         public string WifeName { get; set; }
         public int WAge { get; set; }
 
-
     }
 }

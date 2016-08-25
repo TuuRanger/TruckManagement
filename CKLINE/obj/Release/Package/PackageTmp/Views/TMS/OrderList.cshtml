@@ -31,19 +31,19 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th>Order ID</th>
-                                    <th>Customer</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Type</th>
-                                    <th>จำนวน</th>
-                                    <th>วันที่</th>
-                                    <th>Status</th>
-                                    @*  <th>Driver</th>*@
+                                <tr style="background-color:#00acd6">
+                                    <th align="center"><font color="#fff">Order ID</font></th>
+                                    <th align="center"><font color="#fff">Customer</font></th>
+                                    <th align="center"><font color="#fff">From</font></th>
+                                    <th align="center"><font color="#fff">To</font></th>
+                                    <th align="center"><font color="#fff">Type</font></th>
+                                    <th align="center"><font color="#fff">จำนวน</font></th>
+                                    <th align="center"><font color="#fff">วันที่</font></th>
+                                    <th align="center"><font color="#fff">Status</font></th>
+                       
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,7 +94,7 @@
                                         SDate = item.IEReceiveDate.ToString("dd/MM/yyyy");
                                     }
 
-                                    <tr>
+                                    <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
                                         <td><a href="~/TMS/OrderInfo?OID=@item.OrderID">@item.OrderID</a></td>
                                         <td>@item.CName</td>
                                         <td>@item.RFromDetail</td>
@@ -125,237 +125,19 @@
         </div>
         <!-- /.col -->
     </div>
-    @*<div class="row">
-        <div class="col-md-12">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Latest Jobs</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-    @*</div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table no-margin">
-                                <thead>
-                                    <tr>
-                                        <th>Job No.</th>
-                                        <th>Order ID</th>
-                                        <th>ชื่อตู้</th>
-                                        <th>Route</th>
-                                        <th>Type</th>
-                                        <th>วันที่ส่ง</th>
-                                        <th>เวลา</th>
-                                        <th>ทะเบียนรถ</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="~/TMS/OpenJobDetail">2705590001</a></td>
-                                        <td>PA59050001</td>
-                                        <td>BEAU22380837</td>
-                                        <td>xxxxxxxxxxxxxxx</td>
-                                        <td>Praxair</td>
-                                        <td>27/05/2559</td>
-                                        <td>12:00</td>
-                                        <td>กอ2345</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="~/TMS/OpenJobDetail">2705590002</a></td>
-                                        <td>PA59050001</td>
-                                        <td>BEAU22380837</td>
-                                        <td>xxxxxxxxxxxxxxx</td>
-                                        <td>Praxair</td>
-                                        <td>27/05/2559</td>
-                                        <td>12:00</td>
-                                        <td>กอ2345</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="~/TMS/OpenJobDetail">2705590003</a></td>
-                                        <td>PA59050001</td>
-                                        <td>BEAU22380837</td>
-                                        <td>xxxxxxxxxxxxxxx</td>
-                                        <td>Praxair</td>
-                                        <td>27/05/2559</td>
-                                        <td>12:00</td>
-                                        <td>กอ2345</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="~/TMS/OpenJobDetail">2705590004</a></td>
-                                        <td>PA59050001</td>
-                                        <td>BEAU22380837</td>
-                                        <td>xxxxxxxxxxxxxxx</td>
-                                        <td>Praxair</td>
-                                        <td>27/05/2559</td>
-                                        <td>12:00</td>
-                                        <td>กอ2345</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="~/TMS/OpenJobDetail">2705590005</a></td>
-                                        <td>PA59050001</td>
-                                        <td>BEAU22380837</td>
-                                        <td>xxxxxxxxxxxxxxx</td>
-                                        <td>Praxair</td>
-                                        <td>27/05/2559</td>
-                                        <td>12:00</td>
-                                        <td>กอ2345</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                    </div>
-
-                </div>
-                <!-- /.box -->
-            </div>
-            <!-- /.col -->
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">ตารางการแจ้งซ่อม</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>*@
-    @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-    @*</div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table no-margin">
-                                <thead>
-                                    <tr>
-                                        <th>เลขที่</th>
-                                        <th>วันที่แจ้งซ่อม</th>
-                                        <th>วันที่ซ่อมเสร็จ</th>
-                                        <th>ทะเบียนรถ</th>
-                                        <th>รายละเอียด</th>
-                                        <th>สถานะ</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="~/pages/examples/invoice.html">0001</a></td>
-                                        <td>27/04/2559</td>
-                                        <td>27/05/2559</td>
-                                        <td>กท1000</td>
-                                        <td>พวงมาลัยไม่ตรง</td>
-                                        <td><span class="label label-danger">แจ้งซ่อม</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="~/pages/examples/invoice.html">0002</a></td>
-                                        <td>27/04/2559</td>
-                                        <td>27/05/2559</td>
-                                        <td>กท1000</td>
-                                        <td>ยางหลังปลิ</td>
-                                        <td><span class="label label-warning">กำล้งซ่อม</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="~/pages/examples/invoice.html">0003</a></td>
-                                        <td>27/04/2559</td>
-                                        <td>27/05/2559</td>
-                                        <td>กท1000</td>
-                                        <td>ไฟหน้าเสีย</td>
-                                        <td><span class="label label-success">ซ่อมเสร็จเเล้ว</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.table-responsive -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer clearfix">
-                        <a href="~/TMS/RepairDetail" class="btn btn-sm btn-info btn-flat pull-right">New</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">View All</a>
-                    </div>
-                    <!-- /.box-footer -->
-                </div>
-                <!-- /.box -->
-            </div>
-            <!-- /.col -->
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">รายการรถขนส่ง</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
-    @*</div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
-                            <thead>
-                                <tr>
-                                    <th>ทะเบียนรถ</th>
-                                    <th>รายละเอียด</th>
-                                    <th>ประเภท</th>
-                                    <th>จำนวนล้อ</th>
-                                    <th>ชื่อคนขับ</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><a href="~/TMS/TrieSwitchDetail">กท1100</a></td>
-                                    <td>ร่น aaaaaa</td>
-                                    <td>หัวลาก</td>
-                                    <td>10</td>
-                                    <td>Mr.aaa aaaa</td>
-                                    <td><span class="label label-danger">Delivered</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/TrieSwitchDetail">กท1200</a></td>
-                                    <td>ร่น aaaaaa</td>
-                                    <td>หัวลาก</td>
-                                    <td>10</td>
-                                    <td>Mr.aaa aaaa</td>
-                                    <td><span class="label label-danger">Delivered</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/TrieSwitchDetail">กท1100</a></td>
-                                    <td>ร่น aaaaaa</td>
-                                    <td>หางลาก</td>
-                                    <td>8</td>
-                                    <td>Mr.aaa aaaa</td>
-                                    <td><span class="label label-danger">Delivered</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="~/TMS/TrieSwitchDetail">กท1100</a></td>
-                                    <td>ร่น aaaaaa</td>
-                                    <td>หางลาก</td>
-                                    <td>8</td>
-                                    <td>Mr.aaa aaaa</td>
-                                    <td><span class="label label-danger">Delivered</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-
-            </div>
-            <!-- /.box -->
-        </div>*@
-    <!-- /.col -->
-    @*</div>*@
+   
 </section>
+<script type="text/javascript">
+
+    var TableBackgroundNormalColor = "#ffffff";
+    var TableBackgroundMouseoverColor = "#F3FCFE";
+
+    // These two functions need no customization.
+    function ChangeBackgroundColor(row) {
+        TableBackgroundNormalColor = row.style.backgroundColor;
+        row.style.backgroundColor = TableBackgroundMouseoverColor;
+    }
+    function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
+</script>
+
+

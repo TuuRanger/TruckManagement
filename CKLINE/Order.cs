@@ -69,5 +69,13 @@ namespace CKLINE
         public string ContainerType2 { get; set; }
         public string ContainerType3 { get; set; }
         public string ContainerType4 { get; set; }
+        public Nullable<int> ShipperID { get; set; }
+        public Nullable<int> TRound1 { get; set; }
+        public Nullable<int> TRound2 { get; set; }
+        public Nullable<int> TRound3 { get; set; }
+        public Nullable<int> TRound4 { get; set; }
+        public Nullable<decimal> IESCost { get; set; }
+        public Nullable<decimal> IESDistance { get; set; }
+        public string IEReceiveTime { get; set; }
     }
 }

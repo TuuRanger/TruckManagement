@@ -1,11 +1,12 @@
-﻿@{
+﻿@model List<TMS.Models.Transferlist>
+@{
     ViewBag.Title = "OpenJobDetail";
 }
 
 <section class="content-header">
-    <h1>
+    @*<h1>
         บันทึกการปล่อยรถ
-    </h1>
+    </h1>*@
     @*<ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li class="active">Dashboard</li>
@@ -14,12 +15,14 @@
 <section class="content">
 
     <div class="row">
+@foreach (var item in Model)
+{
         <div class="col-md-12">
 
             <div>
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Praxair</h3>
+                        <h3 class="box-title">รายละเอียดใบสั่งงาน</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
@@ -28,258 +31,1189 @@
                         </div>
                     </div>
                     <div class="box-body">
+                        @foreach (var JItem in item.TJob)
+                        {
 
                         <!-- text input -->
                         <div class="form-group">
-                            <div class="col-md-4">
-                                <label>Job No.</label>
-                                <input type="text" class="form-control" placeholder="27055900001" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Order ID</label>
-                                <input type="text" class="form-control" placeholder="PA59050001" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Booking No.</label>
-                                <input type="text" class="form-control" placeholder="TH4565967" disabled>
-                            </div>
-
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>Customer</label>
-                                <input type="text" class="form-control" placeholder="xxxxxxxxxxx" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Route</label>
-                                <input type="text" class="form-control" placeholder="xxxxxxxxxxx" disabled>
-                            </div>
-
-                        </div>
-                        &nbsp;
-                      
-                       
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label>เบอร์ตู้</label>
-                                <input type="text" class="form-control" placeholder="BEAU22380837" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label>ขนาดตู้</label>
-                                <input type="text" class="form-control" placeholder="20'DC" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label>จำนวนตู้</label>
-                                <input type="text" class="form-control" placeholder="1" disabled>
-                            </div>
-
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-4">
-                                <label>ทะเบียนรถ</label>
-                                <input type="text" class="form-control" placeholder="กอ2345" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label>ประเภทรถ</label>
-                                <input type="text" class="form-control" placeholder="6 ล้อ" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label>ชื่อคนขับ</label>
-                                <input type="text" class="form-control" placeholder="Mr.ccc cccc" disabled>
-                            </div>
-
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>วันที่ส่ง</label>
-                                <input type="text" class="form-control" placeholder="27/05/2559" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label>เวลาที่ส่ง</label>
-                                <input type="text" class="form-control" placeholder="12:00" disabled>
-                            </div>
                           
-                        </div>
-                      
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-6">
-                                <label>วันที่รถออก</label>
+                            <div class="col-md-4">
+                                <label><br />Job No.</label>
+                                <input type="text" id="JobID" name="JobID" class="form-control" value="@JItem.JobID" readonly>
+                       
+                            </div>
+                            <div class="col-md-4">
+                                <label><br />วันที่บันทึก</label>
                                 <div class="input-group date">
-                                    @*<div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                </div>
 
-                <input class="form-control" data-val="true" data-val-required="Date is required"
-                       id="PPackDate" name="PPackDate" type="date" value="@dDate" />*@
-                                    <input type="text" class="form-control" name="PPackDate" id="PPackDate" data-select="datepicker"
-                                           data-val="true" data-val-required="Date is required">
+                                    <input type="text" class="form-control" name="JobDate" id="JobDate" data-select="datepicker"
+                                           data-val="true" data-val-required="Date is required" value="@JItem.JDate.ToString("dd/MM/yyyy")" readonly>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                        <button type="button" class="btn btn-primary" data-toggle="datepicker" disabled>
                                             <i class="fa fa-calendar"></i>
                                         </button>
                                     </span>
                                 </div>
+                 
                             </div>
-                            <div class="col-md-6">
-                                <label>เวลารถออก</label>
-                                <select class="form-control" id="Time" name="Time">
-
-                                    <option value="">-- Select Pick up Time --</option>
-                                    <option data-ng-value="00:00">00:00</option>
-                                    <option data-ng-value="00:15">00:15</option>
-                                    <option data-ng-value="00:30">00:30</option>
-                                    <option data-ng-value="00:45">00:45</option>
-                                    <option data-ng-value="01:00">01:00</option>
-                                    <option data-ng-value="01:15">01:15</option>
-                                    <option data-ng-value="01:30">01:30</option>
-                                    <option data-ng-value="01:45">01:45</option>
-                                    <option data-ng-value="02:00">02:00</option>
-                                    <option data-ng-value="02:15">02:15</option>
-                                    <option data-ng-value="02:30">02:30</option>
-                                    <option data-ng-value="02:45">02:45</option>
-                                    <option data-ng-value="03:00">03:00</option>
-                                    <option data-ng-value="03:15">03:15</option>
-                                    <option data-ng-value="03:30">03:30</option>
-                                    <option data-ng-value="03:45">03:45</option>
-                                    <option data-ng-value="04:00">04:00</option>
-                                    <option data-ng-value="04:15">04:15</option>
-                                    <option data-ng-value="04:30">04:30</option>
-                                    <option data-ng-value="04:45">04:45</option>
-                                    <option data-ng-value="05:00">05:00</option>
-                                    <option data-ng-value="05:15">05:15</option>
-                                    <option data-ng-value="05:30">05:30</option>
-                                    <option data-ng-value="05:45">05:45</option>
-                                    <option data-ng-value="06:00">06:00</option>
-                                    <option data-ng-value="06:15">06:15</option>
-                                    <option data-ng-value="06:30">06:30</option>
-                                    <option data-ng-value="06:45">06:45</option>
-                                    <option data-ng-value="07:00">07:00</option>
-                                    <option data-ng-value="07:15">07:15</option>
-                                    <option data-ng-value="07:30">07:30</option>
-                                    <option data-ng-value="07:45">07:45</option>
-                                    <option data-ng-value="08:00">08:00</option>
-                                    <option data-ng-value="08:15">08:15</option>
-                                    <option data-ng-value="08:30">08:30</option>
-                                    <option data-ng-value="08:45">08:45</option>
-                                    <option data-ng-value="09:00">09:00</option>
-                                    <option data-ng-value="09:15">09:15</option>
-                                    <option data-ng-value="09:30">09:30</option>
-                                    <option data-ng-value="09:45">09:45</option>
-                                    <option data-ng-value="10:00">10:00</option>
-                                    <option data-ng-value="10:15">10:15</option>
-                                    <option data-ng-value="10:30">10:30</option>
-                                    <option data-ng-value="10:45">10:45</option>
-                                    <option data-ng-value="11:00">11:00</option>
-                                    <option data-ng-value="11:15">11:15</option>
-                                    <option data-ng-value="11:30">11:30</option>
-                                    <option data-ng-value="11:45">11:45</option>
-                                    <option data-ng-value="12:00">12:00</option>
-                                    <option data-ng-value="12:15">12:15</option>
-                                    <option data-ng-value="12:30">12:30</option>
-                                    <option data-ng-value="12:45">12:45</option>
-                                    <option data-ng-value="13:00">13:00</option>
-                                    <option data-ng-value="13:15">13:15</option>
-                                    <option data-ng-value="13:30">13:30</option>
-                                    <option data-ng-value="13:45">13:45</option>
-                                    <option data-ng-value="14:00">14:00</option>
-                                    <option data-ng-value="14:15">14:15</option>
-                                    <option data-ng-value="14:30">14:30</option>
-                                    <option data-ng-value="14:45">14:45</option>
-                                    <option data-ng-value="15:00">15:00</option>
-                                    <option data-ng-value="15:15">15:15</option>
-                                    <option data-ng-value="15:30">15:30</option>
-                                    <option data-ng-value="15:45">15:45</option>
-                                    <option data-ng-value="16:00">16:00</option>
-                                    <option data-ng-value="16:15">16:15</option>
-                                    <option data-ng-value="16:30">16:30</option>
-                                    <option data-ng-value="16:45">16:45</option>
-                                    <option data-ng-value="17:00">17:00</option>
-                                    <option data-ng-value="17:15">17:15</option>
-                                    <option data-ng-value="17:30">17:30</option>
-                                    <option data-ng-value="17:45">17:45</option>
-                                    <option data-ng-value="18:00">18:00</option>
-                                    <option data-ng-value="18:15">18:15</option>
-                                    <option data-ng-value="18:30">18:30</option>
-                                    <option data-ng-value="18:45">18:45</option>
-                                    <option data-ng-value="19:00">19:00</option>
-                                    <option data-ng-value="19:15">19:15</option>
-                                    <option data-ng-value="19:30">19:30</option>
-                                    <option data-ng-value="19:45">19:45</option>
-                                    <option data-ng-value="20:00">20:00</option>
-                                    <option data-ng-value="20:15">20:15</option>
-                                    <option data-ng-value="20:30">20:30</option>
-                                    <option data-ng-value="20:45">20:45</option>
-                                    <option data-ng-value="21:00">21:00</option>
-                                    <option data-ng-value="21:15">21:15</option>
-                                    <option data-ng-value="21:30">21:30</option>
-                                    <option data-ng-value="21:45">21:45</option>
-                                    <option data-ng-value="22:00">22:00</option>
-                                    <option data-ng-value="22:15">22:15</option>
-                                    <option data-ng-value="22:30">22:30</option>
-                                    <option data-ng-value="22:45">22:45</option>
-                                    <option data-ng-value="23:00">23:00</option>
-                                    <option data-ng-value="23:15">23:15</option>
-                                    <option data-ng-value="23:30">23:30</option>
-                                    <option data-ng-value="23:45">23:45</option>
-                                </select>
+                            @{
+                            string SText = "";
+                            if(JItem.JobType == 1)
+                            {
+                                SText = "เที่ยวเดียว";
+                            }
+                            else
+                            {
+                                SText = "ไป-กลับ";
+                            }
+                            }
+                            <div class="col-md-4">
+                                <label><br />ประเภท</label>
+                                <input type="text" id="SText" name="SText" class="form-control" value="@SText." readonly>
                             </div>
-
+                        
                         </div>
+  
+    if (JItem.SType == 1)
+    {
 
-                        &nbsp;
-                     
-                        <div class="form-group">
-                            <div class="col-md-3">
-                                <label>เลขไมล์</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-3">
-                                <label>เงินสำรองค่าน้ำมัน (บาท)</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-3">
-                                <label>เงินสำรองค่าทางด่วน (บาท)</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
-                            <div class="col-md-3">
-                                <label>เงินสำรองค่าอื่นๆ (บาท)</label>
-                                <input type="text" class="form-control" placeholder="">
-                            </div>
+        <div class="form-group">
+          
+            <div class="col-md-4">
+  
+                <label><br />หัวลาก</label>
+               
+                <select class="form-control" id="TID" name="TID" placeholder="-- Select Customer -- " disabled>
+       
+                            <option value="@JItem.TruckID">@JItem.License</option>
+                </select>
+     
+            </div>
+           
+            <div class="col-md-4">
+          
+                <label><br />หางลาก</label>
+              
+                <select class="form-control" id="HID" name="HID" placeholder="-- Select Customer --" disabled>
+                   
+                            <option value="@JItem.HitchID">@JItem.HitchLicense</option>
 
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <label>หมายเหตุ</label>
-                                <textarea id="Address" name="Address" class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            </div>
+                </select>
+       
+            </div>
+            
+            <div class="col-md-4">
+             
+                <label><br />คนขับ</label>
 
-                        </div>
-                        &nbsp;
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <div class="box-footer clearfix">
+                <select class="form-control" id="Driver" name="Driver" placeholder="-- Select Customer --" disabled>
+                  
+                            <option value="@JItem.DriverID">@JItem.DTitle @JItem.DFirstName &nbsp; @JItem.DLastName</option>
 
-                                    <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                </select>
+            
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="form-group">
+           
+            <div class="col-md-12">
+                <label><br />Sub</label>
+                <select class="form-control" id="Sub" name="Sub" placeholder="-- Select Customer --" disabled>              
+                            <option value="@JItem.SID">@JItem.SCName</option>
+                </select>
+          
+            </div>
+
+
+        </div>
+    }
+    
+
+
+                      @*เที่ยวไป*@
+                    <div class="form-group">
+              &nbsp;
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">เที่ยวไป</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+
+                                    </div>
                                 </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                             @foreach (var JSItem in item.JOrderS)
+{
+                                        if (JSItem.OrderType == 1)
+                                        {
+                                            <div class="form-group">
+                                              
+                                                <div class="col-md-6">
+                                                    <label><br />Order No.</label>
+                                                    <input type="text" id="SOID" name="SOID" class="form-control" value="@JSItem.OrderID" readonly>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label><br />Route</label>
+                                                    <select class="form-control" id="SRoute" name="SRoute" placeholder="-- Select Route --" disabled>
+                                                        @*  <option value="">-- Select Route --</option>*@
+
+                                                        <option value="@JSItem.RoutID">@JSItem.RFromDetail > @JSItem.RToDetail</option>
+
+                                                    </select>
+
+                                                </div>
+                                               
+                                            </div>
+
+                                            <div class="form-group">
+                                                
+                                                <div class="col-md-6">
+                                                    <label><br />Customer</label>
+                                                    <select class="form-control" id="SCustomer" name="SCustomer" placeholder="-- Select Customer --" disabled>
+
+
+                                                        <option value="@JSItem.CustomerID">@JSItem.CName</option>
+
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label><br />Shipper/Consignee</label>
+                                                    <select class="form-control" id="SShipper" name="SShipper" placeholder="-- Select Customer --" disabled>
+
+
+                                                        <option value="@JSItem.ShipperID">@JSItem.SName</option>
+
+                                                    </select>
+
+                                                </div>
+                                               
+                                            </div>
+
+                                            <div class="form-group">
+                                                
+                                                <div class="col-md-4">
+                                                    <label><br />วันที่ออกเดินทาง</label>
+                                                    <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@JSItem.ReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label><br />วันที่บรรจุ</label>
+                                                    <input type="text" id="PPackDate" name="PPackDate" class="form-control" value="@JSItem.PPackDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label><br />วันที่ส่ง</label>
+                                                    <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@JSItem.DliveryDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                            </div>
+                                        }
+                                        else if (JSItem.OrderType == 2)
+                                        {
+                                            <div class="form-group">
+                                             
+                                                <div class="col-md-6">
+                                                    <label><br />Order No.</label>
+                                                    <input type="text" id="SOID" name="SOID" class="form-control" value="@JSItem.OrderID" readonly>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label><br />Customer</label>
+                                                    <select class="form-control" id="SCustomer" name="SCustomer" placeholder="-- Select Customer --" disabled>
+
+
+                                                        <option value="@JSItem.CustomerID">@JSItem.CName</option>
+
+                                                    </select>
+
+                                                </div>
+                                               
+                                            </div>
+
+                                        }
+                                        else if (JSItem.OrderType == 3)
+                                        {
+                                            <div class="form-group">
+                                               
+                                                <div class="col-md-6">
+                                                    <label><br />Order No.</label>
+                                                    <input type="text" id="SOID" name="SOID" class="form-control" value="@JSItem.OrderID" readonly>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label><br />Route</label>
+                                                    <select class="form-control" id="SRoute" name="SRoute" placeholder="-- Select Route --" disabled>
+                                                        @*  <option value="">-- Select Route --</option>*@
+
+                                                        <option value="@JSItem.RoutID">@JSItem.RFromDetail > @JSItem.RToDetail</option>
+
+                                                    </select>
+
+                                                </div>
+                                               
+                                            </div>
+
+
+                                            <div class="form-group">
+                                              
+                                                <div class="col-md-6">
+                                                    <label><br />Customer</label>
+                                                    <select class="form-control" id="SCustomer" name="SCustomer" placeholder="-- Select Customer --" disabled>
+
+
+                                                        <option value="@JSItem.CustomerID">@JSItem.CName</option>
+
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label><br />Shipper/Consignee</label>
+                                                    <select class="form-control" id="SShipper" name="SShipper" placeholder="-- Select Customer --" disabled>
+
+
+                                                        <option value="@JSItem.ShipperID">@JSItem.SName</option>
+
+                                                    </select>
+
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                
+                                                <div class="col-md-4">
+                                                    <label><br />วันรับตู้</label>
+                                                    <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@JItem.IEReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label><br />วันที่บรรจุ</label>
+                                                    <input type="text" id="PPackDate" name="PPackDate" class="form-control" value="@JItem.IEPackDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label><br />นที่คืนตู้</label>
+                                                    <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@JItem.IEReturnDate.ToString("dd/MM/yyyy")" readonly>
+                                                </div>
+                                            </div>
+                                        }
+                               
+                           
+                                    <div class="form-group">
+                                        &nbsp;
+                                        <div class="col-md-12">
+                                            <!-- /.box-header -->
+                                            @if (JSItem.OrderType == 1)
+                                            {
+                                                <div class="row">
+                                                    <div class="col-xs-12 table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr style="background-color:#00acd6">
+                                                                    <th align="center"><font color="#fff">เบอร์ตู้</font></th>
+                                                                    <th align="center"><font color="#fff">ตำแหน่งวาวล์</font></th>
+                                                                    <th align="center"><font color="#fff">สถานะ</font></th>
+                                                                
+                                                                </tr>
+                                                               
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var JDItem in item.JOrderDS)
+                                                                {
+
+                                                                    String StatusD = "";
+                                                                    String SClassD = "";
+                                                                    if (JDItem.Status == 1)
+                                                                    {
+                                                                        StatusD = "New";
+                                                                        SClassD = "label label-success";
+                                                                    }
+                                                                    else if (JDItem.Status == 2)
+                                                                    {
+                                                                        StatusD = "Queue";
+                                                                        SClassD = "label label-warning";
+                                                                    }
+                                                                    else if (JDItem.Status == 3)
+                                                                    {
+                                                                        StatusD = "Delivered";
+                                                                        SClassD = "label label-primary";
+                                                                    }
+                                                                    else if (JDItem.Status == 4)
+                                                                    {
+                                                                        StatusD = "Finish";
+                                                                        SClassD = "label label-info";
+                                                                    }
+                                                                    else if (JDItem.Status == 5)
+                                                                    {
+                                                                        StatusD = "Cancel";
+                                                                        SClassD = "label label-danger";
+                                                                    }
+
+                                                                    string sPosition = "";
+                                                                    if (JDItem.Position == "L")
+                                                                    {
+                                                                        sPosition = "ด้านซ้าย";
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        sPosition = "ด้านขวา";
+
+                                                                    }
+
+                                                                    <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+
+                                                                        <td>@JDItem.ContainerNo</td>
+                                                                        <td>@sPosition</td>
+                                                                        <td><span class="@SClassD">@StatusD</span></td>
+
+                                                                    </tr>
+
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.col -->
+                                                </div>
+
+                                            }
+                                            else if (JSItem.OrderType == 2)
+                                            {
+
+                                                <div class="row">
+                                                    <div class="col-xs-12 table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr style="background-color:#00acd6">
+                                                                    <th align="center"><font color="#fff">เส้นทาง</font></th>
+                                                                    <th align="center"><font color="#fff">วันที่ลากตู้</font></th>
+                                                                    <th align="center"><font color="#fff">เบอร์ตู้</font></th>
+                                                                    <th align="center"><font color="#fff">ประเภทตู้</font></th>
+                                                                    <th align="center"><font color="#fff">ประเภทตู้</font></th>
+                                                                    <th align="center"><font color="#fff">เที่ยวกลับ</font></th>
+                                                                    <th align="center"><font color="#fff">จำนวน</font></th>
+                                                                    <th align="center"><font color="#fff">วันที่</font></th>
+                                                                    <th align="center"><font color="#fff">รายละเอียด</font></th>
+                                                                    <th align="center"><font color="#fff">Status</font></th>
+
+                                                                </tr>
+                                                             
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var JDItem in item.JOrderDS)
+                                                                {
+
+                                                                    String StatusD = "";
+                                                                    String SClassD = "";
+                                                                    if (JDItem.Status == 1)
+                                                                    {
+                                                                        StatusD = "New";
+                                                                        SClassD = "label label-success";
+                                                                    }
+                                                                    else if (JDItem.Status == 2)
+                                                                    {
+                                                                        StatusD = "Queue";
+                                                                        SClassD = "label label-warning";
+                                                                    }
+                                                                    else if (JDItem.Status == 3)
+                                                                    {
+                                                                        StatusD = "Delivered";
+                                                                        SClassD = "label label-primary";
+                                                                    }
+                                                                    else if (JDItem.Status == 4)
+                                                                    {
+                                                                        StatusD = "Finish";
+                                                                        SClassD = "label label-info";
+                                                                    }
+                                                                    else if (JDItem.Status == 5)
+                                                                    {
+                                                                        StatusD = "Cancel";
+                                                                        SClassD = "label label-danger";
+                                                                    }
+
+
+                                                                    string sPosition = "";
+                                                                    if (JDItem.Position == "L")
+                                                                    {
+                                                                        sPosition = "ด้านซ้าย";
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        sPosition = "ด้านขวา";
+
+                                                                    }
+
+                                                                    <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+
+                                                                        <td>@JDItem.RFromDetail > @JDItem.RToDetail</td>
+                                                                        <td>@JDItem.TPackDate.ToString("dd/MM/yyyy")</td>
+                                                                        <td>@JDItem.ContainerNo</td>
+                                                                        <td>@JDItem.ContainerType</td>
+                                                                        <td><span class="@SClassD">@StatusD</span></td>
+
+                                                                    </tr>
+
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.col -->
+                                                </div>
+
+                                            }
+                                            else if (JSItem.OrderType == 3)
+                                            {
+
+                                                <div class="row">
+                                                    <div class="col-xs-12 table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr style="background-color:#00acd6">
+                                                                    <th align="center"><font color="#fff">เบอร์ตู้</font></th>
+                                                                    <th align="center"><font color="#fff">น้ำหนักตู้เปล่า</font></th>
+                                                                    <th align="center"><font color="#fff">ประเภทตู้</font></th>
+                                                                    <th align="center"><font color="#fff">เบอร์ซีล</font></th>
+                                                                    <th align="center"><font color="#fff">สถานะ</font></th>
+                                                                 
+                                                                </tr>
+                                                          
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var JDItem in item.JOrderDS)
+                                                                {
+
+                                                                    String StatusD = "";
+                                                                    String SClassD = "";
+                                                                    if (JDItem.Status == 1)
+                                                                    {
+                                                                        StatusD = "New";
+                                                                        SClassD = "label label-success";
+                                                                    }
+                                                                    else if (JDItem.Status == 2)
+                                                                    {
+                                                                        StatusD = "Queue";
+                                                                        SClassD = "label label-warning";
+                                                                    }
+                                                                    else if (JDItem.Status == 3)
+                                                                    {
+                                                                        StatusD = "Delivered";
+                                                                        SClassD = "label label-primary";
+                                                                    }
+                                                                    else if (JDItem.Status == 4)
+                                                                    {
+                                                                        StatusD = "Finish";
+                                                                        SClassD = "label label-info";
+                                                                    }
+                                                                    else if (JDItem.Status == 5)
+                                                                    {
+                                                                        StatusD = "Cancel";
+                                                                        SClassD = "label label-danger";
+                                                                    }
+
+
+                                                                    string sPosition = "";
+                                                                    if (JDItem.Position == "L")
+                                                                    {
+                                                                        sPosition = "ด้านซ้าย";
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        sPosition = "ด้านขวา";
+
+                                                                    }
+
+                                                                    <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+
+                                                                        <td>@JDItem.ContainerNo</td>
+                                                                        <td align="center">@JDItem.TareWeight.ToString("#,###.##")</td>
+                                                                        <td>@JDItem.ContainerType</td>
+                                                                        <td>@JDItem.PackNo</td>
+                                                                        <td><span class="@SClassD">@StatusD</span></td>
+
+                                                                    </tr>
+
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!-- /.col -->
+                                                </div>
+
+
+                                            }
+
+                                            <!-- /.box-body -->
+                                        </div>
+
+                                    </div>
+}
+                                </div>
+
+                                <!-- /.box-body -->
                             </div>
                         </div>
+                    </div>
+                    @*เที่ยวไป*@
 
+    @*เที่ยกลับ*@
+    if (JItem.JobType== 2)
+    {
+
+        <div class="form-group">
+            &nbsp;
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">เที่ยวกลับ</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        @foreach (var JSItem in item.JOrderR)
+                        {
+                            if (JSItem.OrderType == 1)
+                            {
+                                <div class="form-group">
+                                   
+                                    <div class="col-md-6">
+                                        <label><br />Order No.</label>
+                                        <input type="text" id="ROID" name="ROID" class="form-control" value="@JSItem.OrderID" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><br />Route</label>
+                                        <select class="form-control" id="RRoute" name="RRoute" placeholder="-- Select Route --" disabled>
+                                            @*  <option value="">-- Select Route --</option>*@
+
+                                            <option value="@JSItem.RoutID">@JSItem.RFromDetail > @JSItem.RToDetail</option>
+
+                                        </select>
+
+                                    </div>
+                                   
+                                </div>
+
+
+                                <div class="form-group">
+                                 
+                                    <div class="col-md-6">
+                                        <label><br />Customer</label>
+                                        <select class="form-control" id="RCustomer" name="RCustomer" placeholder="-- Select Customer --" disabled>
+
+
+                                            <option value="@JSItem.CustomerID">@JSItem.CName</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><br />Shipper/Consignee</label>
+                                        <select class="form-control" id="RShipper" name="RShipper" placeholder="-- Select Customer --" disabled>
+
+
+                                            <option value="@JSItem.ShipperID">@JSItem.SName</option>
+
+                                        </select>
+
+                                    </div>
+                                  
+                                </div>
+
+                                <div class="form-group">
+                                   
+                                    <div class="col-md-4">
+                                        <label><br />วันที่ออกเดินทาง</label>
+                                        <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@JSItem.ReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label><br />วันที่บรรจุ</label>
+                                        <input type="text" id="PPackDate" name="PPackDate" class="form-control" value="@JSItem.PPackDate.ToString("dd/MM/yyyy")" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label><br />วันที่ส่ง</label>
+                                        <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@JSItem.DliveryDate.ToString("dd/MM/yyyy")" readonly>
+                                    </div>
+                                </div>
+                            }
+                            else if (JSItem.OrderType  == 2)
+                            {
+                                <div class="form-group">
+                                  
+                                    <div class="col-md-6">
+                                        <label><br />Order No.</label>
+                                        <input type="text" id="ROID" name="ROID" class="form-control" value="@JSItem.OrderID" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><br />Customer</label>
+                                        <select class="form-control" id="RCustomer" name="RCustomer" placeholder="-- Select Customer --" disabled>
+
+
+                                            <option value="@JSItem.CustomerID">@JSItem.CName</option>
+
+                                        </select>
+
+                                    </div>
+                                   
+                                </div>
+
+                            }
+                            else if (JSItem.OrderType == 3)
+                            {
+                                <div class="form-group">
+                                 
+                                    <div class="col-md-6">
+                                        <label><br />Order No.</label>
+                                        <input type="text" id="ROID" name="ROID" class="form-control" value="@JSItem.OrderID" readonly>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><br />Route</label>
+                                        <select class="form-control" id="RRoute" name="RRoute" placeholder="-- Select Route --" disabled>
+                                            @*  <option value="">-- Select Route --</option>*@
+
+                                            <option value="@JSItem.RoutID">@JSItem.RFromDetail > @JSItem.RToDetail</option>
+
+                                        </select>
+
+                                    </div>
+                                 
+                                </div>
+
+
+                                <div class="form-group">
+                                  
+                                    <div class="col-md-6">
+                                        <label><br />Customer</label>
+                                        <select class="form-control" id="RCustomer" name="RCustomer" placeholder="-- Select Customer --" disabled>
+
+
+                                            <option value="@JSItem.CustomerID">@JSItem.CName</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label><br />Shipper/Consignee</label>
+                                        <select class="form-control" id="RShipper" name="RShipper" placeholder="-- Select Customer --" disabled>
+
+
+                                            <option value="@JSItem.ShipperID">@JSItem.SName</option>
+
+                                        </select>
+
+                                    </div>
+                                   
+                                </div>
+                                <div class="form-group">
+                                   
+                                    <div class="col-md-4">
+                                        <label><br />วันรับตู้</label>
+                                        <input type="text" id="ReceiveDate" name="ReceiveDate" class="form-control" value="@JSItem.IEReceiveDate.ToString("dd/MM/yyyy")" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label><br />วันที่บรรจุ</label>
+                                        <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@JSItem.IEPackDate.ToString("dd/MM/yyyy")" readonly>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label><br />วันที่คืนตู้</label>
+                                        <input type="text" id="DliveryDate" name="DliveryDate" class="form-control" value="@JSItem.IEReturnDate.ToString("dd/MM/yyyy")" readonly>
+                                    </div>
+                                </div>
+                            }
+                       
+
+              
+
+                        <div class="form-group">
+                            &nbsp;
+                            <div class="col-md-12">
+                                <!-- /.box-header -->
+                                @if (JSItem.OrderType == 1)
+                                {
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr style="background-color:#00acd6">
+                                                        <th align="center"><font color="#fff">เบอร์ตู้</font></th>
+                                                        <th align="center"><font color="#fff">ตำแหน่งวาวล์</font></th>
+                                                        <th align="center"><font color="#fff">สถานะ</font></th>
+                                                     
+                                                    </tr>
+                                                    
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var itemD in item.JOrderDR)
+                                                    {
+
+                                                        //  string DStatusName = "";
+                                                        String StatusD = "";
+                                                        String SClassD = "";
+                                                        if (itemD.Status == 1)
+                                                        {
+                                                            StatusD = "New";
+                                                            SClassD = "label label-success";
+                                                        }
+                                                        else if (itemD.Status == 2)
+                                                        {
+                                                            StatusD = "Queue";
+                                                            SClassD = "label label-warning";
+                                                        }
+                                                        else if (itemD.Status == 3)
+                                                        {
+                                                            StatusD = "Delivered";
+                                                            SClassD = "label label-primary";
+                                                        }
+                                                        else if (itemD.Status == 4)
+                                                        {
+                                                            StatusD = "Finish";
+                                                            SClassD = "label label-info";
+                                                        }
+                                                        else if (itemD.Status == 5)
+                                                        {
+                                                            StatusD = "Cancel";
+                                                            SClassD = "label label-danger";
+                                                        }
+
+                                                        string sPosition = "";
+                                                        if (itemD.Position == "L")
+                                                        {
+                                                            sPosition = "ด้านซ้าย";
+
+                                                        }
+                                                        else
+                                                        {
+                                                            sPosition = "ด้านขวา";
+
+                                                        }
+
+                                                        <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+
+                                                            <td>@itemD.ContainerNo</td>
+                                                            <td>@sPosition</td>
+                                                            <td><span class="@SClassD">@StatusD</span></td>
+
+                                                        </tr>
+
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+
+
+                                }
+                                else if (JSItem.OrderType == 2)
+                                {
+
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr style="background-color:#00acd6">
+                                                        <th align="center"><font color="#fff">เส้นทาง</font></th>
+                                                        <th align="center"><font color="#fff">วันที่ลากตู้</font></th>
+                                                        <th align="center"><font color="#fff">เบอร์ตู้</font></th>
+                                                        <th align="center"><font color="#fff">ประเภทตู้</font></th>
+                                                        <th align="center"><font color="#fff">สถานะ</font></th>
+                                                     
+
+                                                    </tr>
+                                                
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var itemD in item.JOrderDR)
+                                                    {
+
+                                                        String StatusD = "";
+                                                        String SClassD = "";
+                                                        if (itemD.Status == 1)
+                                                        {
+                                                            StatusD = "New";
+                                                            SClassD = "label label-success";
+                                                        }
+                                                        else if (itemD.Status == 2)
+                                                        {
+                                                            StatusD = "Queue";
+                                                            SClassD = "label label-warning";
+                                                        }
+                                                        else if (itemD.Status == 3)
+                                                        {
+                                                            StatusD = "Delivered";
+                                                            SClassD = "label label-primary";
+                                                        }
+                                                        else if (itemD.Status == 4)
+                                                        {
+                                                            StatusD = "Finish";
+                                                            SClassD = "label label-info";
+                                                        }
+                                                        else if (itemD.Status == 5)
+                                                        {
+                                                            StatusD = "Cancel";
+                                                            SClassD = "label label-danger";
+                                                        }
+
+
+                                                        string sPosition = "";
+                                                        if (itemD.Position == "L")
+                                                        {
+                                                            sPosition = "ด้านซ้าย";
+
+                                                        }
+                                                        else
+                                                        {
+                                                            sPosition = "ด้านขวา";
+
+                                                        }
+
+                                                        <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+
+                                                            <td>@itemD.RFromDetail > @itemD.RToDetail</td>
+                                                            <td>@itemD.TPackDate.ToString("dd/MM/yyyy")</td>
+                                                            <td>@itemD.ContainerNo</td>
+                                                            <td>@itemD.ContainerType</td>
+                                                            <td><span class="@SClassD">@StatusD</span></td>
+
+                                                        </tr>
+
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+
+
+                                }
+                                else if (JSItem.OrderType == 3)
+                                {
+
+                                    <div class="row">
+                                        <div class="col-xs-12 table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr style="background-color:#00acd6">
+                                                        <th align="center"><font color="#fff">เบอร์ตู้</font></th>
+                                                        <th align="center"><font color="#fff">น้ำหนักตู้เปล่า</font></th>
+                                                        <th align="center"><font color="#fff">ประเภทตู้</font></th>
+                                                        <th align="center"><font color="#fff">เบอร์ซีล</font></th>
+                                                        <th align="center"><font color="#fff">สถานะ</font></th>
+                                                      
+
+                                                    </tr>
+                                              
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var itemD in item.JOrderDR)
+                                                    {
+
+                                                        String StatusD = "";
+                                                        String SClassD = "";
+                                                        if (itemD.Status == 1)
+                                                        {
+                                                            StatusD = "New";
+                                                            SClassD = "label label-success";
+                                                        }
+                                                        else if (itemD.Status == 2)
+                                                        {
+                                                            StatusD = "Queue";
+                                                            SClassD = "label label-warning";
+                                                        }
+                                                        else if (itemD.Status == 3)
+                                                        {
+                                                            StatusD = "Delivered";
+                                                            SClassD = "label label-primary";
+                                                        }
+                                                        else if (itemD.Status == 4)
+                                                        {
+                                                            StatusD = "Finish";
+                                                            SClassD = "label label-info";
+                                                        }
+                                                        else if (itemD.Status == 5)
+                                                        {
+                                                            StatusD = "Cancel";
+                                                            SClassD = "label label-danger";
+                                                        }
+
+
+                                                        string sPosition = "";
+                                                        if (itemD.Position == "L")
+                                                        {
+                                                            sPosition = "ด้านซ้าย";
+
+                                                        }
+                                                        else
+                                                        {
+                                                            sPosition = "ด้านขวา";
+
+                                                        }
+
+                                                        <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+
+                                                            <td>@itemD.ContainerNo</td>
+                                                            <td align="center">@itemD.TareWeight.ToString("#,###.##")</td>
+                                                            <td>@itemD.ContainerType</td>
+                                                            <td>@itemD.PackNo</td>
+                                                            <td><span class="@SClassD">@StatusD</span></td>
+
+                                                        </tr>
+
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.col -->
+                                    </div>
+
+
+                                }
+
+                                <!-- /.box-body -->
+                            </div>
+
+                        </div>
+                        }
+              
+                        
+                    </div>
+
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    }
+    @*เที่ยกลับ*@
+                        }
+               
                     </div>
                     <!-- /.box-body -->
                 </div>
             </div>
 
         </div>
+}
+        <form action="~/TMS/OpenJobCommit" method="post" onsubmit="return chk_form()">
+            <div class="col-md-12">
 
+                <div>
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">บันทึกการปล่อยรถ</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                @*   <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            @{DateTime TDate = DateTime.Now.Date;}
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label><br />วันที่รถออก</label>
+                                    <div class="input-group date">
+
+                                        <input type="text" class="form-control" name="TransferDate" id="TransferDate" data-select="datepicker"
+                                               data-val="true" data-val-required="Date is required" value="@TDate.ToString("dd/MM/yyyy")">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-primary" data-toggle="datepicker">
+                                                <i class="fa fa-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label><br />เวลารถออก</label>
+                                    <select class="form-control" id="TransferTime" name="TransferTime">
+
+                                        <option value="">-- Select Pick up Time --</option>
+                                        <option data-ng-value="00:00">00:00</option>
+                                        <option data-ng-value="00:15">00:15</option>
+                                        <option data-ng-value="00:30">00:30</option>
+                                        <option data-ng-value="00:45">00:45</option>
+                                        <option data-ng-value="01:00">01:00</option>
+                                        <option data-ng-value="01:15">01:15</option>
+                                        <option data-ng-value="01:30">01:30</option>
+                                        <option data-ng-value="01:45">01:45</option>
+                                        <option data-ng-value="02:00">02:00</option>
+                                        <option data-ng-value="02:15">02:15</option>
+                                        <option data-ng-value="02:30">02:30</option>
+                                        <option data-ng-value="02:45">02:45</option>
+                                        <option data-ng-value="03:00">03:00</option>
+                                        <option data-ng-value="03:15">03:15</option>
+                                        <option data-ng-value="03:30">03:30</option>
+                                        <option data-ng-value="03:45">03:45</option>
+                                        <option data-ng-value="04:00">04:00</option>
+                                        <option data-ng-value="04:15">04:15</option>
+                                        <option data-ng-value="04:30">04:30</option>
+                                        <option data-ng-value="04:45">04:45</option>
+                                        <option data-ng-value="05:00">05:00</option>
+                                        <option data-ng-value="05:15">05:15</option>
+                                        <option data-ng-value="05:30">05:30</option>
+                                        <option data-ng-value="05:45">05:45</option>
+                                        <option data-ng-value="06:00">06:00</option>
+                                        <option data-ng-value="06:15">06:15</option>
+                                        <option data-ng-value="06:30">06:30</option>
+                                        <option data-ng-value="06:45">06:45</option>
+                                        <option data-ng-value="07:00">07:00</option>
+                                        <option data-ng-value="07:15">07:15</option>
+                                        <option data-ng-value="07:30">07:30</option>
+                                        <option data-ng-value="07:45">07:45</option>
+                                        <option data-ng-value="08:00">08:00</option>
+                                        <option data-ng-value="08:15">08:15</option>
+                                        <option data-ng-value="08:30">08:30</option>
+                                        <option data-ng-value="08:45">08:45</option>
+                                        <option selected data-ng-value="09:00">09:00</option>
+                                        <option data-ng-value="09:15">09:15</option>
+                                        <option data-ng-value="09:30">09:30</option>
+                                        <option data-ng-value="09:45">09:45</option>
+                                        <option data-ng-value="10:00">10:00</option>
+                                        <option data-ng-value="10:15">10:15</option>
+                                        <option data-ng-value="10:30">10:30</option>
+                                        <option data-ng-value="10:45">10:45</option>
+                                        <option data-ng-value="11:00">11:00</option>
+                                        <option data-ng-value="11:15">11:15</option>
+                                        <option data-ng-value="11:30">11:30</option>
+                                        <option data-ng-value="11:45">11:45</option>
+                                        <option data-ng-value="12:00">12:00</option>
+                                        <option data-ng-value="12:15">12:15</option>
+                                        <option data-ng-value="12:30">12:30</option>
+                                        <option data-ng-value="12:45">12:45</option>
+                                        <option data-ng-value="13:00">13:00</option>
+                                        <option data-ng-value="13:15">13:15</option>
+                                        <option data-ng-value="13:30">13:30</option>
+                                        <option data-ng-value="13:45">13:45</option>
+                                        <option data-ng-value="14:00">14:00</option>
+                                        <option data-ng-value="14:15">14:15</option>
+                                        <option data-ng-value="14:30">14:30</option>
+                                        <option data-ng-value="14:45">14:45</option>
+                                        <option data-ng-value="15:00">15:00</option>
+                                        <option data-ng-value="15:15">15:15</option>
+                                        <option data-ng-value="15:30">15:30</option>
+                                        <option data-ng-value="15:45">15:45</option>
+                                        <option data-ng-value="16:00">16:00</option>
+                                        <option data-ng-value="16:15">16:15</option>
+                                        <option data-ng-value="16:30">16:30</option>
+                                        <option data-ng-value="16:45">16:45</option>
+                                        <option data-ng-value="17:00">17:00</option>
+                                        <option data-ng-value="17:15">17:15</option>
+                                        <option data-ng-value="17:30">17:30</option>
+                                        <option data-ng-value="17:45">17:45</option>
+                                        <option data-ng-value="18:00">18:00</option>
+                                        <option data-ng-value="18:15">18:15</option>
+                                        <option data-ng-value="18:30">18:30</option>
+                                        <option data-ng-value="18:45">18:45</option>
+                                        <option data-ng-value="19:00">19:00</option>
+                                        <option data-ng-value="19:15">19:15</option>
+                                        <option data-ng-value="19:30">19:30</option>
+                                        <option data-ng-value="19:45">19:45</option>
+                                        <option data-ng-value="20:00">20:00</option>
+                                        <option data-ng-value="20:15">20:15</option>
+                                        <option data-ng-value="20:30">20:30</option>
+                                        <option data-ng-value="20:45">20:45</option>
+                                        <option data-ng-value="21:00">21:00</option>
+                                        <option data-ng-value="21:15">21:15</option>
+                                        <option data-ng-value="21:30">21:30</option>
+                                        <option data-ng-value="21:45">21:45</option>
+                                        <option data-ng-value="22:00">22:00</option>
+                                        <option data-ng-value="22:15">22:15</option>
+                                        <option data-ng-value="22:30">22:30</option>
+                                        <option data-ng-value="22:45">22:45</option>
+                                        <option data-ng-value="23:00">23:00</option>
+                                        <option data-ng-value="23:15">23:15</option>
+                                        <option data-ng-value="23:30">23:30</option>
+                                        <option data-ng-value="23:45">23:45</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-3">
+                                    <label><br />เลขไมล์</label>
+                                    <input type="text" class="form-control" id="OMile" name="OMile" placeholder="" onkeypress="return isNumberKey(event)" style="text-align:right">
+                                </div>
+                                <div class="col-md-3">
+                                    <label><br />เงินสำรองค่าน้ำมัน (บาท)</label>
+                                    <input type="text" class="form-control" id="OOli" name="OOli" placeholder="" onkeypress="return isNumberKey(event)" style="text-align:right">
+                                </div>
+                                <div class="col-md-3">
+                                    <label><br />เงินสำรองค่าทางด่วน (บาท)</label>
+                                    <input type="text" class="form-control" id="OWay" name="OWay" placeholder="" onkeypress="return isNumberKey(event)" style="text-align:right">
+                                </div>
+                                <div class="col-md-3">
+                                    <label><br />เงินสำรองค่าอื่นๆ (บาท)</label>
+                                    <input type="text" class="form-control" id="OOther" name="OOther" placeholder="" onkeypress="return isNumberKey(event)" style="text-align:right">
+                                </div>
+
+                            </div>
+                          
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label><br />หมายเหตุ</label>
+                                    <textarea id="ORemark" name="ORemark" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                </div>
+
+                            </div>
+                            &nbsp;
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="box-footer clearfix">
+                                        @foreach (var ITem in Model)
+                                        {
+                                            foreach (var JItem in ITem.TJob)
+                                            {
+                                                <input type="hidden" id="JobID" name="JobID" class="form-control" value="@JItem.JobID" readonly>
+    <input type="hidden" id="SOID" name="SOID" class="form-control" value="@JItem.SOID" readonly>
+    <input type="hidden" id="ROID" name="ROID" class="form-control" value="@JItem.ROID" readonly>
+    <input type="hidden" id="SID" name="SID" class="form-control" value="@JItem.SID" readonly>
+    <input type="hidden" id="TID" name="TID" class="form-control" value="@JItem.TruckID" readonly>
+    <input type="hidden" id="HID" name="HID" class="form-control" value="@JItem.HitchID" readonly>
+                                            }
+                                        }
+                                     
+                                        <button type="submit" class="btn btn-success btn-block" data-animation-type="bounce" data-animation-duration="1" style="animation-duration: 1s; visibility: visible;">SAVE</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+        </form>
     </div>
 
 </section>
 <script language="JavaScript" type="text/javascript">
   
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
 
+        return true;
+    }
+</script>
+<script type="text/javascript">
+
+    var TableBackgroundNormalColor = "#ffffff";
+    var TableBackgroundMouseoverColor = "#F3FCFE";
+
+    // These two functions need no customization.
+    function ChangeBackgroundColor(row) {
+        TableBackgroundNormalColor = row.style.backgroundColor;
+        row.style.backgroundColor = TableBackgroundMouseoverColor;
+    }
+    function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
 </script>

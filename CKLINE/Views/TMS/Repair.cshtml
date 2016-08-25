@@ -30,62 +30,68 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
+                    <div class="col-xs-12 table-responsive">
+                        <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th>เลขที่</th>
-                                    <th>ทะเบียนรถ</th>
-                                    <th>ประเภทรถ</th>
-                                    <th>วันที่แจ้งซ่อม</th>
-                                    <th>วันที่ส่งซ่อม</th>
-                                    <th>วันที่ส่งซ่อม</th>
-                                    <th>อาการเสียที่แจ้ง</th>
-                                    <th>สถานะ</th>
+                                <tr style="background-color:#00acd6">
+                                    <th align="center"><font color="#fff">เลขที่</font></th>
+                                    <th align="center"><font color="#fff">ทะเบียนรถ</font></th>
+                                    <th align="center"><font color="#fff">ประเภทรถ</font></th>
+                                    <th align="center"><font color="#fff">วันที่แจ้งซ่อม</font></th>
+                                    <th align="center"><font color="#fff">วันที่ส่งซ่อม</font></th>
+                                    <th align="center"><font color="#fff">วันที่ซ่อมเสร็จ</font></th>
+                                    <th align="center"><font color="#fff">อาการเสียที่แจ้ง</font></th>
+                                    <th align="center"><font color="#fff">สถานะ</font></th>
+
                                 </tr>
+                           
                             </thead>
                             <tbody>
 
-@foreach (var item in Model)
-{
-    String Status = "";
-    String SClass = "";
-    if (item.Status == 1)
-    {
-        Status = "แจ้งซ่อม";
-        SClass = "label label-danger";
-    }
+                                @foreach (var item in Model)
+                                {
+                                    String Status = "";
+                                    String SClass = "";
+                                    if (item.Status == 1)
+                                    {
+                                        Status = "แจ้งซ่อม";
+                                        SClass = "label label-danger";
+                                    }
 
-    else if (item.Status == 2)
-    {
-        Status = "กำลังซ่อม";
-        SClass = "label label-warning";
-    }
-    else if (item.Status == 3)
-    {
-        Status = "ซ่อมเสร็จแล้ว";
-        SClass = "label label-primary";
-    }
-    else if (item.Status == 4)
-    {
-        Status = "ยกเลิก";
-        SClass = "label label-info";
-    }
+                                    else if (item.Status == 2)
+                                    {
+                                        Status = "ซ่อมเสร็จแล้ว";
+                                        SClass = "label label-primary";
+                                    }
+                                    else if (item.Status == 3)
+                                    {
+                                        Status = "ยกเลิก";
+                                        SClass = "label label-warning";
+                                    }
 
-    <tr>
-        <td><a href="~/TMS/RepairInfo?RepairNo=@item.RepairNo">@item.RepairNo</a></td>
-        <td>@item.License</td>
-        <td>@item.STType</td>
-        <td>@item.InformDate.ToString("dd/MM/yyyy")</td>
-        <td>@item.SendDate.ToString("dd/MM/yyyy")</td>
-        <td>@item.FinishDate.ToString("dd/MM/yyyy")</td>
-        <td>@item.Detail</td>
-        <td><span class="@SClass">@Status</span></td>
-    </tr>
-}
-                               
-                              
-                              
+
+                                    <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+                                        <td><a href="~/TMS/RepairInfo?RepairNo=@item.RepairNo">@item.RepairNo</a></td>
+                                        <td>@item.License</td>
+                                        <td>@item.STType</td>
+                                        <td>@item.InformDate.ToString("dd/MM/yyyy")</td>
+                                        <td>@item.SendDate.ToString("dd/MM/yyyy")</td>
+                                        @if (item.FinishTime == null)
+                                        {
+                                            <td></td>
+                                        }
+                                        else
+                                        {
+                                            <td>@item.FinishDate.ToString("dd/MM/yyyy")</td>
+                                        }
+
+                                        <td>@item.Detail</td>
+                                        <td><span class="@SClass">@Status</span></td>
+                                    </tr>
+                                }
+
+
+
                             </tbody>
                         </table>
                     </div>
@@ -104,3 +110,15 @@
     </div>
 
 </section>
+<script type="text/javascript">
+
+    var TableBackgroundNormalColor = "#ffffff";
+    var TableBackgroundMouseoverColor = "#F3FCFE";
+
+    // These two functions need no customization.
+    function ChangeBackgroundColor(row) {
+        TableBackgroundNormalColor = row.style.backgroundColor;
+        row.style.backgroundColor = TableBackgroundMouseoverColor;
+    }
+    function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
+</script>

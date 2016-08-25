@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TMS.Models.MDriver>
+@{
     ViewBag.Title = "Drivers";
 }
 
@@ -28,52 +29,47 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table no-margin">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>รหัส</th>
-                                        <th>ชื่อ</th>
-                                        <th>นามสกุล</th>
-                                        <th>โทรศัพท์</th>
-                                        <th>อายุ</th>
-                                        <th>เลขที่ใบขับขี่</th>
-                                        <th>ประเภทใบขับขี่</th>
-                                        <th>สถานะ</th>
+                                    <tr style="background-color:#00acd6">
+                                        <th align="center"><font color="#fff">รหัส</font></th>
+                                        <th align="center"><font color="#fff">พขร.</font></th>
+                                        <th align="center"><font color="#fff">โทรศัพท์</font></th>
+                                        <th align="center"><font color="#fff">อายุ</font></th>
+                                        <th align="center"><font color="#fff">เลขที่ใบขับขี่</font></th>
+                                        <th align="center"><font color="#fff">ประเภทใบขับขี่</font></th>
+                                        <th align="center"><font color="#fff">สถานะ</font></th>       
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><a href="~/TMS/DriverDetails">001</a></td>
-                                        <td>สมชาย</td>
-                                        <td>สุวรรณพงษ์</td>
-                                        <td>087-6115341</td>
-                                        <td>47</td>
-                                        <td>รย.00115/51</td>
-                                        <td>ท.4</td>
-                                        <td><span class="label label-warning">Pending</span></td>
+@foreach (var item in Model)
+                                {
+                                    String Status = "";
+                                    String SClass = "";
+                                    if (item.Status == "y")
+                                    {
+                                        Status = "พนักงานปัจจุบัน";
+                                        SClass = "label label-success";
+                                    }
+                                    else if (item.Status == "n")
+                                    {
+                                        Status = "ลาออก";
+                                        SClass = "label label-danger";
+                                  }
+                                    int Age = (
+     Int32.Parse(DateTime.Today.ToString("yyyyMMdd")) -
+     Int32.Parse(@item.DOB.ToString("yyyyMMdd"))) / 10000;
+                                    <tr onmouseover="ChangeBackgroundColor(this)" onmouseout="RestoreBackgroundColor(this)">
+                                        <td><a href="~/TMS/DriverDetails?EmpID=@item.EmpID">@item.EmpID</a></td>
+                                        <td>@item.Title @item.FirstName &nbsp; @item.LastName (@item.NickName)</td>
+                                        <td>@item.Mobile</td>
+                                        <td>@Age</td>
+                                        <td>@item.DriverLicence</td>
+                                        <td>@item.Type</td>
+                                        <td><span class="@SClass">@Status</span></td>
                                     </tr>
-                                    <tr>
-                                        <td><a href="~/TMS/DriverDetails">002</a></td>
-                                        <td>ไพบูลย์</td>
-                                        <td>อดิเรก</td>
-                                        <td>087-9342187</td>
-                                        <td>59</td>
-                                        <td>รย.00120/57</td>
-                                        <td>ท.4</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="~/TMS/DriverDetails">003</a></td>
-                                        <td>วิรัตร</td>
-                                        <td>อดิเรก</td>
-                                        <td>087-7044237</td>
-                                        <td>37</td>
-                                        <td>3ชบ.00375/57</td>
-                                        <td>ท.4</td>
-                                        <td><span class="label label-danger">Delivered</span></td>
-                                    </tr>
-                                  
+}
                                 </tbody>
                             </table>
                         </div>
@@ -81,7 +77,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a href="~/TMS/DriverDetails" class="btn btn-sm btn-info btn-flat pull-right">New Driver</a>
+                        <a href="~/TMS/DriverNew" class="btn btn-sm btn-info btn-flat pull-right">New Driver</a>
                     @*    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>*@
                     </div>
                     <!-- /.box-footer -->
@@ -92,3 +88,15 @@
         </div>
 
     </section>
+<script type="text/javascript">
+
+    var TableBackgroundNormalColor = "#ffffff";
+    var TableBackgroundMouseoverColor = "#F3FCFE";
+
+    // These two functions need no customization.
+    function ChangeBackgroundColor(row) {
+        TableBackgroundNormalColor = row.style.backgroundColor;
+        row.style.backgroundColor = TableBackgroundMouseoverColor;
+    }
+    function RestoreBackgroundColor(row) { row.style.backgroundColor = TableBackgroundNormalColor; }
+</script>

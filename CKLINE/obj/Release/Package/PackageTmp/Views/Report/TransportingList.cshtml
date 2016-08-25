@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CKLINE.Models.Transporting>
+﻿@model CKLINE.Controllers.TransportingModel
 
 @{
     ViewBag.Title = "TransportingList";
@@ -12,121 +12,216 @@
     </h1>
 
 </section>
-
-<section class="content">
-
-    <!-- Info boxes -->
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">รายละเอียด</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-
+@using (Html.BeginForm("TransportingList", "Report", FormMethod.Post))
+{
+    <section class="content">
+        <div class="box">
+            <form class="form-horizontal">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">ค้นหา</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
                     </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.BeginDate)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Head)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Tail)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.TankNO)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Driver)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Mobile)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Source)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Destination)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Distance)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.WorkTime)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.NumberOfDriver)
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null)
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.BeginDate)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Head)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Tail)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TankNO)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Driver)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Mobile)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Source)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Destination)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Distance)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.WorkTime)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.NumberOfDriver)
-                                            </td>
-
-                                        </tr>
+                    <div class="box-body">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="date" class="col-sm-2 control-label">วันที่</label>
+                                <div class="col-sm-10">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.DateRange, new { @class = "form-control", id = "uxdatetimepicker" })
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label for="Type" class="col-sm-2 control-label">ประเภท</label>
+                                <div class="col-sm-10">
+                                    @{
+                                        var items = new List<SelectListItem>();
+                                        items.Add(new SelectListItem { Text = "Praxair", Value = "0", Selected = true });
+                                        items.Add(new SelectListItem { Text = "Trucking", Value = "1" });
+                                        items.Add(new SelectListItem { Text = "Import/Export", Value = "2" });
                                     }
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
+                                    @Html.DropDownListFor(model => model.Type, items, new { @class = "form-control select2 select2-hidden-accessible" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">คำค้น</label>
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(m => m.Keyword, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">ค้นหา</button>
+                        </div><!-- /.box-footer -->
+
+                    </div><!-- /.box-body -->
+
                 </div>
-                <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                    <a href="#" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
-                    <a href="@Url.Action("Transporting", "Report")" class="btn btn-sm btn-default btn-flat pull-left">View</a>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
+            </form>
+
         </div>
-        <!-- /.col -->
-    </div>
-</section>
+        <!-- Info boxes -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">รายละเอียด</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+                        <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row">
+                                <div class="col-sm-12">
+                                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Date: activate to sort column descending">วันที่</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Route: activate to sort column ascending">เส้นทาง</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Head(s): activate to sort column ascending">ทะเบียนหัว</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Tail version: activate to sort column ascending">ทะเบียนหาง</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Driver: activate to sort column ascending">พขร</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="DistanceS: activate to sort column ascending">ระยะทาง S</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="DistanceA: activate to sort column ascending">ระยะทาง A</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="DiffDistance: activate to sort column ascending">ผลต่าง</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="GasS: activate to sort column ascending">เชื้อเพลิง S</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="GasA: activate to sort column ascending">เชื้อเพลิง A</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="DiffGas: activate to sort column ascending">ผลต่าง</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="PayPeriodCost: activate to sort column ascending">ค่าเที่ยว</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="GasCost: activate to sort column ascending">ค่าเชื้อเพลิง</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Recap: activate to sort column ascending">ค่าปะยาง</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Other: activate to sort column ascending">อื่นๆ</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="TransportCost: activate to sort column ascending">ค่าขนส่ง</th>
+                                                <th class="sorting" align="center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="ProfitLoss: activate to sort column ascending">กำไร/ขาดทุน</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @if (Model.TransportItems != null)
+                                            {
+                                                foreach (var item in Model.TransportItems)
+                                                {
+                                            <tr role="row" class="odd">
+
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.Date)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Route)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Head)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Tail)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Driver)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DistanceS)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DistanceA)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DiffDistance)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.GasA)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.GasS)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DiffGas)
+                                                </td>
+                                                <td>@Html.DisplayFor(modelItem => item.PayPeriodCost)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.GasCost)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Recap)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Other)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.TransportCost)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.ProfitLoss)</td>
+                                            </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                        @*<tfoot>
+                                                <tr>
+                                                    <th rowspan="1" colspan="1">Rendering engine</th>
+                                                    <th rowspan="1" colspan="1">Browser</th>
+                                                    <th rowspan="1" colspan="1">Platform(s)</th>
+                                                    <th rowspan="1" colspan="1">Engine version</th>
+                                                    <th rowspan="1" colspan="1">CSS grade</th>
+                                                </tr>
+                                            </tfoot>*@
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button previous disabled" id="example2_previous">
+                                                <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a>
+                                            </li>
+                                            <li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li>
+                                            @*<li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li>
+                                                <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li>
+                                                <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li>
+                                                <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li>
+                                                <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li>*@
+                                            <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <!-- /.box-header -->
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <a href="@Url.Action("ExportTransportingToExcel", "Report")" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
+                        <a href="@Url.Action("Transporting", "Report")" class="btn btn-sm btn-default btn-flat pull-left">View</a>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+
+}
+
+<script>
+    $(document).ready(function () {
+        $('#uxdatetimepicker').daterangepicker({
+            "locale": {
+                "format": "DD/MM/YYYY"
+            },
+            "startDate": moment().format("DD/MM/YYYY"),
+            "endDate": moment().add(30, "days").calendar()
+        });
+    });
+</script>
+
+

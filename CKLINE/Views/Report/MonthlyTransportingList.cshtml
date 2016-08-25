@@ -8,7 +8,64 @@
 
 </section>
 <section class="content">
+    <div class="box">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">ค้นหา</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">เดือน</label>
+                            <div class="col-sm-10">
+                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <option selected="selected">มกราคม</option>
+                                        <option>กุมภาพันธ์</option>
+                                        <option>มีนาคม</option>
+                                        <option>เมษายน</option>
+                                        <option>พฤษภาคม</option>
+                                        <option>มิถุนายน</option>
+                                        <option>กรกฎาคม</option>
+                                        <option>สิงหาคม</option>
+                                        <option>กันยายน</option>
+                                        <option>ตุลาคม</option>
+                                        <option>พฤศจิกายน</option>
+                                        <option>ธันวาคม</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">ประเภท</label>
+                            <div class="col-sm-10">
+                                
+                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <option selected="selected">Praxair</option>
+                                        <option>Praxair</option>
+                                        <option>Trucking</option>
+                                        <option>Import/Export</option>
+                                    </select>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">คำค้น</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="คำค้น">
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div><!-- /.box-footer -->
+                </form>
+            </div><!-- /.box-body -->
 
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="box box-info">
@@ -132,7 +189,7 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.ProfitLoss)
                                             </td>
-                                            
+
                                         </tr>  }
                                 }
                             </tbody>

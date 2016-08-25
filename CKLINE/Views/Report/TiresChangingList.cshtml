@@ -14,7 +14,42 @@
 </section>
 
 <section class="content">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">ค้นหา</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form class="form-horizontal">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="date" class="col-sm-2 control-label">วันที่</label>
+                        <div class="col-sm-10">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                <input type='text' class="form-control" id="uxdatetimepicker" />
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">ทะเบียนรถ</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="ทะเบียนรถ">
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">ค้นหา</button>
+                </div><!-- /.box-footer -->
+            </form>
+        </div><!-- /.box-body -->
+
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="box box-info">
@@ -123,3 +158,14 @@
         <!-- /.col -->
     </div>
 </section>
+<script>
+    $(document).ready(function () {
+        $('#uxdatetimepicker').daterangepicker({
+            "locale": {
+                "format": "DD/MM/YYYY"
+            },
+            "startDate": moment().format("DD/MM/YYYY"),
+            "endDate": moment().add(30, "days").calendar()
+        });
+    });
+</script>

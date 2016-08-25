@@ -51,16 +51,39 @@
     <div class="row invoice-info">
         <!-- /.col -->
         <div class="col-sm-12 invoice-col">
-            <b>Customer</b><br>
-           
-            <b>Name :</b>&nbsp; @item.CName<br>
-            <b>Address :</b>&nbsp; @item.CAddress &nbsp; @item.CProvince &nbsp; @item.CZipCode<br>
-            <b>Telephone :</b>&nbsp; @item.CTelephone
-            <br>
+            <b>Booking No :</b>&nbsp; @item.BookingNo<br>
+            <br />
+            </div>
+            <div class="col-sm-12 invoice-col">
+                <b>Customer</b><br>
+
+                <b>Name :</b>&nbsp; @item.CName<br>
+                <b>Address :</b>&nbsp; @item.CAddress &nbsp; @item.CProvince &nbsp; @item.CZipCode<br>
+                <b>Telephone :</b>&nbsp; @item.CTelephone
+                <br>
+            </div>
+            @if (item.OrderType == 1 || item.OrderType == 3)
+            {
+                <div class="col-sm-12 invoice-col">
+                    <br />
+                    <b>Shipper</b><br>
+
+                    <b>Name :</b>&nbsp; @item.SName<br>
+                    <b>Address :</b>&nbsp; @item.SAddress &nbsp; @item.SProvince &nbsp; @item.SZipCode<br>
+                    <b>Telephone :</b>&nbsp; @item.STelephone
+                    <br>
+                </div>
+            }
+            <div class="col-sm-12 invoice-col">
+                <br />
+                <b>Route Detail</b><br>
+
+                <b>From :</b>&nbsp; @item.RFromDetail<br>
+                <b>To :</b>&nbsp; @item.RToDetail<br>
+
+                <br>
+            </div>
         </div>
-     
-       
-    </div>
     <hr />
     <!-- /.row -->
     <!-- info row -->
@@ -106,12 +129,13 @@
                         <b>วันที่ลากตู้ (1)&nbsp;  : </b> &nbsp; @item.TPackDate1.ToString("dd/MM/yyyy")<br>
                         <b>จำนวนตู้ (1)&nbsp; : </b> &nbsp; @item.TNumberOrder1<br>
                         <b>ประเภทตู้ (1)&nbsp;  : </b>&nbsp;  @item.ContainerType1<br>
+                        <b>จำนวนเที่ยว (1)&nbsp;  : </b>&nbsp;  @item.TRound1<br>
                      
                     </div>
                     <div class="col-sm-4 invoice-col">
                         <b>From</b>
                         <address>
-                            <strong>@item.RFromDetail</strong>@item.RFromProvince<br>
+                            <strong>@item.RFromDetail</strong>&nbsp;@item.RFromProvince<br>
                             <br>
 
                         </address>
@@ -119,7 +143,7 @@
                     <div class="col-sm-4 invoice-col">
                         <b>To</b>
                         <address>
-                            <strong>@item.RToDetail</strong>@item.RToProvince<br>
+                            <strong>@item.RToDetail</strong>&nbsp;@item.RToProvince<br>
                             <br>
 
                         </address>
@@ -133,11 +157,12 @@
                                 <b>วันที่ลากตู้ (2) &nbsp;: </b>&nbsp; @item.TPackDate2.ToString("dd/MM/yyyy")<br>
                                 <b>จำนวนตู้ (2)&nbsp; : </b>&nbsp; @item.TNumberOrder2<br>
                                 <b>ประเภทตู้ (2) &nbsp;: </b>&nbsp; @item.ContainerType2<br>
+                                <b>จำนวนเที่ยว (2)&nbsp;  : </b>&nbsp;  @item.TRound2<br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <b>From</b>
                                 <address>
-                                    <strong>@item.RFromDetail2</strong>@item.RFromProvince2<br>
+                                    <strong>@item.RFromDetail2</strong>&nbsp;@item.RFromProvince2<br>
                                     <br>
 
                                 </address>
@@ -145,7 +170,7 @@
                             <div class="col-sm-4 invoice-col">
                                 <b>To</b>
                                 <address>
-                                    <strong>@item.RToDetail2</strong>@item.RToProvince2<br>
+                                    <strong>@item.RToDetail2</strong>&nbsp;@item.RToProvince2<br>
                                     <br>
 
                                 </address>
@@ -158,11 +183,12 @@
                                 <b>วันที่ลากตู้ (3) &nbsp; : </b>&nbsp; @item.TPackDate3.ToString("dd/MM/yyyy")<br>
                                 <b>จำนวนตู้ (3)&nbsp;: </b>&nbsp; @item.TNumberOrder3<br>
                                 <b>ประเภทตู้ (3) &nbsp;: </b>&nbsp; @item.ContainerType3<br>
+                                <b>จำนวนเที่ยว (3)&nbsp;  : </b>&nbsp;  @item.TRound3<br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <b>From</b>
                                 <address>
-                                    <strong>@item.RFromDetail3</strong>@item.RFromProvince3<br>
+                                    <strong>@item.RFromDetail3</strong>&nbsp;@item.RFromProvince3<br>
                                     <br>
 
                                 </address>
@@ -170,7 +196,7 @@
                             <div class="col-sm-4 invoice-col">
                                 <b>To</b>
                                 <address>
-                                    <strong>@item.RToDetail3</strong>@item.RToProvince3<br>
+                                    <strong>@item.RToDetail3</strong>&nbsp;@item.RToProvince3<br>
                                     <br>
 
                                 </address>
@@ -183,11 +209,12 @@
                                 <b>วันที่ลากตู้ (4) &nbsp; : </b>&nbsp; @item.TPackDate4.ToString("dd/MM/yyyy")<br>
                                 <b>จำนวนตู้ (4)&nbsp; : </b>&nbsp; @item.TNumberOrder4<br>
                                 <b>ประเภทตู้ (4)&nbsp; : </b>&nbsp; @item.ContainerType4<br>
+                                <b>จำนวนเที่ยว (4)&nbsp;  : </b>&nbsp;  @item.TRound4<br>
                             </div>
                             <div class="col-sm-4 invoice-col">
                                 <b>From</b>
                                 <address>
-                                    <strong>@item.RFromDetail4</strong>@item.RFromProvince4<br>
+                                    <strong>@item.RFromDetail4</strong>&nbsp;@item.RFromProvince4<br>
                                     <br>
 
                                 </address>
@@ -195,7 +222,7 @@
                             <div class="col-sm-4 invoice-col">
                                 <b>To</b>
                                 <address>
-                                    <strong>@item.RToDetail4</strong>@item.RToProvince4<br>
+                                    <strong>@item.RToDetail4</strong>&nbsp;@item.RToProvince4<br>
                                     <br>
 
                                 </address>
@@ -278,6 +305,8 @@
             <b>ค่าผ่านท่า :</b>&nbsp; @item.IEPortPrice<br>
             <b>ค่าผ่านลาน :</b>&nbsp; @item.IELanPrice<br>
             <b>ค่า Lift on/Lift off :</b>&nbsp; @item.IELiftPrice<br>
+            <b>ประมาณการค่าขนส่ง (บาท) :</b>&nbsp; @item.IESCost<br>
+            <b>ประมาณการระยะทาง (กม.) :</b>&nbsp; @item.IESDistance<br>
 
 
             <br>
@@ -286,6 +315,7 @@
         <div class="col-sm-4 invoice-col">
 
             <b>วันที่รับตู้หนัก/เปล่า :</b>&nbsp; @item.IEReceiveDate.ToString("dd/MM/yyyy")<br>
+            <b>เวลารับตู้หนัก/เปล่า :</b>&nbsp; @item.IEReceiveTime<br>
             <b>AT :</b>&nbsp; @item.IEAT<br>
             <b>Contact :</b>&nbsp; @item.IEContact<br>
             <b>Tel :</b>&nbsp; @item.IETel<br>
@@ -357,11 +387,33 @@
                     <tbody>
 @foreach (var itemD in Model.Item2)
 {
-  
+
     string DStatusName = "";
+    string SClass = "";
     if (itemD.Status == 1)
     {
         DStatusName = "New";
+        SClass = "label label-success";
+    }
+    else if (itemD.Status == 2)
+    {
+        DStatusName = "Queue";
+        SClass = "label label-warning";
+    }
+    else if (itemD.Status == 3)
+    {
+        DStatusName = "Delivered";
+        SClass = "label label-primary";
+    }
+    else if (itemD.Status == 4)
+    {
+        DStatusName = "Finish";
+        SClass = "label label-info";
+    }
+    else if (itemD.Status == 5)
+    {
+        DStatusName = "Cancel";
+        SClass = "label label-danger";
     }
 
     string sPosition = "";
@@ -454,10 +506,11 @@
                     <thead>
                         <tr>
                             @*   <th>ลำดับ</th>*@
-                            <th>เบอร์ตู้</th>
-                            <th>ประเภทตู้</th>
-                            <th>เบอร์ซีล</th>
-                            <th>สถานะ</th>
+                            <th align="center">เบอร์ตู้</th>
+                            <th align="center">น้ำหนักตู้เปล่า</th>
+                            <th align="center">ประเภทตู้</th>
+                            <th align="center">เบอร์ซีล</th>
+                            <th align="center">สถานะ</th>
 
                         </tr>
                     </thead>
@@ -486,6 +539,7 @@
                             <tr>
                                 @*<td>@Model.Item2.</td>*@
                                 <td>@itemD.ContainerNo</td>
+                                <td align="center">@itemD.TareWeight.ToString("#,###.##")</td>
                                 <td>@itemD.ContainerType</td>
                                 <td>@itemD.PackNo</td>
                                 <td>@DStatusName</td>

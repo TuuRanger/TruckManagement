@@ -59,6 +59,7 @@
     <Property Name="Contact5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Email5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Position5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderType" Type="Int32" />
   </EntityType>
   <EntityType Name="DeliveryPrice">
     <Key>
@@ -68,49 +69,6 @@
     <Property Name="RoutID" Type="Int32" />
     <Property Name="AgentID" Type="Int32" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
-  </EntityType>
-  <EntityType Name="Driver">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="EmpID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="DriverLicence" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="DIssueDate" Type="DateTime" Precision="0" />
-    <Property Name="DExpireDate" Type="DateTime" Precision="0" />
-    <Property Name="DOB" Type="DateTime" Precision="0" />
-    <Property Name="Race" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Nationality" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Religion" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="IDCard" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
-    <Property Name="IssuseDate" Type="DateTime" Precision="0" />
-    <Property Name="ExpireDate" Type="DateTime" Precision="0" />
-    <Property Name="Weight" Type="Double" />
-    <Property Name="Height" Type="Double" />
-    <Property Name="MarriageStatusID" Type="Int32" />
-    <Property Name="MilitaryStatusID" Type="Int32" />
-    <Property Name="Education" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="FatherFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="DOBFather" Type="DateTime" Precision="0" />
-    <Property Name="MotherFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Name="DOBMother" Type="DateTime" Precision="0" />
-    <Property Name="WifeFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Workplace" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="WPosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Child" Type="Int32" />
-    <Property Name="FileDriver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="FileIDCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="FileRegistration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Title" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="TruckID" Type="Int32" />
   </EntityType>
   <EntityType Name="FuelType">
     <Key>
@@ -213,6 +171,8 @@
     <Property Name="Status" Type="Int32" />
     <Property Name="ContainerType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="TPackDate" Type="DateTime" Precision="0" />
+    <Property Name="RoutID" Type="Int32" />
+    <Property Name="TareWeight" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="OrderType">
     <Key>
@@ -319,6 +279,8 @@
     <Property Name="NDay" Type="Int32" />
     <Property Name="NPerDay" Type="Int32" />
     <Property Name="NMonth" Type="Int32" />
+    <Property Name="ShipperID" Type="Int32" />
+    <Property Name="DriverCost" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Stock">
     <Key>
@@ -399,48 +361,6 @@
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="Detail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="Truck">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="License" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="TruckType" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="HitchLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="weightTruck" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="WeightSum" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="BrandEngine" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="NumberEngine" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="NumberPresure" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="HosePower" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="NumWheel" Type="Int32" />
-    <Property Name="SizeWheel" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="TypeFuel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="RegisterDate" Type="DateTime" Precision="0" />
-    <Property Name="ChassisNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="RWeight" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="ExprieDate" Type="DateTime" Precision="0" />
-    <Property Name="RTax" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="ICompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="INumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IExprieDate" Type="DateTime" Precision="0" />
-    <Property Name="IType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IPremium" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="IBroker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="IMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ACompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="ANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="AExprieDate" Type="DateTime" Precision="0" />
-    <Property Name="APremium" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="HitchID" Type="Int32" />
-    <Property Name="Status" Type="Int32" />
-  </EntityType>
   <EntityType Name="WorkingHistory">
     <Key>
       <PropertyRef Name="ID" />
@@ -455,7 +375,6 @@
     <EntitySet Name="Agents" EntityType="Self.Agent" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="DeliveryPrices" EntityType="Self.DeliveryPrice" />
-    <EntitySet Name="Drivers" EntityType="Self.Driver" />
     <EntitySet Name="FuelTypes" EntityType="Self.FuelType" />
     <EntitySet Name="Garages" EntityType="Self.Garage" />
     <EntitySet Name="GasRefills" EntityType="Self.GasRefill" />
@@ -474,30 +393,20 @@
     <EntitySet Name="Tires" EntityType="Self.Tire" />
     <EntitySet Name="TireChanges" EntityType="Self.TireChange" />
     <EntitySet Name="TrainingHistories" EntityType="Self.TrainingHistory" />
-    <EntitySet Name="Trucks" EntityType="Self.Truck" />
     <EntitySet Name="WorkingHistories" EntityType="Self.WorkingHistory" />
-    <EntitySet Name="Jobs" EntityType="TMSModel.Job" />
     <EntitySet Name="Orders" EntityType="TMSModel.Order" />
     <EntitySet Name="Repairs" EntityType="TMSModel.Repair" />
     <EntitySet Name="RepairDetails" EntityType="TMSModel.RepairDetail" />
+    <EntitySet Name="Shippers" EntityType="TMSModel.Shipper" />
+    <EntitySet Name="Jobs" EntityType="TMSModel.Job" />
+    <EntitySet Name="JobDetails" EntityType="TMSModel.JobDetail" />
+    <EntitySet Name="Transfers" EntityType="TMSModel.Transfer" />
+    <EntitySet Name="TransferOlis" EntityType="TMSModel.TransferOli" />
+    <EntitySet Name="TransferOTHs" EntityType="TMSModel.TransferOTH" />
+    <EntitySet Name="TransferWays" EntityType="TMSModel.TransferWay" />
+    <EntitySet Name="Trucks" EntityType="TMSModel.Truck" />
+    <EntitySet Name="Drivers" EntityType="TMSModel.Driver" />
   </EntityContainer>
-  <EntityType Name="Job">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="TruckID" Type="Int32" />
-    <Property Name="HitchID" Type="Int32" />
-    <Property Name="DriverID" Type="Int32" />
-    <Property Name="SType" Type="Int32" />
-    <Property Name="JDate" Type="DateTime" Precision="0" />
-    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="Status" Type="Int32" />
-    <Property Name="ODID" Type="Int32" />
-    <Property Name="ContainerNo" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-    <Property Name="SID" Type="Int32" />
-  </EntityType>
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="ID" />
@@ -557,6 +466,14 @@
     <Property Name="ContainerType2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="ContainerType3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="ContainerType4" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ShipperID" Type="Int32" />
+    <Property Name="TRound1" Type="Int32" />
+    <Property Name="TRound2" Type="Int32" />
+    <Property Name="TRound3" Type="Int32" />
+    <Property Name="TRound4" Type="Int32" />
+    <Property Name="IESCost" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IESDistance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IEReceiveTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Repair">
     <Key>
@@ -594,5 +511,248 @@
     <Property Name="Num" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="SumPrice" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Shipper">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email2" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email3" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email4" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contact5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Email5" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="OrderType" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="JobType" Type="Int32" />
+    <Property Name="SOID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ROID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TruckID" Type="Int32" />
+    <Property Name="HitchID" Type="Int32" />
+    <Property Name="DriverID" Type="Int32" />
+    <Property Name="SID" Type="Int32" />
+    <Property Name="SType" Type="Int32" />
+    <Property Name="JDate" Type="DateTime" Precision="0" />
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="SNum" Type="Int32" />
+    <Property Name="RNum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="JobDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="JobID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="JobType" Type="Int32" />
+    <Property Name="OID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ODID" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="ReceiveDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Transfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="OpenJobDate" Type="DateTime" Precision="0" />
+    <Property Name="TransferDate" Type="DateTime" Precision="0" />
+    <Property Name="TransferTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="OOli" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OWay" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OOther" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ORemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CloseJobDate" Type="DateTime" Precision="0" />
+    <Property Name="ArriveDate" Type="DateTime" Precision="0" />
+    <Property Name="ArriveTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ReturnDate" Type="DateTime" Precision="0" />
+    <Property Name="ReturnTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ROli" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RDistance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CMile" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="COli" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CWay" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="COther" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CRemark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryCost" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DriverCost" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SIncome" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RIncome" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="AllIncome" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="OMile" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WcarB" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WGas" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WcarW" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="TransferOli">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SaveDate" Type="DateTime" Precision="3" />
+    <Property Name="EditDate" Type="DateTime" Precision="3" />
+    <Property Name="CancelDate" Type="DateTime" Precision="3" />
+    <Property Name="OliDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OliNum" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OliPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OliSumPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="GasID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TransferOTH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SaveDate" Type="DateTime" Precision="3" />
+    <Property Name="EditDate" Type="DateTime" Precision="3" />
+    <Property Name="CancelDate" Type="DateTime" Precision="3" />
+    <Property Name="OTHDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OTHNum" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OTHPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="OTHSumPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TransferWay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SaveDate" Type="DateTime" Precision="3" />
+    <Property Name="EditDate" Type="DateTime" Precision="3" />
+    <Property Name="CancelDate" Type="DateTime" Precision="3" />
+    <Property Name="WayDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WayNum" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WayPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WaySumPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Truck">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="License" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TruckType" Type="Int32" />
+    <Property Name="Detail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HitchID" Type="Int32" />
+    <Property Name="HitchLicense" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="weightTruck" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WeightSum" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BrandEngine" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NumberEngine" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumberPresure" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="HosePower" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NumWheel" Type="Int32" />
+    <Property Name="SizeWheel" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TypeFuel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RegisterDate" Type="DateTime" Precision="0" />
+    <Property Name="ChassisNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RWeight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ExprieDate" Type="DateTime" Precision="0" />
+    <Property Name="RTax" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ICompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="INumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IExprieDate" Type="DateTime" Precision="0" />
+    <Property Name="IType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IPremium" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="IBroker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IContact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACompany" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ANumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AExprieDate" Type="DateTime" Precision="0" />
+    <Property Name="APremium" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmergencyContact" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="EmergencyTelephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DriverLicence" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="DIssueDate" Type="DateTime" Precision="0" />
+    <Property Name="DExpireDate" Type="DateTime" Precision="0" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Race" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Nationality" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Religion" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="IDCard" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="IssuseDate" Type="DateTime" Precision="0" />
+    <Property Name="ExpireDate" Type="DateTime" Precision="0" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Height" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MarriageStatusID" Type="Int32" />
+    <Property Name="MilitaryStatusID" Type="Int32" />
+    <Property Name="Education" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FatherFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DOBFather" Type="DateTime" Precision="0" />
+    <Property Name="FDetail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MotherFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DOBMother" Type="DateTime" Precision="0" />
+    <Property Name="MDetail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="WifeFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Workplace" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="WPosition" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Child" Type="Int32" />
+    <Property Name="ImgDriver" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FileDriver" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FileIDCard" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FileRegistration" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TruckID" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="InsertBy" Type="Int32" />
+    <Property Name="InsertDate" Type="DateTime" Precision="0" />
+    <Property Name="EdittBy" Type="Int32" />
+    <Property Name="EditDate" Type="DateTime" Precision="0" />
+    <Property Name="DeleteBy" Type="Int32" />
+    <Property Name="DeleteDate" Type="DateTime" Precision="0" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

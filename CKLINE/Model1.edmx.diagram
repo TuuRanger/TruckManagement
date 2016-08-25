@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="82bbf5b9e9284c918e1bb0ade1b729d3" Name="Diagram1">
+      <Diagram DiagramId="82bbf5b9e9284c918e1bb0ade1b729d3" Name="Diagram1" ShowGrid="false">
         <EntityTypeShape EntityType="TMSModel.AccidentHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.AdmonishHistory" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.Agent" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.Customer" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.DeliveryPrice" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMSModel.Driver" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.FuelType" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.Garage" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.GasRefill" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
@@ -22,19 +21,26 @@
         <EntityTypeShape EntityType="TMSModel.MilitaryStatu" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.OrderDetail" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.OrderType" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMSModel.Provice" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TMSModel.Provice" Width="1.5" PointX="2.625" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.Route" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.Stock" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.SubContact" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.Tire" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.TireChange" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.TrainingHistory" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMSModel.Truck" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TMSModel.WorkingHistory" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TMSModel.Job" Width="1.5" PointX="15.375" PointY="16.75" />
         <EntityTypeShape EntityType="TMSModel.Order" Width="1.5" PointX="7.375" PointY="11.75" />
         <EntityTypeShape EntityType="TMSModel.Repair" Width="1.5" PointX="9.375" PointY="14.75" />
         <EntityTypeShape EntityType="TMSModel.RepairDetail" Width="1.5" PointX="17.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TMSModel.Shipper" Width="1.5" PointX="17.375" PointY="6.75" />
+        <EntityTypeShape EntityType="TMSModel.Job" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="TMSModel.JobDetail" Width="1.5" PointX="17.375" PointY="13.75" />
+        <EntityTypeShape EntityType="TMSModel.Transfer" Width="1.5" PointX="17.375" PointY="16.75" />
+        <EntityTypeShape EntityType="TMSModel.TransferOli" Width="1.5" PointX="3.375" PointY="18.75" />
+        <EntityTypeShape EntityType="TMSModel.TransferOTH" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TMSModel.TransferWay" Width="1.5" PointX="19.375" PointY="4.75" />
+        <EntityTypeShape EntityType="TMSModel.Truck" Width="1.5" PointX="19.375" PointY="8.75" />
+        <EntityTypeShape EntityType="TMSModel.Driver" Width="1.5" PointX="11.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,0 +1,287 @@
+﻿@model IEnumerable<CKLINE.Models.Driver>
+
+@{
+    ViewBag.Title = "DriverProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        งานลากตู้คอนเทรนเนอร์
+
+    </h1>
+
+</section>
+
+
+<section class="content">
+    <div class="box">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">ค้นหา</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="date" class="col-sm-2 control-label">วันที่</label>
+                            <div class="col-sm-10">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    <input type='text' class="form-control" id="uxdatetimepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">คำค้น</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="คำค้น">
+                            </div>
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">ค้นหา</button>
+                    </div><!-- /.box-footer -->
+                </form>
+            </div><!-- /.box-body -->
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">รายละเอียด</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EmpCode)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.NationalID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.NIssueDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.NExpire)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Title)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Height)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Weight)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MilitaryStatus)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DriverCarID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DriverCarIDType)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DIssueDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DExpireDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Education)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PhotoPath)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Nationality)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Extraction)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Religion)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FartherName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FAge)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FCareer)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MotherName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MAge)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MCareer)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WifeName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WAge)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmpCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NationalID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NIssueDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NExpire)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LastName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Height)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Weight)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MilitaryStatus)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DriverCarID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DriverCarIDType)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DIssueDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DExpireDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Address)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Education)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PhotoPath)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Nationality)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Extraction)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Religion)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FartherName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FAge)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FCareer)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MotherName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MAge)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MCareer)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WifeName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WAge)
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="@Url.Action("ExportContainerToExcel", "Report")" class="btn btn-sm btn-info btn-flat pull-right">Export to Excel</a>
+                    <a href="@Url.Action("DriverProfileReport", "Report")" class="btn btn-sm btn-default btn-flat pull-left">View</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('#uxdatetimepicker').daterangepicker({
+            "locale": {
+                "format": "DD/MM/YYYY"
+            },
+            "startDate": moment().format("DD/MM/YYYY"),
+            "endDate": moment().add(30, "days").calendar()
+        });
+    });
+</script>
+
